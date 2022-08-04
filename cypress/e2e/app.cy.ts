@@ -12,13 +12,13 @@ describe('Navigasjon', () => {
 
     it('vi har en tabell som viser alle aktvitetsmalene', () => {
         cy.visit('/')
-        cy.get("#aktivitetstabell th")
+        cy.get("#aktivitetstabell thead th")
             .should(($headers) => {
                 expect($headers).to.have.length(1)
                 expect($headers.eq(0)).to.contain('Alle aktiviteter')
             })
 
-        cy.get("#aktivitetstabell td")
+        cy.get("#aktivitetstabell tbody td")
             .should(($datacells) => {
                 expect($datacells).to.have.length(3)
                 expect($datacells.eq(0)).to.contain('Aktivitet 1')

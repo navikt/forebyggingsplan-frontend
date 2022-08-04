@@ -25,11 +25,14 @@ const Home: NextPage = () => {
                                 Alle aktiviteter
                             </Table.HeaderCell>
                         </Table.Row>
+                    </Table.Header>
+                    <Table.Body>
                         <Table.Row>
                             <Table.DataCell scope="col">
                                 Aktivitet 1
                             </Table.DataCell>
                         </Table.Row>
+
                         <Table.Row>
                             <Table.DataCell scope="col">
                                 Aktivitet 2
@@ -40,7 +43,7 @@ const Home: NextPage = () => {
                                 Aktivitet 3
                             </Table.DataCell>
                         </Table.Row>
-                    </Table.Header>
+                    </Table.Body>
                 </Table>
 
             </main>
