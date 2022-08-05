@@ -1,0 +1,1 @@
+export const FOREBYGGINGSPLAN_API_BASEURL = process.env.BACKEND_BASEURL!!;

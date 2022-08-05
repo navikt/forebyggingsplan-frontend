@@ -3,17 +3,13 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { Aktivitet } from "../src/types/Aktivitet";
 import { Aktivitetsmaler } from "../src/components/Aktivitetsmaler";
-
-const mockSvar: Aktivitet[] = [
-    { tittel: "Aktivitet 1" },
-    { tittel: "Aktivitet 2" },
-    { tittel: "Aktivitet 3" },
-];
+import { FOREBYGGINGSPLAN_API_BASEURL } from "../src/constants";
 
 export async function getServerSideProps(context: NextPageContext) {
+    const res = await fetch(`${FOREBYGGINGSPLAN_API_BASEURL}/aktiviteter`);
     return {
         props: {
-            aktiviteter: mockSvar,
+            aktiviteter: await res.json(),
         },
     };
 }

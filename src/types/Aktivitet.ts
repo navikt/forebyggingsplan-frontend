@@ -1,3 +1,3 @@
-export type Aktivitet = {
-    tittel: string
+export interface Aktivitet {
+    tittel: string;
 }
