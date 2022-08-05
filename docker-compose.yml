@@ -21,13 +21,13 @@ services:
   cypress:
     depends_on:
       - frontend
-    image: cypress/included:9.4.1
-
+    build:
+      context: e2e
+      dockerfile: Dockerfile
     command: "npx cypress run"
-    working_dir: /app
     volumes:
-      - ./cypress.config.ts:/app/cypress.config.ts
-      - ./cypress:/app/cypress
+      - ./e2e/cypress:/app/cypress
+      - ./e2e/cypress.config.ts:/app/cypress.config.ts
     environment:
       CI: "1"
       CYPRESS_BASE_URL: http://frontend:3000
