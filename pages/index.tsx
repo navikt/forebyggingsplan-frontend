@@ -2,7 +2,7 @@ import type {NextPage, NextPageContext} from 'next'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import {Aktivitet} from "../src/types/Aktivitet";
-import {AktivitetsOversikt} from "../src/components/AktivitetsOversikt";
+import {Aktivitetsmaler} from "../src/components/Aktivitetsmaler";
 
 const mockSvar: Aktivitet[] = [
     {tittel: "Aktivitet 1"},
@@ -33,7 +33,7 @@ const Home: NextPage<{ aktiviteter: Aktivitet[] }> = ({aktiviteter}) => {
                     Forebyggingsplan
                 </h1>
 
-                <AktivitetsOversikt aktiviteter={aktiviteter} />
+                <Aktivitetsmaler aktiviteter={aktiviteter} />
             </main>
         </div>
     )

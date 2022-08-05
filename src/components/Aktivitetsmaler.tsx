@@ -1,7 +1,7 @@
 import {Table} from "@navikt/ds-react";
 import {Aktivitet} from "../types/Aktivitet";
 
-export const AktivitetsOversikt = ({aktiviteter}: {aktiviteter: Aktivitet[]}) =>
+export const Aktivitetsmaler = ({aktiviteter}: {aktiviteter: Aktivitet[]}) =>
     <Table size="medium" id={"aktivitetstabell"}>
         <Table.Header>
             <Table.Row>
