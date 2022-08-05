@@ -4,13 +4,15 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:docker": "docker-compose up -d",
+    "e2e": "docker-compose -f docker-compose-e2e.yml up --abort-on-container-exit --exit-code-from cypress",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "@navikt/ds-css": "^1.0.0-rc.6",
-    "@navikt/ds-react": "^1.0.0-rc.6",
+    "@navikt/ds-css": "0.18.27",
+    "@navikt/ds-react": "0.19.25",
     "next": "12.2.3",
     "react": "18.2.0",
     "react-dom": "18.2.0"

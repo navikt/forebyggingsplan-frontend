@@ -1,0 +1,32 @@
+services:
+  backend:
+    image: ghcr.io/navikt/forebyggingsplan:latest
+    environment:
+      SERVER_PORT: "4000"
+    ports:
+      - 4000:4000
+
+  frontend:
+    depends_on:
+      - backend
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    environment:
+      FOREBYGGINGSPLAN_API_BASEURL: http://backend:4000
+    ports:
+      - 3000:3000
+
+  cypress:
+    depends_on:
+      - frontend
+    build:
+      context: e2e
+      dockerfile: Dockerfile
+    command: "npx cypress run"
+    volumes:
+      - ./e2e/cypress:/app/cypress
+      - ./e2e/cypress.config.ts:/app/cypress.config.ts
+    environment:
+      CI: "1"
+      CYPRESS_BASE_URL: http://frontend:3000
