@@ -1,5 +1,15 @@
+
 services:
+  backend:
+    image: ghcr.io/navikt/forebyggingsplan:latest
+    environment:
+      SERVER_PORT: "4000"
+    ports:
+      - 4000:4000
+
   frontend:
+    depends_on:
+      - backend
     build:
       context: .
       dockerfile: Dockerfile.dev
@@ -8,9 +18,16 @@ services:
     ports:
       - 3000:3000
 
-  backend:
-    image: ghcr.io/navikt/forebyggingsplan:latest
+  cypress:
+    depends_on:
+      - frontend
+    image: cypress/included:9.4.1
+
+    command: "npx cypress run"
+    working_dir: /app
+    volumes:
+      - ./cypress.config.ts:/app/cypress.config.ts
+      - ./cypress:/app/cypress
     environment:
-      SERVER_PORT: "4000"
-    ports:
-      - 4000:4000
+      CI: "1"
+      CYPRESS_BASE_URL: http://frontend:3000

@@ -1,0 +1,10 @@
+{
+  "name": "Cypress e2e",
+  "scripts": {
+    "cypress": "cypress open",
+    "start": "cypress run"
+  },
+  "devDependencies": {
+    "cypress": "10.4.0"
+  }
+}
