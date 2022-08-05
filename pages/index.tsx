@@ -1,9 +1,24 @@
-import type {NextPage} from 'next'
+import type {NextPage, NextPageContext} from 'next'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import {Table} from '@navikt/ds-react'
+import {Aktivitet} from "../src/types/Aktivitet";
+import {AktivitetsOversikt} from "../src/components/AktivitetsOversikt";
 
-const Home: NextPage = () => {
+const mockSvar: Aktivitet[] = [
+    {tittel: "Aktivitet 1"},
+    {tittel: "Aktivitet 2"},
+    {tittel: "Aktivitet 3"},
+]
+
+export async function getServerSideProps(context: NextPageContext) {
+    return {
+        props: {
+            aktiviteter: mockSvar
+        },
+    };
+}
+
+const Home: NextPage<{ aktiviteter: Aktivitet[] }> = ({aktiviteter}) => {
     return (
         <div className={styles.container}>
             <Head>
@@ -18,34 +33,7 @@ const Home: NextPage = () => {
                     Forebyggingsplan
                 </h1>
 
-                <Table size="medium" id={"aktivitetstabell"}>
-                    <Table.Header>
-                        <Table.Row>
-                            <Table.HeaderCell scope="col">
-                                Alle aktiviteter
-                            </Table.HeaderCell>
-                        </Table.Row>
-                    </Table.Header>
-                    <Table.Body>
-                        <Table.Row>
-                            <Table.DataCell scope="col">
-                                Aktivitet 1
-                            </Table.DataCell>
-                        </Table.Row>
-
-                        <Table.Row>
-                            <Table.DataCell scope="col">
-                                Aktivitet 2
-                            </Table.DataCell>
-                        </Table.Row>
-                        <Table.Row>
-                            <Table.DataCell scope="col">
-                                Aktivitet 3
-                            </Table.DataCell>
-                        </Table.Row>
-                    </Table.Body>
-                </Table>
-
+                <AktivitetsOversikt aktiviteter={aktiviteter} />
             </main>
         </div>
     )
