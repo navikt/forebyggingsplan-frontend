@@ -11,6 +11,10 @@ For å kjøre appen lokalt, kjør følgende kommandoer i terminal:
 
 For å kjøre opp lokalt via docker kan man kjøre ``npm run dev:docker``
 
+Appen vil da være tilgjengelig på http://localhost:3000.
+
+Begge disse måtene å starte appen på støtter hot reloading.
+
 For å kjøre ende-til-ende tester holder det å kjøre ``npm run e2e``
 
 ---
