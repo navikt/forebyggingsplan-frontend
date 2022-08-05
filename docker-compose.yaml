@@ -16,3 +16,9 @@ services:
       FOREBYGGINGSPLAN_API_BASEURL: http://backend:4000
     ports:
       - 3000:3000
+    volumes:
+      - ./pages:/app/pages
+      - ./src:/app/src
+      - ./styles:/app/styles
+      - /app/node_modules
+      - /app/.next
