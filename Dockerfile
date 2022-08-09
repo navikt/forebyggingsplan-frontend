@@ -8,7 +8,8 @@ COPY pages ./pages
 COPY src ./src
 COPY styles ./styles
 
-ENV NEXT_TELEMETRY_DISABLED 1
+ENV NEXT_TELEMETRY_DISABLED=1 \
+    NODE_ENV=production
 
 RUN npm ci --prefer-offline --no-audit
 RUN npm run build
