@@ -1,0 +1,30 @@
+apiVersion: "nais.io/v1alpha1"
+kind: "Application"
+metadata:
+  name: "forebyggingsplan-frontend"
+  namespace: "pia"
+  labels:
+    "team": "pia"
+spec:
+  image: {{image}}
+  liveness:
+    path: "/api/isAlive"
+    port: 3000
+    initialDelay: 20
+    timeout: 60
+  readiness:
+    path: "/api/isReady"
+    port: 3000
+    initialDelay: 20
+    timeout: 60
+  accessPolicy:
+    outbound:
+      rules:
+        - application: forebyggingsplan
+  env:
+    - name: FOREBYGGINGSPLAN_API_BASEURL
+      value: http://forebyggingsplan
+  ingresses:
+  {{#each ingresses as |url|}}
+     - {{url}}
+  {{/each}}
