@@ -5,12 +5,16 @@ import { Aktivitet } from "../src/types/Aktivitet";
 import { Aktivitetsmaler } from "../src/components/Aktivitetsmaler";
 import { FOREBYGGINGSPLAN_API_BASEURL } from "../src/constants";
 import {Tabs} from "@navikt/ds-react";
+import {ValgtAktivitet} from "../src/types/ValgtAktivitet";
+import { Plan } from "../src/components/Plan";
 
 export async function getServerSideProps(context: NextPageContext) {
-    const res = await fetch(`${FOREBYGGINGSPLAN_API_BASEURL}/aktiviteter`);
+    const aktiviteterRespons = await fetch(`${FOREBYGGINGSPLAN_API_BASEURL}/aktiviteter`);
+    const valgteAktiviteterRespons = await fetch(`${FOREBYGGINGSPLAN_API_BASEURL}/aktiviteter/123456789`);
     return {
         props: {
-            aktiviteter: await res.json(),
+            aktiviteter: await aktiviteterRespons.json(),
+            valgteAktiviteter: await valgteAktiviteterRespons.json(),
         },
     };
 }
@@ -25,12 +29,19 @@ const navigasjonKonstanter = {
         key: "plan"
     },
     fullførteAktiviteterTab : {
-        label: "Oversikt",
+        label: "Fullførte aktiviteter",
         key: "fullførteAktiviteter"
     }
 }
 
-const Home: NextPage<{ aktiviteter: Aktivitet[] }> = ({ aktiviteter }) => {
+interface Props {
+    aktiviteter: Aktivitet[];
+    valgteAktiviteter: ValgtAktivitet[];
+}
+
+const Home: NextPage<Props> = ({ aktiviteter, valgteAktiviteter }) => {
+    console.log(aktiviteter)
+    console.log(valgteAktiviteter)
     return (
         <div className={styles.container}>
             <Head>
@@ -54,10 +65,10 @@ const Home: NextPage<{ aktiviteter: Aktivitet[] }> = ({ aktiviteter }) => {
                         <Aktivitetsmaler aktiviteter={aktiviteter} />
                     </Tabs.Panel>
                     <Tabs.Panel value={navigasjonKonstanter.forebyggingsplanTab.key}>
-                        Her kommer {navigasjonKonstanter.forebyggingsplanTab.label}
+                        <Plan valgteAktiviteter={valgteAktiviteter} />
                     </Tabs.Panel>
                     <Tabs.Panel value={navigasjonKonstanter.fullførteAktiviteterTab.key}>
-                        Her kommer {navigasjonKonstanter.fullførteAktiviteterTab.label}
+                        <p>Her kommer {navigasjonKonstanter.fullførteAktiviteterTab.label}</p>
                     </Tabs.Panel>
                 </Tabs>
             </main>
