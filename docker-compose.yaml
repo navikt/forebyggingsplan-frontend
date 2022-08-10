@@ -17,8 +17,6 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - ./pages:/app/pages
-      - ./src:/app/src
-      - ./styles:/app/styles
+      - ./:/app
       - /app/node_modules
       - /app/.next
