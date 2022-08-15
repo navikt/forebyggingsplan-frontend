@@ -26,6 +26,7 @@ describe("Navigasjon", () => {
             expect($datacells.eq(3)).to.contain(
                 "Hvordan ta den vanskelige praten?"
             );
+            expect($datacells).to.contain("button")
         });
     });
 });

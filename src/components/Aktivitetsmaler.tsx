@@ -1,5 +1,6 @@
-import {Table} from "@navikt/ds-react";
+import {Button, Table} from "@navikt/ds-react";
 import {Aktivitet} from "../types/Aktivitet";
+import { AddCircle } from "@navikt/ds-icons";
 
 export const Aktivitetsmaler = ({aktiviteter}: {aktiviteter: Aktivitet[]}) =>
     <Table size="medium" id={"aktivitetstabell"}>
@@ -8,6 +9,9 @@ export const Aktivitetsmaler = ({aktiviteter}: {aktiviteter: Aktivitet[]}) =>
                 <Table.HeaderCell scope="col">
                     Alle aktiviteter
                 </Table.HeaderCell>
+                <Table.HeaderCell scope="col">
+                    Legg til
+                </Table.HeaderCell>
             </Table.Row>
         </Table.Header>
         <Table.Body>
@@ -15,6 +19,11 @@ export const Aktivitetsmaler = ({aktiviteter}: {aktiviteter: Aktivitet[]}) =>
                 <Table.Row key={aktivitet.tittel}>
                     <Table.DataCell scope="col">
                         {aktivitet.tittel}
+                    </Table.DataCell>
+                    <Table.DataCell>
+                        <Button>
+                            <AddCircle/>
+                        </Button>
                     </Table.DataCell>
                 </Table.Row>)}
         </Table.Body>

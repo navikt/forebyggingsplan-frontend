@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@navikt/ds-css": "0.18.27",
+    "@navikt/ds-icons": "0.8.20",
     "@navikt/ds-react": "0.19.25",
     "next": "12.2.3",
     "react": "18.2.0",
