@@ -9,8 +9,8 @@ import {ValgtAktivitet} from "../src/types/ValgtAktivitet";
 import { Plan } from "../src/components/Plan";
 
 export async function getServerSideProps(context: NextPageContext) {
-    const aktiviteterRespons = await fetch(`${FOREBYGGINGSPLAN_API_BASEURL}/aktiviteter`);
-    const valgteAktiviteterRespons = await fetch(`${FOREBYGGINGSPLAN_API_BASEURL}/aktiviteter/123456789`);
+    const aktiviteterRespons = await fetch(`${FOREBYGGINGSPLAN_API_BASEURL}/aktivitetsmaler`);
+    const valgteAktiviteterRespons = await fetch(`${FOREBYGGINGSPLAN_API_BASEURL}/valgteaktiviteter/123456789`);
     return {
         props: {
             aktiviteter: await aktiviteterRespons.json(),
