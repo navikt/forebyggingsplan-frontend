@@ -13,7 +13,6 @@ describe("Navigasjon", () => {
         cy.visit("/");
         cy.get("#aktivitetstabell thead th").should(($headers) => {
             expect($headers).to.have.length(2);
-            console.log("Headers", $headers);
             expect($headers.eq(0)).to.contain("Alle aktiviteter");
             expect($headers.eq(1)).to.contain("Legg til");
         });
