@@ -30,6 +30,8 @@ spec:
   env:
     - name: FOREBYGGINGSPLAN_API_BASEURL
       value: http://forebyggingsplan
+    - name: FOREBYGGINGSPLAN_CLIENT_ID
+      value: {{ forebyggingsplanClientId }}
   ingresses:
   {{#each ingresses as |url|}}
      - {{url}}
