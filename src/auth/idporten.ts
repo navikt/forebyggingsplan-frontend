@@ -12,7 +12,7 @@ async function hentSigneringsnøkler() {
 
 const forventetAcrNivå = "Level4";
 
-async function verifiserToken(
+export async function verifiserToken(
     token: string
 ): Promise<ReturnType<typeof jwtVerify>> {
     const signeringsnøkler = await hentSigneringsnøkler();
@@ -40,5 +40,3 @@ async function verifiserToken(
         protectedHeader,
     };
 }
-
-async function veksleToken(token: string) {}
