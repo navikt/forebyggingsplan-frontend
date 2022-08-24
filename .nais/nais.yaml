@@ -7,6 +7,10 @@ metadata:
     "team": "pia"
 spec:
   image: {{image}}
+  idporten:
+    enabled: true
+    sidecar:
+      enabled: true
   port: 3000
   liveness:
     path: "/api/isAlive"
