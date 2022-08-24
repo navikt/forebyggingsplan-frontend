@@ -1,12 +1,12 @@
 import type { NextPage, NextPageContext } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { Aktivitet } from "../src/types/Aktivitet";
-import { Aktivitetsmaler } from "../src/components/Aktivitetsmaler";
-import { FOREBYGGINGSPLAN_API_BASEURL } from "../src/constants";
+import { Aktivitet } from "../types/Aktivitet";
+import { Aktivitetsmaler } from "../components/Aktivitetsmaler";
+import { FOREBYGGINGSPLAN_API_BASEURL } from "../constants";
 import { Tabs } from "@navikt/ds-react";
-import { ValgtAktivitet } from "../src/types/ValgtAktivitet";
-import { Plan } from "../src/components/Plan";
+import { ValgtAktivitet } from "../types/ValgtAktivitet";
+import { Plan } from "../components/Plan";
 
 export async function getServerSideProps(context: NextPageContext) {
     const aktiviteterRespons = await fetch(

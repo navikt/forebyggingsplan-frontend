@@ -4,9 +4,8 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 COPY next.config.js .
 COPY next-env.d.ts .
-COPY pages ./pages
 COPY src ./src
-COPY styles ./styles
+COPY .npmrc ./
 
 ENV NEXT_TELEMETRY_DISABLED 1
 
