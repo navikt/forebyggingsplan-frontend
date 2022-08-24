@@ -1,4 +1,4 @@
-import type { NextPage, NextPageContext } from "next";
+import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { Aktivitet } from "../types/Aktivitet";
@@ -7,13 +7,40 @@ import { FOREBYGGINGSPLAN_API_BASEURL } from "../constants";
 import { Tabs } from "@navikt/ds-react";
 import { ValgtAktivitet } from "../types/ValgtAktivitet";
 import { Plan } from "../components/Plan";
+import { hentToken } from "../auth";
+import { veksleToken } from "../auth/tokenx";
 
-export async function getServerSideProps(context: NextPageContext) {
+export const getServerSideProps: GetServerSideProps<Props> = async (
+    context
+) => {
+    const token = hentToken(context.req!!);
+    if (!token) {
+        return {
+            redirect: {
+                destination: "/oauth2/login",
+                permanent: false,
+            },
+        };
+    }
+    const tokenxToken = veksleToken(
+        token,
+        process.env.FOREBYGGINGSPLAN_CLIENT_ID!!
+    );
     const aktiviteterRespons = await fetch(
-        `${FOREBYGGINGSPLAN_API_BASEURL}/aktivitetsmaler`
+        `${FOREBYGGINGSPLAN_API_BASEURL}/aktivitetsmaler`,
+        {
+            headers: {
+                Authorization: `Bearer ${tokenxToken}`,
+            },
+        }
     );
     const valgteAktiviteterRespons = await fetch(
-        `${FOREBYGGINGSPLAN_API_BASEURL}/valgteaktiviteter/123456789`
+        `${FOREBYGGINGSPLAN_API_BASEURL}/valgteaktiviteter/123456789`,
+        {
+            headers: {
+                Authorization: `Bearer ${tokenxToken}`,
+            },
+        }
     );
     return {
         props: {
@@ -21,7 +48,7 @@ export async function getServerSideProps(context: NextPageContext) {
             valgteAktiviteter: await valgteAktiviteterRespons.json(),
         },
     };
-}
+};
 
 const navigasjonKonstanter = {
     aktivitetsOversiktTab: {
@@ -43,9 +70,10 @@ interface Props {
     valgteAktiviteter: ValgtAktivitet[];
 }
 
-const Home: NextPage<Props> = ({ aktiviteter, valgteAktiviteter }) => {
-    console.log(aktiviteter);
-    console.log(valgteAktiviteter);
+const Home = ({
+    aktiviteter,
+    valgteAktiviteter,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
     return (
         <>
             <Head>
