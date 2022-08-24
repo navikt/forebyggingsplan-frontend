@@ -11,6 +11,7 @@ spec:
     enabled: true
     sidecar:
       enabled: true
+      autoLogin: true
   port: 3000
   liveness:
     path: "/api/isAlive"
