@@ -9,6 +9,7 @@ import { ValgtAktivitet } from "../types/ValgtAktivitet";
 import { Plan } from "../components/Plan";
 import { hentToken } from "../auth";
 import { veksleToken } from "../auth/tokenx";
+import { verifiserToken } from "../auth/idporten";
 
 export const getServerSideProps: GetServerSideProps<Props> = async (
     context
@@ -22,32 +23,42 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
             },
         };
     }
-    const tokenxToken = veksleToken(
-        token,
-        process.env.FOREBYGGINGSPLAN_CLIENT_ID!!
-    );
-    const aktiviteterRespons = await fetch(
-        `${FOREBYGGINGSPLAN_API_BASEURL}/aktivitetsmaler`,
-        {
-            headers: {
-                Authorization: `Bearer ${tokenxToken}`,
+    try {
+        await verifiserToken(token);
+        const tokenxToken = await veksleToken(
+            token,
+            process.env.FOREBYGGINGSPLAN_CLIENT_ID!!
+        );
+        const aktiviteterRespons = await fetch(
+            `${FOREBYGGINGSPLAN_API_BASEURL}/aktivitetsmaler`,
+            {
+                headers: {
+                    Authorization: `Bearer ${tokenxToken}`,
+                },
+            }
+        );
+        const valgteAktiviteterRespons = await fetch(
+            `${FOREBYGGINGSPLAN_API_BASEURL}/valgteaktiviteter/123456789`,
+            {
+                headers: {
+                    Authorization: `Bearer ${tokenxToken}`,
+                },
+            }
+        );
+        return {
+            props: {
+                aktiviteter: await aktiviteterRespons.json(),
+                valgteAktiviteter: await valgteAktiviteterRespons.json(),
             },
-        }
-    );
-    const valgteAktiviteterRespons = await fetch(
-        `${FOREBYGGINGSPLAN_API_BASEURL}/valgteaktiviteter/123456789`,
-        {
-            headers: {
-                Authorization: `Bearer ${tokenxToken}`,
+        };
+    } catch (e) {
+        return {
+            redirect: {
+                destination: "/oauth2/login",
+                permanent: false,
             },
-        }
-    );
-    return {
-        props: {
-            aktiviteter: await aktiviteterRespons.json(),
-            valgteAktiviteter: await valgteAktiviteterRespons.json(),
-        },
-    };
+        };
+    }
 };
 
 const navigasjonKonstanter = {

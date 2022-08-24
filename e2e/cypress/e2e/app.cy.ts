@@ -27,7 +27,7 @@ describe("Navigasjon", () => {
             expect($datacells.eq(6)).to.contain(
                 "Hvordan ta den vanskelige praten?"
             );
-            expect($datacells.eq(1).children('.navds-button')).to.exist;
+            expect($datacells.eq(1).children(".navds-button")).to.exist;
         });
     });
 });

@@ -1,25 +1,91 @@
 services:
   backend:
+    depends_on:
+      - wonderwall
     image: ghcr.io/navikt/forebyggingsplan:latest
     environment:
-      SERVER_PORT: "4000"
+      SERVER_PORT: "8081"
     ports:
-      - 4000:4000
+      - 8081:8081
+
+  wonderwall:
+    image: "ghcr.io/nais/wonderwall:latest"
+    container_name: wonderwall
+    depends_on:
+      - auth
+    ports:
+      - "4000:4000"
+    restart: on-failure
+    environment:
+      WONDERWALL_OPENID_CLIENT_ID: "forebyggingsplan"
+      WONDERWALL_OPENID_CLIENT_JWK: "{\"p\":\"4_8iPMp54U-RtJ000k7ikqRFSc1DmnH3EnDtWR3kumNSlsRUHuF_VLATOf9_gkOtwXBy9CjVVJbfM6hhJZYME231jIZxKWTx8rfQ5RYFdRkJeDqVyz1SmJt8eBW8WENN3CFZ3J1Sel6BWfhuC6uj30J0TqaSIGH2vilTMFNeHr8\",\"kty\":\"RSA\",\"q\":\"x36QcU_-qV_Idl2CMhSmhkvRaMR04C50Pj5-2FxuVPyzKoL-1JI8_bOeXPv487OUkVt85lLI-nbWcjUFC2rVl6hHZJgltbvzOzob3LoBDG3WF4ChreOwjQnu1uAnbB0iBaG2ss9beoGW6P4U8IroQBlsjRt9mBrHoYOsls9PGlc\",\"d\":\"eseC8V_8MSvlq7xU96hVopmn_r5-sq5Mbo-CigQK8LQoFoMDI33t8qic-ToKkHoF3XtewSeGBYATAFvfiQemcLWwqFuRq-sBLVAH4AQFPkxQxuRl1QrrvglAVxjCtmJZoHH2NNlJXzmwe0aNH5dBsm0jRVQNU9SLFfCwghPm3vpjYFX4uL3h_4_XT3hTMowLGARe9HOErIl52TAIfPV0riuaMkKZLqnsKoPO_uL9FyxBY97DcIPD45LL1nqBNkZWiz7XhZWU9rWS2EBGXdP3dZ-JdvmTdTvGtFceJgbtPNHnIvMSVqEadJq9WmP4WIDoppo6xLL9h6JoQ7faI_U39Q\",\"e\":\"AQAB\",\"use\":\"sig\",\"kid\":\"forebyggingsplan\",\"qi\":\"D93yW3TJFoqlDomyKkUv1G-xmdlCZSVpKT0U3tTrLCeiK8XJRvJRKWR0imwWpyx4l8_N_XkcIYtGqyHD0DsebTW1MNU51xsCTOmwAoHYvkuO_DKk0T0M1qN5f1Tjr0W8DzdwBYG5m-KovDz7ZC-3QKw8kAz0PgQSCqg4DkjhlAc\",\"dp\":\"ssRHWhcAPZOgEVf6JLRJnuVClr1lNmIJceItl-SChUp_ZUuHEbeJmSN9z8nvdnoOcU_0MlEaA_tQAzcRBOGDknBzSb3YWLaXptJN7nG30brR2_1Dmln4u0Oe8qFIToRnNiTIStzn4J7dGWhbELeCA_odK9YbWVy2lR_d5FRZxg0\",\"alg\":\"RS256\",\"dq\":\"xw2SMn4PLBFWhERpVG8meXnNSSw9MjMn6bOR_XC85i_-1bw_aPtBwCMpML56eTAGXcNbrLWNs9w_vVUJ44qF9P0Dv2vQtLUEzWP9yRAPW8d8h5bhvBAkaZYvqlee_lFTUSs6kNA2BtanLXPYkOsJMmwr0-BKQSr3ZkFsRE42L6E\",\"n\":\"sawL1IlvPmkkk2h99lGejgASOehqDJaaPchOPYx0ibbqoZ_-lvbJ7M6WsnJT-k42DBebRhxQlszdJ3z-u7fBx0KUB7vouyZQUzaA2GctmelrGFdNehJl4Fb-1PY22_K6UFIoi4DC8wWiS__Me65FWBmsHkV8PM9O4nPhbIDzwX777P5kIz9Bx8mV1m3MHGYrBVP7k7f6BPCjpuoxeN2jB6PmRLM3j8R0dze0uAYXhfpAHwZxZD2ORiSpUIE29cQXy4kgSX45SIL4CnxqWFVyKpybaCQPGL5vEXqKDbACAtYuoXMuvD9xfCh7-FKDRePRTiLgiLnR0HyCXFq10gzY6Q\"}"
+      WONDERWALL_OPENID_WELL_KNOWN_URL: http://host.docker.internal:8080/idporten/.well-known/openid-configuration
+      WONDERWALL_INGRESS: http://localhost:4000
+      WONDERWALL_BIND_ADDRESS: 0.0.0.0:4000
+      WONDERWALL_UPSTREAM_HOST: frontend:3000
+      WONDERWALL_AUTO_LOGIN: true
+      WONDERWALL_LOG_FORMAT: "text"
+
+  auth:
+    image: "ghcr.io/navikt/mock-oauth2-server:0.5.1"
+    container_name: auth
+    ports:
+      - "8080:8080"
+    hostname: host.docker.internal
+    environment:
+      JSON_CONFIG: >
+        {
+            "interactiveLogin": false,
+            "httpServer": "NettyWrapper",
+            "tokenCallbacks": [
+                {
+                    "issuerId": "idporten",
+                    "tokenExpiry": 3600,
+                    "requestMappings": [
+                        {
+                            "requestParam": "grant_type",
+                            "match": "*",
+                            "claims": {
+                                "sub": "12345678901",
+                                "pid": "12345678901",
+                                "acr": "Level4"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
 
   frontend:
     depends_on:
       - backend
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
     environment:
-      FOREBYGGINGSPLAN_API_BASEURL: http://backend:4000
+      FOREBYGGINGSPLAN_API_BASEURL: http://backend:8081
+      FOREBYGGINGSPLAN_CLIENT_ID: forebyggingsplan
+      IDPORTEN_WELL_KNOWN_URL: http://host.docker.internal:8080/idporten/.well-known/openid-configuration
+      NAIS_CLUSTER_NAME: "localhost"
+      TOKEN_X_CLIENT_ID: "localhost:pia:forebyggingsplan-frontend"
+      TOKEN_X_ISSUER: http://host.docker.internal:8080/tokenx
+      TOKEN_X_TOKEN_ENDPOINT: http://host.docker.internal:8080/tokenx/token
+      TOKEN_X_WELL_KNOWN_URL: http://host.docker.internal:8080/tokenx/.well-known/openid-configuration
+      TOKEN_X_PRIVATE_JWK: "{\"p\":\"zoo6Mgk8VMKI461_dzeU-wflmGVs1jcl4dxe8_W-9jeR84YISN13Uk3TU2kqLGz07Z8eMRkOnMkq2abGfQAwxyG3PPVM0xPr8tg8NVpClMvJFRd9RlVJ485IMmJ0t8t3sjiZo6q_ndqYJ5G6VMi3_o7s8gACKnnoh7ohTB49ep0\",\"kty\":\"RSA\",\"q\":\"wMAmevT8vJaD58QeytnbW9TWwqxPFJzu9YPjgXkbPA234HKF4UXZnIeqMtrBb3Ea3-vxVtuxGPT7wULfgCd7WJMh625tX7_WxkHSJTy_TY4-HETBIcZrikdJ8vPQcemvpCyla6DvUpwiQBc0G-9wBov1_938Jk0uOMy-3Bq6zJE\",\"d\":\"X56QX4_vtuCntzj4X7utYNMn9qHjz6B2tl9V4_UMPUjpIUJiNXQlA9CHsxeP4VzOUeerKL9EFmMoYjDYj_uOfLsJwQP-eRrlJg0da4dF2HTVXUb6qJOOGXq86GQ8L7KD2_gSo4uHydpTqLe1r9yhabw8Dcbsm4YKJ7MNle3aoovDShlwCgul5V0_JYD0bvOHMSFI4aomIUk3w5dp0g8fecNYsRCOaaZpjt9yHrz9Ryd1lbx24eu8UmJi7WH4SIJFWaKxKqYEoaC832-3A7TCycayFe517akNU1_nq8TDvgDDjjCEm2T8FOqed1tjdc0wJVQu_w9qU2ZUTuGPMmYtwQ\",\"e\":\"AQAB\",\"use\":\"sig\",\"kid\":\"localhost:pia:forebyggingsplan-frontend\",\"qi\":\"XmjNimJ9zdB4s0kicusSS5UcaL2p1uQYtMrNO8YH75RmUIh092iUhlF_rJ7SiexZ4m-th3I_fuLhchECysV-T4l9H4pxRjrrHnlF1X0NkMcohw8J1gx_Od8wubJQYSJ3S8xDGZEDCBIuCBslPwOtJrrf2t5eJS9dNzgPT1UC4Lg\",\"dp\":\"Dru3iQg1oIo7_5nJxPRXEU0v6J4blHBcqG7y6w41sBSoualu_9ukfl-E2qde1cpz8ltuaOwzqaWEBACsmhAgaqQSESwibdA2_ZzFNr0YkMq0rmd9jT3aRoDZj5aMYuwFvtXgx9cPUjBcuD3h_9hNn8AMUPsFLIiDuOLjKy3hDtU\",\"alg\":\"RS256\",\"dq\":\"oxSwOg33nDQZDEnx550lrG_K-NDC4-TXhSB-p7fopAnTTnJ29Z-cu4RJK1fMm9Ztb5F4Ew4zq7LzIpPK9-nvwYRTCZfXsFBmjj14aIsaLKsxv8coRMRVjpw8Y_OHpCmcsuIXX5W9hv6VN_ap3wzZkqBulXqi8WERv3rz7NQswhE\",\"n\":\"m4KyXOSe_bjAG9rsHR8nrTabipYIAGIGvUOJ4jlRBQ7MYmO5LXgt8YM9ctKdfhbHe78oNa8iPvOmDXAMtf8jlYLGrcLRqb_9kQfKo-uNeC5JG-xBR2NbMFGPYlr9KOxMC-ReehO6R7YjjpxVQJQa83awR0WzCC4h2KIBXaF8dfsNqqCsz9hj2IU6gj6DoPSTClokHFFsao6HtDagQqykxFmn4ogZxj1eF8aZ3W5LBBAMi6ObVapLzCGrw-l0LaQk0ELRGPSouIQEd21mw7rX99xi9fq5BMZd18DBwRolEY8NDUD1PFuUm4p4CY6ZsKHhLTxORugbxlzKR6BBJpmO7Q\"}"
     ports:
       - 3000:3000
+    volumes:
+      - ./:/app
+      - /app/node_modules
+      - /app/.next
+
 
   cypress:
     depends_on:
       - frontend
+      - backend
+      - wonderwall
+      - auth
     build:
       context: e2e
       dockerfile: Dockerfile
@@ -29,4 +95,4 @@ services:
       - ./e2e/cypress.config.ts:/app/cypress.config.ts
     environment:
       CI: "1"
-      CYPRESS_BASE_URL: http://frontend:3000
+      CYPRESS_BASE_URL: http://wonderwall:4000

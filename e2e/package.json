@@ -1,8 +1,8 @@
 {
   "name": "forebyggingsplan-frontend-e2e",
   "scripts": {
-    "cypress": "CYPRESS_BASE_URL=http://localhost:3000 cypress open",
-    "start": "cypress run"
+    "cypress": "CYPRESS_BASE_URL=http://localhost:4000 cypress open",
+    "start": "CYPRESS_BASE_URL=http://localhost:4000 cypress run"
   },
   "devDependencies": {
     "typescript": "4.7.4",
