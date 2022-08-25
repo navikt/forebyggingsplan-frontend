@@ -9,7 +9,7 @@ RUN npm install
 
 COPY . ./
 
-RUN sudo chown -R $USER .
+RUN chown -R $USER .
 
 ENV NEXT_TELEMETRY_DISABLED 1
 EXPOSE 3000
