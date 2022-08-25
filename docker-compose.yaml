@@ -62,7 +62,7 @@ services:
       - backend
     build:
       context: .
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     environment:
       FOREBYGGINGSPLAN_API_BASEURL: http://backend:8081
       FOREBYGGINGSPLAN_CLIENT_ID: forebyggingsplan
