@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Legg til host.docker.internal i /etc/hosts
-        run: sudo echo "127.0.0.1 host.docker.internal" >> /etc/hosts
+        run: sudo echo "127.0.0.1 host.docker.internal" | sudo tee -a /etc/hosts
       - uses: actions/checkout@v3
       - name: Setup node
         uses: actions/setup-node@v3
