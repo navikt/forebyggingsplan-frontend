@@ -1,25 +1,18 @@
 describe("Navigasjon", () => {
+    Cypress.Cookies.debug(true);
     it("vi har definert sidetittel", () => {
-        cy.visit("/", {
-            retryOnStatusCodeFailure: true,
-            retryOnNetworkFailure: true,
-        });
+        cy.visit("/");
         cy.get("title").contains("Forebyggingsplan");
     });
 
     it("vi har definert overskrift for aktivitetsoversikten", () => {
-        cy.visit("/", {
-            retryOnStatusCodeFailure: true,
-            retryOnNetworkFailure: true,
-        });
+        cy.visit("/");
+
         cy.get("h1").contains("Forebyggingsplan");
     });
 
     it("vi har en tabell som viser alle aktvitetsmalene", () => {
-        cy.visit("/", {
-            retryOnStatusCodeFailure: true,
-            retryOnNetworkFailure: true,
-        });
+        cy.visit("/");
         cy.get("#aktivitetstabell thead th").should(($headers) => {
             expect($headers).to.have.length(2);
             expect($headers.eq(0)).to.contain("Alle aktiviteter");
