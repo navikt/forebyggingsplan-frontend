@@ -34,6 +34,9 @@ jobs:
       - name: Echo docker status
         run: docker ps
 
+      - name: Check hostnames
+        run: netstat -lt
+
       - name: Do curl
         run: curl http://localhost:3000/api/isAlive
 
