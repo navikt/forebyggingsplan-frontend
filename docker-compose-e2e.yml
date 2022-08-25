@@ -10,4 +10,4 @@ services:
       - ./e2e/cypress.config.ts:/app/cypress.config.ts
     environment:
       CI: "1"
-      CYPRESS_BASE_URL: http://host.docker.internal:4000
+      CYPRESS_BASE_URL: http://localhost:4000
