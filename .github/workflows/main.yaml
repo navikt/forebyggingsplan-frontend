@@ -34,6 +34,9 @@ jobs:
       - name: Echo docker status
         run: docker ps
 
+      - name: Sjekk frontend status
+        run: curl "http://localhost:3000/api/isAlive" -i
+
       - name: Setup deps for end to end tests
         working-directory: e2e
         run: npm install && npm start
