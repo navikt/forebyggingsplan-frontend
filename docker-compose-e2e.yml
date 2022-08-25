@@ -4,7 +4,7 @@ services:
       context: e2e
       dockerfile: Dockerfile
     command: "npx cypress run"
-    network_mode: host
+    network_mode: "host"
     volumes:
       - ./e2e/cypress:/app/cypress
       - ./e2e/cypress.config.ts:/app/cypress.config.ts
