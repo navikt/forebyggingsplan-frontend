@@ -21,7 +21,7 @@ services:
       WONDERWALL_OPENID_WELL_KNOWN_URL: http://host.docker.internal:8080/idporten/.well-known/openid-configuration
       WONDERWALL_INGRESS: http://localhost:4000
       WONDERWALL_BIND_ADDRESS: 0.0.0.0:4000
-      WONDERWALL_UPSTREAM_HOST: localhost:3000
+      WONDERWALL_UPSTREAM_HOST: 127.0.0.1:3000
       WONDERWALL_AUTO_LOGIN: "true"
       WONDERWALL_LOG_FORMAT: "text"
 
