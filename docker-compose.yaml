@@ -11,7 +11,7 @@ services:
       - 8081:8081
 
   wonderwall:
-    image: "ghcr.io/nais/wonderwall:latest"
+    image: "ghcr.io/nais/wonderwall:2022-08-25-b7f5ddb"
     container_name: wonderwall
     depends_on:
       - auth
@@ -29,6 +29,7 @@ services:
       WONDERWALL_UPSTREAM_HOST: frontend:3000
       WONDERWALL_AUTO_LOGIN: "true"
       WONDERWALL_LOG_FORMAT: "text"
+      WONDERWALL_COOKIE_INSECURE: "true"
 
   auth:
     image: "ghcr.io/navikt/mock-oauth2-server:0.5.1"
