@@ -2,6 +2,7 @@ FROM cypress/included:10.4.0
 WORKDIR /app
 
 # dependencies will be installed only if the package files change
+COPY cypress.config.ts .
 COPY tsconfig.json .
 COPY package.json .
 COPY package-lock.json .
