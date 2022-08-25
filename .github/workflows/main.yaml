@@ -35,7 +35,11 @@ jobs:
         run: docker ps
 
       - name: Sjekk frontend status
+        continue-on-error: true
         run: curl "http://localhost:3000/api/isAlive" -i
+
+      - name: Echo docker status
+        run: docker ps
 
       - name: Setup deps for end to end tests
         working-directory: e2e
