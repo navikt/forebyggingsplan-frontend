@@ -23,7 +23,7 @@ services:
       WONDERWALL_INGRESS: http://localhost:4000
       WONDERWALL_BIND_ADDRESS: 0.0.0.0:4000
       WONDERWALL_UPSTREAM_HOST: frontend:3000
-      WONDERWALL_AUTO_LOGIN: true
+      WONDERWALL_AUTO_LOGIN: "true"
       WONDERWALL_LOG_FORMAT: "text"
 
   auth:
