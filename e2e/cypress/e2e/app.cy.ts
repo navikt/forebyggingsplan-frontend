@@ -1,16 +1,25 @@
 describe("Navigasjon", () => {
     it("vi har definert sidetittel", () => {
-        cy.visit("/");
+        cy.visit("/", {
+            retryOnStatusCodeFailure: true,
+            retryOnNetworkFailure: true,
+        });
         cy.get("title").contains("Forebyggingsplan");
     });
 
     it("vi har definert overskrift for aktivitetsoversikten", () => {
-        cy.visit("/");
+        cy.visit("/", {
+            retryOnStatusCodeFailure: true,
+            retryOnNetworkFailure: true,
+        });
         cy.get("h1").contains("Forebyggingsplan");
     });
 
     it("vi har en tabell som viser alle aktvitetsmalene", () => {
-        cy.visit("/");
+        cy.visit("/", {
+            retryOnStatusCodeFailure: true,
+            retryOnNetworkFailure: true,
+        });
         cy.get("#aktivitetstabell thead th").should(($headers) => {
             expect($headers).to.have.length(2);
             expect($headers.eq(0)).to.contain("Alle aktiviteter");
