@@ -14,8 +14,6 @@ services:
     network_mode: host
     depends_on:
       - auth
-    ports:
-      - "4000:4000"
     restart: on-failure
     environment:
       WONDERWALL_OPENID_CLIENT_ID: "forebyggingsplan"
