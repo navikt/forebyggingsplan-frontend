@@ -29,44 +29,44 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup containers
-        run: docker-compose up -d
+        run: docker-compose up -d && docker logs -f $(docker-compose ps -q frontend)
 
-      - name: Sleep a bit
-        run: sleep 5s
-
-      - name: Echo docker status
-        run: docker ps
-
-      - name: Check hostnames
-        run: netstat -lt
-
-      - name: Do curl
-        run: docker run --network container:frontend appropriate/curl -s --retry 10 --retry-connrefused http://localhost:3000/api/isAlive
-
-      - name: Setup deps for end to end tests
-        working-directory: e2e
-        run: npm install && npm start
-
-      - name: Teardown containers
-        run: docker-compose down
-
-      - name: Build docker image and push to ghcr
-        id: docker_build
-        uses: docker/build-push-action@v3
-        with:
-          push: true
-          tags: ghcr.io/${{ github.repository }}:latest,${{ env.IMAGE }}
-          context: .
-  deployAppToDev:
-    name: Deploy app to dev
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Deploy to DEV
-        uses: nais/deploy/actions/deploy@v1
-        env:
-          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          CLUSTER: dev-gcp
-          RESOURCE: .nais/nais.yaml
-          VARS: .nais/dev.yaml
+#      - name: Sleep a bit
+#        run: sleep 5s
+#
+#      - name: Echo docker status
+#        run: docker ps
+#
+#      - name: Check hostnames
+#        run: netstat -lt
+#
+#      - name: Do curl
+#        run: docker run --network container:frontend appropriate/curl -s --retry 10 --retry-connrefused http://localhost:3000/api/isAlive
+#
+#      - name: Setup deps for end to end tests
+#        working-directory: e2e
+#        run: npm install && npm start
+#
+#      - name: Teardown containers
+#        run: docker-compose down
+#
+#      - name: Build docker image and push to ghcr
+#        id: docker_build
+#        uses: docker/build-push-action@v3
+#        with:
+#          push: true
+#          tags: ghcr.io/${{ github.repository }}:latest,${{ env.IMAGE }}
+#          context: .
+#  deployAppToDev:
+#    name: Deploy app to dev
+#    needs: build
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v3
+#      - name: Deploy to DEV
+#        uses: nais/deploy/actions/deploy@v1
+#        env:
+#          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+#          CLUSTER: dev-gcp
+#          RESOURCE: .nais/nais.yaml
+#          VARS: .nais/dev.yaml
