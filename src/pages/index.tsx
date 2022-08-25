@@ -52,9 +52,10 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
             },
         };
     } catch (e) {
+        console.log(JSON.stringify(e));
         return {
             redirect: {
-                destination: "/oauth2/login",
+                destination: "/404",
                 permanent: false,
             },
         };
