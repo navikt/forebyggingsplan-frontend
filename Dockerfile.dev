@@ -2,16 +2,13 @@ FROM node:lts-alpine
 
 WORKDIR /app
 
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
-
-COPY --chown=nextjs:nodejs package*.json ./
+COPY package*.json ./
 COPY .npmrc ./
 
 RUN npm install
-COPY --chown=nextjs:nodejs . ./
 
-USER nextjs
+COPY . ./
+
 ENV NEXT_TELEMETRY_DISABLED 1
 EXPOSE 3000
 CMD npm run dev
