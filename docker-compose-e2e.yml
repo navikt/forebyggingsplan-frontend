@@ -6,7 +6,6 @@ services:
     command: "npx cypress run"
     networks:
       - nettverk
-    network_mode: "host"
     volumes:
       - ./e2e/cypress:/app/cypress
       - ./e2e/cypress.config.ts:/app/cypress.config.ts
