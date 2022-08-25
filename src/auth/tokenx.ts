@@ -34,6 +34,7 @@ export async function veksleToken(token: string, intendedAudience: string) {
         {
             clientAssertionPayload: {
                 nbf: Math.floor(Date.now() / 1000),
+                aud: process.env.TOKEN_X_TOKEN_ENDPOINT,
             },
         }
     );
