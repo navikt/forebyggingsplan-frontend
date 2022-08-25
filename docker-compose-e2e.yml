@@ -4,10 +4,17 @@ services:
       context: e2e
       dockerfile: Dockerfile
     command: "npx cypress run"
+    networks:
+      - nettverk
     network_mode: "host"
     volumes:
       - ./e2e/cypress:/app/cypress
       - ./e2e/cypress.config.ts:/app/cypress.config.ts
     environment:
       CI: "1"
-      CYPRESS_BASE_URL: http://localhost:4000
+      CYPRESS_BASE_URL: http://wonderwall:4000
+
+networks:
+  nettverk:
+    external:
+      name: nettverk
