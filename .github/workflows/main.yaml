@@ -26,6 +26,9 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Legg til host.docker.internal i /etc/hosts
+        run: echo "127.0.0.1 host.docker.internal" >> /etc/hosts
+
       - name: Setup containers
         run: docker-compose up -d
 
