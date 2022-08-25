@@ -3,7 +3,7 @@ services:
     build:
       context: e2e
       dockerfile: Dockerfile
-    command: "npx cypress run --browser --chrome"
+    command: "npx cypress run --browser chrome"
     network_mode: "host"
     volumes:
       - ./e2e/cypress:/app/cypress
