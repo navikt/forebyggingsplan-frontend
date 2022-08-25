@@ -1,5 +1,6 @@
 services:
   backend:
+    container_name: backend
     depends_on:
       - wonderwall
     image: ghcr.io/navikt/forebyggingsplan:latest
@@ -56,6 +57,7 @@ services:
         }
 
   frontend:
+    container_name: frontend
     depends_on:
       - backend
     build:
