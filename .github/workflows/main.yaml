@@ -34,12 +34,9 @@ jobs:
       - name: Echo docker status
         run: docker ps
 
-      - uses: cypress-io/github-action@v4
-        with:
-          project: ./e2e
-          browser: chrome
-          wait-on: 'http://localhost:3000'
-          wait-on-timeout: 120
+      - name: Setup deps for end to end tests
+        working-directory: e2e
+        run: npm install && npm start
 
       - name: Teardown containers
         run: docker-compose down
