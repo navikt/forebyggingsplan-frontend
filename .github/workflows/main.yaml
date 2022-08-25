@@ -31,6 +31,9 @@ jobs:
       - name: Setup containers
         run: docker-compose up -d
 
+      - name: Sleep a bit
+        run: sleep 5s
+
       - name: Echo docker status
         run: docker ps
 
