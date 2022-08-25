@@ -35,7 +35,8 @@ jobs:
         run: docker ps
 
       - name: Setup deps for end to end tests
-        run: docker-compose -f docker-compose-e2e.yml up --abort-on-container-exit --exit-code-from cypress
+        working-directory: e2e
+        run: npm install && npm start
 
       - name: Teardown containers
         run: docker-compose down
