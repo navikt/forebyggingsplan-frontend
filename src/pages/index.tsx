@@ -29,22 +29,23 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
             token,
             process.env.FOREBYGGINGSPLAN_CLIENT_ID!!
         );
-        const aktiviteterRespons = await fetch(
-            `${FOREBYGGINGSPLAN_API_BASEURL}/aktivitetsmaler`,
-            {
-                headers: {
-                    Authorization: `Bearer ${tokenxToken}`,
-                },
-            }
-        );
-        const valgteAktiviteterRespons = await fetch(
-            `${FOREBYGGINGSPLAN_API_BASEURL}/valgteaktiviteter/123456789`,
-            {
-                headers: {
-                    Authorization: `Bearer ${tokenxToken}`,
-                },
-            }
-        );
+
+        const [aktiviteterRespons, valgteAktiviteterRespons] =
+            await Promise.all([
+                fetch(`${FOREBYGGINGSPLAN_API_BASEURL}/aktivitetsmaler`, {
+                    headers: {
+                        Authorization: `Bearer ${tokenxToken}`,
+                    },
+                }),
+                fetch(
+                    `${FOREBYGGINGSPLAN_API_BASEURL}/valgteaktiviteter/123456789`,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${tokenxToken}`,
+                        },
+                    }
+                ),
+            ]);
         return {
             props: {
                 aktiviteter: await aktiviteterRespons.json(),
