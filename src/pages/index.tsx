@@ -25,9 +25,10 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
     }
     try {
         await verifiserToken(token);
-        const tokenxToken = (
-            await veksleToken(token, process.env.FOREBYGGINGSPLAN_CLIENT_ID!!)
-        ).access_token;
+        const tokenxToken = await veksleToken(
+            token,
+            process.env.FOREBYGGINGSPLAN_CLIENT_ID!!
+        );
 
         const [aktiviteterRespons, valgteAktiviteterRespons] =
             await Promise.all([

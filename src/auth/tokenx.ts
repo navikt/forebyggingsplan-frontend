@@ -22,7 +22,7 @@ export async function veksleToken(token: string, intendedAudience: string) {
             ],
         }
     );
-    return client.grant(
+    const tokenSet = await client.grant(
         {
             grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
             client_assertion_type:
@@ -38,4 +38,5 @@ export async function veksleToken(token: string, intendedAudience: string) {
             },
         }
     );
+    return tokenSet?.access_token ?? tokenSet; // Mock oauth2 server returnerer access_token som string i stedet for en property på tokenset
 }
