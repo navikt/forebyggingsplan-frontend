@@ -47,6 +47,10 @@ jobs:
         working-directory: e2e
         run: npm install && npm start
 
+      - name: Dump docker logs on failure
+        if: failure()
+        uses: jwalton/gh-docker-logs@v1
+
       - name: Teardown containers
         run: docker-compose down
 
