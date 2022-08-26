@@ -55,7 +55,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
         console.log(JSON.stringify(e));
         return {
             redirect: {
-                destination: "/404",
+                destination: "/404", // TODO Kanskje bare la en feil kastes
                 permanent: false,
             },
         };
