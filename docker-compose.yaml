@@ -6,6 +6,11 @@ services:
     image: ghcr.io/navikt/forebyggingsplan:latest
     environment:
       SERVER_PORT: "8081"
+      TOKEN_X_CLIENT_ID: "forebyggingsplan"
+      TOKEN_X_ISSUER: "http://host.docker.internal:8080/tokenx"
+      TOKEN_X_JWKS_URI: "http://host.docker.internal:8080/tokenx/jwks"
+      TZ: "Europe/Oslo"
+      JAVA_TOOL_OPTIONS: "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005"
     ports:
       - 8081:8081
 
