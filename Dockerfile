@@ -4,6 +4,7 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 COPY next.config.js .
 COPY next-env.d.ts .
+COPY tsconfig.json .
 COPY src ./src
 COPY .npmrc ./
 
