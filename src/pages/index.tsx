@@ -38,7 +38,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
                     },
                 }),
                 fetch(
-                    `${FOREBYGGINGSPLAN_API_BASEURL}/valgteaktiviteter/123456789`,
+                    `${FOREBYGGINGSPLAN_API_BASEURL}/valgteaktiviteter/811076732`,
                     {
                         headers: {
                             Authorization: `Bearer ${tokenxToken}`,

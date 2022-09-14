@@ -1,8 +1,25 @@
 services:
+  altinn:
+    container_name: altinn
+    image: wiremock/wiremock
+    ports:
+      - 9090:8080
+    volumes:
+      - ./stubs:/home/wiremock
+
+  database:
+    container_name: database
+    image: postgres:14.5
+    environment:
+      POSTGRES_PASSWORD: test
+    ports:
+      - 5432:5432
+
   backend:
     container_name: backend
     depends_on:
       - wonderwall
+      - database
     image: ghcr.io/navikt/forebyggingsplan:latest
     environment:
       SERVER_PORT: "8081"
@@ -11,8 +28,15 @@ services:
       TOKEN_X_JWKS_URI: "http://host.docker.internal:8080/tokenx/jwks"
       TZ: "Europe/Oslo"
       JAVA_TOOL_OPTIONS: "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005"
+      DB_HOST: database
+      DB_PORT: 5432
+      DB_USERNAME: postgres
+      DB_PASSWORD: test
+      DB_DATABASE: postgres
+      ALTINN_RETTIGHETER_PROXY_URL: "http://altinn:8080/altinn"
     ports:
       - 8081:8081
+      - 5005:5005
 
   wonderwall:
     image: "ghcr.io/nais/wonderwall:latest"
