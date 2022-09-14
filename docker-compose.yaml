@@ -87,11 +87,12 @@ services:
 
   frontend:
     container_name: frontend
+    restart: always
     depends_on:
       - backend
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
     environment:
       FOREBYGGINGSPLAN_API_BASEURL: http://backend:8081
       FOREBYGGINGSPLAN_CLIENT_ID: forebyggingsplan

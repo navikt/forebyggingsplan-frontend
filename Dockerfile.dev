@@ -9,8 +9,11 @@ RUN npm install
 
 COPY . ./
 
-RUN chown -R $USER .
-
 ENV NEXT_TELEMETRY_DISABLED 1
 EXPOSE 3000
+
+RUN chown -R node:node ./.next
+
+USER node
+
 CMD npm run dev
