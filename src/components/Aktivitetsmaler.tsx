@@ -8,12 +8,12 @@ export const Aktivitetsmaler = ({
     aktiviteter: Aktivitet[];
 }) => (
     <div data-theme="light">
-        <Table id={"aktivitetstabell"} zebraStripes>
+        <Table id={"aktivitetstabell"}>
             <Table.Header>
                 <Table.Row>
                     <Table.HeaderCell>Alle aktiviteter</Table.HeaderCell>
                     <Table.HeaderCell>Legg til</Table.HeaderCell>
-                    <Table.HeaderCell></Table.HeaderCell>
+                    <Table.HeaderCell />
                 </Table.Row>
             </Table.Header>
             <Table.Body>

@@ -20,13 +20,13 @@ describe("Navigasjon", () => {
         });
 
         cy.get("#aktivitetstabell tbody td").should(($datacells) => {
-            expect($datacells).to.have.length(8);
+            expect($datacells).to.have.length(16);
             expect($datacells.eq(0)).to.contain(
                 "Pilotering av medarbeidersamtalen"
             );
-            expect($datacells.eq(2)).to.contain("Kartleggingsmøte med ansatt");
-            expect($datacells.eq(4)).to.contain("Sinnemestring");
-            expect($datacells.eq(6)).to.contain(
+            expect($datacells.eq(4)).to.contain("Kartleggingsmøte med ansatt");
+            expect($datacells.eq(8)).to.contain("Sinnemestring");
+            expect($datacells.eq(12)).to.contain(
                 "Hvordan ta den vanskelige praten?"
             );
             expect($datacells.eq(1).children(".navds-button")).to.exist;
