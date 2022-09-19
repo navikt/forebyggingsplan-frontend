@@ -14,7 +14,7 @@ describe("Navigasjon", () => {
     it("vi har en tabell som viser alle aktvitetsmalene", () => {
         cy.visit("/");
         cy.get("#aktivitetstabell thead th").should(($headers) => {
-            expect($headers).to.have.length(2);
+            expect($headers).to.have.length(3);
             expect($headers.eq(0)).to.contain("Alle aktiviteter");
             expect($headers.eq(1)).to.contain("Legg til");
         });
