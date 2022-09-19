@@ -13,6 +13,7 @@ export const Aktivitetsmaler = ({
                 <Table.Row>
                     <Table.HeaderCell>Alle aktiviteter</Table.HeaderCell>
                     <Table.HeaderCell>Legg til</Table.HeaderCell>
+                    <Table.HeaderCell></Table.HeaderCell>
                 </Table.Row>
             </Table.Header>
             <Table.Body>
