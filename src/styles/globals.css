@@ -1,5 +1,11 @@
 @import "@navikt/ds-css";
 
+:root {
+  --tabletMinBreakpoint: calc(550 / 16)rem;
+  --laptopMinBreakpoint: calc(1100 / 16)rem;
+  --desktopMinBreakpoint: calc(1500 / 16)rem;
+}
+
 html,
 body {
   padding: 0;
