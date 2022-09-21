@@ -50,15 +50,17 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
             props: {
                 aktiviteter: await aktiviteterRespons.json(),
                 valgteAktiviteter: await valgteAktiviteterRespons.json(),
+                restStatus: 'OK'
             },
         };
     } catch (e) {
         console.error(JSON.stringify(e));
         return {
-            redirect: {
-                destination: "/404", // TODO Kanskje bare la en feil kastes
-                permanent: false,
-            },
+            props: {
+                aktiviteter: [],
+                valgteAktiviteter: [],
+                restStatus: 'FEILET'
+            }
         };
     }
 };
@@ -81,12 +83,18 @@ const navigasjonKonstanter = {
 interface Props {
     aktiviteter: Aktivitet[];
     valgteAktiviteter: ValgtAktivitet[];
+    restStatus: 'OK' | 'LASTER' | 'FEILET';
 }
 
 const Home = ({
     aktiviteter,
     valgteAktiviteter,
+    restStatus = 'LASTER'
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+    if (restStatus === 'FEILET') {
+        return <h2>Noe gikk galt, kunne ikke hente forebyggingsplan</h2>
+    }
+
     return (
         <>
             <Head>
