@@ -7,6 +7,12 @@
 }
 
 .title {
-  font-size: 4rem;
+  font-size: 2rem;
   text-align: center;
+}
+
+@media (min-width: calc(550 / 16 * 1rem)) {
+  .title {
+    font-size: 4rem;
+  }
 }
