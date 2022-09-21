@@ -1,7 +1,11 @@
-import {ValgtAktivitet} from "../types/ValgtAktivitet";
-import {Table} from "@navikt/ds-react";
+import { ValgtAktivitet } from "../types/ValgtAktivitet";
+import { Table } from "@navikt/ds-react";
 
-export const Plan = ({ valgteAktiviteter }: { valgteAktiviteter: ValgtAktivitet[] }) => {
+interface Props {
+    valgteAktiviteter: ValgtAktivitet[]
+}
+
+export const MinPlan = ({valgteAktiviteter}: Props) => {
     return valgteAktiviteter.length > 0 ? (
         <Table size="medium" id={"valgteAktiviteterTabell"}>
             <Table.Header>

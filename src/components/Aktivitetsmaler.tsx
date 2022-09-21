@@ -2,11 +2,11 @@ import { Button, Table } from "@navikt/ds-react";
 import { Aktivitet } from "../types/Aktivitet";
 import { AddCircle } from "@navikt/ds-icons";
 
-export const Aktivitetsmaler = ({
-    aktiviteter,
-}: {
+interface Props {
     aktiviteter: Aktivitet[];
-}) => (
+}
+
+export const Aktivitetsmaler = ({aktiviteter}: Props) => (
     <div data-theme="light">
         <Table id={"aktivitetstabell"}>
             <Table.Header>

@@ -6,7 +6,7 @@ import { Aktivitetsmaler } from "../components/Aktivitetsmaler";
 import { FOREBYGGINGSPLAN_API_BASEURL } from "../constants";
 import { Tabs } from "@navikt/ds-react";
 import { ValgtAktivitet } from "../types/ValgtAktivitet";
-import { Plan } from "../components/Plan";
+import { MinPlan } from "../components/MinPlan";
 import { hentToken } from "../auth";
 import { veksleToken } from "../auth/tokenx";
 import { verifiserToken } from "../auth/idporten";
@@ -66,17 +66,13 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
 };
 
 const navigasjonKonstanter = {
-    aktivitetsOversiktTab: {
-        label: "Oversikt",
+    aktiviteterTab: {
+        label: "Aktiviteter",
         key: "aktiviteter",
     },
-    forebyggingsplanTab: {
-        label: "Plan",
-        key: "plan",
-    },
-    fullførteAktiviteterTab: {
-        label: "Fullførte aktiviteter",
-        key: "fullførteAktiviteter",
+    minPlanTab: {
+        label: "Min plan",
+        key: "minPlan",
     },
 };
 
@@ -109,66 +105,24 @@ const Home = ({
                 <main className={styles.main}>
                     <h1 className={styles.title}>Forebyggingsplan</h1>
                     <Tabs
-                        defaultValue={
-                            navigasjonKonstanter.aktivitetsOversiktTab.key
-                        }
+                        defaultValue={navigasjonKonstanter.aktiviteterTab.key}
                         size="medium"
                     >
                         <Tabs.List>
                             <Tabs.Tab
-                                value={
-                                    navigasjonKonstanter.aktivitetsOversiktTab
-                                        .key
-                                }
-                                label={
-                                    navigasjonKonstanter.aktivitetsOversiktTab
-                                        .label
-                                }
+                                value={navigasjonKonstanter.aktiviteterTab.key}
+                                label={navigasjonKonstanter.aktiviteterTab.label}
                             />
                             <Tabs.Tab
-                                value={
-                                    navigasjonKonstanter.forebyggingsplanTab.key
-                                }
-                                label={
-                                    navigasjonKonstanter.forebyggingsplanTab
-                                        .label
-                                }
-                            />
-                            <Tabs.Tab
-                                value={
-                                    navigasjonKonstanter.fullførteAktiviteterTab
-                                        .key
-                                }
-                                label={
-                                    navigasjonKonstanter.fullførteAktiviteterTab
-                                        .label
-                                }
+                                value={navigasjonKonstanter.minPlanTab.key}
+                                label={navigasjonKonstanter.minPlanTab.label}
                             />
                         </Tabs.List>
-                        <Tabs.Panel
-                            value={
-                                navigasjonKonstanter.aktivitetsOversiktTab.key
-                            }
-                        >
+                        <Tabs.Panel value={navigasjonKonstanter.aktiviteterTab.key}>
                             <Aktivitetsmaler aktiviteter={aktiviteter} />
                         </Tabs.Panel>
-                        <Tabs.Panel
-                            value={navigasjonKonstanter.forebyggingsplanTab.key}
-                        >
-                            <Plan valgteAktiviteter={valgteAktiviteter} />
-                        </Tabs.Panel>
-                        <Tabs.Panel
-                            value={
-                                navigasjonKonstanter.fullførteAktiviteterTab.key
-                            }
-                        >
-                            <p>
-                                Her kommer{" "}
-                                {
-                                    navigasjonKonstanter.fullførteAktiviteterTab
-                                        .label
-                                }
-                            </p>
+                        <Tabs.Panel value={navigasjonKonstanter.minPlanTab.key}>
+                            <MinPlan valgteAktiviteter={valgteAktiviteter} />
                         </Tabs.Panel>
                     </Tabs>
                 </main>
