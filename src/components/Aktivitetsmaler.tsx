@@ -22,6 +22,7 @@ export const Aktivitetsmaler = ({
                         key={aktivitet.tittel}
                         content={<div>Hei</div>}
                         togglePlacement="right"
+                        colSpan={3}
                     >
                         <Table.DataCell>{aktivitet.tittel}</Table.DataCell>
                         <Table.DataCell>
