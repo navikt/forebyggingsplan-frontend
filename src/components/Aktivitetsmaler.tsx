@@ -26,9 +26,7 @@ export const Aktivitetsmaler = ({aktiviteter}: Props) => (
                     >
                         <Table.DataCell>{aktivitet.tittel}</Table.DataCell>
                         <Table.DataCell>
-                            <Button>
-                                <AddCircle />
-                            </Button>
+                            <Button icon={<AddCircle title="Legg til aktiviteten i Min Plan" />} />
                         </Table.DataCell>
                     </Table.ExpandableRow>
                 ))}
