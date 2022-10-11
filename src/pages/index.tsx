@@ -10,7 +10,6 @@ import { MinPlan } from "../components/MinPlan";
 import { hentToken } from "../auth";
 import { veksleToken } from "../auth/tokenx";
 import { verifiserToken } from "../auth/idporten";
-import { RestStatus } from "../types/restStatus";
 
 export const getServerSideProps: GetServerSideProps<Props> = async (
     context
@@ -51,7 +50,6 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
             props: {
                 aktiviteter: await aktiviteterRespons.json(),
                 valgteAktiviteter: await valgteAktiviteterRespons.json(),
-                restStatus: RestStatus.OK,
             },
         };
     } catch (e) {
@@ -60,7 +58,6 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
             props: {
                 aktiviteter: [],
                 valgteAktiviteter: [],
-                restStatus: RestStatus.FEILET,
             },
         };
     }
@@ -80,18 +77,12 @@ const navigasjonKonstanter = {
 interface Props {
     aktiviteter: Aktivitet[];
     valgteAktiviteter: ValgtAktivitet[];
-    restStatus: RestStatus;
 }
 
 const Home = ({
     aktiviteter,
     valgteAktiviteter,
-    restStatus = RestStatus.LASTER,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-    if (restStatus === RestStatus.FEILET) {
-        return <h2>Noe gikk galt, kunne ikke hente forebyggingsplan</h2>;
-    }
-
     return (
         <>
             <Head>
