@@ -51,7 +51,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
             props: {
                 aktiviteter: await aktiviteterRespons.json(),
                 valgteAktiviteter: await valgteAktiviteterRespons.json(),
-                restStatus: RestStatus.OK
+                restStatus: RestStatus.OK,
             },
         };
     } catch (e) {
@@ -60,8 +60,8 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
             props: {
                 aktiviteter: [],
                 valgteAktiviteter: [],
-                restStatus: RestStatus.FEILET
-            }
+                restStatus: RestStatus.FEILET,
+            },
         };
     }
 };
@@ -86,10 +86,10 @@ interface Props {
 const Home = ({
     aktiviteter,
     valgteAktiviteter,
-    restStatus = RestStatus.LASTER
+    restStatus = RestStatus.LASTER,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-    if (restStatus ===  RestStatus.FEILET) {
-        return <h2>Noe gikk galt, kunne ikke hente forebyggingsplan</h2>
+    if (restStatus === RestStatus.FEILET) {
+        return <h2>Noe gikk galt, kunne ikke hente forebyggingsplan</h2>;
     }
 
     return (
@@ -112,14 +112,18 @@ const Home = ({
                         <Tabs.List>
                             <Tabs.Tab
                                 value={navigasjonKonstanter.aktiviteterTab.key}
-                                label={navigasjonKonstanter.aktiviteterTab.label}
+                                label={
+                                    navigasjonKonstanter.aktiviteterTab.label
+                                }
                             />
                             <Tabs.Tab
                                 value={navigasjonKonstanter.minPlanTab.key}
                                 label={navigasjonKonstanter.minPlanTab.label}
                             />
                         </Tabs.List>
-                        <Tabs.Panel value={navigasjonKonstanter.aktiviteterTab.key}>
+                        <Tabs.Panel
+                            value={navigasjonKonstanter.aktiviteterTab.key}
+                        >
                             <Aktivitetsmaler aktiviteter={aktiviteter} />
                         </Tabs.Panel>
                         <Tabs.Panel value={navigasjonKonstanter.minPlanTab.key}>
