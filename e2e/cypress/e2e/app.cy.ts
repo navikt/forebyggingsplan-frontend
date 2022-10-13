@@ -9,7 +9,7 @@ describe("Navigasjon", () => {
     it("vi har definert overskrift for aktivitetsoversikten", () => {
         cy.visit("/");
 
-        cy.get("h1").contains("Forebyggingsplan");
+        cy.get("h1").contains("Forebyggingspla");
     });
 
     it("vi har en tabell som viser alle aktvitetsmalene", () => {
