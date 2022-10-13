@@ -50,8 +50,6 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
                     }
                 ),
             ]);
-        console.log("aktiviteter-response", aktiviteterRespons);
-        console.log("json", await aktiviteterRespons.json());
         return {
             props: {
                 aktiviteter: await aktiviteterRespons.json(),
