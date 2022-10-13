@@ -43,9 +43,9 @@ jobs:
       - name: Do curl
         run: docker run --network container:backend appropriate/curl -s --retry 10 --retry-connrefused http://localhost:8081/internal/isAlive
 
-      - name: cypress
-        uses: cypress-io/github-action@v4
-
+      - name: Setup deps for end to end tests
+        working-directory: e2e
+        run: npm install && npm start
 
       - name: Dump docker logs on failure
         if: failure()
