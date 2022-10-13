@@ -6,6 +6,7 @@ COPY cypress.config.ts .
 COPY tsconfig.json .
 COPY package.json .
 COPY package-lock.json .
+COPY cypress /cypress
 
 # by setting CI environment variable we switch the Cypress install messages
 # to small "started / finished" and avoid 1000s of lines of progress messages

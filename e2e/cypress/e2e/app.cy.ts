@@ -1,20 +1,22 @@
 // @ts-ignore
 describe("Navigasjon", () => {
-    Cypress.Cookies.debug(true);
-    it("vi har definert sidetittel", () => {
+    beforeEach(() => {
         cy.visit("/");
-        cy.get("title").contains("Forebyggingsplan");
+    });
+    it("vi har definert sidetittel", async () => {
+        cy.document().then((doc) => {
+            expect(doc.title).to.be("Forebyggingsplan");
+        });
     });
 
     it("vi har definert overskrift for aktivitetsoversikten", () => {
-        cy.visit("/");
-
-        cy.get("h1").contains("Forebyggingspla");
+        cy.get("#aktivitetstabell").should("exist");
     });
 
     it("vi har en tabell som viser alle aktvitetsmalene", () => {
-        cy.visit("/");
-        cy.get("#aktivitetstabell thead th").should(($headers) => {
+        cy.findByText("Pilotering av medarbeidersamtalen").should("exist");
+        cy.findByText("Alle aktiviteter").should("exist");
+        /*cy.get("#aktivitetstabell thead th").should(($headers) => {
             expect($headers).to.have.length(3);
             expect($headers.eq(0)).to.contain("Alle aktiviteter");
             expect($headers.eq(1)).to.contain("Legg til");
@@ -31,6 +33,6 @@ describe("Navigasjon", () => {
                 "Hvordan ta den vanskelige praten?"
             );
             expect($datacells.eq(1).children(".navds-button")).to.exist;
-        });
+        });*/
     });
 });

@@ -5,6 +5,13 @@ export default defineConfig({
         baseUrl: "http://localhost:4000",
         setupNodeEvents(on, config) {
             // implement node event listeners here
+            on("task", {
+                log(message) {
+                    console.log(message);
+
+                    return null;
+                },
+            });
         },
         video: false,
         screenshotOnRunFailure: false,
