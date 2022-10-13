@@ -1,12 +1,12 @@
 import { Button, Table } from "@navikt/ds-react";
-import { Aktivitet } from "../types/Aktivitet";
+import { Aktivitet } from "../../types/Aktivitet";
 import { AddCircle } from "@navikt/ds-icons";
 
 interface Props {
     aktiviteter: Aktivitet[];
 }
 
-export const Aktivitetsmaler = ({aktiviteter}: Props) => (
+export const Aktivitetsmaler = ({ aktiviteter }: Props) => (
     <div data-theme="light">
         <Table id={"aktivitetstabell"}>
             <Table.Header>
@@ -26,7 +26,11 @@ export const Aktivitetsmaler = ({aktiviteter}: Props) => (
                     >
                         <Table.DataCell>{aktivitet.tittel}</Table.DataCell>
                         <Table.DataCell>
-                            <Button icon={<AddCircle title="Legg til aktiviteten i Min Plan" />} />
+                            <Button
+                                icon={
+                                    <AddCircle title="Legg til aktiviteten i Min Plan" />
+                                }
+                            />
                         </Table.DataCell>
                     </Table.ExpandableRow>
                 ))}
