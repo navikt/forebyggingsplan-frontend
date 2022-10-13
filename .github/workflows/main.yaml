@@ -49,7 +49,7 @@ jobs:
       - name: cypress
         uses: cypress-io/github-action@v4
         env:
-          DEBUG: '@cypress/github-action'
+          DEBUG: 'cypress:*'
         with:
           build: npm run build
           start: npm start
