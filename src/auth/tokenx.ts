@@ -38,5 +38,5 @@ export async function veksleToken(token: string, intendedAudience: string) {
             },
         }
     );
-    return tokenSet?.access_token ?? tokenSet; // Mock oauth2 server returnerer access_token som string i stedet for en property på tokenset
+    return tokenSet?.access_token;
 }

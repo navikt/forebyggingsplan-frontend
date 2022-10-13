@@ -33,7 +33,12 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
             token,
             process.env.FOREBYGGINGSPLAN_CLIENT_ID!!
         );
-        console.log("treffer cypress her?", tokenxToken);
+        console.log(
+            "treffer cypress her?",
+            tokenxToken
+                ?.split(".")
+                .map((data) => Buffer.from(data, "base64").toString())
+        );
 
         const [aktiviteterRespons, valgteAktiviteterRespons] =
             await Promise.all([
