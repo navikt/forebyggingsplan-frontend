@@ -33,12 +33,6 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
             token,
             process.env.FOREBYGGINGSPLAN_CLIENT_ID!!
         );
-        console.log(
-            "treffer cypress her?",
-            tokenxToken
-                ?.split(".")
-                .map((data) => Buffer.from(data, "base64").toString())
-        );
 
         const [aktiviteterRespons, valgteAktiviteterRespons] =
             await Promise.all([
@@ -56,6 +50,8 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
                     }
                 ),
             ]);
+        console.log("aktiviteter-response", aktiviteterRespons);
+        console.log("json", await aktiviteterRespons.json());
         return {
             props: {
                 aktiviteter: await aktiviteterRespons.json(),
