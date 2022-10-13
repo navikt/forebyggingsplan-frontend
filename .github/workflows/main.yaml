@@ -43,8 +43,14 @@ jobs:
       - name: Do curl
         run: docker run --network container:backend appropriate/curl -s --retry 10 --retry-connrefused http://localhost:8081/internal/isAlive
 
-      - name: start frontend server
-        run: npm install && npm run dev
+      - name: install deps
+        run: npm install
+
+      - name: cypress
+        uses: cypress-io/github-action@v4
+        with:
+          build: npm run build
+          start: npm start
 
       - name: Setup deps for end to end tests
         working-directory: e2e
@@ -55,6 +61,7 @@ jobs:
         uses: jwalton/gh-docker-logs@v1
 
       - name: Teardown containers
+        if: always()
         run: docker-compose down
 
       - name: Build docker image and push to ghcr
