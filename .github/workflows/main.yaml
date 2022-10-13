@@ -45,8 +45,7 @@ jobs:
 
       - name: cypress
         uses: cypress-io/github-action@v4
-        env:
-          DEBUG: 'cypress:*'
+
 
       - name: Dump docker logs on failure
         if: failure()
