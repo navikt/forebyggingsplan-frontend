@@ -41,7 +41,10 @@ jobs:
         run: netstat -lt
 
       - name: Do curl
-        run: docker run --network container:frontend appropriate/curl -s --retry 10 --retry-connrefused http://localhost:3000/api/isAlive
+        run: docker run --network container:backend appropriate/curl -s --retry 10 --retry-connrefused http://localhost:8081/internal/isAlive
+
+      - name: start frontend server
+        run: npm install && npm run dev
 
       - name: Setup deps for end to end tests
         working-directory: e2e
