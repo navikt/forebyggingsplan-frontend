@@ -29,7 +29,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup containers
-        run: docker-compose up -d
+        run: docker-compose -f docker-compose-e2e.yaml up -d
 
       - name: Sleep a bit
         run: sleep 5s

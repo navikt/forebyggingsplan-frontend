@@ -101,3 +101,24 @@ services:
                 }
             ]
         }
+
+  frontend:
+    container_name: frontend
+    restart: always
+    depends_on:
+      - backend
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    environment:
+      FOREBYGGINGSPLAN_API_BASEURL: http://backend:8081
+      FOREBYGGINGSPLAN_CLIENT_ID: forebyggingsplan
+      IDPORTEN_WELL_KNOWN_URL: http://host.docker.internal:8080/idporten/.well-known/openid-configuration
+      NAIS_CLUSTER_NAME: "localhost"
+      TOKEN_X_CLIENT_ID: "localhost:pia:forebyggingsplan-frontend"
+      TOKEN_X_ISSUER: http://host.docker.internal:8080/tokenx
+      TOKEN_X_TOKEN_ENDPOINT: http://host.docker.internal:8080/tokenx/token
+      TOKEN_X_WELL_KNOWN_URL: http://host.docker.internal:8080/tokenx/.well-known/openid-configuration
+      TOKEN_X_PRIVATE_JWK: "{\"p\":\"zoo6Mgk8VMKI461_dzeU-wflmGVs1jcl4dxe8_W-9jeR84YISN13Uk3TU2kqLGz07Z8eMRkOnMkq2abGfQAwxyG3PPVM0xPr8tg8NVpClMvJFRd9RlVJ485IMmJ0t8t3sjiZo6q_ndqYJ5G6VMi3_o7s8gACKnnoh7ohTB49ep0\",\"kty\":\"RSA\",\"q\":\"wMAmevT8vJaD58QeytnbW9TWwqxPFJzu9YPjgXkbPA234HKF4UXZnIeqMtrBb3Ea3-vxVtuxGPT7wULfgCd7WJMh625tX7_WxkHSJTy_TY4-HETBIcZrikdJ8vPQcemvpCyla6DvUpwiQBc0G-9wBov1_938Jk0uOMy-3Bq6zJE\",\"d\":\"X56QX4_vtuCntzj4X7utYNMn9qHjz6B2tl9V4_UMPUjpIUJiNXQlA9CHsxeP4VzOUeerKL9EFmMoYjDYj_uOfLsJwQP-eRrlJg0da4dF2HTVXUb6qJOOGXq86GQ8L7KD2_gSo4uHydpTqLe1r9yhabw8Dcbsm4YKJ7MNle3aoovDShlwCgul5V0_JYD0bvOHMSFI4aomIUk3w5dp0g8fecNYsRCOaaZpjt9yHrz9Ryd1lbx24eu8UmJi7WH4SIJFWaKxKqYEoaC832-3A7TCycayFe517akNU1_nq8TDvgDDjjCEm2T8FOqed1tjdc0wJVQu_w9qU2ZUTuGPMmYtwQ\",\"e\":\"AQAB\",\"use\":\"sig\",\"kid\":\"localhost:pia:forebyggingsplan-frontend\",\"qi\":\"XmjNimJ9zdB4s0kicusSS5UcaL2p1uQYtMrNO8YH75RmUIh092iUhlF_rJ7SiexZ4m-th3I_fuLhchECysV-T4l9H4pxRjrrHnlF1X0NkMcohw8J1gx_Od8wubJQYSJ3S8xDGZEDCBIuCBslPwOtJrrf2t5eJS9dNzgPT1UC4Lg\",\"dp\":\"Dru3iQg1oIo7_5nJxPRXEU0v6J4blHBcqG7y6w41sBSoualu_9ukfl-E2qde1cpz8ltuaOwzqaWEBACsmhAgaqQSESwibdA2_ZzFNr0YkMq0rmd9jT3aRoDZj5aMYuwFvtXgx9cPUjBcuD3h_9hNn8AMUPsFLIiDuOLjKy3hDtU\",\"alg\":\"RS256\",\"dq\":\"oxSwOg33nDQZDEnx550lrG_K-NDC4-TXhSB-p7fopAnTTnJ29Z-cu4RJK1fMm9Ztb5F4Ew4zq7LzIpPK9-nvwYRTCZfXsFBmjj14aIsaLKsxv8coRMRVjpw8Y_OHpCmcsuIXX5W9hv6VN_ap3wzZkqBulXqi8WERv3rz7NQswhE\",\"n\":\"m4KyXOSe_bjAG9rsHR8nrTabipYIAGIGvUOJ4jlRBQ7MYmO5LXgt8YM9ctKdfhbHe78oNa8iPvOmDXAMtf8jlYLGrcLRqb_9kQfKo-uNeC5JG-xBR2NbMFGPYlr9KOxMC-ReehO6R7YjjpxVQJQa83awR0WzCC4h2KIBXaF8dfsNqqCsz9hj2IU6gj6DoPSTClokHFFsao6HtDagQqykxFmn4ogZxj1eF8aZ3W5LBBAMi6ObVapLzCGrw-l0LaQk0ELRGPSouIQEd21mw7rX99xi9fq5BMZd18DBwRolEY8NDUD1PFuUm4p4CY6ZsKHhLTxORugbxlzKR6BBJpmO7Q\"}"
+    ports:
+      - 3000:3000
