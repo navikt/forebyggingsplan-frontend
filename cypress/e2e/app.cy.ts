@@ -1,3 +1,4 @@
+// @ts-ignore
 describe("Navigasjon", () => {
     Cypress.Cookies.debug(true);
     it("vi har definert sidetittel", () => {

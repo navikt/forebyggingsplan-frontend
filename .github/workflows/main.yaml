@@ -51,11 +51,6 @@ jobs:
         with:
           build: npm run build
           start: npm start
-          spec: e2e/cypress/e2e/*.ts
-
-      - name: Setup deps for end to end tests
-        working-directory: e2e
-        run: npm install && npm start
 
       - name: Dump docker logs on failure
         if: failure()
