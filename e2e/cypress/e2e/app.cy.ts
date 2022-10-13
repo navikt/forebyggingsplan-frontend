@@ -1,4 +1,6 @@
 // @ts-ignore
+import { waitFor } from "@testing-library/dom";
+
 describe("Navigasjon", () => {
     beforeEach(() => {
         cy.visit("/");
@@ -13,9 +15,12 @@ describe("Navigasjon", () => {
         cy.get("#aktivitetstabell").should("exist");
     });
 
-    it("vi har en tabell som viser alle aktvitetsmalene", () => {
-        cy.findByText("Pilotering av medarbeidersamtalen").should("exist");
-        cy.findByText("Alle aktiviteter").should("exist");
+    it("vi har en tabell som viser alle aktvitetsmalene", async () => {
+        await waitFor(() => {
+            cy.findByText("Pilotering av medarbeidersamtalen").should("exist");
+            cy.findByText("Alle aktiviteter").should("exist");
+        });
+
         /*cy.get("#aktivitetstabell thead th").should(($headers) => {
             expect($headers).to.have.length(3);
             expect($headers.eq(0)).to.contain("Alle aktiviteter");
