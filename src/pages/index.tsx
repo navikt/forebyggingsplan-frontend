@@ -2,17 +2,23 @@ import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { Aktivitet } from "../types/Aktivitet";
-import { FOREBYGGINGSPLAN_API_BASEURL } from "../constants";
-import { ValgtAktivitet } from "../types/ValgtAktivitet";
 import { hentToken } from "../auth";
-import { veksleToken } from "../auth/tokenx";
 import { verifiserToken } from "../auth/idporten";
 import { ForebyggingsplanFaner } from "../components/Forebyggingsplan/ForebyggingsplanFaner";
 import Layout from "../components/Layout/Layout";
+import { sanity } from "../lib/sanity";
+import { PortableTextBlock } from "@portabletext/types";
+import { SanityDocument } from "@sanity/client";
 
 interface Props {
     aktiviteter: Aktivitet[];
-    valgteAktiviteter: ValgtAktivitet[];
+}
+
+interface SanityResponse extends SanityDocument {
+    beskrivelse: string;
+    embeddedInnhold: PortableTextBlock[];
+    maal: string;
+    tittel: string;
 }
 
 export const getServerSideProps: GetServerSideProps<Props> = async (
@@ -29,31 +35,29 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
     }
     try {
         await verifiserToken(token);
-        const tokenxToken = await veksleToken(
+        /*const tokenxToken = await veksleToken(
             token,
             process.env.FOREBYGGINGSPLAN_CLIENT_ID!!
-        );
+        );*/ // TODO: Dette tren
 
-        const [aktiviteterRespons, valgteAktiviteterRespons] =
-            await Promise.all([
-                fetch(`${FOREBYGGINGSPLAN_API_BASEURL}/aktivitetsmaler`, {
-                    headers: {
-                        Authorization: `Bearer ${tokenxToken}`,
-                    },
-                }),
-                fetch(
-                    `${FOREBYGGINGSPLAN_API_BASEURL}/valgteaktiviteter/811076732`,
-                    {
-                        headers: {
-                            Authorization: `Bearer ${tokenxToken}`,
-                        },
-                    }
-                ),
-            ]);
+        const data: SanityResponse[] = await sanity.fetch(
+            '*[_type == "Aktivitet"]'
+        );
         return {
             props: {
-                aktiviteter: await aktiviteterRespons.json(),
-                valgteAktiviteter: await valgteAktiviteterRespons.json(), // TODO hent klientside
+                aktiviteter: data.map(
+                    ({
+                        maal: mål,
+                        tittel,
+                        beskrivelse,
+                        embeddedInnhold: innhold,
+                    }) => ({
+                        mål,
+                        tittel,
+                        beskrivelse,
+                        innhold,
+                    })
+                ),
             },
         };
     } catch (e) {
@@ -61,25 +65,19 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
         return {
             props: {
                 aktiviteter: [],
-                valgteAktiviteter: [],
             },
         };
     }
 };
 
-interface ForsideProps {
-    aktiviteter: Aktivitet[];
-    valgteAktiviteter: ValgtAktivitet[];
-}
-
-function Forside({ aktiviteter, valgteAktiviteter }: ForsideProps) {
+function Forside({ aktiviteter }: Props) {
     return (
         <div className={styles.container}>
             <main className={styles.main}>
                 <h1 className={styles.title}>Forebyggingsplan</h1>
                 <ForebyggingsplanFaner
                     aktiviteter={aktiviteter}
-                    valgteAktiviteter={valgteAktiviteter}
+                    valgteAktiviteter={[]}
                 />
             </main>
         </div>
@@ -88,7 +86,6 @@ function Forside({ aktiviteter, valgteAktiviteter }: ForsideProps) {
 
 const Home = ({
     aktiviteter,
-    valgteAktiviteter,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
     return (
         <>
@@ -101,10 +98,7 @@ const Home = ({
                 <link rel="icon" href="https://nav.no/favicon.ico" />
             </Head>
             <Layout>
-                <Forside
-                    aktiviteter={aktiviteter}
-                    valgteAktiviteter={valgteAktiviteter}
-                />
+                <Forside aktiviteter={aktiviteter} />
             </Layout>
         </>
     );

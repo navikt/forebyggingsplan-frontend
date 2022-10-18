@@ -20,7 +20,7 @@ export const Aktivitetsmaler = ({ aktiviteter }: Props) => (
                 {aktiviteter.map((aktivitet) => (
                     <Table.ExpandableRow
                         key={aktivitet.tittel}
-                        content={<div>Hei</div>}
+                        content={<div>{aktivitet.beskrivelse}</div>}
                         togglePlacement="right"
                         colSpan={3}
                     >
