@@ -17,7 +17,9 @@ describe("Navigasjon", () => {
 
     it("vi har en tabell som viser alle aktvitetsmalene", async () => {
         await waitFor(() => {
-            cy.findByText("Pilotering av medarbeidersamtalen").should("exist");
+            cy.findByText(
+                "Bruk sykefraværstatistikken til å forebygge fravær"
+            ).should("exist");
             cy.findByText("Alle aktiviteter").should("exist");
         });
     });
