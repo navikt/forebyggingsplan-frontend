@@ -23,7 +23,28 @@ export const aktivitet = {
             title: "Innhold",
             name: "embeddedInnhold",
             type: "array",
-            of: [{ type: "block" }],
+            of: [
+                {
+                    type: "block",
+                    styles: [
+                        {
+                            title: "Normal tekst",
+                            value: "normal",
+                        },
+                        {
+                            title: "Overskrift",
+                            value: "h1",
+                        },
+                        {
+                            title: "Undertittel",
+                            value: "h2",
+                        },
+                    ],
+                },
+                {
+                    type: "lovpalagt"
+                },
+            ],
         },
     ],
 };

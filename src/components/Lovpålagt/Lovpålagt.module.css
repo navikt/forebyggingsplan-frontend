@@ -1,0 +1,12 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: var(--navds-semantic-color-feedback-danger-background);
+    border-radius: var(--navds-border-radius-medium);
+}
+
+.tag {
+    width: max-content;
+}
