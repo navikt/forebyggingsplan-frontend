@@ -16,7 +16,7 @@ const lovpalagdtStyle: CSSProperties = {
     borderRadius: "4px"
 }
 
-const lovpalagdtTagStyle = {
+const lovpalagdtTagStyle: CSSProperties = {
     padding: "0.25rem",
     backgroundColor: "#fdE8e6",
     border: "1px solid red",

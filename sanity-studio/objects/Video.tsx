@@ -1,5 +1,6 @@
 import { Rule } from "@sanity/types";
 import * as React from "react";
+import {CSSProperties} from "react";
 
 const MAKS_TEKSTLENGDE = 64;
 
@@ -11,16 +12,40 @@ interface Props {
     };
 }
 
+const videoBoksStyle: CSSProperties = {
+    display: "flex",
+    flexDirection: "column",
+    gap: "1rem",
+    padding: "1rem",
+    backgroundColor: "#f7f7f7",
+    borderRadius: "4px"
+}
+
+const videoOgTekstStyle: CSSProperties = {
+    display: "flex",
+    flexDirection: "row",
+    gap: "1rem",
+}
+
 const VideoPreview = ({ value: { url, punktliste, tittel } }: Props) => {
     return (
-        <div>
+        <div style={videoBoksStyle}>
             <h2>{tittel}</h2>
-            <p>{url}</p>
-            <ul>
-                {punktliste?.map((punkt) => (
-                    <li key={punkt}>{punkt}</li>
-                ))}
-            </ul>
+            <div style={videoOgTekstStyle}>
+            <iframe title={tittel} src={url} allowFullScreen />
+            {punktliste && punktliste.length > 1 &&
+                <ul>
+                    {punktliste.map((punkt, index) => (
+                        <li key={`punkt-${index}`}>{punkt}</li>
+                    ))}
+                </ul>
+            }
+            {punktliste && punktliste.length === 1 &&
+                <div>
+                    {punktliste.at(0)}
+                </div>
+            }
+            </div>
         </div>
     );
 };

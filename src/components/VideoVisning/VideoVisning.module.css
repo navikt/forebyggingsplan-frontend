@@ -1,0 +1,14 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: var(--navds-semantic-color-component-background-alternate);
+    border-radius: var(--navds-border-radius-medium);
+}
+
+.video {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
