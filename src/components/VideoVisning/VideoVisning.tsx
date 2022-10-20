@@ -21,10 +21,13 @@ export const VideoVisning = ({
                     src={videoUrl}
                     allowFullScreen
                 />
-                {punktliste.length > 1 &&
-                    punktliste.map((punkt, index) => (
-                        <li key={`punkt-${index}`}>{punkt}</li>
-                    ))}
+                {punktliste.length > 1 && (
+                    <ul>
+                        {punktliste.map((punkt, index) => (
+                            <li key={`punkt-${index}`}>{punkt}</li>
+                        ))}
+                    </ul>
+                )}
                 {punktliste.length === 1 && (
                     <BodyShort>{punktliste.at(0)}</BodyShort>
                 )}
