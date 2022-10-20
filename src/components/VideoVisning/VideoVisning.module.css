@@ -12,3 +12,7 @@
     flex-direction: row;
     gap: 1rem;
 }
+
+.video__iframe {
+    border: none;
+}
