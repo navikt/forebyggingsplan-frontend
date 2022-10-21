@@ -1112,6 +1112,11 @@
   resolved "https://registry.npmjs.org/@juggle/resize-observer/-/resize-observer-3.4.0.tgz"
   integrity sha512-dfLbk+PwWvFzSxwk3n5ySL0hfBog779o8h68wK/7/APo/7cgyWp5jcXockbxdk5kFRkbeXWm4Fbi9FrdN381sA==
 
+"@navikt/ds-icons@1.3.2":
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-icons/-/ds-icons-1.3.2.tgz#432941aedc514f07b16719090d6f6d47f94f0dd2"
+  integrity sha512-TWkEeQgnsn9dR0jsoKbDqA3qgZDmNPN8eFTyEoFVf36mQPmWvwFDJz+tYm9SFfIF1koRRF7FoVFGv7fbexvkDg==
+
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.npmjs.org/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz"

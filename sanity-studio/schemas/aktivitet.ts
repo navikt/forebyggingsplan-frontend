@@ -40,6 +40,18 @@ export const aktivitet = {
                             value: "h2",
                         },
                     ],
+                    marks: {
+                        decorators: [
+                            {title: 'Strong', value: 'strong'},
+                            {title: 'Emphasis', value: 'em'},
+                            {title: "Underline", value: "underline"},
+                        ],
+                        annotations: [
+                            {
+                                type: "href"
+                            },
+                        ]
+                    },
                 },
                 {
                     type: "lovpalagt"
