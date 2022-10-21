@@ -56,12 +56,11 @@ export const seksjon = {
             seksjonInnhold: "seksjonInnhold",
         },
         component: (props: any) => {
-            console.log(props);
             return <div>{props.value.media}</div>;
         },
         prepare: (value: any) => {
             return {
-                title: "hei",
+                title: "Innhold",
                 media: (
                     <div
                         style={{
