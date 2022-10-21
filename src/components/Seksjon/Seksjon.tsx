@@ -5,17 +5,14 @@ import { Heading } from "@navikt/ds-react";
 import { Lenke } from "../Lenke/Lenke";
 import { PortableTextComponentProps } from "@portabletext/react/src/types";
 import { PortableTextBlock } from "@portabletext/types";
+import styles from "./Seksjon.module.css"
 
 export const Seksjon = ({
     value,
 }: PortableTextComponentProps<{
     seksjonInnhold: PortableTextBlock[];
 }>) => (
-    <div style={{
-        backgroundColor: "lightgray",
-        borderRadius: "4px",
-        padding: "1rem"
-    }}>
+    <div className={styles.seksjon}>
         <PortableText value={value.seksjonInnhold} components={seksjonsinnhold} />
     </div>
 );

@@ -1,0 +1,5 @@
+.seksjon {
+    background-color: var(--navds-global-color-gray-100);
+    border-radius: var(--navds-border-radius-medium);
+    padding: 1rem;
+}
