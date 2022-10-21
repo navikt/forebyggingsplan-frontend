@@ -24,7 +24,7 @@ const lovpalagdtTagStyle: CSSProperties = {
     width: "max-content"
 }
 
-const Lovpålagt = ({ value: { tekst }}: Props) => {
+export const Lovpålagt = ({ value: { tekst }}: Props) => {
     return <div style={lovpalagdtStyle}>
         <div style={lovpalagdtTagStyle}>Lovpålagt</div>
         {tekst}

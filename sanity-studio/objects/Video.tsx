@@ -27,7 +27,7 @@ const videoOgTekstStyle: CSSProperties = {
     gap: "1rem",
 }
 
-const VideoPreview = ({ value: { url, punktliste, tittel } }: Props) => {
+export const VideoPreview = ({ value: { url, punktliste, tittel } }: Props) => {
     return (
         <div style={videoBoksStyle}>
             <h2>{tittel}</h2>

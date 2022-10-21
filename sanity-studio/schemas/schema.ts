@@ -7,6 +7,7 @@ import { aktivitet } from "./aktivitet";
 import lovpålagt from "../objects/Lovpålagt";
 import video from "../objects/Video";
 import { lenke } from "../objects/Lenke";
+import {seksjon} from "../objects/Seksjon";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -17,6 +18,7 @@ export default createSchema({
     types: schemaTypes.concat([
         /* Your types here! */
         lenke,
+        seksjon,
         lovpålagt,
         video,
         aktivitet,

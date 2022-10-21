@@ -54,10 +54,7 @@ export const aktivitet = {
                     },
                 },
                 {
-                    type: "lovpalagt"
-                },
-                {
-                    type: "video"
+                    type: "seksjon"
                 }
             ],
         },
