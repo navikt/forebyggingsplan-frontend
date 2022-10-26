@@ -32,7 +32,12 @@ export const VideoPreview = ({ value: { videoId, punktliste, tittel } }: Props) 
         <div style={videoBoksStyle}>
             <h2>{tittel}</h2>
             <div style={videoOgTekstStyle}>
-                <iframe title={tittel} src={`https://player.vimeo.com/video/${videoId}`} allowFullScreen />
+                <iframe title={tittel}
+                        src={`https://player.vimeo.com/video/${videoId}`}
+                        sandbox={"allow-scripts"}
+                        referrerPolicy={"no-referrer"}
+                        allowFullScreen
+                />
                 {punktliste && punktliste.length > 1 && (
                     <ul>
                         {punktliste.map((punkt, index) => (
