@@ -22,6 +22,6 @@ jobs:
       - name: Install deps
         run: yarn install --immutable
       - name: Setup sanity cli
-        run: yarn add global @sanity/cli
+        run: npm install -g @sanity/cli
       - name: Deploy sanity
         run: SANITY_AUTH_TOKEN=${{ secrets.SANITY_DEPLOY_TOKEN }} sanity deploy
