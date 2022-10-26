@@ -10,9 +10,6 @@ on:
 jobs:
   sanity-deploy:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: sanity-studio
     name: Deploy Sanity
     steps:
       - uses: actions/checkout@v2
@@ -20,4 +17,4 @@ jobs:
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_DEPLOY_TOKEN }}
         with:
-          args: deploy
+          args: deploy sanity-studio
