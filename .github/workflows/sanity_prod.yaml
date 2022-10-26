@@ -9,12 +9,19 @@ on:
 
 jobs:
   sanity-deploy:
+    defaults:
+      run:
+        working-directory: sanity-studio
     runs-on: ubuntu-latest
     name: Deploy Sanity
     steps:
       - uses: actions/checkout@v2
-      - uses: sanity-io/github-action-sanity@v0.3
-        env:
-          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_DEPLOY_TOKEN }}
+      - uses: actions/setup-node@v3
         with:
-          args: deploy sanity-studio
+          node-version: 16
+      - name: Install deps
+        run: yarn install --immutable
+      - name: Setup sanity cli
+        run: yarn add global @sanity/cli
+      - name: Deploy sanity
+        run: SANITY_AUTH_TOKEN=${{ secrets.SANITY_DEPLOY_TOKEN }} sanity deploy
