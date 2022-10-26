@@ -1,12 +1,12 @@
 import { Rule } from "@sanity/types";
 import * as React from "react";
-import {CSSProperties} from "react";
+import { CSSProperties } from "react";
 
 const MAKS_TEKSTLENGDE = 64;
 
 interface Props {
     value: {
-        url: string;
+        videoId: string;
         tittel: string;
         punktliste?: string[];
     };
@@ -18,33 +18,31 @@ const videoBoksStyle: CSSProperties = {
     gap: "1rem",
     padding: "1rem",
     backgroundColor: "#f7f7f7",
-    borderRadius: "4px"
-}
+    borderRadius: "4px",
+};
 
 const videoOgTekstStyle: CSSProperties = {
     display: "flex",
     flexDirection: "row",
     gap: "1rem",
-}
+};
 
-export const VideoPreview = ({ value: { url, punktliste, tittel } }: Props) => {
+export const VideoPreview = ({ value: { videoId, punktliste, tittel } }: Props) => {
     return (
         <div style={videoBoksStyle}>
             <h2>{tittel}</h2>
             <div style={videoOgTekstStyle}>
-            <iframe title={tittel} src={url} allowFullScreen />
-            {punktliste && punktliste.length > 1 &&
-                <ul>
-                    {punktliste.map((punkt, index) => (
-                        <li key={`punkt-${index}`}>{punkt}</li>
-                    ))}
-                </ul>
-            }
-            {punktliste && punktliste.length === 1 &&
-                <div>
-                    {punktliste.at(0)}
-                </div>
-            }
+                <iframe title={tittel} src={`https://player.vimeo.com/video/${videoId}`} allowFullScreen />
+                {punktliste && punktliste.length > 1 && (
+                    <ul>
+                        {punktliste.map((punkt, index) => (
+                            <li key={`punkt-${index}`}>{punkt}</li>
+                        ))}
+                    </ul>
+                )}
+                {punktliste && punktliste.length === 1 && (
+                    <div>{punktliste.at(0)}</div>
+                )}
             </div>
         </div>
     );
@@ -56,27 +54,11 @@ export default {
     title: "Videoavspiller",
     fields: [
         {
-            type: "url",
-            name: "videoUrl",
-            title: "Videolenke til Qbrick",
-            validation: (rule: Rule) => [
-                rule
-                    .uri({
-                        scheme: "https",
-                        allowCredentials: false,
-                        allowRelative: false,
-                    })
-                    .required(),
-                rule.custom<string>((url) => {
-                    const baseUrl =
-                        "https://video.qbrick.com/play2/embed/player";
-                    if (url.startsWith(baseUrl) && url.includes("mediaId=")) return true;
-
-                    return {
-                        message: `Urlen må starte med ${baseUrl} og ha en mediaId`,
-                    };
-                }),
-            ],
+            type: "number",
+            name: "videoId",
+            title: "ID til video i Vimeo",
+            description: "Her skal bare IDen til videoen hos Vimeo. For https://vimeo.com/705283170 så blir det 705283170",
+            validation: (rule: Rule) => rule.integer().positive().required(),
         },
         {
             type: "string",
@@ -96,7 +78,7 @@ export default {
     ],
     preview: {
         select: {
-            url: "videoUrl",
+            videoId: "videoId",
             tittel: "tittel",
             punktliste: "punktliste",
         },

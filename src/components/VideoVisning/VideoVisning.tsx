@@ -4,12 +4,12 @@ import styles from "./VideoVisning.module.css";
 
 interface Props {
     tittel: string;
-    videoUrl: string;
+    videoId: number;
     punktliste?: string[];
 }
 
 export const VideoVisning = ({
-    value: { punktliste = [], tittel, videoUrl },
+    value: { punktliste = [], tittel, videoId },
 }: PortableTextComponentProps<Props>) => {
     return (
         <div className={styles.wrapper}>
@@ -18,7 +18,7 @@ export const VideoVisning = ({
                 <iframe
                     className={styles.video__iframe}
                     title={tittel}
-                    src={videoUrl}
+                    src={`https://player.vimeo.com/${videoId}`}
                     allowFullScreen
                 />
                 {punktliste.length > 1 && (
