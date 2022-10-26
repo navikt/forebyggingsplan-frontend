@@ -2,7 +2,7 @@
   "name": "forebyggingsplan-pia",
   "private": true,
   "version": "1.0.0",
-  "description": "",
+  "description": "Her ligger skjemaene for modellene våre i Sanity.",
   "main": "package.json",
   "author": "#team-pia <pia@nav.no>",
   "license": "UNLICENSED",
