@@ -10,11 +10,13 @@ on:
 jobs:
   sanity-deploy:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: sanity-studio
     name: Deploy Sanity
     steps:
       - uses: actions/checkout@v2
-      - run: cd sanity-studio
-      - uses: sanity-io/github-action-sanity@v0.4-alpha
+      - uses: sanity-io/github-action-sanity@v0.3
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_DEPLOY_TOKEN }}
         with:
