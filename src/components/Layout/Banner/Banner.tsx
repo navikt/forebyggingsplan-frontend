@@ -1,4 +1,5 @@
 import { useCallback } from "react";
+import { Organisasjon } from "@navikt/bedriftsmeny/lib/organisasjon";
 
 const Bedriftsmeny = dynamic(() => import("@navikt/bedriftsmeny"), {
     ssr: false,
@@ -6,7 +7,11 @@ const Bedriftsmeny = dynamic(() => import("@navikt/bedriftsmeny"), {
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 
-export default function Banner() {
+interface Props {
+    organisasjoner: Organisasjon[];
+}
+
+export default function Banner({ organisasjoner }: Props) {
     const { push, query } = useRouter();
 
     const useOrgnrHook: () => [string | null, (orgnr: string) => void] =
@@ -30,35 +35,9 @@ export default function Banner() {
 
     return (
         <Bedriftsmeny
-            onOrganisasjonChange={console.log}
             orgnrSearchParam={useOrgnrHook}
             sidetittel={"Forebyggingsplan"}
-            organisasjoner={[
-                {
-                    Name: "Forelder",
-                    Type: "Enterprise",
-                    OrganizationNumber: "811076112",
-                    ParentOrganizationNumber: "",
-                    OrganizationForm: "FLI",
-                    Status: "Active",
-                },
-                {
-                    Name: "BALLSTAD OG HAMARØY",
-                    Type: "Business",
-                    OrganizationNumber: "811076732",
-                    ParentOrganizationNumber: "811076112",
-                    OrganizationForm: "BEDR",
-                    Status: "Active",
-                },
-                {
-                    Name: "Tvedestrand",
-                    Type: "Business",
-                    OrganizationNumber: "811076733",
-                    ParentOrganizationNumber: "811076112",
-                    OrganizationForm: "BEDR",
-                    Status: "Active",
-                },
-            ]}
+            organisasjoner={organisasjoner}
         />
     );
 }

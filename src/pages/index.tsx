@@ -8,9 +8,12 @@ import Layout from "../components/Layout/Layout";
 import { sanity } from "../lib/sanity";
 import { PortableTextBlock } from "@portabletext/types";
 import { SanityDocument } from "@sanity/client";
+import { hentOrganisasjoner } from "../lib/organisasjoner";
+import { Organisasjon } from "@navikt/bedriftsmeny/lib/organisasjon";
 
 interface Props {
     aktiviteter: Aktivitet[];
+    organisasjoner: Organisasjon[];
 }
 
 interface SanityResponse extends SanityDocument {
@@ -38,12 +41,13 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
             process.env.FOREBYGGINGSPLAN_CLIENT_ID!!
         );*/ // TODO: Dette tren
 
-        const data: SanityResponse[] = await sanity.fetch(
-            '*[_type == "Aktivitet"]'
-        );
+        const [sanityData, organisasjoner] = await Promise.all([
+            sanity.fetch<SanityResponse[]>('*[_type == "Aktivitet"]'),
+            hentOrganisasjoner(context.req),
+        ]);
         return {
             props: {
-                aktiviteter: data.map(
+                aktiviteter: sanityData.map(
                     ({
                         maal: mål,
                         tittel,
@@ -56,6 +60,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
                         innhold,
                     })
                 ),
+                organisasjoner,
             },
         };
     } catch (e) {
@@ -63,12 +68,13 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
         return {
             props: {
                 aktiviteter: [],
+                organisasjoner: [],
             },
         };
     }
 };
 
-function Forside({ aktiviteter }: Props) {
+function Forside({ aktiviteter }: Omit<Props, "organisasjoner">) {
     return (
         <div className={styles.container}>
             <main className={styles.main}>
@@ -84,6 +90,7 @@ function Forside({ aktiviteter }: Props) {
 
 const Home = ({
     aktiviteter,
+    organisasjoner,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
     return (
         <>
@@ -95,7 +102,7 @@ const Home = ({
                 />
                 <link rel="icon" href="https://nav.no/favicon.ico" />
             </Head>
-            <Layout>
+            <Layout organisasjoner={organisasjoner}>
                 <Forside aktiviteter={aktiviteter} />
             </Layout>
         </>
