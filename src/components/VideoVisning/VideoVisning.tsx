@@ -19,7 +19,6 @@ export const VideoVisning = ({
                     className={styles.video__iframe}
                     title={tittel}
                     src={`https://player.vimeo.com/video/${videoId}`}
-                    sandbox={"allow-scripts"}
                     referrerPolicy={"no-referrer"}
                     allowFullScreen
                 />

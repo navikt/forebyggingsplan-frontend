@@ -34,7 +34,6 @@ export const VideoPreview = ({ value: { videoId, punktliste, tittel } }: Props) 
             <div style={videoOgTekstStyle}>
                 <iframe title={tittel}
                         src={`https://player.vimeo.com/video/${videoId}`}
-                        sandbox={"allow-scripts"}
                         referrerPolicy={"no-referrer"}
                         allowFullScreen
                 />
