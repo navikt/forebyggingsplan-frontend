@@ -24,6 +24,6 @@ export async function hentOrganisasjoner(req: IncomingMessage) {
                 authorization: `Bearer ${tokenxToken}`,
             },
         }
-    ).then((res) => res.json());
+    ).then((res) => res.json()).catch(console.trace);
     return organisasjoner;
 }
