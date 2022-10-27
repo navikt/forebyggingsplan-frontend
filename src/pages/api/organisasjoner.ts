@@ -1,24 +1,31 @@
-import {NextApiRequest, NextApiResponse} from "next";
-import {hentToken} from "../../auth";
-import {verifiserToken} from "../../auth/idporten";
-import {veksleToken} from "../../auth/tokenx";
-import {FOREBYGGINGSPLAN_API_BASEURL} from "../../constants";
+import { NextApiRequest, NextApiResponse } from "next";
+import { hentVerifisertToken } from "../../auth";
+import { veksleToken } from "../../auth/tokenx";
+import { FOREBYGGINGSPLAN_API_BASEURL } from "../../constants";
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    const token = hentToken(req)
+import dns from 'node:dns';
+dns.setDefaultResultOrder('ipv4first');
+
+export default async function handler(
+    req: NextApiRequest,
+    res: NextApiResponse
+) {
+    const token = await hentVerifisertToken(req);
     if (!token) {
-        return res.status(401).send("Unauthorized")
+        return res.status(401).send("Unauthorized");
     }
-    await verifiserToken(token);
     const tokenxToken = await veksleToken(
         token,
         process.env.FOREBYGGINGSPLAN_CLIENT_ID!!
     );
 
-    const organisasjoner = await fetch(`${FOREBYGGINGSPLAN_API_BASEURL}/organisasjoner`, {
-        headers: {
-            authorization: `Bearer ${tokenxToken}`
+    const organisasjoner = await fetch(
+        `${FOREBYGGINGSPLAN_API_BASEURL}/organisasjoner`,
+        {
+            headers: {
+                authorization: `Bearer ${tokenxToken}`,
+            },
         }
-    }).then(res => res.json()).catch(console.error)
-    return res.status(200).send(organisasjoner)
+    ).then((res) => res.json());
+    return res.status(200).send(organisasjoner);
 }

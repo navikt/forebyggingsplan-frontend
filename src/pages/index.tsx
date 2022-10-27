@@ -2,8 +2,7 @@ import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { Aktivitet } from "../types/Aktivitet";
-import { hentToken } from "../auth";
-import { verifiserToken } from "../auth/idporten";
+import { hentVerifisertToken } from "../auth";
 import { ForebyggingsplanFaner } from "../components/Forebyggingsplan/ForebyggingsplanFaner";
 import Layout from "../components/Layout/Layout";
 import { sanity } from "../lib/sanity";
@@ -24,7 +23,7 @@ interface SanityResponse extends SanityDocument {
 export const getServerSideProps: GetServerSideProps<Props> = async (
     context
 ) => {
-    const token = hentToken(context.req!!);
+    const token = await hentVerifisertToken(context.req!!);
     if (!token) {
         return {
             redirect: {
@@ -34,7 +33,6 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
         };
     }
     try {
-        await verifiserToken(token);
         /*const tokenxToken = await veksleToken(
             token,
             process.env.FOREBYGGINGSPLAN_CLIENT_ID!!
