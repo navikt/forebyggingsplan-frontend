@@ -5,7 +5,7 @@ import { veksleToken } from "../auth/tokenx";
 import { FOREBYGGINGSPLAN_API_BASEURL } from "../constants";
 import { Organisasjon } from "@navikt/bedriftsmeny/lib/organisasjon";
 
-dns.setDefaultResultOrder('ipv4first');
+dns.setDefaultResultOrder('ipv4first'); // Dette er for å få lokal kjøring til å virke med Node versjon 17.x med vårt oppsett
 
 export async function hentOrganisasjoner(req: IncomingMessage) {
     const token = await hentVerifisertToken(req);
