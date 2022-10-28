@@ -1,7 +1,6 @@
-import { Button, Heading, Table } from "@navikt/ds-react";
+import { Table } from "@navikt/ds-react";
 import { Aktivitet } from "../../types/Aktivitet";
-import { AddCircle } from "@navikt/ds-icons";
-import { Aktivitetsmal } from "./Aktivitetsmal";
+import { AktivitetsRad } from "./AktivitetsRad";
 
 interface Props {
     aktiviteter: Aktivitet[];
@@ -19,23 +18,14 @@ export const Aktivitetsmaler = ({ aktiviteter }: Props) => {
                     </Table.Row>
                 </Table.Header>
                 <Table.Body>
-                    {aktiviteter.map((aktivitet) => (
-                        <Table.ExpandableRow
-                            key={aktivitet.tittel}
-                            content={<Aktivitetsmal aktivitet={aktivitet} />}
-                            togglePlacement="right"
-                            colSpan={3}
-                        >
-                            <Table.DataCell>{aktivitet.tittel}</Table.DataCell>
-                            <Table.DataCell>
-                                <Button
-                                    icon={
-                                        <AddCircle title="Legg til aktiviteten i Min Plan" />
-                                    }
-                                />
-                            </Table.DataCell>
-                        </Table.ExpandableRow>
-                    ))}
+                    {aktiviteter.map((aktivitet) => {
+                        return (
+                            <AktivitetsRad
+                                key={aktivitet.tittel}
+                                aktivitet={aktivitet}
+                            />
+                        );
+                    })}
                 </Table.Body>
             </Table>
         </div>
