@@ -1,9 +1,11 @@
+version: "3.0"
+
 services:
   altinn:
     container_name: altinn
     image: wiremock/wiremock
     ports:
-      - 9090:8080
+      - "9090:8080"
     volumes:
       - ./stubs:/home/wiremock
 
@@ -13,7 +15,7 @@ services:
     environment:
       POSTGRES_PASSWORD: test
     ports:
-      - 5432:5432
+      - "5432:5432"
 
   backend:
     container_name: backend
@@ -21,7 +23,6 @@ services:
       - wonderwall
       - database
     image: ghcr.io/navikt/forebyggingsplan:latest
-    pull_policy: always
     environment:
       SERVER_PORT: "8081"
       TOKEN_X_CLIENT_ID: "forebyggingsplan"
@@ -53,16 +54,17 @@ services:
       DB_DATABASE: postgres
       ALTINN_RETTIGHETER_PROXY_URL: "http://altinn:8080/altinn"
     ports:
-      - 8081:8081
-      - 5005:5005
+      - "8081:8081"
+      - "5005:5005"
 
   wonderwall:
     image: "ghcr.io/nais/wonderwall:latest"
     container_name: wonderwall
-    network_mode: host
     depends_on:
       - auth
     restart: on-failure
+    ports:
+      - "4000:4000"
     environment:
       WONDERWALL_OPENID_CLIENT_ID: "forebyggingsplan"
       WONDERWALL_OPENID_CLIENT_JWK: "{\"p\":\"4_8iPMp54U-RtJ000k7ikqRFSc1DmnH3EnDtWR3kumNSlsRUHuF_VLATOf9_gkOtwXBy9CjVVJbfM6hhJZYME231jIZxKWTx8rfQ5RYFdRkJeDqVyz1SmJt8eBW8WENN3CFZ3J1Sel6BWfhuC6uj30J0TqaSIGH2vilTMFNeHr8\",\"kty\":\"RSA\",\"q\":\"x36QcU_-qV_Idl2CMhSmhkvRaMR04C50Pj5-2FxuVPyzKoL-1JI8_bOeXPv487OUkVt85lLI-nbWcjUFC2rVl6hHZJgltbvzOzob3LoBDG3WF4ChreOwjQnu1uAnbB0iBaG2ss9beoGW6P4U8IroQBlsjRt9mBrHoYOsls9PGlc\",\"d\":\"eseC8V_8MSvlq7xU96hVopmn_r5-sq5Mbo-CigQK8LQoFoMDI33t8qic-ToKkHoF3XtewSeGBYATAFvfiQemcLWwqFuRq-sBLVAH4AQFPkxQxuRl1QrrvglAVxjCtmJZoHH2NNlJXzmwe0aNH5dBsm0jRVQNU9SLFfCwghPm3vpjYFX4uL3h_4_XT3hTMowLGARe9HOErIl52TAIfPV0riuaMkKZLqnsKoPO_uL9FyxBY97DcIPD45LL1nqBNkZWiz7XhZWU9rWS2EBGXdP3dZ-JdvmTdTvGtFceJgbtPNHnIvMSVqEadJq9WmP4WIDoppo6xLL9h6JoQ7faI_U39Q\",\"e\":\"AQAB\",\"use\":\"sig\",\"kid\":\"forebyggingsplan\",\"qi\":\"D93yW3TJFoqlDomyKkUv1G-xmdlCZSVpKT0U3tTrLCeiK8XJRvJRKWR0imwWpyx4l8_N_XkcIYtGqyHD0DsebTW1MNU51xsCTOmwAoHYvkuO_DKk0T0M1qN5f1Tjr0W8DzdwBYG5m-KovDz7ZC-3QKw8kAz0PgQSCqg4DkjhlAc\",\"dp\":\"ssRHWhcAPZOgEVf6JLRJnuVClr1lNmIJceItl-SChUp_ZUuHEbeJmSN9z8nvdnoOcU_0MlEaA_tQAzcRBOGDknBzSb3YWLaXptJN7nG30brR2_1Dmln4u0Oe8qFIToRnNiTIStzn4J7dGWhbELeCA_odK9YbWVy2lR_d5FRZxg0\",\"alg\":\"RS256\",\"dq\":\"xw2SMn4PLBFWhERpVG8meXnNSSw9MjMn6bOR_XC85i_-1bw_aPtBwCMpML56eTAGXcNbrLWNs9w_vVUJ44qF9P0Dv2vQtLUEzWP9yRAPW8d8h5bhvBAkaZYvqlee_lFTUSs6kNA2BtanLXPYkOsJMmwr0-BKQSr3ZkFsRE42L6E\",\"n\":\"sawL1IlvPmkkk2h99lGejgASOehqDJaaPchOPYx0ibbqoZ_-lvbJ7M6WsnJT-k42DBebRhxQlszdJ3z-u7fBx0KUB7vouyZQUzaA2GctmelrGFdNehJl4Fb-1PY22_K6UFIoi4DC8wWiS__Me65FWBmsHkV8PM9O4nPhbIDzwX777P5kIz9Bx8mV1m3MHGYrBVP7k7f6BPCjpuoxeN2jB6PmRLM3j8R0dze0uAYXhfpAHwZxZD2ORiSpUIE29cQXy4kgSX45SIL4CnxqWFVyKpybaCQPGL5vEXqKDbACAtYuoXMuvD9xfCh7-FKDRePRTiLgiLnR0HyCXFq10gzY6Q\"}"
@@ -74,7 +76,7 @@ services:
       WONDERWALL_LOG_FORMAT: "text"
 
   auth:
-    image: "ghcr.io/navikt/mock-oauth2-server:0.5.4"
+    image: "ghcr.io/navikt/mock-oauth2-server:0.5.5"
     container_name: auth
     ports:
       - "8080:8080"
