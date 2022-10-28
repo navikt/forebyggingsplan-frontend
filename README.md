@@ -17,6 +17,14 @@ Begge disse måtene å starte appen på støtter hot reloading.
 
 For å kjøre ende-til-ende tester holder det å kjøre ``npm run e2e``
 
+# Lokalt miljø
+
+Kan starte opp ett testmiljø via docker-compose:
+
+`docker-compose up`
+
+Appen vil da være tilgjengelig på http://localhost:4000
+
 ---
 
 # Henvendelser
