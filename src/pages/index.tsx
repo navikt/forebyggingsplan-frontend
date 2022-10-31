@@ -3,7 +3,6 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { Aktivitet } from "../types/Aktivitet";
 import { hentVerifisertToken } from "../auth";
-import { ForebyggingsplanFaner } from "../components/Forebyggingsplan/ForebyggingsplanFaner";
 import Layout from "../components/Layout/Layout";
 import { sanity } from "../lib/sanity";
 import { PortableTextBlock } from "@portabletext/types";
@@ -11,6 +10,7 @@ import { SanityDocument } from "@sanity/client";
 import { hentOrganisasjoner } from "../lib/organisasjoner";
 import { Organisasjon } from "@navikt/bedriftsmeny/lib/organisasjon";
 import { Kategori } from "../types/kategori";
+import { Aktivitetskategorier } from "../components/Forebyggingsplan/Aktivitetskategorier";
 
 interface Props {
     kategorier: Kategori[];
@@ -97,11 +97,7 @@ function Forside({ kategorier }: Omit<Props, "organisasjoner">) {
     return (
         <div className={styles.container}>
             <main className={styles.main}>
-                <h1 className={styles.title}>Forebyggingsplan</h1>
-                <ForebyggingsplanFaner
-                    kategorier={kategorier}
-                    valgteAktiviteter={[]}
-                />
+                <Aktivitetskategorier kategorier={kategorier} />
             </main>
         </div>
     );
