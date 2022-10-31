@@ -1,5 +1,6 @@
 .container {
   padding: 0 2rem;
+  background: var(--navds-global-color-gray-100);
 }
 
 .main {

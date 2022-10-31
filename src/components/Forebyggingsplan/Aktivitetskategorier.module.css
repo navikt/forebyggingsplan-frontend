@@ -1,0 +1,15 @@
+.aktivitetskategorier {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+}
+
+.kategori {
+    padding: 2.5rem;
+    background: var(--navds-global-color-white);
+}
+
+.accordion {
+    margin-top: 2.5rem;
+}
