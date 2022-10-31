@@ -1,8 +1,8 @@
-import { Aktivitet } from "../../types/Aktivitet";
 import { ValgtAktivitet } from "../../types/ValgtAktivitet";
 import { Tabs } from "@navikt/ds-react";
 import { Aktivitetsmaler } from "./Aktivitetsmaler";
 import { MinPlan } from "./MinPlan";
+import { Kategori } from "../../types/kategori";
 
 const navigasjonKonstanter = {
     aktiviteterTab: {
@@ -16,11 +16,14 @@ const navigasjonKonstanter = {
 };
 
 interface Props {
-    aktiviteter: Aktivitet[];
+    kategorier: Kategori[];
     valgteAktiviteter: ValgtAktivitet[];
 }
 
-export function ForebyggingsplanFaner(props: Props) {
+export function ForebyggingsplanFaner({
+    kategorier,
+    valgteAktiviteter,
+}: Props) {
     return (
         <Tabs
             defaultValue={navigasjonKonstanter.aktiviteterTab.key}
@@ -37,10 +40,10 @@ export function ForebyggingsplanFaner(props: Props) {
                 />
             </Tabs.List>
             <Tabs.Panel value={navigasjonKonstanter.aktiviteterTab.key}>
-                <Aktivitetsmaler aktiviteter={props.aktiviteter} />
+                <Aktivitetsmaler kategorier={kategorier} />
             </Tabs.Panel>
             <Tabs.Panel value={navigasjonKonstanter.minPlanTab.key}>
-                <MinPlan valgteAktiviteter={props.valgteAktiviteter} />
+                <MinPlan valgteAktiviteter={valgteAktiviteter} />
             </Tabs.Panel>
         </Tabs>
     );

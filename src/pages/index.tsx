@@ -10,18 +10,37 @@ import { PortableTextBlock } from "@portabletext/types";
 import { SanityDocument } from "@sanity/client";
 import { hentOrganisasjoner } from "../lib/organisasjoner";
 import { Organisasjon } from "@navikt/bedriftsmeny/lib/organisasjon";
+import { Kategori } from "../types/kategori";
 
 interface Props {
-    aktiviteter: Aktivitet[];
+    kategorier: Kategori[];
     organisasjoner: Organisasjon[];
 }
 
-interface SanityResponse extends SanityDocument {
+interface KategoriDokument extends SanityDocument {
+    tittel: string;
+    beskrivelse: string;
+    aktiviteter: AktivitetInnhold[];
+}
+
+interface AktivitetInnhold extends SanityDocument {
     beskrivelse: string;
     embeddedInnhold: PortableTextBlock[];
     maal: string;
     tittel: string;
 }
+
+const aktivitetMapper = ({
+    maal: mål,
+    tittel,
+    beskrivelse,
+    embeddedInnhold: innhold,
+}: AktivitetInnhold): Aktivitet => ({
+    mål,
+    tittel,
+    beskrivelse,
+    innhold,
+});
 
 export const getServerSideProps: GetServerSideProps<Props> = async (
     context
@@ -42,22 +61,22 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
         );*/ // TODO: Dette tren
 
         const [sanityData, organisasjoner] = await Promise.all([
-            sanity.fetch<SanityResponse[]>('*[_type == "Aktivitet"]'),
+            sanity.fetch<KategoriDokument[]>(`
+            *[_type == "kategori"] {
+                tittel,
+                beskrivelse,
+                "aktiviteter": *[_type == "Aktivitet" && references(^._id)]
+            }
+        `),
             hentOrganisasjoner(context.req),
         ]);
         return {
             props: {
-                aktiviteter: sanityData.map(
-                    ({
-                        maal: mål,
+                kategorier: sanityData.map(
+                    ({ tittel, beskrivelse, aktiviteter }) => ({
                         tittel,
                         beskrivelse,
-                        embeddedInnhold: innhold,
-                    }) => ({
-                        mål,
-                        tittel,
-                        beskrivelse,
-                        innhold,
+                        aktiviteter: aktiviteter.map(aktivitetMapper),
                     })
                 ),
                 organisasjoner,
@@ -67,20 +86,20 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
         console.error(JSON.stringify(e));
         return {
             props: {
-                aktiviteter: [],
+                kategorier: [],
                 organisasjoner: [],
             },
         };
     }
 };
 
-function Forside({ aktiviteter }: Omit<Props, "organisasjoner">) {
+function Forside({ kategorier }: Omit<Props, "organisasjoner">) {
     return (
         <div className={styles.container}>
             <main className={styles.main}>
                 <h1 className={styles.title}>Forebyggingsplan</h1>
                 <ForebyggingsplanFaner
-                    aktiviteter={aktiviteter}
+                    kategorier={kategorier}
                     valgteAktiviteter={[]}
                 />
             </main>
@@ -89,7 +108,7 @@ function Forside({ aktiviteter }: Omit<Props, "organisasjoner">) {
 }
 
 const Home = ({
-    aktiviteter,
+    kategorier,
     organisasjoner,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
     return (
@@ -103,7 +122,7 @@ const Home = ({
                 <link rel="icon" href="https://nav.no/favicon.ico" />
             </Head>
             <Layout organisasjoner={organisasjoner}>
-                <Forside aktiviteter={aktiviteter} />
+                <Forside kategorier={kategorier} />
             </Layout>
         </>
     );
