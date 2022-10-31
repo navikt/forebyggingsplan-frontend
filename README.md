@@ -25,6 +25,9 @@ Kan starte opp ett testmiljø via docker-compose:
 
 Appen vil da være tilgjengelig på http://localhost:4000
 
+# Sanity
+// TODO skriv litt om sanity
+
 ---
 
 # Henvendelser

@@ -1,31 +1,25 @@
 import { Aktivitet } from "../../types/Aktivitet";
-import { useState } from "react";
-import { Button, Table } from "@navikt/ds-react";
+import { Accordion } from "@navikt/ds-react";
 import { Aktivitetsmal } from "./Aktivitetsmal";
-import { AddCircle } from "@navikt/ds-icons";
+import { useState } from "react";
 
 interface Props {
     aktivitet: Aktivitet;
 }
 
 export const AktivitetsRad = ({ aktivitet }: Props) => {
-    const [erÅpen, setErÅpen] = useState<Boolean>(false);
+    const [erÅpen, setErÅpen] = useState(false);
+
+    const toggleAccordion = () => {
+        setErÅpen((prevState) => !prevState)
+    }
 
     return (
-        <Table.ExpandableRow
-            content={erÅpen && <Aktivitetsmal aktivitet={aktivitet} />}
-            togglePlacement="right"
-            colSpan={3}
-            onOpenChange={(open) => {
-                setErÅpen(open);
-            }}
-        >
-            <Table.DataCell>{aktivitet.tittel}</Table.DataCell>
-            <Table.DataCell>
-                <Button
-                    icon={<AddCircle title="Legg til aktiviteten i Min Plan" />}
-                />
-            </Table.DataCell>
-        </Table.ExpandableRow>
+        <Accordion.Item open={erÅpen}>
+            <Accordion.Header onClick={toggleAccordion}>{aktivitet.tittel}</Accordion.Header>
+            <Accordion.Content>
+                {erÅpen && <Aktivitetsmal aktivitet={aktivitet} />}
+            </Accordion.Content>
+        </Accordion.Item>
     );
 };

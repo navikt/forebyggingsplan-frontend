@@ -1,4 +1,4 @@
-import { Table } from "@navikt/ds-react";
+import { Accordion, BodyShort, Heading } from "@navikt/ds-react";
 import { AktivitetsRad } from "./AktivitetsRad";
 import { Kategori } from "../../types/kategori";
 
@@ -9,17 +9,12 @@ interface Props {
 export const Aktivitetsmaler = ({ kategorier }: Props) => {
     return (
         <div data-theme="light">
-            {kategorier.map(({ aktiviteter, tittel }) => {
+            {kategorier.map(({aktiviteter, tittel, beskrivelse}) => {
                 return (
-                    <Table id={`aktivitet-${tittel}`}>
-                        <Table.Header>
-                            <Table.Row>
-                                <Table.HeaderCell>{tittel}</Table.HeaderCell>
-                                <Table.HeaderCell>Legg til</Table.HeaderCell>
-                                <Table.HeaderCell />
-                            </Table.Row>
-                        </Table.Header>
-                        <Table.Body>
+                    <article key={tittel}>
+                        <Heading size="large">{tittel}</Heading>
+                        <BodyShort>{beskrivelse}</BodyShort>
+                        <Accordion>
                             {aktiviteter.map((aktivitet) => {
                                 return (
                                     <AktivitetsRad
@@ -28,8 +23,8 @@ export const Aktivitetsmaler = ({ kategorier }: Props) => {
                                     />
                                 );
                             })}
-                        </Table.Body>
-                    </Table>
+                        </Accordion>
+                    </article>
                 );
             })}
         </div>
