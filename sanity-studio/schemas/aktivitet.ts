@@ -1,3 +1,5 @@
+import { Rule } from "@sanity/types";
+
 export const aktivitet = {
     name: "Aktivitet",
     title: "Aktivitet i forebyggingsplan",
@@ -7,12 +9,14 @@ export const aktivitet = {
             type: "string",
             name: "tittel",
             title: "Tittel på aktiviteten",
+            validation: (rule: Rule) => rule.required(),
         },
         {
             type: "string",
             name: "beskrivelse",
             title: "Generell beskrivelse på aktiviteten",
             description: "Forsøk å holde denne relativt kort.",
+            validation: (rule: Rule) => rule.required(),
         },
         {
             type: "string",
@@ -23,9 +27,12 @@ export const aktivitet = {
             title: "Kategori",
             type: "reference",
             name: "kategori",
-            to: [{
-                type: "kategori"
-            }]
+            validation: (rule: Rule) => rule.required(),
+            to: [
+                {
+                    type: "kategori",
+                },
+            ],
         },
         {
             title: "Innhold",
@@ -50,20 +57,20 @@ export const aktivitet = {
                     ],
                     marks: {
                         decorators: [
-                            {title: 'Strong', value: 'strong'},
-                            {title: 'Emphasis', value: 'em'},
-                            {title: "Underline", value: "underline"},
+                            { title: "Strong", value: "strong" },
+                            { title: "Emphasis", value: "em" },
+                            { title: "Underline", value: "underline" },
                         ],
                         annotations: [
                             {
-                                type: "href"
+                                type: "href",
                             },
-                        ]
+                        ],
                     },
                 },
                 {
-                    type: "seksjon"
-                }
+                    type: "seksjon",
+                },
             ],
         },
     ],
