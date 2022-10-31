@@ -14,13 +14,13 @@
     "sanity"
   ],
   "dependencies": {
+    "@navikt/ds-icons": "1.3.2",
     "@sanity/base": "^2.34.0",
     "@sanity/core": "^2.34.0",
     "@sanity/default-layout": "^2.34.0",
     "@sanity/default-login": "^2.34.0",
     "@sanity/desk-tool": "^2.34.1",
     "@sanity/vision": "^2.34.0",
-    "@navikt/ds-icons": "1.3.2",
     "eslint": "^8.6.0",
     "prop-types": "^15.7",
     "react": "^17.0",

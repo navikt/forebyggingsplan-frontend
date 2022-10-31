@@ -20,6 +20,14 @@ export const aktivitet = {
             title: "Målbeskrivelse",
         },
         {
+            title: "Kategori",
+            type: "reference",
+            name: "kategori",
+            to: [{
+                type: "kategori"
+            }]
+        },
+        {
             title: "Innhold",
             name: "embeddedInnhold",
             type: "array",
