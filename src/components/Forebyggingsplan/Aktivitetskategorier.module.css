@@ -6,10 +6,16 @@
 }
 
 .kategori {
-    padding: 2.5rem;
+    padding: 1.125rem;
     background: var(--navds-global-color-white);
 }
 
 .accordion {
     margin-top: 2.5rem;
+}
+
+@media screen and (min-width: 480px) {
+    .kategori {
+        padding: 2.5rem;
+    }
 }

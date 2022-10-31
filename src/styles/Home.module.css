@@ -1,10 +1,12 @@
 .container {
-  padding: 0 2rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
   background: var(--navds-global-color-gray-100);
 }
 
 .main {
-  padding: 4rem 0;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
 }
 
 .title {
@@ -15,5 +17,17 @@
 @media (min-width: calc(550 / 16 * 1rem)) {
   .title {
     font-size: 4rem;
+  }
+}
+
+@media screen and (min-width: 480px){
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .main {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
   }
 }
