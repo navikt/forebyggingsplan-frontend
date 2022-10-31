@@ -1,12 +1,12 @@
 import { Accordion, BodyShort, Heading } from "@navikt/ds-react";
-import { AktivitetsRad } from "./AktivitetsRad";
+import { Aktivitetsrad } from "./Aktivitetsrad";
 import { Kategori } from "../../types/kategori";
 
 interface Props {
     kategorier: Kategori[];
 }
 
-export const Aktivitetsmaler = ({ kategorier }: Props) => {
+export const Aktivitetskategorier = ({ kategorier }: Props) => {
     return (
         <div data-theme="light">
             {kategorier.map(({aktiviteter, tittel, beskrivelse}) => {
@@ -17,7 +17,7 @@ export const Aktivitetsmaler = ({ kategorier }: Props) => {
                         <Accordion>
                             {aktiviteter.map((aktivitet) => {
                                 return (
-                                    <AktivitetsRad
+                                    <Aktivitetsrad
                                         key={aktivitet.tittel}
                                         aktivitet={aktivitet}
                                     />

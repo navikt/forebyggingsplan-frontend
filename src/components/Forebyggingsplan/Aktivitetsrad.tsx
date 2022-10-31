@@ -7,7 +7,7 @@ interface Props {
     aktivitet: Aktivitet;
 }
 
-export const AktivitetsRad = ({ aktivitet }: Props) => {
+export const Aktivitetsrad = ({ aktivitet }: Props) => {
     const [erÅpen, setErÅpen] = useState(false);
 
     const toggleAccordion = () => {

@@ -1,6 +1,6 @@
 import { ValgtAktivitet } from "../../types/ValgtAktivitet";
 import { Tabs } from "@navikt/ds-react";
-import { Aktivitetsmaler } from "./Aktivitetsmaler";
+import { Aktivitetskategorier } from "./Aktivitetskategorier";
 import { MinPlan } from "./MinPlan";
 import { Kategori } from "../../types/kategori";
 
@@ -40,7 +40,7 @@ export function ForebyggingsplanFaner({
                 />
             </Tabs.List>
             <Tabs.Panel value={navigasjonKonstanter.aktiviteterTab.key}>
-                <Aktivitetsmaler kategorier={kategorier} />
+                <Aktivitetskategorier kategorier={kategorier} />
             </Tabs.Panel>
             <Tabs.Panel value={navigasjonKonstanter.minPlanTab.key}>
                 <MinPlan valgteAktiviteter={valgteAktiviteter} />
