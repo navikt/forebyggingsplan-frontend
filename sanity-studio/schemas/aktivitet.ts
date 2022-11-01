@@ -27,7 +27,7 @@ export const aktivitet = {
             title: "Kategori",
             type: "reference",
             name: "kategori",
-            validation: (rule: Rule) => rule.required(),
+            validation: (rule: Rule) => rule.required().error("Aktiviteter uten kategori vil ikke være synlig"),
             to: [
                 {
                     type: "kategori",
