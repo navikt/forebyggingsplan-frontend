@@ -2,6 +2,7 @@ import * as React from "react";
 import { PortableText } from "@portabletext/react";
 import { Lovpålagt } from "./Lovpålagt";
 import { VideoPreview } from "./Video";
+import { Rule } from "@sanity/types";
 
 export const seksjon = {
     type: "object",
@@ -47,6 +48,29 @@ export const seksjon = {
                 },
                 {
                     type: "video",
+                },
+                {
+                    type: "image",
+                    name: "bilde",
+                    title: "Bilde",
+                    fields: [
+                        {
+                            type: "string",
+                            options: { isHighlighted: true },
+                            name: "tittel",
+                            title: "Tittel",
+                            description: "Forklarende tittel til bildet",
+                            validation: (rule: Rule) => rule.required(),
+                        },
+                        {
+                            type: "string",
+                            options: { isHighlighted: true },
+                            name: "beskrivelse",
+                            title: "Beskrivelse",
+                            description: "Skriv en forklarende tekst til bildet slik at det enkelt kan forstås av skjermlesere.",
+                            validation: (rule: Rule) => rule.required(),
+                        },
+                    ],
                 },
             ],
         },
