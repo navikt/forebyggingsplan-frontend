@@ -1,6 +1,5 @@
 import { PortableTextMarkComponentProps } from "@portabletext/react";
 import NextLink from "next/link";
-import { Link } from "@navikt/ds-react";
 import { ExternalLink } from "@navikt/ds-icons";
 
 interface LenkeProps {
@@ -17,13 +16,12 @@ export const Lenke = ({
     return (
         <NextLink
             href={url}
-            passHref
+            className="navds-link"
+            rel={"noreferrer noopener"}
             target={erEksternLenke ? "_blank" : undefined}
         >
-            <Link href={url}>
-                {text}
-                {erEksternLenke && <ExternalLink />}
-            </Link>
+            {text}
+            {erEksternLenke && <ExternalLink />}
         </NextLink>
     );
 };
