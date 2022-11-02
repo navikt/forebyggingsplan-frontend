@@ -17,6 +17,7 @@
     "@navikt/nav-dekoratoren-moduler": "1.6.9",
     "@portabletext/react": "1.0.6",
     "@sanity/client": "3.4.1",
+    "@sanity/image-url": "1.0.1",
     "jose": "4.9.0",
     "next": "13.0.1",
     "openid-client": "5.1.9",
