@@ -22,12 +22,16 @@ export const seksjon = {
                             value: "normal",
                         },
                         {
-                            title: "Overskrift",
-                            value: "h1",
+                            title: "H3",
+                            value: "h3",
                         },
                         {
-                            title: "Undertittel",
-                            value: "h2",
+                            title: "H4",
+                            value: "h4",
+                        },
+                        {
+                            title: "H5",
+                            value: "h5",
                         },
                     ],
                     marks: {
@@ -67,7 +71,8 @@ export const seksjon = {
                             options: { isHighlighted: true },
                             name: "beskrivelse",
                             title: "Beskrivelse",
-                            description: "Skriv en forklarende tekst til bildet slik at det enkelt kan forstås av skjermlesere.",
+                            description:
+                                "Skriv en forklarende tekst til bildet slik at det enkelt kan forstås av skjermlesere.",
                             validation: (rule: Rule) => rule.required(),
                         },
                     ],

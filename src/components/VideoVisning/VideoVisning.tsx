@@ -13,7 +13,9 @@ export const VideoVisning = ({
 }: PortableTextComponentProps<Props>) => {
     return (
         <div className={styles.wrapper}>
-            <Heading size="large">{tittel}</Heading>
+            <Heading size="medium" level="3">
+                {tittel}
+            </Heading>
             <div className={styles.video}>
                 <iframe
                     className={styles.video__iframe}

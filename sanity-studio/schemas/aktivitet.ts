@@ -9,7 +9,10 @@ export const aktivitet = {
             title: "Kategori",
             type: "reference",
             name: "kategori",
-            validation: (rule: Rule) => rule.required().error("Aktiviteter uten kategori vil ikke være synlig"),
+            validation: (rule: Rule) =>
+                rule
+                    .required()
+                    .error("Aktiviteter uten kategori vil ikke være synlig"),
             to: [
                 {
                     type: "kategori",
@@ -47,12 +50,16 @@ export const aktivitet = {
                             value: "normal",
                         },
                         {
-                            title: "Overskrift",
-                            value: "h1",
+                            title: "H3",
+                            value: "h3",
                         },
                         {
-                            title: "Undertittel",
-                            value: "h2",
+                            title: "H4",
+                            value: "h4",
+                        },
+                        {
+                            title: "Sitat",
+                            value: "blockquote",
                         },
                     ],
                     marks: {

@@ -13,7 +13,7 @@ export const Aktivitetskategorier = ({ kategorier }: Props) => {
             {kategorier.map(({aktiviteter, tittel, beskrivelse}) => {
                 return (
                     <article key={tittel} className={styles.kategori}>
-                        <Heading size="large">{tittel}</Heading>
+                        <Heading size="large" level="2">{tittel}</Heading>
                         <BodyShort>{beskrivelse}</BodyShort>
                         <Accordion className={styles.accordion}>
                             {aktiviteter.map((aktivitet) => {

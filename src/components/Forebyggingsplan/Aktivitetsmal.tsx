@@ -3,19 +3,16 @@ import { PortableText, PortableTextComponents } from "@portabletext/react";
 import { Heading } from "@navikt/ds-react";
 
 import styles from "./Aktivitetsmal.module.css";
-import { Lenke } from "../Lenke/Lenke";
 import { Seksjon } from "../Seksjon/Seksjon";
+import { block } from "../PortableText/block/Block";
+import { marks } from "../PortableText/marks/Marks";
 
 const hovedinnhold: Partial<PortableTextComponents> = {
     types: {
         seksjon: Seksjon,
     },
-    block: {
-        h2: ({ children }) => <Heading size="large">{children}</Heading>,
-    },
-    marks: {
-        href: Lenke,
-    },
+    block,
+    marks,
 };
 
 export function Aktivitetsmal({
@@ -26,9 +23,13 @@ export function Aktivitetsmal({
     return (
         <div className={styles.container}>
             {beskrivelse}
-            <Heading size="large">Mål</Heading>
+            <Heading size="medium" level="3">
+                Mål
+            </Heading>
             {mål}
-            <Heading size="large">Slik gjør du det</Heading>
+            <Heading size="medium" level="3">
+                Slik gjør du det
+            </Heading>
             <PortableText value={innhold} components={hovedinnhold} />
         </div>
     );

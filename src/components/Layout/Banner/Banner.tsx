@@ -6,6 +6,7 @@ const Bedriftsmeny = dynamic(() => import("@navikt/bedriftsmeny"), {
 });
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
+import { Heading } from "@navikt/ds-react";
 
 interface Props {
     organisasjoner: Organisasjon[];
@@ -36,7 +37,7 @@ export default function Banner({ organisasjoner }: Props) {
     return (
         <Bedriftsmeny
             orgnrSearchParam={useOrgnrHook}
-            sidetittel={"Forebyggingsplan"}
+            sidetittel={<Heading size="xlarge" level="1">Forebyggingsplan</Heading>}
             organisasjoner={organisasjoner}
         />
     );
