@@ -1,6 +1,7 @@
 import { PortableTextComponentProps } from "@portabletext/react/src/types";
 import { urlFor } from "../../lib/sanity-image";
 import Image from "next/image";
+import styles from "./Bilde.module.css"
 
 interface Props {
     beskrivelse: string;
@@ -13,15 +14,12 @@ export const Bilde = (props: PortableTextComponentProps<Props>) => {
     const url = urlFor(asset._ref).auto("format").url();
     return (
         <Image
+            className={styles.bilde}
             alt={beskrivelse}
             title={tittel}
             src={url}
             width={700}
             height={475}
-            style={{
-                width: "100%",
-                height: "auto",
-            }}
         />
     );
 };

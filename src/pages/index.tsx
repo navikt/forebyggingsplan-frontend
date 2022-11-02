@@ -1,6 +1,6 @@
 import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
+import styles from "./index.module.css";
 import { Aktivitet } from "../types/Aktivitet";
 import { hentVerifisertToken } from "../auth";
 import Layout from "../components/Layout/Layout";
