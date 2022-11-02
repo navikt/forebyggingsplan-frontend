@@ -10,10 +10,12 @@ interface Props {
 export const Aktivitetskategorier = ({ kategorier }: Props) => {
     return (
         <div data-theme="light" className={styles.aktivitetskategorier}>
-            {kategorier.map(({aktiviteter, tittel, beskrivelse}) => {
+            {kategorier.map(({ aktiviteter, tittel, beskrivelse }) => {
                 return (
                     <article key={tittel} className={styles.kategori}>
-                        <Heading size="large" level="2">{tittel}</Heading>
+                        <Heading size="large" level="2">
+                            {tittel}
+                        </Heading>
                         <BodyShort>{beskrivelse}</BodyShort>
                         <Accordion className={styles.accordion}>
                             {aktiviteter.map((aktivitet) => {

@@ -1,5 +1,5 @@
 import { PortableTextReactComponents } from "@portabletext/react/src/types";
-import { Heading } from "@navikt/ds-react";
+import { BodyLong, Heading } from "@navikt/ds-react";
 
 export const block: PortableTextReactComponents["block"] = {
     h2: ({ children }) => (
@@ -22,4 +22,5 @@ export const block: PortableTextReactComponents["block"] = {
             {children}
         </Heading>
     ),
+    normal: ({ children }) => <BodyLong>{children}</BodyLong>,
 };
