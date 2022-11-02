@@ -6,6 +6,17 @@ export const aktivitet = {
     type: "document",
     fields: [
         {
+            title: "Kategori",
+            type: "reference",
+            name: "kategori",
+            validation: (rule: Rule) => rule.required().error("Aktiviteter uten kategori vil ikke være synlig"),
+            to: [
+                {
+                    type: "kategori",
+                },
+            ],
+        },
+        {
             type: "string",
             name: "tittel",
             title: "Tittel på aktiviteten",
@@ -22,17 +33,6 @@ export const aktivitet = {
             type: "string",
             name: "maal",
             title: "Målbeskrivelse",
-        },
-        {
-            title: "Kategori",
-            type: "reference",
-            name: "kategori",
-            validation: (rule: Rule) => rule.required().error("Aktiviteter uten kategori vil ikke være synlig"),
-            to: [
-                {
-                    type: "kategori",
-                },
-            ],
         },
         {
             title: "Innhold",
