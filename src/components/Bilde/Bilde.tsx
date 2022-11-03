@@ -1,7 +1,7 @@
 import { PortableTextComponentProps } from "@portabletext/react/src/types";
 import { urlFor } from "../../lib/sanity-image";
 import Image from "next/image";
-import styles from "./Bilde.module.css"
+import styles from "./Bilde.module.css";
 
 interface Props {
     beskrivelse: string;
