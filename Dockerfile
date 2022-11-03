@@ -1,4 +1,4 @@
-FROM node:lts-alpine AS builder
+FROM node:19.0.0-alpine3.16 AS builder
 WORKDIR /usr/src/app
 
 COPY package*.json ./
@@ -14,7 +14,7 @@ RUN npm ci --prefer-offline --no-audit
 RUN npm run build
 
 
-FROM node:lts-alpine AS runtime
+FROM node:19.0.0-alpine3.16 AS runtime
 WORKDIR /usr/src/app
 ENV PORT=3000 \
     NODE_ENV=production \
