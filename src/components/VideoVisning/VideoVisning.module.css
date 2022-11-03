@@ -10,6 +10,7 @@
 }
 
 .video__iframe {
+    border: none;
 }
 
 @media screen and (min-width: 480px) {
