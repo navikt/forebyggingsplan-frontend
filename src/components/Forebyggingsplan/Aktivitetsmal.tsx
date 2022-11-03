@@ -27,9 +27,7 @@ export function Aktivitetsmal({
                 Mål
             </Heading>
             {mål}
-            <Heading size="medium" level="3">
-                Slik gjør du det
-            </Heading>
+            
             <PortableText value={innhold} components={hovedinnhold} />
         </div>
     );

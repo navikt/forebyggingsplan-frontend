@@ -22,5 +22,5 @@ export const block: PortableTextReactComponents["block"] = {
             {children}
         </Heading>
     ),
-    normal: ({ children }) => <BodyLong>{children}</BodyLong>,
+    normal: ({ children }) => <BodyLong spacing>{children}</BodyLong>,
 };
