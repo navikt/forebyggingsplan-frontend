@@ -19,6 +19,7 @@ export const VideoVisning = ({
             <div className={styles.video}>
                 <iframe
                     className={styles.video__iframe}
+                    loading="lazy"
                     title={tittel}
                     src={`https://player.vimeo.com/video/${videoId}`}
                     referrerPolicy={"no-referrer"}
