@@ -1,25 +1,15 @@
 .wrapper {
     display: flex;
     flex-direction: column;
-    background-color: var(--navds-semantic-color-component-background-alternate);
-    border-radius: var(--navds-border-radius-medium);
     gap: 1rem;
-    padding: 1rem;
 }
 
 .video {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
 }
 
 .video__iframe {
-    position: relative;
-    display: block;
-    width: 300px;
-    overflow: hidden;
-    border: none;
 }
 
 @media screen and (min-width: 480px) {
