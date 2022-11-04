@@ -12,9 +12,8 @@ interface Props {
     organisasjoner: Organisasjon[];
 }
 
-export default function Banner({ organisasjoner }: Props) {
+export const useHentOrgnummer = () => {
     const { push, query } = useRouter();
-
     const useOrgnrHook: () => [string | null, (orgnr: string) => void] =
         useCallback(() => {
             const currentOrgnr =
@@ -33,11 +32,18 @@ export default function Banner({ organisasjoner }: Props) {
                 },
             ];
         }, [push, query.bedrift]);
+    return useOrgnrHook;
+};
 
+export default function Banner({ organisasjoner }: Props) {
     return (
         <Bedriftsmeny
-            orgnrSearchParam={useOrgnrHook}
-            sidetittel={<Heading size="xlarge" level="1">Forebyggingsplan</Heading>}
+            orgnrSearchParam={useHentOrgnummer()}
+            sidetittel={
+                <Heading size="xlarge" level="1">
+                    Forebyggingsplan
+                </Heading>
+            }
             organisasjoner={organisasjoner}
         />
     );
