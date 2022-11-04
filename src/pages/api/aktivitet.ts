@@ -14,7 +14,7 @@ export default async function handler(
     const baseUrl = process.env.FOREBYGGINGSPLAN_API_BASEURL;
     const token = await hentVerifisertToken(req);
     if (!token) {
-        return res.send(401);
+        return res.status(401).end();
     }
     const tokenxToken = await veksleToken(
         token,
@@ -28,9 +28,7 @@ export default async function handler(
             "Content-Type": "application/json",
             Authorization: `Bearer ${tokenxToken}`,
         },
-    }).then((res) => {
-        return res.json();
-    });
+    }).then((res) => res.json());
 
     res.status(201).send(respons);
 }
