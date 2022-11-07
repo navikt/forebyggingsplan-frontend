@@ -1,6 +1,6 @@
 import { Aktivitet } from "../../types/Aktivitet";
 import { Accordion } from "@navikt/ds-react";
-
+import styles from "./Aktivitetsrad.module.css";
 import dynamic from "next/dynamic";
 
 const Aktivitetsmal = dynamic(() =>
@@ -9,15 +9,21 @@ const Aktivitetsmal = dynamic(() =>
 
 interface Props {
     aktivitet: Aktivitet;
-    åpen?: boolean
-    onClick?: () => void
+    åpen?: boolean;
+    onClick?: () => void;
 }
 
 export const Aktivitetsrad = ({ aktivitet, åpen = false, onClick }: Props) => {
-
     return (
         <Accordion.Item open={åpen}>
-            <Accordion.Header onClick={onClick}>
+            <Accordion.Header
+                onClick={onClick}
+                className={
+                    aktivitet.status === "VALGT"
+                        ? styles.aktivitetValgt
+                        : undefined
+                }
+            >
                 {aktivitet.tittel}
             </Accordion.Header>
             <Accordion.Content>
