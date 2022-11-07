@@ -17,30 +17,32 @@ const hovedinnhold: Partial<PortableTextComponents> = {
 };
 
 export function Aktivitetsmal({
-    aktivitet: { id, beskrivelse, innhold, mål },
+    aktivitet: { id, beskrivelse, innhold, mål, status },
 }: {
     aktivitet: Aktivitet;
 }) {
     const [orgnr] = useHentOrgnummer()();
     return (
         <div className={styles.container}>
-            <Button
-                className={styles.button}
-                variant="secondary"
-                onClick={() => {
-                    fetch("/api/aktivitet", {
-                        method: "POST",
-                        body: JSON.stringify({ id, orgnr }),
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                    }).then((res) => {
-                        return res.json();
-                    });
-                }}
-            >
-                Dette vil vi gjøre
-            </Button>
+            {status !== "VALGT" && (
+                <Button
+                    className={styles.button}
+                    variant="secondary"
+                    onClick={() => {
+                        fetch("/api/aktivitet", {
+                            method: "POST",
+                            body: JSON.stringify({ id, orgnr }),
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                        }).then((res) => {
+                            return res.json();
+                        });
+                    }}
+                >
+                    Dette vil vi gjøre
+                </Button>
+            )}
             {beskrivelse}
             <Heading size="medium" level="3">
                 Mål

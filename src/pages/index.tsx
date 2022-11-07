@@ -42,6 +42,7 @@ const aktivitetMapper = ({
     tittel,
     beskrivelse,
     innhold,
+    status: "IKKE_VALGT",
 });
 
 export const getServerSideProps: GetServerSideProps<Props> = async (
@@ -57,11 +58,6 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
         };
     }
     try {
-        /*const tokenxToken = await veksleToken(
-            token,
-            process.env.FOREBYGGINGSPLAN_CLIENT_ID!!
-        );*/ // TODO: Dette tren
-
         const [sanityData, organisasjoner] = await Promise.all([
             sanity.fetch<KategoriDokument[]>(`
             *[_type == "kategori"] {

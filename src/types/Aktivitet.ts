@@ -6,4 +6,8 @@ export interface Aktivitet {
     beskrivelse: string;
     mål: string;
     innhold: PortableTextBlock[];
+    status: AktivitetStatus;
+    frist?: string;
 }
+
+export type AktivitetStatus = "IKKE_VALGT" | "VALGT" | "FULLFØRT"

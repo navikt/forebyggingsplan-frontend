@@ -2,16 +2,32 @@ import { Accordion, BodyShort, Heading } from "@navikt/ds-react";
 import { Aktivitetsrad } from "./Aktivitetsrad";
 import { Kategori } from "../../types/kategori";
 import styles from "./Aktivitetskategorier.module.css";
-import { useState } from "react";
-import { Aktivitet } from "../../types/Aktivitet";
+import { useEffect, useState } from "react";
+import { Aktivitet, AktivitetStatus } from "../../types/Aktivitet";
+import { useHentOrgnummer } from "../Layout/Banner/Banner";
+import {ValgtAktivitet} from "../../types/ValgtAktivitet";
 
 interface Props {
     kategorier: Kategori[];
 }
 
+function finnStatus(valgtaktivitet: ValgtAktivitet): AktivitetStatus {
+    if (valgtaktivitet.fullført) return "FULLFØRT";
+    return "VALGT";
+}
+
 export const Aktivitetskategorier = ({ kategorier }: Props) => {
     const [aktivRad, setAktivRad] = useState<Aktivitet>();
-
+    const [valgteaktiviteter, setValgteaktiviteter] = useState<
+        ValgtAktivitet[]
+    >([]);
+    const [orgnummer] = useHentOrgnummer()();
+    useEffect(() => {
+        if (!orgnummer) return;
+        fetch(`/api/valgteaktiviteter?orgnr=${orgnummer}`)
+            .then((res) => res.json())
+            .then(setValgteaktiviteter);
+    }, [orgnummer]);
     return (
         <div data-theme="light" className={styles.aktivitetskategorier}>
             {kategorier.map(({ aktiviteter, tittel, beskrivelse }) => {
@@ -20,7 +36,20 @@ export const Aktivitetskategorier = ({ kategorier }: Props) => {
                         key={tittel}
                         tittel={tittel}
                         beskrivelse={beskrivelse}
-                        aktiviteter={aktiviteter}
+                        aktiviteter={aktiviteter.map((aktivitet) => {
+                            let valgtaktivitet = valgteaktiviteter.find(
+                                (valgtaktivitet) =>
+                                    valgtaktivitet.aktivitetsmalId ===
+                                    aktivitet.id
+                            );
+                            if (valgtaktivitet) {
+                                return {
+                                    ...aktivitet,
+                                    status: finnStatus(valgtaktivitet),
+                                };
+                            }
+                            return aktivitet;
+                        })}
                         gjeldendeAktivitet={aktivRad}
                         onKlikkPåRad={(aktivitet) => {
                             setAktivRad((prev) => {
@@ -57,20 +86,26 @@ const Aktivitetskategori = ({
             </Heading>
             <BodyShort>{beskrivelse}</BodyShort>
             <Accordion className={styles.accordion}>
-                {aktiviteter.map((aktivitet) => {
-                    return (
-                        <Aktivitetsrad
-                            åpen={
-                                aktivitet.tittel === gjeldendeAktivitet?.tittel
-                            }
-                            key={aktivitet.tittel}
-                            aktivitet={aktivitet}
-                            onClick={() => {
-                                onKlikkPåRad?.(aktivitet);
-                            }}
-                        />
-                    );
-                })}
+                {aktiviteter
+                    .sort((a, b) => {
+                        if (a.status === b.status) return 0;
+                        if (a.status === "VALGT") return -1;
+                        return 1;
+                    })
+                    .map((aktivitet) => {
+                        return (
+                            <Aktivitetsrad
+                                åpen={
+                                    aktivitet.tittel === gjeldendeAktivitet?.tittel
+                                }
+                                key={aktivitet.tittel}
+                                aktivitet={aktivitet}
+                                onClick={() => {
+                                    onKlikkPåRad?.(aktivitet);
+                                }}
+                            />
+                        );
+                    })}
             </Accordion>
         </article>
     );
