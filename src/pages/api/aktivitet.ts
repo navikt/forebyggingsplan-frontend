@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import {hentTokenXToken} from "../lib/hentTokenXToken";
+import { hentVerifisertToken } from "../../auth";
+import { veksleToken } from "../../auth/tokenx";
 
 export default async function handler(
     req: NextApiRequest,
@@ -11,14 +12,21 @@ export default async function handler(
     };
 
     const baseUrl = process.env.FOREBYGGINGSPLAN_API_BASEURL;
-    const token = await hentTokenXToken(req, res)
+    const token = await hentVerifisertToken(req);
+    if (!token) {
+        return res.status(401).end();
+    }
+    const tokenxToken = await veksleToken(
+        token,
+        process.env.FOREBYGGINGSPLAN_CLIENT_ID!!
+    );
 
     const respons = await fetch(`${baseUrl}/valgteaktiviteter`, {
         method: "POST",
         body: JSON.stringify(body),
         headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${tokenxToken}`,
         },
     }).then((res) => res.json());
 
