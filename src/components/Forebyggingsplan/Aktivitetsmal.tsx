@@ -7,7 +7,6 @@ import { Seksjon } from "../Seksjon/Seksjon";
 import { block } from "../PortableText/block/Block";
 import { marks } from "../PortableText/marks/Marks";
 import { useHentOrgnummer } from "../Layout/Banner/Banner";
-import {aktivitet} from "../../../sanity-studio/schemas/aktivitet";
 
 const hovedinnhold: Partial<PortableTextComponents> = {
     types: {
