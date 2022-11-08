@@ -4,6 +4,13 @@
     gap: 1rem;
     word-wrap: break-word;
 }
-.button {
-    margin-left: auto;
+
+.knappeContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    gap: 1rem;
 }
+
+
+
