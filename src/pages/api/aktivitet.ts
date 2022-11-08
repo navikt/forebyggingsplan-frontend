@@ -7,13 +7,12 @@ export default async function handler(
 ) {
     const body = {
         aktivitetsmalId: req.body.id,
-        orgnr: req.body.orgnr,
     };
 
     const baseUrl = process.env.FOREBYGGINGSPLAN_API_BASEURL;
     const token = await hentTokenXToken(req, res);
 
-    const respons = await fetch(`${baseUrl}/valgteaktiviteter`, {
+    const respons = await fetch(`${baseUrl}/valgteaktiviteter/${req.body.orgnr}`, {
         method: "POST",
         body: JSON.stringify(body),
         headers: {
