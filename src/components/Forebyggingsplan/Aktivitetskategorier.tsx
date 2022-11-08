@@ -40,12 +40,13 @@ export const Aktivitetskategorier = ({ kategorier }: Props) => {
                             let valgtaktivitet = valgteaktiviteter.find(
                                 (valgtaktivitet) =>
                                     valgtaktivitet.aktivitetsmalId ===
-                                    aktivitet.id
+                                    aktivitet.aktivitetsmalId
                             );
                             if (valgtaktivitet) {
                                 return {
                                     ...aktivitet,
                                     status: finnStatus(valgtaktivitet),
+                                    aktivitetsId: valgtaktivitet.id
                                 };
                             }
                             return aktivitet;

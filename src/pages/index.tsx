@@ -37,7 +37,7 @@ const aktivitetMapper = ({
     beskrivelse,
     embeddedInnhold: innhold,
 }: AktivitetInnhold): Aktivitet => ({
-    id,
+    aktivitetsmalId: id,
     mål,
     tittel,
     beskrivelse,

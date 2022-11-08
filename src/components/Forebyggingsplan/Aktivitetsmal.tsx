@@ -17,7 +17,7 @@ const hovedinnhold: Partial<PortableTextComponents> = {
 };
 
 export function Aktivitetsmal({
-    aktivitet: { id, beskrivelse, innhold, mål, status },
+    aktivitet: { aktivitetsmalId, beskrivelse, innhold, mål, aktivitetsId, status },
 }: {
     aktivitet: Aktivitet;
 }) {
@@ -29,14 +29,17 @@ export function Aktivitetsmal({
                     <Button
                         variant="secondary"
                         onClick={() => {
-                            orgnr && velgAktivitet({ aktivitetsmalId: id, orgnr: orgnr })
+                            // if (!orgnr) { setErrorstate("orgnummer mangler") }
+                            orgnr && velgAktivitet({ aktivitetsmalId: aktivitetsmalId, orgnr: orgnr })
                         }}
                     >
                         Dette vil vi gjøre
                     </Button>
                 )}
                 <Button variant="secondary" onClick={() => {
-                    orgnr && fullførAktivitet({ aktivitetsId: Number.POSITIVE_INFINITY, orgnr: orgnr})
+                    // if (!orgnr) { setErrorstate("orgnummer mangler") }
+                    // if (!aktivitetsId) { setErrorstate("aktivitetsId mangler") }
+                    orgnr && aktivitetsId && fullførAktivitet({ aktivitetsId: aktivitetsId, orgnr: orgnr})
                 }}>
                     {status === "VALGT" ? "Ferdig" : "Dette har vi på plass"}
                 </Button>
@@ -77,10 +80,10 @@ interface FullførAktivitetDTO {
 }
 
 function fullførAktivitet(fullførAktivitetDto: FullførAktivitetDTO) {
-    return fetch("/api/aktivitet", {
+    return fetch("/api/fullfor", {
         method: "POST",
         body: JSON.stringify({
-            aktivitetsId: fullførAktivitetDto.aktivitetsId,
+            aktivitetsId: `${fullførAktivitetDto.aktivitetsId}`,
             orgnr: fullførAktivitetDto.orgnr
         }),
         headers: {

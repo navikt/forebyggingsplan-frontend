@@ -1,5 +1,5 @@
 import { Aktivitet } from "../../types/Aktivitet";
-import { Accordion } from "@navikt/ds-react";
+import {Accordion, Tag} from "@navikt/ds-react";
 import styles from "./Aktivitetsrad.module.css";
 import dynamic from "next/dynamic";
 
@@ -24,7 +24,7 @@ export const Aktivitetsrad = ({ aktivitet, åpen = false, onClick }: Props) => {
                         : undefined
                 }
             >
-                {aktivitet.tittel}
+                {aktivitet.tittel} {aktivitet.status === "FULLFØRT" && <Tag variant="info">Fullført</Tag>}
             </Accordion.Header>
             <Accordion.Content>
                 {åpen && <Aktivitetsmal aktivitet={aktivitet} />}
