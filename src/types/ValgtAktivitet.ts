@@ -1,7 +1,6 @@
 export interface ValgtAktivitet {
     id: number;
     aktivitetsmalId: string;
-    valgtTidspunkt: string;
     valgtAv: {
         fnr: string;
         orgnr: string;
