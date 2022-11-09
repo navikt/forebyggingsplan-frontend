@@ -28,26 +28,28 @@ export function Aktivitetsmal({
     return (
         <div className={styles.container}>
             <span className={styles.knappeContainer}>
-                {status !== "VALGT" && (
+                {status === "IKKE_VALGT" && (
                     <Button
                         variant="secondary"
                         onClick={() => {
                             // if (!orgnr) { setErrorstate("orgnummer mangler") }
                             orgnr && velgAktivitet({ aktivitetsmalId: aktivitetsmalId, orgnr: orgnr })
-                            .then(oppdaterValgteAktiviteter)
+                                .then(oppdaterValgteAktiviteter)
                         }}
                     >
                         Dette vil vi gjøre
                     </Button>
                 )}
-                <Button variant="secondary" onClick={() => {
-                    // if (!orgnr) { setErrorstate("orgnummer mangler") }
-                    orgnr && aktivitetsmalId &&
-                    fullførAktivitet({ aktivitetsId: aktivitetsId, aktivitetsmalId: aktivitetsmalId, orgnr: orgnr})
-                        .then(oppdaterValgteAktiviteter)
-                }}>
-                    {status === "VALGT" ? "Ferdig" : "Dette har vi på plass"}
-                </Button>
+                {["IKKE_VALGT", "VALGT"].includes(status) &&
+                    <Button variant="secondary" onClick={() => {
+                        // if (!orgnr) { setErrorstate("orgnummer mangler") }
+                        orgnr && aktivitetsmalId &&
+                        fullførAktivitet({ aktivitetsId: aktivitetsId, aktivitetsmalId: aktivitetsmalId, orgnr: orgnr})
+                            .then(oppdaterValgteAktiviteter)
+                    }}>
+                        {status === "VALGT" ? "Ferdig" : "Dette har vi på plass"}
+                    </Button>
+                }
             </span>
             {beskrivelse}
             <Heading size="medium" level="3">
