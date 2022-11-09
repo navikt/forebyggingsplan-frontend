@@ -9,8 +9,19 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    align-items: flex-end;
     gap: 1rem;
 }
 
+.detteVilViGjøreContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--navds-global-color-gray-100);
+    gap: 1rem;
+    padding: 1rem;
+}
 
+.detteHarViGjortKnapp {
+    margin-bottom: 1rem;
+}
 

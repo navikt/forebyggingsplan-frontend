@@ -1,4 +1,4 @@
-import { Aktivitet } from "../../types/Aktivitet";
+import {Aktivitet, AktivitetStatus} from "../../types/Aktivitet";
 import {Accordion, Tag} from "@navikt/ds-react";
 import styles from "./Aktivitetsrad.module.css";
 import dynamic from "next/dynamic";
@@ -19,7 +19,7 @@ export const Aktivitetsrad = ({ aktivitet, åpen = false, onClick, oppdaterValgt
         <Accordion.Item open={åpen}>
             <Accordion.Header
                 onClick={onClick}
-                className={styleAktivitetBasertPåStatus(aktivitet)}
+                className={AktivitetStatusStyle[aktivitet.status]}
             >
                 {aktivitet.tittel} {aktivitet.status === "FULLFØRT" && <Tag variant="info">Fullført</Tag>}
             </Accordion.Header>
@@ -30,14 +30,8 @@ export const Aktivitetsrad = ({ aktivitet, åpen = false, onClick, oppdaterValgt
     );
 };
 
-
-const styleAktivitetBasertPåStatus = (aktivitet: Aktivitet): string => {
-    switch(aktivitet.status){
-        case "IKKE_VALGT":
-            return styles.aktivitetIkkeValgt
-        case "VALGT":
-            return styles.aktivitetValgt
-        case "FULLFØRT":
-            return styles.aktivitetFullført
-    }
-}
+const AktivitetStatusStyle: { [key in AktivitetStatus]: string } = {
+    IKKE_VALGT: styles.aktivitetIkkeValgt,
+    VALGT: styles.aktivitetValgt,
+    FULLFØRT: styles.aktivitetFullført,
+};

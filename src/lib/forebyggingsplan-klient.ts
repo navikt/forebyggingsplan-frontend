@@ -13,13 +13,18 @@ export function useHentValgteAktiviteter(orgnummer: string | null){
 
 interface ValgtAktivitetDTO {
     aktivitetsmalId: string;
+    frist: Date | undefined;
     orgnr: string;
 }
 
 export function velgAktivitet(valgtAktivitetDto: ValgtAktivitetDTO) {
     return fetch("/api/aktivitet", {
         method: "POST",
-        body: JSON.stringify({ aktivitetsmalId: valgtAktivitetDto.aktivitetsmalId, orgnr: valgtAktivitetDto.orgnr }),
+        body: JSON.stringify({
+            aktivitetsmalId: valgtAktivitetDto.aktivitetsmalId,
+            frist: valgtAktivitetDto.frist,
+            orgnr: valgtAktivitetDto.orgnr,
+        }),
         headers: {
             "Content-Type": "application/json",
         },
