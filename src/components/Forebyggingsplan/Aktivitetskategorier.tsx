@@ -3,7 +3,11 @@ import { Aktivitetsrad } from "./Aktivitetsrad";
 import { Kategori } from "../../types/kategori";
 import styles from "./Aktivitetskategorier.module.css";
 import { useState } from "react";
-import { Aktivitet, AktivitetStatus } from "../../types/Aktivitet";
+import {
+    Aktivitet,
+    AktivitetStatus,
+    sorterStatus,
+} from "../../types/Aktivitet";
 import { useHentOrgnummer } from "../Layout/Banner/Banner";
 import { ValgtAktivitet } from "../../types/ValgtAktivitet";
 import { useHentValgteAktiviteter } from "../../lib/forebyggingsplan-klient";
@@ -84,30 +88,23 @@ const Aktivitetskategori = ({
             </Heading>
             <BodyShort>{beskrivelse}</BodyShort>
             <Accordion className={styles.accordion}>
-                {aktiviteter
-                    .sort((a, b) => {
-                        if (a.status === b.status) return 0;
-                        if (a.status === "VALGT") return -1;
-                        return 1;
-                    })
-                    .map((aktivitet) => {
-                        return (
-                            <Aktivitetsrad
-                                åpen={
-                                    aktivitet.tittel ===
-                                    gjeldendeAktivitet?.tittel
-                                }
-                                key={aktivitet.tittel}
-                                aktivitet={aktivitet}
-                                onClick={() => {
-                                    onKlikkPåRad?.(aktivitet);
-                                }}
-                                oppdaterValgteAktiviteter={
-                                    oppdaterValgteAktiviteter
-                                }
-                            />
-                        );
-                    })}
+                {aktiviteter.sort(sorterStatus).map((aktivitet) => {
+                    return (
+                        <Aktivitetsrad
+                            åpen={
+                                aktivitet.tittel === gjeldendeAktivitet?.tittel
+                            }
+                            key={aktivitet.tittel}
+                            aktivitet={aktivitet}
+                            onClick={() => {
+                                onKlikkPåRad?.(aktivitet);
+                            }}
+                            oppdaterValgteAktiviteter={
+                                oppdaterValgteAktiviteter
+                            }
+                        />
+                    );
+                })}
             </Accordion>
         </article>
     );
