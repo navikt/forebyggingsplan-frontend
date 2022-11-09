@@ -38,8 +38,7 @@ export function Aktivitetsmal({
                 )}
                 <Button variant="secondary" onClick={() => {
                     // if (!orgnr) { setErrorstate("orgnummer mangler") }
-                    // if (!aktivitetsId) { setErrorstate("aktivitetsId mangler") }
-                    orgnr && aktivitetsId && fullførAktivitet({ aktivitetsId: aktivitetsId, orgnr: orgnr})
+                    orgnr && aktivitetsmalId && fullførAktivitet({ aktivitetsId: aktivitetsId, aktivitetsmalId: aktivitetsmalId, orgnr: orgnr})
                 }}>
                     {status === "VALGT" ? "Ferdig" : "Dette har vi på plass"}
                 </Button>
@@ -64,7 +63,7 @@ interface ValgtAktivitetDTO {
 function velgAktivitet(valgtAktivitetDto: ValgtAktivitetDTO) {
     return fetch("/api/aktivitet", {
         method: "POST",
-        body: JSON.stringify({ id: valgtAktivitetDto.aktivitetsmalId, orgnr: valgtAktivitetDto.orgnr }),
+        body: JSON.stringify({ aktivitetsmalId: valgtAktivitetDto.aktivitetsmalId, orgnr: valgtAktivitetDto.orgnr }),
         headers: {
             "Content-Type": "application/json",
         },
@@ -75,7 +74,8 @@ function velgAktivitet(valgtAktivitetDto: ValgtAktivitetDTO) {
 
 
 interface FullførAktivitetDTO {
-    aktivitetsId: number;
+    aktivitetsId?: number;
+    aktivitetsmalId: string;
     orgnr: string;
 }
 
@@ -83,7 +83,8 @@ function fullførAktivitet(fullførAktivitetDto: FullførAktivitetDTO) {
     return fetch("/api/fullfor", {
         method: "POST",
         body: JSON.stringify({
-            aktivitetsId: `${fullførAktivitetDto.aktivitetsId}`,
+            aktivitetsId: fullførAktivitetDto.aktivitetsId,
+            aktivitetsmalId: `${fullførAktivitetDto.aktivitetsmalId}`,
             orgnr: fullførAktivitetDto.orgnr
         }),
         headers: {

@@ -5,9 +5,11 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
-    const body = {
+    const body = JSON.parse(JSON.stringify({
         aktivitetsId: req.body.aktivitetsId,
-    };
+        aktivitetsmalId: req.body.aktivitetsmalId,
+
+    }));
 
     const baseUrl = process.env.FOREBYGGINGSPLAN_API_BASEURL;
     const token = await hentTokenXToken(req, res);
@@ -19,7 +21,10 @@ export default async function handler(
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
         },
-    }).then((res) => res.json());
+    }).then((res) => {
+        if (res.ok) return {status: res.status, body: res.json()}
+        return {status: res.status, body: res.text()}
+    });
 
-    res.status(respons.status).send(respons);
+    res.status(respons.status).send(respons.body);
 }

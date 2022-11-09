@@ -6,7 +6,7 @@ export default async function handler(
     res: NextApiResponse
 ) {
     const body = {
-        aktivitetsmalId: req.body.id,
+        aktivitetsmalId: req.body.aktivitetsmalId,
     };
 
     const baseUrl = process.env.FOREBYGGINGSPLAN_API_BASEURL;
@@ -19,7 +19,10 @@ export default async function handler(
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
         },
-    }).then((res) => res.json());
+    }).then((res) => {
+        if (res.ok) return {status: res.status, body: res.json()}
+        return {status: res.status, body: res.text()}
+    });
 
-    res.status(201).send(respons);
+    res.status(respons.status).send(respons.body);
 }
