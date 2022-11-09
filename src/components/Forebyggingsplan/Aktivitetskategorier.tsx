@@ -1,12 +1,12 @@
-import {Accordion, BodyShort, Heading} from "@navikt/ds-react";
-import {Aktivitetsrad} from "./Aktivitetsrad";
-import {Kategori} from "../../types/kategori";
+import { Accordion, BodyShort, Heading } from "@navikt/ds-react";
+import { Aktivitetsrad } from "./Aktivitetsrad";
+import { Kategori } from "../../types/kategori";
 import styles from "./Aktivitetskategorier.module.css";
-import {useState} from "react";
-import {Aktivitet, AktivitetStatus} from "../../types/Aktivitet";
-import {useHentOrgnummer} from "../Layout/Banner/Banner";
-import {ValgtAktivitet} from "../../types/ValgtAktivitet";
-import {useHentValgteAktiviteter} from "../../lib/forebyggingsplan-klient";
+import { useState } from "react";
+import { Aktivitet, AktivitetStatus } from "../../types/Aktivitet";
+import { useHentOrgnummer } from "../Layout/Banner/Banner";
+import { ValgtAktivitet } from "../../types/ValgtAktivitet";
+import { useHentValgteAktiviteter } from "../../lib/forebyggingsplan-klient";
 
 interface Props {
     kategorier: Kategori[];
@@ -20,7 +20,8 @@ export function finnStatus(valgtaktivitet: ValgtAktivitet): AktivitetStatus {
 export const Aktivitetskategorier = ({ kategorier }: Props) => {
     const [aktivRad, setAktivRad] = useState<Aktivitet>();
     const [orgnummer] = useHentOrgnummer()();
-    const { data: valgteAktiviteter, mutate } = useHentValgteAktiviteter(orgnummer)
+    const { data: valgteAktiviteter, mutate } =
+        useHentValgteAktiviteter(orgnummer);
     return (
         <div data-theme="light" className={styles.aktivitetskategorier}>
             {kategorier.map(({ aktiviteter, tittel, beskrivelse }) => {
@@ -39,7 +40,7 @@ export const Aktivitetskategorier = ({ kategorier }: Props) => {
                                 return {
                                     ...aktivitet,
                                     status: finnStatus(valgtAktivitet),
-                                    aktivitetsId: valgtAktivitet.id
+                                    aktivitetsId: valgtAktivitet.id,
                                 };
                             }
                             return aktivitet;
@@ -53,7 +54,8 @@ export const Aktivitetskategorier = ({ kategorier }: Props) => {
                                 return aktivitet;
                             });
                         }}
-                     oppdaterValgteAktiviteter={() => console.log("Skal oppdatere valgte")}/>
+                        oppdaterValgteAktiviteter={() => mutate()}
+                    />
                 );
             })}
         </div>
@@ -73,7 +75,7 @@ const Aktivitetskategori = ({
     aktiviteter: Aktivitet[];
     gjeldendeAktivitet?: Aktivitet;
     onKlikkPåRad?: (aktivitet: Aktivitet) => void;
-    oppdaterValgteAktiviteter: () => void,
+    oppdaterValgteAktiviteter: () => void;
 }) => {
     return (
         <article className={styles.kategori}>
@@ -92,14 +94,18 @@ const Aktivitetskategori = ({
                         return (
                             <Aktivitetsrad
                                 åpen={
-                                    aktivitet.tittel === gjeldendeAktivitet?.tittel
+                                    aktivitet.tittel ===
+                                    gjeldendeAktivitet?.tittel
                                 }
                                 key={aktivitet.tittel}
                                 aktivitet={aktivitet}
                                 onClick={() => {
                                     onKlikkPåRad?.(aktivitet);
                                 }}
-                                oppdaterValgteAktiviteter={() => oppdaterValgteAktiviteter}/>
+                                oppdaterValgteAktiviteter={
+                                    oppdaterValgteAktiviteter
+                                }
+                            />
                         );
                     })}
             </Accordion>
