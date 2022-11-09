@@ -5,7 +5,7 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
-    const body = JSON.parse(JSON.stringify({
+    const requestBody = JSON.parse(JSON.stringify({
         aktivitetsId: req.body.aktivitetsId,
         aktivitetsmalId: req.body.aktivitetsmalId,
 
@@ -16,15 +16,15 @@ export default async function handler(
 
     const respons = await fetch(`${baseUrl}/fullfor/${req.body.orgnr}`, {
         method: "POST",
-        body: JSON.stringify(body),
+        body: JSON.stringify(requestBody),
         headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
         },
-    }).then((res) => {
-        if (res.ok) return {status: res.status, body: res.json()}
-        return {status: res.status, body: res.text()}
-    });
-
-    res.status(respons.status).send(respons.body);
+    })
+    const { status, responseBody } = {
+        status : respons.status,
+        responseBody : respons.ok ? await respons.json(): await respons.text()
+    }
+    res.status(status).json(responseBody);
 }
