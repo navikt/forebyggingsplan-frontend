@@ -1,33 +1,26 @@
-import { Accordion, BodyShort, Heading } from "@navikt/ds-react";
-import { Aktivitetsrad } from "./Aktivitetsrad";
-import { Kategori } from "../../types/kategori";
+import {Accordion, BodyShort, Heading} from "@navikt/ds-react";
+import {Aktivitetsrad} from "./Aktivitetsrad";
+import {Kategori} from "../../types/kategori";
 import styles from "./Aktivitetskategorier.module.css";
-import { useEffect, useState } from "react";
-import { Aktivitet, AktivitetStatus } from "../../types/Aktivitet";
-import { useHentOrgnummer } from "../Layout/Banner/Banner";
+import {useState} from "react";
+import {Aktivitet, AktivitetStatus} from "../../types/Aktivitet";
+import {useHentOrgnummer} from "../Layout/Banner/Banner";
 import {ValgtAktivitet} from "../../types/ValgtAktivitet";
+import {useHentValgteAktiviteter} from "../../lib/forebyggingsplan-klient";
 
 interface Props {
     kategorier: Kategori[];
 }
 
-function finnStatus(valgtaktivitet: ValgtAktivitet): AktivitetStatus {
+export function finnStatus(valgtaktivitet: ValgtAktivitet): AktivitetStatus {
     if (valgtaktivitet.fullført) return "FULLFØRT";
     return "VALGT";
 }
 
 export const Aktivitetskategorier = ({ kategorier }: Props) => {
     const [aktivRad, setAktivRad] = useState<Aktivitet>();
-    const [valgteaktiviteter, setValgteaktiviteter] = useState<
-        ValgtAktivitet[]
-    >([]);
     const [orgnummer] = useHentOrgnummer()();
-    useEffect(() => {
-        if (!orgnummer) return;
-        fetch(`/api/valgteaktiviteter?orgnr=${orgnummer}`)
-            .then((res) => res.json())
-            .then(setValgteaktiviteter);
-    }, [orgnummer]);
+    const { data: valgteAktiviteter = [] } = useHentValgteAktiviteter(orgnummer)
     return (
         <div data-theme="light" className={styles.aktivitetskategorier}>
             {kategorier.map(({ aktiviteter, tittel, beskrivelse }) => {
@@ -37,7 +30,7 @@ export const Aktivitetskategorier = ({ kategorier }: Props) => {
                         tittel={tittel}
                         beskrivelse={beskrivelse}
                         aktiviteter={aktiviteter.map((aktivitet) => {
-                            let valgtaktivitet = valgteaktiviteter.find(
+                            let valgtaktivitet = valgteAktiviteter.find(
                                 (valgtaktivitet) =>
                                     valgtaktivitet.aktivitetsmalId ===
                                     aktivitet.aktivitetsmalId
