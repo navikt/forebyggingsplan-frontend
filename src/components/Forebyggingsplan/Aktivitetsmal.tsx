@@ -7,6 +7,7 @@ import { Seksjon } from "../Seksjon/Seksjon";
 import { block } from "../PortableText/block/Block";
 import { marks } from "../PortableText/marks/Marks";
 import { useHentOrgnummer } from "../Layout/Banner/Banner";
+import {fullførAktivitet, velgAktivitet} from "../../lib/forebyggingsplan-klient";
 
 const hovedinnhold: Partial<PortableTextComponents> = {
     types: {
@@ -18,8 +19,10 @@ const hovedinnhold: Partial<PortableTextComponents> = {
 
 export function Aktivitetsmal({
     aktivitet: { aktivitetsmalId, beskrivelse, innhold, mål, aktivitetsId, status },
+    oppdaterValgteAktiviteter
 }: {
-    aktivitet: Aktivitet;
+    aktivitet: Aktivitet,
+    oppdaterValgteAktiviteter: () => void
 }) {
     const [orgnr] = useHentOrgnummer()();
     return (
@@ -31,6 +34,7 @@ export function Aktivitetsmal({
                         onClick={() => {
                             // if (!orgnr) { setErrorstate("orgnummer mangler") }
                             orgnr && velgAktivitet({ aktivitetsmalId: aktivitetsmalId, orgnr: orgnr })
+                            .then(oppdaterValgteAktiviteter)
                         }}
                     >
                         Dette vil vi gjøre
@@ -38,7 +42,9 @@ export function Aktivitetsmal({
                 )}
                 <Button variant="secondary" onClick={() => {
                     // if (!orgnr) { setErrorstate("orgnummer mangler") }
-                    orgnr && aktivitetsmalId && fullførAktivitet({ aktivitetsId: aktivitetsId, aktivitetsmalId: aktivitetsmalId, orgnr: orgnr})
+                    orgnr && aktivitetsmalId &&
+                    fullførAktivitet({ aktivitetsId: aktivitetsId, aktivitetsmalId: aktivitetsmalId, orgnr: orgnr})
+                        .then(oppdaterValgteAktiviteter)
                 }}>
                     {status === "VALGT" ? "Ferdig" : "Dette har vi på plass"}
                 </Button>
@@ -53,45 +59,3 @@ export function Aktivitetsmal({
         </div>
     );
 }
-
-
-interface ValgtAktivitetDTO {
-    aktivitetsmalId: string;
-    orgnr: string;
-}
-
-function velgAktivitet(valgtAktivitetDto: ValgtAktivitetDTO) {
-    return fetch("/api/aktivitet", {
-        method: "POST",
-        body: JSON.stringify({ aktivitetsmalId: valgtAktivitetDto.aktivitetsmalId, orgnr: valgtAktivitetDto.orgnr }),
-        headers: {
-            "Content-Type": "application/json",
-        },
-    }).then((res) => {
-        return res.json();
-    });
-}
-
-
-interface FullførAktivitetDTO {
-    aktivitetsId?: number;
-    aktivitetsmalId: string;
-    orgnr: string;
-}
-
-function fullførAktivitet(fullførAktivitetDto: FullførAktivitetDTO) {
-    return fetch("/api/fullfor", {
-        method: "POST",
-        body: JSON.stringify({
-            aktivitetsId: fullførAktivitetDto.aktivitetsId,
-            aktivitetsmalId: `${fullførAktivitetDto.aktivitetsmalId}`,
-            orgnr: fullførAktivitetDto.orgnr
-        }),
-        headers: {
-            "Content-Type": "application/json",
-        },
-    }).then((res) => {
-        return res.json();
-    });
-}
-

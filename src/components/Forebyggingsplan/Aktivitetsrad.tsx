@@ -11,9 +11,10 @@ interface Props {
     aktivitet: Aktivitet;
     åpen?: boolean;
     onClick?: () => void;
+    oppdaterValgteAktiviteter: () => void;
 }
 
-export const Aktivitetsrad = ({ aktivitet, åpen = false, onClick }: Props) => {
+export const Aktivitetsrad = ({ aktivitet, åpen = false, onClick, oppdaterValgteAktiviteter }: Props) => {
     return (
         <Accordion.Item open={åpen}>
             <Accordion.Header
@@ -27,7 +28,7 @@ export const Aktivitetsrad = ({ aktivitet, åpen = false, onClick }: Props) => {
                 {aktivitet.tittel} {aktivitet.status === "FULLFØRT" && <Tag variant="info">Fullført</Tag>}
             </Accordion.Header>
             <Accordion.Content>
-                {åpen && <Aktivitetsmal aktivitet={aktivitet} />}
+                {åpen && <Aktivitetsmal aktivitet={aktivitet} oppdaterValgteAktiviteter={oppdaterValgteAktiviteter}/>}
             </Accordion.Content>
         </Accordion.Item>
     );

@@ -20,7 +20,7 @@ export function finnStatus(valgtaktivitet: ValgtAktivitet): AktivitetStatus {
 export const Aktivitetskategorier = ({ kategorier }: Props) => {
     const [aktivRad, setAktivRad] = useState<Aktivitet>();
     const [orgnummer] = useHentOrgnummer()();
-    const { data: valgteAktiviteter = [] } = useHentValgteAktiviteter(orgnummer)
+    const { data: valgteAktiviteter, mutate } = useHentValgteAktiviteter(orgnummer)
     return (
         <div data-theme="light" className={styles.aktivitetskategorier}>
             {kategorier.map(({ aktiviteter, tittel, beskrivelse }) => {
@@ -30,16 +30,16 @@ export const Aktivitetskategorier = ({ kategorier }: Props) => {
                         tittel={tittel}
                         beskrivelse={beskrivelse}
                         aktiviteter={aktiviteter.map((aktivitet) => {
-                            let valgtaktivitet = valgteAktiviteter.find(
+                            const valgtAktivitet = valgteAktiviteter?.find(
                                 (valgtaktivitet) =>
                                     valgtaktivitet.aktivitetsmalId ===
                                     aktivitet.aktivitetsmalId
                             );
-                            if (valgtaktivitet) {
+                            if (valgtAktivitet) {
                                 return {
                                     ...aktivitet,
-                                    status: finnStatus(valgtaktivitet),
-                                    aktivitetsId: valgtaktivitet.id
+                                    status: finnStatus(valgtAktivitet),
+                                    aktivitetsId: valgtAktivitet.id
                                 };
                             }
                             return aktivitet;
@@ -53,7 +53,7 @@ export const Aktivitetskategorier = ({ kategorier }: Props) => {
                                 return aktivitet;
                             });
                         }}
-                    />
+                     oppdaterValgteAktiviteter={() => console.log("Skal oppdatere valgte")}/>
                 );
             })}
         </div>
@@ -66,12 +66,14 @@ const Aktivitetskategori = ({
     gjeldendeAktivitet,
     beskrivelse,
     onKlikkPåRad,
+    oppdaterValgteAktiviteter,
 }: {
     tittel: string;
     beskrivelse: string;
     aktiviteter: Aktivitet[];
     gjeldendeAktivitet?: Aktivitet;
     onKlikkPåRad?: (aktivitet: Aktivitet) => void;
+    oppdaterValgteAktiviteter: () => void,
 }) => {
     return (
         <article className={styles.kategori}>
@@ -97,7 +99,7 @@ const Aktivitetskategori = ({
                                 onClick={() => {
                                     onKlikkPåRad?.(aktivitet);
                                 }}
-                            />
+                                oppdaterValgteAktiviteter={() => oppdaterValgteAktiviteter}/>
                         );
                     })}
             </Accordion>
