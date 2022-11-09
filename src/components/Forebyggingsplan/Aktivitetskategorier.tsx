@@ -23,9 +23,9 @@ export function finnStatus(valgtaktivitet: ValgtAktivitet): AktivitetStatus {
 
 export const Aktivitetskategorier = ({ kategorier }: Props) => {
     const [aktivRad, setAktivRad] = useState<Aktivitet>();
-    const [orgnummer] = useHentOrgnummer()();
+    const { orgnr } = useHentOrgnummer();
     const { data: valgteAktiviteter, mutate } =
-        useHentValgteAktiviteter(orgnummer);
+        useHentValgteAktiviteter(orgnr);
     return (
         <div data-theme="light" className={styles.aktivitetskategorier}>
             {kategorier.map(({ aktiviteter, tittel, beskrivelse }) => {

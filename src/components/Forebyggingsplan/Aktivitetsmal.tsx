@@ -24,7 +24,7 @@ export function Aktivitetsmal({
     aktivitet: Aktivitet,
     oppdaterValgteAktiviteter: () => void
 }) {
-    const [orgnr] = useHentOrgnummer()();
+    const { orgnr } = useHentOrgnummer();
     return (
         <div className={styles.container}>
             <span className={styles.knappeContainer}>

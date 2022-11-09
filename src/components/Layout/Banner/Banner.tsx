@@ -7,6 +7,7 @@ const Bedriftsmeny = dynamic(() => import("@navikt/bedriftsmeny"), {
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { Heading } from "@navikt/ds-react";
+import {OrgnrSearchParamType} from "@navikt/bedriftsmeny/src/bedriftsmeny/Virksomhetsvelger/utils/utils";
 
 interface Props {
     organisasjoner: Organisasjon[];
@@ -14,8 +15,7 @@ interface Props {
 
 export const useHentOrgnummer = () => {
     const { push, query } = useRouter();
-    const useOrgnrHook: () => [string | null, (orgnr: string) => void] =
-        useCallback(() => {
+    const retriever = useCallback<OrgnrSearchParamType>(() => {
             const currentOrgnr =
                 typeof query.bedrift === "string" ? query.bedrift : null;
 
@@ -32,13 +32,16 @@ export const useHentOrgnummer = () => {
                 },
             ];
         }, [push, query.bedrift]);
-    return useOrgnrHook;
+    return {
+        hook: retriever,
+        orgnr: retriever()[0]
+    }
 };
 
 export default function Banner({ organisasjoner }: Props) {
     return (
         <Bedriftsmeny
-            orgnrSearchParam={useHentOrgnummer()}
+            orgnrSearchParam={useHentOrgnummer().hook}
             sidetittel={
                 <Heading size="xlarge" level="1">
                     Forebyggingsplan
