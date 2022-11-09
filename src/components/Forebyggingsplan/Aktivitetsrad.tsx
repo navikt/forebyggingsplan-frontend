@@ -19,11 +19,7 @@ export const Aktivitetsrad = ({ aktivitet, åpen = false, onClick, oppdaterValgt
         <Accordion.Item open={åpen}>
             <Accordion.Header
                 onClick={onClick}
-                className={
-                    aktivitet.status === "VALGT"
-                        ? styles.aktivitetValgt
-                        : undefined
-                }
+                className={styleAktivitetBasertPåStatus(aktivitet)}
             >
                 {aktivitet.tittel} {aktivitet.status === "FULLFØRT" && <Tag variant="info">Fullført</Tag>}
             </Accordion.Header>
@@ -33,3 +29,15 @@ export const Aktivitetsrad = ({ aktivitet, åpen = false, onClick, oppdaterValgt
         </Accordion.Item>
     );
 };
+
+
+const styleAktivitetBasertPåStatus = (aktivitet: Aktivitet): string => {
+    switch(aktivitet.status){
+        case "IKKE_VALGT":
+            return styles.aktivitetIkkeValgt
+        case "VALGT":
+            return styles.aktivitetValgt
+        case "FULLFØRT":
+            return styles.aktivitetFullført
+    }
+}

@@ -1,3 +1,11 @@
+.aktivitetIkkeValgt {
+
+}
+
 .aktivitetValgt {
     background-color: var(--navds-global-color-orange-100);
+}
+
+.aktivitetFullført {
+    background-color: var(--navds-global-color-green-100);
 }
