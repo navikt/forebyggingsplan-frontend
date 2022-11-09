@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "dev:docker": "docker-compose pull && docker-compose up -d",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

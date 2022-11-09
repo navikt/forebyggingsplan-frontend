@@ -18,6 +18,12 @@ jobs:
         with:
           node-version: "16"
 
+      - name: Installer dependencies
+        run: npm ci
+
+      - name: Bygg prosjekt
+        run: npm run build
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
@@ -27,30 +33,6 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Setup containers
-        run: docker-compose -f docker-compose-e2e.yaml up -d
-
-      - name: Sleep a bit
-        run: sleep 5s
-
-      - name: Echo docker status
-        run: docker ps
-
-      - name: Check hostnames
-        run: netstat -lt
-
-      - name: Setup deps for end to end tests
-        working-directory: e2e
-        run: npm install && npm start
-
-      - name: Dump docker logs on failure
-        if: failure()
-        uses: jwalton/gh-docker-logs@v1
-
-      - name: Teardown containers
-        if: always()
-        run: docker-compose down --remove-orphans
 
       - name: Build docker image and push to ghcr
         id: docker_build
