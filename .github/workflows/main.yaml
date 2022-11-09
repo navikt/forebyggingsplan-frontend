@@ -21,6 +21,9 @@ jobs:
       - name: Installer dependencies
         run: npm ci
 
+      - name: Kjør tester
+        run: npm run test:ci
+
       - name: Bygg prosjekt
         run: npm run build
 
