@@ -1,25 +1,28 @@
-import {ValgtAktivitet} from "../types/ValgtAktivitet";
+import { ValgtAktivitet } from "../types/ValgtAktivitet";
 import useSWR from "swr";
 
+const fetcher = (...args: [url: string, options?: RequestInit]) =>
+    fetch(...args).then((res) => res.json());
 
-
-const fetcher = (...args: [url: string, options?: RequestInit]) => fetch(...args).then((res) => res.json());
-
-export function useHentValgteAktiviteter(orgnummer: string | null){
-    const url = orgnummer ? `/api/valgteaktiviteter?orgnr=${orgnummer}` : null
-    return useSWR<ValgtAktivitet[]>(url, fetcher)
+export function useHentValgteAktiviteter(orgnummer: string | null) {
+    const url = orgnummer ? `/api/valgteaktiviteter?orgnr=${orgnummer}` : null;
+    return useSWR<ValgtAktivitet[]>(url, fetcher);
 }
-
 
 interface ValgtAktivitetDTO {
     aktivitetsmalId: string;
+    frist?: string;
     orgnr: string;
 }
 
 export function velgAktivitet(valgtAktivitetDto: ValgtAktivitetDTO) {
     return fetch("/api/aktivitet", {
         method: "POST",
-        body: JSON.stringify({ aktivitetsmalId: valgtAktivitetDto.aktivitetsmalId, orgnr: valgtAktivitetDto.orgnr }),
+        body: JSON.stringify({
+            aktivitetsmalId: valgtAktivitetDto.aktivitetsmalId,
+            frist: valgtAktivitetDto.frist,
+            orgnr: valgtAktivitetDto.orgnr,
+        }),
         headers: {
             "Content-Type": "application/json",
         },
@@ -27,7 +30,6 @@ export function velgAktivitet(valgtAktivitetDto: ValgtAktivitetDTO) {
         return res.json();
     });
 }
-
 
 interface FullførAktivitetDTO {
     aktivitetsId?: number;
@@ -41,7 +43,7 @@ export function fullførAktivitet(fullførAktivitetDto: FullførAktivitetDTO) {
         body: JSON.stringify({
             aktivitetsId: fullførAktivitetDto.aktivitetsId,
             aktivitetsmalId: `${fullførAktivitetDto.aktivitetsmalId}`,
-            orgnr: fullførAktivitetDto.orgnr
+            orgnr: fullførAktivitetDto.orgnr,
         }),
         headers: {
             "Content-Type": "application/json",
@@ -50,4 +52,3 @@ export function fullførAktivitet(fullførAktivitetDto: FullførAktivitetDTO) {
         return res.json();
     });
 }
-

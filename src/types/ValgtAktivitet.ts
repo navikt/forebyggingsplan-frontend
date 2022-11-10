@@ -5,6 +5,7 @@ export interface ValgtAktivitet {
         fnr: string;
         orgnr: string;
     };
+    frist?: string;
     fullført: boolean;
     fullførtTidspunkt: string;
     opprettelsesTidspunkt: string;
