@@ -10,6 +10,9 @@ const nextConfig = {
     }
     return config
   },
+  eslint: {
+    dirs: ["."]
+  },
   images: {
     remotePatterns: [{
       protocol: 'https',

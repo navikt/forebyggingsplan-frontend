@@ -1,17 +1,17 @@
 import { useCallback } from "react";
 import { Organisasjon } from "@navikt/bedriftsmeny/lib/organisasjon";
 
-const Bedriftsmeny = dynamic(() => import("@navikt/bedriftsmeny"), {
-    ssr: false,
-});
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { Heading } from "@navikt/ds-react";
 import {OrgnrSearchParamType} from "@navikt/bedriftsmeny/src/bedriftsmeny/Virksomhetsvelger/utils/utils";
-
 interface Props {
     organisasjoner: Organisasjon[];
 }
+
+const Bedriftsmeny = dynamic(() => import("@navikt/bedriftsmeny"), {
+    ssr: false,
+});
 
 export const useHentOrgnummer = () => {
     const { push, query } = useRouter();

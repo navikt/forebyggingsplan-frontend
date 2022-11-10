@@ -52,7 +52,7 @@ export const VideoPreview = ({ value: { videoId, punktliste, tittel } }: Props) 
     );
 };
 
-export default {
+const videoSchema = {
     type: "object",
     name: "video",
     title: "Videoavspiller",
@@ -89,3 +89,4 @@ export default {
         component: VideoPreview,
     },
 };
+export default videoSchema;

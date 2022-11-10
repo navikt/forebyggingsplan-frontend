@@ -3,6 +3,7 @@ import { PortableText } from "@portabletext/react";
 import { Lovpålagt } from "./Lovpålagt";
 import { VideoPreview } from "./Video";
 import { Rule } from "@sanity/types";
+import {PortableTextBlock} from "@portabletext/types";
 
 export const seksjon = {
     type: "object",
@@ -84,10 +85,10 @@ export const seksjon = {
         select: {
             seksjonInnhold: "seksjonInnhold",
         },
-        component: (props: any) => {
+        component:  (props: { value: { media: React.ReactNode }}) => {
             return <div>{props.value.media}</div>;
         },
-        prepare: (value: any) => {
+        prepare: (value: { seksjonInnhold: PortableTextBlock }) => {
             return {
                 title: "Innhold",
                 media: (

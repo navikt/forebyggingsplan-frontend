@@ -10,9 +10,5 @@ export async function hentTokenXToken(
     if (!token) {
         return res.status(401).end();
     }
-    const tokenxToken = await veksleToken(
-        token,
-        process.env.FOREBYGGINGSPLAN_CLIENT_ID!!
-    );
-    return tokenxToken;
+    return await veksleToken(token, process.env.FOREBYGGINGSPLAN_CLIENT_ID);
 }
