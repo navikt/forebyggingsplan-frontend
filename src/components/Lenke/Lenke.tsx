@@ -21,7 +21,9 @@ export const Lenke = ({
             target={erEksternLenke ? "_blank" : undefined}
         >
             {text}
-            {erEksternLenke && <ExternalLink />}
+            {erEksternLenke && (
+                <ExternalLink title="ekstern lenke, åpnes i ny tab" />
+            )}
         </NextLink>
     );
 };
