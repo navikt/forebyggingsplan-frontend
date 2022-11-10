@@ -31,7 +31,7 @@ export const Lovpålagt = ({ value: { tekst }}: Props) => {
     </div>
 };
 
-export default {
+const lovpålagtSchema = {
     type: "object",
     name: "lovpalagt",
     title: "Lovpålagt tekstblokk",
@@ -47,4 +47,5 @@ export default {
         component: Lovpålagt
     },
 };
+export default lovpålagtSchema;
 
