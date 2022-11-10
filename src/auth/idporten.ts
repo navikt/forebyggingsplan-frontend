@@ -6,9 +6,11 @@ let signeringsnøkler: ReturnType<typeof createRemoteJWKSet>;
 let idportenIssuer: Issuer;
 
 async function hentIssuer() {
+    const issuerUrl = process.env.IDPORTEN_WELL_KNOWN_URL;
+    if (!issuerUrl) throw new Error("Mangler miljøvariabelen 'IDPORTEN_WELL_KNOWN_URL' for å kunne lage en issuer")
     if (!idportenIssuer) {
         idportenIssuer = await Issuer.discover(
-            process.env.IDPORTEN_WELL_KNOWN_URL!!
+            issuerUrl
         );
     }
     return idportenIssuer;
@@ -19,7 +21,7 @@ async function hentSigneringsnøkler() {
     if (!signeringsnøkler)
         signeringsnøkler = createRemoteJWKSet(
             new URL(
-                issuer.metadata.jwks_uri ?? process.env.IDPORTEN_JWKS_URI!!
+                issuer.metadata.jwks_uri ?? process.env.IDPORTEN_JWKS_URI ?? ""
             ),
             {
                 cooldownDuration: 86400000, // 1 dag

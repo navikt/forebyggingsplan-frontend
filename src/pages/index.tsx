@@ -48,7 +48,7 @@ const aktivitetMapper = ({
 export const getServerSideProps: GetServerSideProps<Props> = async (
     context
 ) => {
-    const token = await hentVerifisertToken(context.req!!);
+    const token = await hentVerifisertToken(context.req);
     if (!token) {
         return {
             redirect: {
