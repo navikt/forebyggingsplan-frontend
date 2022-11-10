@@ -1,14 +1,22 @@
 import { Aktivitet } from "../../types/Aktivitet";
 import { PortableText, PortableTextComponents } from "@portabletext/react";
-import {Button, Heading, UNSAFE_DatePicker, UNSAFE_useDatepicker} from "@navikt/ds-react";
+import {
+    Button,
+    Heading,
+    UNSAFE_DatePicker,
+    UNSAFE_useDatepicker,
+} from "@navikt/ds-react";
 
 import styles from "./Aktivitetsmal.module.css";
 import { Seksjon } from "../Seksjon/Seksjon";
 import { block } from "../PortableText/block/Block";
 import { marks } from "../PortableText/marks/Marks";
 import { useHentOrgnummer } from "../Layout/Banner/Banner";
-import {fullførAktivitet, velgAktivitet} from "../../lib/forebyggingsplan-klient";
-import {useState} from "react";
+import {
+    fullførAktivitet,
+    velgAktivitet,
+} from "../../lib/forebyggingsplan-klient";
+import { isoDato } from "../../lib/dato";
 
 const hovedinnhold: Partial<PortableTextComponents> = {
     types: {
@@ -19,18 +27,26 @@ const hovedinnhold: Partial<PortableTextComponents> = {
 };
 
 export function Aktivitetsmal({
-    aktivitet: { aktivitetsmalId, beskrivelse, innhold, mål, aktivitetsId, status },
-    oppdaterValgteAktiviteter
+    aktivitet: {
+        aktivitetsmalId,
+        beskrivelse,
+        innhold,
+        mål,
+        aktivitetsId,
+        status,
+    },
+    oppdaterValgteAktiviteter,
 }: {
-    aktivitet: Aktivitet,
-    oppdaterValgteAktiviteter: () => void
+    aktivitet: Aktivitet;
+    oppdaterValgteAktiviteter: () => void;
 }) {
-    const [frist, setFrist] = useState<Date | undefined>()
     const { orgnr } = useHentOrgnummer();
-    const { datepickerProps, inputProps, selectedDay } = UNSAFE_useDatepicker({
-        fromDate: new Date("Aug 23 2019"),
-        onDateChange: (dato) => setFrist(dato),
-    });
+    const {
+        datepickerProps,
+        inputProps,
+        selectedDay: frist,
+    } = UNSAFE_useDatepicker({});
+    console.log({ datepickerProps, inputProps, frist });
     return (
         <div className={styles.container}>
             <span className={styles.knappeContainer}>
@@ -39,7 +55,6 @@ export function Aktivitetsmal({
                         className={styles.detteHarViGjortKnapp}
                         variant="secondary"
                         onClick={() => {
-                            // if (!orgnr) { setErrorstate("orgnummer mangler") }
                             orgnr &&
                                 aktivitetsmalId &&
                                 fullførAktivitet({
@@ -57,16 +72,18 @@ export function Aktivitetsmal({
                 {status === "IKKE_VALGT" && (
                     <div className={styles.detteVilViGjøreContainer}>
                         <UNSAFE_DatePicker {...datepickerProps}>
-                            <UNSAFE_DatePicker.Input {...inputProps} label="Velg dato" />
+                            <UNSAFE_DatePicker.Input
+                                {...inputProps}
+                                label="Velg dato"
+                            />
                         </UNSAFE_DatePicker>
 
                         <Button
                             onClick={() => {
-                                // if (!orgnr) { setErrorstate("orgnummer mangler") }
                                 orgnr &&
                                     velgAktivitet({
                                         aktivitetsmalId: aktivitetsmalId,
-                                        frist: frist,
+                                        frist: isoDato(frist),
                                         orgnr: orgnr,
                                     }).then(oppdaterValgteAktiviteter);
                             }}

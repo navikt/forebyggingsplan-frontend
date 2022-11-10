@@ -1,5 +1,5 @@
-import {Aktivitet, AktivitetStatus} from "../../types/Aktivitet";
-import {Accordion, Tag} from "@navikt/ds-react";
+import { Aktivitet, AktivitetStatus } from "../../types/Aktivitet";
+import { Accordion, Tag } from "@navikt/ds-react";
 import styles from "./Aktivitetsrad.module.css";
 import dynamic from "next/dynamic";
 
@@ -14,17 +14,31 @@ interface Props {
     oppdaterValgteAktiviteter: () => void;
 }
 
-export const Aktivitetsrad = ({ aktivitet, åpen = false, onClick, oppdaterValgteAktiviteter }: Props) => {
+export const Aktivitetsrad = ({
+    aktivitet,
+    åpen = false,
+    onClick,
+    oppdaterValgteAktiviteter,
+}: Props) => {
     return (
         <Accordion.Item open={åpen}>
             <Accordion.Header
                 onClick={onClick}
                 className={AktivitetStatusStyle[aktivitet.status]}
             >
-                {aktivitet.tittel} {aktivitet.status === "FULLFØRT" && <Tag variant="info">Fullført</Tag>}
+                {aktivitet.tittel}{" "}
+                {aktivitet.status === "FULLFØRT" && (
+                    <Tag variant="info">Fullført</Tag>
+                )}{" "}
+                {aktivitet.frist ?? ""}
             </Accordion.Header>
             <Accordion.Content>
-                {åpen && <Aktivitetsmal aktivitet={aktivitet} oppdaterValgteAktiviteter={oppdaterValgteAktiviteter}/>}
+                {åpen && (
+                    <Aktivitetsmal
+                        aktivitet={aktivitet}
+                        oppdaterValgteAktiviteter={oppdaterValgteAktiviteter}
+                    />
+                )}
             </Accordion.Content>
         </Accordion.Item>
     );
