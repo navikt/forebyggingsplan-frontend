@@ -1,10 +1,10 @@
-import * as React from "react"
-import {CSSProperties} from "react";
+import * as React from "react";
+import { CSSProperties } from "react";
 
 interface Props {
     value: {
-        tekst: string
-    }
+        tekst: string;
+    };
 }
 
 const lovpalagdtStyle: CSSProperties = {
@@ -13,39 +13,42 @@ const lovpalagdtStyle: CSSProperties = {
     gap: "1rem",
     padding: "1rem",
     backgroundColor: "#fdE8e6",
-    borderRadius: "4px"
-}
+    borderRadius: "4px",
+};
 
 const lovpalagdtTagStyle: CSSProperties = {
     padding: "0.25rem",
     backgroundColor: "#fdE8e6",
     border: "1px solid red",
     borderRadius: "4px",
-    width: "max-content"
-}
+    width: "max-content",
+};
 
-export const Lovpålagt = ({ value: { tekst }}: Props) => {
-    return <div style={lovpalagdtStyle}>
-        <div style={lovpalagdtTagStyle}>Lovpålagt</div>
-        {tekst}
-    </div>
+export const Lovpålagt = ({ value: { tekst } }: Props) => {
+    return (
+        <div style={lovpalagdtStyle}>
+            <div style={lovpalagdtTagStyle}>Lovpålagt</div>
+            {tekst}
+        </div>
+    );
 };
 
 const lovpålagtSchema = {
     type: "object",
     name: "lovpalagt",
     title: "Lovpålagt tekstblokk",
-    fields: [{
-        type: "string",
-        name: "tekst",
-        title: "Tekstinnhold",
-    }],
+    fields: [
+        {
+            type: "string",
+            name: "tekst",
+            title: "Tekstinnhold",
+        },
+    ],
     preview: {
         select: {
-            tekst: "tekst"
+            tekst: "tekst",
         },
-        component: Lovpålagt
+        component: Lovpålagt,
     },
 };
 export default lovpålagtSchema;
-
