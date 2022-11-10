@@ -2,8 +2,6 @@ import { render } from "@testing-library/react";
 import { Lovpålagt } from "./Lovpålagt";
 import { axe } from "jest-axe";
 
-export {};
-
 /*{
     aktivitetsmalId: "67fe672b-8def-4e71-8fe8-1fd6d5226dc9",
     mål: "Du kjenner til hvordan du følger opp sykefravær på en god måte.",
@@ -229,7 +227,7 @@ describe("Lovpålagt", () => {
                 value={{ tekst: "Heisann" }}
                 index={1}
                 isInline={false}
-                renderNode={(options) => <></>}
+                renderNode={() => <></>}
             />
         );
         const results = await axe(container);
