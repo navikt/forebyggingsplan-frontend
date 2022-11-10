@@ -46,7 +46,6 @@ export function Aktivitetsmal({
         inputProps,
         selectedDay: frist,
     } = UNSAFE_useDatepicker({});
-    console.log({ datepickerProps, inputProps, frist });
     return (
         <div className={styles.container}>
             <span className={styles.knappeContainer}>
