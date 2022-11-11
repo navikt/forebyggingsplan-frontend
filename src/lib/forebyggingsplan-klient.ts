@@ -1,5 +1,6 @@
 import { ValgtAktivitet } from "../types/ValgtAktivitet";
 import useSWR from "swr";
+import { isoDato } from "./dato";
 
 const fetcher = (...args: [url: string, options?: RequestInit]) =>
     fetch(...args).then((res) => res.json());
@@ -11,16 +12,18 @@ export function useHentValgteAktiviteter(orgnummer: string | null) {
 
 interface ValgtAktivitetDTO {
     aktivitetsmalId: string;
-    frist?: string;
-    orgnr: string;
+    frist?: Date;
+    orgnr?: string;
 }
 
 export function velgAktivitet(valgtAktivitetDto: ValgtAktivitetDTO) {
+    console.log(valgtAktivitetDto);
+    if (!valgtAktivitetDto.orgnr) return;
     return fetch("/api/aktivitet", {
         method: "POST",
         body: JSON.stringify({
             aktivitetsmalId: valgtAktivitetDto.aktivitetsmalId,
-            frist: valgtAktivitetDto.frist,
+            frist: isoDato(valgtAktivitetDto.frist),
             orgnr: valgtAktivitetDto.orgnr,
         }),
         headers: {
@@ -34,10 +37,11 @@ export function velgAktivitet(valgtAktivitetDto: ValgtAktivitetDTO) {
 interface FullførAktivitetDTO {
     aktivitetsId?: number;
     aktivitetsmalId: string;
-    orgnr: string;
+    orgnr?: string;
 }
 
 export function fullførAktivitet(fullførAktivitetDto: FullførAktivitetDTO) {
+    if (!fullførAktivitetDto.orgnr) return;
     return fetch("/api/fullfor", {
         method: "POST",
         body: JSON.stringify({

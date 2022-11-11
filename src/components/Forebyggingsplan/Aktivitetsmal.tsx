@@ -11,12 +11,6 @@ import styles from "./Aktivitetsmal.module.css";
 import { Seksjon } from "../Seksjon/Seksjon";
 import { block } from "../PortableText/block/Block";
 import { marks } from "../PortableText/marks/Marks";
-import { useHentOrgnummer } from "../Layout/Banner/Banner";
-import {
-    fullførAktivitet,
-    velgAktivitet,
-} from "../../lib/forebyggingsplan-klient";
-import { isoDato } from "../../lib/dato";
 
 const hovedinnhold: Partial<PortableTextComponents> = {
     types: {
@@ -27,25 +21,19 @@ const hovedinnhold: Partial<PortableTextComponents> = {
 };
 
 export function Aktivitetsmal({
-    aktivitet: {
-        aktivitetsmalId,
-        beskrivelse,
-        innhold,
-        mål,
-        aktivitetsId,
-        status,
-    },
-    oppdaterValgteAktiviteter,
+    aktivitet: { beskrivelse, innhold, mål, status },
+    velgAktivitet,
+    fullførAktivitet,
 }: {
     aktivitet: Aktivitet;
-    oppdaterValgteAktiviteter: () => void;
+    velgAktivitet: (frist?: Date) => void;
+    fullførAktivitet: () => void;
 }) {
-    const { orgnr } = useHentOrgnummer();
     const {
         datepickerProps,
         inputProps,
         selectedDay: frist,
-    } = UNSAFE_useDatepicker({});
+    } = UNSAFE_useDatepicker();
     return (
         <div className={styles.container}>
             <span className={styles.knappeContainer}>
@@ -53,15 +41,7 @@ export function Aktivitetsmal({
                     <Button
                         className={styles.detteHarViGjortKnapp}
                         variant="secondary"
-                        onClick={() => {
-                            orgnr &&
-                                aktivitetsmalId &&
-                                fullførAktivitet({
-                                    aktivitetsId: aktivitetsId,
-                                    aktivitetsmalId: aktivitetsmalId,
-                                    orgnr: orgnr,
-                                }).then(oppdaterValgteAktiviteter);
-                        }}
+                        onClick={fullførAktivitet}
                     >
                         {status === "VALGT"
                             ? "Ferdig"
@@ -79,12 +59,7 @@ export function Aktivitetsmal({
 
                         <Button
                             onClick={() => {
-                                orgnr &&
-                                    velgAktivitet({
-                                        aktivitetsmalId: aktivitetsmalId,
-                                        frist: isoDato(frist),
-                                        orgnr: orgnr,
-                                    }).then(oppdaterValgteAktiviteter);
+                                velgAktivitet(frist);
                             }}
                         >
                             Dette vil vi gjøre
