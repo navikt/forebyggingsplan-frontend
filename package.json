@@ -21,7 +21,7 @@
     "@portabletext/react": "1.0.6",
     "@sanity/client": "3.4.1",
     "@sanity/image-url": "1.0.1",
-    "jose": "4.9.0",
+    "jose": "4.9.2",
     "next": "13.0.1",
     "openid-client": "5.1.9",
     "react": "18.2.0",
