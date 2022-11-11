@@ -6,6 +6,7 @@ import {
     fullførAktivitet,
     velgAktivitet,
 } from "../../lib/forebyggingsplan-klient";
+import { useHentOrgnummer } from "../Layout/Banner/Banner";
 
 const Aktivitetsmal = dynamic(() =>
     import("./Aktivitetsmal").then((mod) => mod.Aktivitetsmal)
@@ -24,18 +25,20 @@ export const Aktivitetsrad = ({
     onClick,
     oppdaterValgteAktiviteter,
 }: Props) => {
+    const { orgnr } = useHentOrgnummer();
+
     const velgAktivitetHandler = (frist?: Date) => {
         velgAktivitet({
             aktivitetsmalId: aktivitet.aktivitetsmalId,
             frist,
-            orgnr: aktivitet.orgnr,
+            orgnr: orgnr ?? undefined,
         })?.then(oppdaterValgteAktiviteter);
     };
     const fullførAktivitetHandler = () => {
         fullførAktivitet({
             aktivitetsmalId: aktivitet.aktivitetsmalId,
             aktivitetsId: aktivitet.aktivitetsId,
-            orgnr: aktivitet.orgnr,
+            orgnr: aktivitet.orgnr ?? orgnr ?? undefined,
         })?.then(oppdaterValgteAktiviteter);
     };
     return (

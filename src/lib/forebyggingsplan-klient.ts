@@ -17,7 +17,6 @@ interface ValgtAktivitetDTO {
 }
 
 export function velgAktivitet(valgtAktivitetDto: ValgtAktivitetDTO) {
-    console.log(valgtAktivitetDto);
     if (!valgtAktivitetDto.orgnr) return;
     return fetch("/api/aktivitet", {
         method: "POST",
