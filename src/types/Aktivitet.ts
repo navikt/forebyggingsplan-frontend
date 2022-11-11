@@ -6,9 +6,10 @@ export interface Aktivitet {
     beskrivelse: string;
     mål: string;
     innhold: PortableTextBlock[];
-    aktivitetsId?: number;
     status: AktivitetStatus;
+    aktivitetsId?: number;
     frist?: string;
+    orgnr?: string;
 }
 
 export type AktivitetStatus = "IKKE_VALGT" | "VALGT" | "FULLFØRT";

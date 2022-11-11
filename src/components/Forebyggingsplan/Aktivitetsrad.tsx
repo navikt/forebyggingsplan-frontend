@@ -2,6 +2,11 @@ import { Aktivitet, AktivitetStatus } from "../../types/Aktivitet";
 import { Accordion, Tag } from "@navikt/ds-react";
 import styles from "./Aktivitetsrad.module.css";
 import dynamic from "next/dynamic";
+import {
+    fullførAktivitet,
+    velgAktivitet,
+} from "../../lib/forebyggingsplan-klient";
+import { useHentOrgnummer } from "../Layout/Banner/Banner";
 
 const Aktivitetsmal = dynamic(() =>
     import("./Aktivitetsmal").then((mod) => mod.Aktivitetsmal)
@@ -20,6 +25,22 @@ export const Aktivitetsrad = ({
     onClick,
     oppdaterValgteAktiviteter,
 }: Props) => {
+    const { orgnr } = useHentOrgnummer();
+
+    const velgAktivitetHandler = (frist?: Date) => {
+        velgAktivitet({
+            aktivitetsmalId: aktivitet.aktivitetsmalId,
+            frist,
+            orgnr: orgnr ?? undefined,
+        })?.then(oppdaterValgteAktiviteter);
+    };
+    const fullførAktivitetHandler = () => {
+        fullførAktivitet({
+            aktivitetsmalId: aktivitet.aktivitetsmalId,
+            aktivitetsId: aktivitet.aktivitetsId,
+            orgnr: aktivitet.orgnr ?? orgnr ?? undefined,
+        })?.then(oppdaterValgteAktiviteter);
+    };
     return (
         <Accordion.Item open={åpen}>
             <Accordion.Header
@@ -36,7 +57,8 @@ export const Aktivitetsrad = ({
                 {åpen && (
                     <Aktivitetsmal
                         aktivitet={aktivitet}
-                        oppdaterValgteAktiviteter={oppdaterValgteAktiviteter}
+                        velgAktivitet={velgAktivitetHandler}
+                        fullførAktivitet={fullførAktivitetHandler}
                     />
                 )}
             </Accordion.Content>

@@ -44,6 +44,7 @@ export const Aktivitetskategorier = ({ kategorier }: Props) => {
                                     ...aktivitet,
                                     status: finnStatus(valgtAktivitet),
                                     frist: valgtAktivitet.frist,
+                                    orgnr: valgtAktivitet.valgtAv.orgnr,
                                     aktivitetsId: valgtAktivitet.id,
                                 };
                             }
