@@ -42,10 +42,27 @@ describe("Aktivitetskategorier", () => {
     });
 
     it("Skal kunne åpne en aktivitet", async () => {
-        render(<Aktivitetskategorier kategorier={aktivitetskategorierMock} />);
+        const { container } = render(
+            <Aktivitetskategorier kategorier={aktivitetskategorierMock} />
+        );
         fireEvent.click(screen.getAllByRole("button")[0]);
         expect(
-            await screen.findByText("Dette har vi på plass")
+            await screen.findByRole("button", { name: "Dette har vi på plass" })
+        ).toHaveClass("navds-button", "navds-button--secondary");
+        expect(
+            await screen.findByRole("button", { name: "Dette vil vi gjøre" })
+        ).toHaveClass("navds-button", "navds-button--primary");
+        expect(
+            await screen.findByRole("heading", { level: 3, name: "Mål" })
         ).toBeInTheDocument();
+        expect(
+            await screen.findByText(
+                /Du vet hvilke plikter du har til å føre sykefraværsstatstikk/
+            )
+        ).toBeInTheDocument();
+        fireEvent.click(screen.getByTitle("Åpne datovelger"));
+        expect(await screen.findByRole("dialog")).toBeInTheDocument();
+        // const results = await axe(container); // Datepicker aria-control peker på en popup som ikke er åpen/blir rendret.
+        // expect(results).toHaveNoViolations();
     });
 });
