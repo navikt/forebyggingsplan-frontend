@@ -11,6 +11,7 @@ import styles from "./Aktivitetsmal.module.css";
 import { Seksjon } from "../Seksjon/Seksjon";
 import { block } from "../PortableText/block/Block";
 import { marks } from "../PortableText/marks/Marks";
+import { lastNedFil } from "../../lib/filer";
 
 const hovedinnhold: Partial<PortableTextComponents> = {
     types: {
@@ -20,8 +21,23 @@ const hovedinnhold: Partial<PortableTextComponents> = {
     marks,
 };
 
+const lagKalenderInvitasjon = ({
+    tittel,
+    frist,
+    aktivitetsmalId,
+    aktivitetsId,
+}: Aktivitet) => {
+    return fetch("/api/kalender", {
+        method: "POST",
+        body: JSON.stringify({ tittel, frist, aktivitetsmalId, aktivitetsId }),
+        headers: {
+            "Content-Type": "application/json",
+        },
+    }).then((res) => res.blob());
+};
+
 export function Aktivitetsmal({
-    aktivitet: { beskrivelse, innhold, mål, status },
+    aktivitet,
     velgAktivitet,
     fullførAktivitet,
 }: {
@@ -37,18 +53,31 @@ export function Aktivitetsmal({
     return (
         <div className={styles.container}>
             <span className={styles.knappeContainer}>
-                {["IKKE_VALGT", "VALGT"].includes(status) && (
+                {aktivitet.frist && (
+                    <Button
+                        className={styles.detteHarViGjortKnapp}
+                        variant="secondary"
+                        onClick={() =>
+                            lagKalenderInvitasjon(aktivitet).then((blob) => {
+                                lastNedFil(blob);
+                            })
+                        }
+                    >
+                        Legg til i kalender
+                    </Button>
+                )}
+                {["IKKE_VALGT", "VALGT"].includes(aktivitet.status) && (
                     <Button
                         className={styles.detteHarViGjortKnapp}
                         variant="secondary"
                         onClick={fullførAktivitet}
                     >
-                        {status === "VALGT"
+                        {aktivitet.status === "VALGT"
                             ? "Ferdig"
                             : "Dette har vi på plass"}
                     </Button>
                 )}
-                {status === "IKKE_VALGT" && (
+                {aktivitet.status === "IKKE_VALGT" && (
                     <div className={styles.detteVilViGjøreContainer}>
                         <UNSAFE_DatePicker {...datepickerProps}>
                             <UNSAFE_DatePicker.Input
@@ -67,13 +96,13 @@ export function Aktivitetsmal({
                     </div>
                 )}
             </span>
-            {beskrivelse}
+            {aktivitet.beskrivelse}
             <Heading size="medium" level="3">
                 Mål
             </Heading>
-            {mål}
+            {aktivitet.mål}
 
-            <PortableText value={innhold} components={hovedinnhold} />
+            <PortableText value={aktivitet.innhold} components={hovedinnhold} />
         </div>
     );
 }
