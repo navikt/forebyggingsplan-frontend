@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { screen, render } from "@testing-library/react";
 import { Lovpålagt } from "./Lovpålagt";
 import { axe } from "jest-axe";
 
@@ -232,5 +232,24 @@ describe("Lovpålagt", () => {
         );
         const results = await axe(container);
         expect(results).toHaveNoViolations();
+    });
+    it("Har tekst og label", async () => {
+        const tekst = "Heisann";
+        render(
+            <Lovpålagt
+                value={{ tekst: tekst }}
+                index={1}
+                isInline={false}
+                renderNode={() => <></>}
+            />
+        );
+        expect(screen.getByText("LOVPÅLAGT")).toBeInTheDocument();
+        expect(screen.getByText("LOVPÅLAGT")).toHaveClass(
+            "navds-tag",
+            "tag",
+            "navds-tag--error"
+        );
+        expect(screen.getByText(tekst)).toBeInTheDocument();
+        expect(screen.getByText(tekst)).toHaveClass("wrapper");
     });
 });
