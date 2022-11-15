@@ -7,6 +7,7 @@ import {
     velgAktivitet,
 } from "../../lib/forebyggingsplan-klient";
 import { useHentOrgnummer } from "../Layout/Banner/Banner";
+import { loggFullførAktivitet, loggVelgAktivitet } from "../../lib/amplitude";
 
 const Aktivitetsmal = dynamic(() =>
     import("./Aktivitetsmal").then((mod) => mod.Aktivitetsmal)
@@ -28,6 +29,7 @@ export const Aktivitetsrad = ({
     const { orgnr } = useHentOrgnummer();
 
     const velgAktivitetHandler = (frist?: Date) => {
+        loggVelgAktivitet(aktivitet);
         velgAktivitet({
             aktivitetsmalId: aktivitet.aktivitetsmalId,
             frist,
@@ -35,6 +37,7 @@ export const Aktivitetsrad = ({
         })?.then(oppdaterValgteAktiviteter);
     };
     const fullførAktivitetHandler = () => {
+        loggFullførAktivitet(aktivitet);
         fullførAktivitet({
             aktivitetsmalId: aktivitet.aktivitetsmalId,
             aktivitetsId: aktivitet.aktivitetsId,
