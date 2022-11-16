@@ -11,7 +11,7 @@ export default async function handler(
         "dev-fss:arbeidsgiver:sykefravarsstatistikk-api"
     );
     const response = await fetch(
-        `https://sykefravarsstatistikk-api.dev-fss-pub.nais.io/${req.query.orgnr}/v1/sykefravarshistorikk/aggregert`,
+        `https://sykefravarsstatistikk-api.dev-fss-pub.nais.io/sykefravarsstatistikk-api/${req.query.orgnr}/v1/sykefravarshistorikk/aggregert`,
         {
             headers: {
                 authorization: `Bearer ${token}`,
