@@ -34,6 +34,8 @@ spec:
       value: http://forebyggingsplan
     - name: FOREBYGGINGSPLAN_CLIENT_ID
       value: {{ forebyggingsplanClientId }}
+    - name: SYKEFRAVÆRSSTATISTIKK_API_CLIENT_ID
+      value: {{ sykefraværstatistikkApiClientId }}
   ingresses:
   {{#each ingresses as |url|}}
      - {{url}}
