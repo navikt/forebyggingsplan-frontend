@@ -18,7 +18,6 @@ export default async function handler(
             },
         }
     );
-
     if (!response.ok)
         return res.status(response.status).send(await response.text());
 
