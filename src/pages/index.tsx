@@ -50,10 +50,6 @@ const aktivitetMapper = ({
 export const getServerSideProps: GetServerSideProps<Props> = async (
     context
 ) => {
-    context.res.setHeader(
-        "Cache-Control",
-        "private, max-age=300, stale-while-revalidate=360"
-    );
     const token = await hentVerifisertToken(context.req);
     if (!token) {
         return {
