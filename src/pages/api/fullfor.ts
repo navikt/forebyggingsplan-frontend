@@ -5,14 +5,19 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
-    const requestBody = JSON.parse(JSON.stringify({
-        aktivitetsId: req.body.aktivitetsId,
-        aktivitetsmalId: req.body.aktivitetsmalId,
-
-    }));
+    const requestBody = JSON.parse(
+        JSON.stringify({
+            aktivitetsId: req.body.aktivitetsId,
+            aktivitetsmalId: req.body.aktivitetsmalId,
+        })
+    );
 
     const baseUrl = process.env.FOREBYGGINGSPLAN_API_BASEURL;
-    const token = await hentTokenXToken(req, res);
+    const token = await hentTokenXToken(
+        req,
+        res,
+        process.env.FOREBYGGINGSPLAN_CLIENT_ID
+    );
 
     const respons = await fetch(`${baseUrl}/fullfor/${req.body.orgnr}`, {
         method: "POST",
@@ -21,10 +26,10 @@ export default async function handler(
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
         },
-    })
+    });
     const { status, responseBody } = {
-        status : respons.status,
-        responseBody : respons.ok ? await respons.json(): await respons.text()
-    }
+        status: respons.status,
+        responseBody: respons.ok ? await respons.json() : await respons.text(),
+    };
     res.status(status).json(responseBody);
 }

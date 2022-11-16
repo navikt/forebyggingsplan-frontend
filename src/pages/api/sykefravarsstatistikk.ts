@@ -8,10 +8,10 @@ export default async function handler(
     const token = await hentTokenXToken(
         req,
         res,
-        process.env.FOREBYGGINGSPLAN_CLIENT_ID
+        "dev-fss:arbeidsgiver:sykefravarsstatistikk-api"
     );
     const data = await fetch(
-        `${process.env.FOREBYGGINGSPLAN_API_BASEURL}/valgteaktiviteter/${req.query.orgnr}`,
+        `https://sykefravarsstatistikk-api.dev-fss-pub.nais.io/${req.query.orgnr}/v1/sykefravarshistorikk/aggregert`,
         {
             headers: {
                 authorization: `Bearer ${token}`,
