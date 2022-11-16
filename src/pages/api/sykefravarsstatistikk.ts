@@ -10,15 +10,17 @@ export default async function handler(
         res,
         "dev-fss:arbeidsgiver:sykefravarsstatistikk-api"
     );
-    const data = await fetch(
+    const response = await fetch(
         `https://sykefravarsstatistikk-api.dev-fss-pub.nais.io/${req.query.orgnr}/v1/sykefravarshistorikk/aggregert`,
         {
             headers: {
                 authorization: `Bearer ${token}`,
             },
         }
-    ).then((res) => {
-        return res.json();
-    });
-    return res.status(200).json(data);
+    );
+
+    if (!response.ok)
+        return res.status(response.status).send(await response.text());
+
+    return res.status(200).json(await response.json());
 }
