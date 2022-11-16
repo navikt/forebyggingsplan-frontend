@@ -11,7 +11,7 @@ import styles from "./Aktivitetsmal.module.css";
 import { Seksjon } from "../Seksjon/Seksjon";
 import { block } from "../PortableText/block/Block";
 import { marks } from "../PortableText/marks/Marks";
-import { lastNedFil } from "../../lib/filer";
+import { EksporterTilKalender } from "./EksporterTilKalender";
 
 const hovedinnhold: Partial<PortableTextComponents> = {
     types: {
@@ -19,21 +19,6 @@ const hovedinnhold: Partial<PortableTextComponents> = {
     },
     block,
     marks,
-};
-
-const lagKalenderInvitasjon = ({
-    tittel,
-    frist,
-    aktivitetsmalId,
-    aktivitetsId,
-}: Aktivitet) => {
-    return fetch("/api/kalender", {
-        method: "POST",
-        body: JSON.stringify({ tittel, frist, aktivitetsmalId, aktivitetsId }),
-        headers: {
-            "Content-Type": "application/json",
-        },
-    }).then((res) => res.blob());
 };
 
 export function Aktivitetsmal({
@@ -53,19 +38,7 @@ export function Aktivitetsmal({
     return (
         <div className={styles.container}>
             <span className={styles.knappeContainer}>
-                {aktivitet.frist && (
-                    <Button
-                        className={styles.detteHarViGjortKnapp}
-                        variant="secondary"
-                        onClick={() =>
-                            lagKalenderInvitasjon(aktivitet).then((blob) => {
-                                lastNedFil(blob);
-                            })
-                        }
-                    >
-                        Legg til i kalender
-                    </Button>
-                )}
+                <EksporterTilKalender aktivitet={aktivitet} />
                 {["IKKE_VALGT", "VALGT"].includes(aktivitet.status) && (
                     <Button
                         className={styles.detteHarViGjortKnapp}
