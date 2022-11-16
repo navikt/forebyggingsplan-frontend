@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { hentTokenXToken } from "../../auth/hentTokenXToken";
+import { logger } from "../../lib/logger";
 
 export default async function handler(
     req: NextApiRequest,
@@ -10,16 +11,16 @@ export default async function handler(
         res,
         "dev-fss:arbeidsgiver:sykefravarsstatistikk-api"
     );
-    const response = await fetch(
+    const data = await fetch(
         `https://sykefravarsstatistikk-api.dev-fss-pub.nais.io/sykefravarsstatistikk-api/${req.query.orgnr}/v1/sykefravarshistorikk/aggregert`,
         {
             headers: {
                 authorization: `Bearer ${token}`,
             },
         }
-    );
-    if (!response.ok)
-        return res.status(response.status).send(await response.text());
+    )
+        .then((res) => res.json())
+        .catch(logger.warn);
 
-    return res.status(200).json(await response.json());
+    return res.status(200).json(data);
 }
