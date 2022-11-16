@@ -1,12 +1,19 @@
 import { init, track } from "@amplitude/analytics-browser";
 import { Aktivitet } from "../types/Aktivitet";
 
+const erIProd = () => process.env.NAIS_CLUSTER_NAME === "prod-gcp";
+
+const getAmplitudeBucketId = () =>
+    erIProd()
+        ? AmplitudeBucket.ARBEIDSGIVER_PROD
+        : AmplitudeBucket.ARBEIDSGIVER_DEV;
+
 const AmplitudeBucket = {
     ARBEIDSGIVER_PROD: "a8243d37808422b4c768d31c88a22ef4",
     ARBEIDSGIVER_DEV: "6ed1f00aabc6ced4fd6fcb7fcdc01b30",
 };
 
-init(AmplitudeBucket.ARBEIDSGIVER_DEV, "", {
+init(getAmplitudeBucketId(), "", {
     serverUrl: "https://amplitude.nav.no/collect",
     useBatch: false,
 });
@@ -40,6 +47,8 @@ function sendAktivitetsEvent(aktivitet: Aktivitet, hendelse: string) {
         tittel: aktivitet.tittel,
         beskrivelse: aktivitet.beskrivelse,
         aktivitetsmalId: aktivitet.aktivitetsmalId,
-        versjon: aktivitet.aktivitetsmalVersjon,
+        aktivitetsmalVersjon: aktivitet.aktivitetsmalVersjon,
+        status: aktivitet.status,
+        frist: aktivitet.frist,
     });
 }
