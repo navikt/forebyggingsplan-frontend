@@ -19,21 +19,27 @@ export const defaultEventProperties = () => {
     };
 };
 
+export const loggÅpneAktivitet = (aktivitet: Aktivitet) => {
+    sendAktivitetsEvent(aktivitet, "åpne");
+};
+
 export const loggVelgAktivitet = (aktivitet: Aktivitet) => {
-    track("velg_aktivitet", {
-        ...defaultEventProperties(),
-        tittel: aktivitet.tittel,
-        beskrivelse: aktivitet.beskrivelse,
-        aktivitetsmalId: aktivitet.aktivitetsmalId,
-        //versjon: aktivitet.versjon
-    });
+    sendAktivitetsEvent(aktivitet, "velg");
 };
+
 export const loggFullførAktivitet = (aktivitet: Aktivitet) => {
-    track("fullfoer_aktivitet", {
+    const hendelse =
+        aktivitet.status == "VALGT" ? "fullført" : "detteHarViPåPlass";
+    sendAktivitetsEvent(aktivitet, hendelse);
+};
+
+function sendAktivitetsEvent(aktivitet: Aktivitet, hendelse: string) {
+    track("#forebyggingsplan-aktivitet", {
         ...defaultEventProperties(),
+        hendelse: hendelse,
         tittel: aktivitet.tittel,
         beskrivelse: aktivitet.beskrivelse,
         aktivitetsmalId: aktivitet.aktivitetsmalId,
-        //versjon: aktivitet.versjon
+        versjon: aktivitet.aktivitetsmalVersjon,
     });
-};
+}
