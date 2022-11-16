@@ -32,12 +32,14 @@ interface AktivitetInnhold extends SanityDocument {
 
 const aktivitetMapper = ({
     _id: id,
+    _rev: versjon,
     maal: mål,
     tittel,
     beskrivelse,
     embeddedInnhold: innhold,
 }: AktivitetInnhold): Aktivitet => ({
     aktivitetsmalId: id,
+    aktivitetsmalVersjon: versjon,
     mål,
     tittel,
     beskrivelse,

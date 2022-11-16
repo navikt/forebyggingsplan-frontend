@@ -2,6 +2,7 @@ import { PortableTextBlock } from "@portabletext/types";
 
 export interface Aktivitet {
     aktivitetsmalId: string;
+    aktivitetsmalVersjon: string;
     tittel: string;
     beskrivelse: string;
     mål: string;

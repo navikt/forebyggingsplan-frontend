@@ -11,6 +11,7 @@ import {
 import { useHentOrgnummer } from "../Layout/Banner/Banner";
 import { ValgtAktivitet } from "../../types/ValgtAktivitet";
 import { useHentValgteAktiviteter } from "../../lib/forebyggingsplan-klient";
+import { loggÅpneAktivitet } from "../../lib/amplitude";
 
 interface Props {
     kategorier: Kategori[];
@@ -52,6 +53,7 @@ export const Aktivitetskategorier = ({ kategorier }: Props) => {
                         })}
                         gjeldendeAktivitet={aktivRad}
                         onKlikkPåRad={(aktivitet) => {
+                            loggÅpneAktivitet(aktivitet);
                             setAktivRad((prev) => {
                                 if (prev?.tittel === aktivitet.tittel) {
                                     return;
