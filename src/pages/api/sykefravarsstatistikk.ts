@@ -14,7 +14,7 @@ export default async function handler(
     const token = await hentTokenXToken(
         req,
         res,
-        process.env.SYKEFRAVÆRSSTATISTIKK_API_CLIENT_ID
+        process.env.SYKEFRAVARSSTATISTIKK_API_CLIENT_ID
     );
     const data = await fetch(
         `https://sykefravarsstatistikk-api.dev-fss-pub.nais.io/sykefravarsstatistikk-api/${req.query.orgnr}/v1/sykefravarshistorikk/aggregert`,

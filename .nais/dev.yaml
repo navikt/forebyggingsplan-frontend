@@ -1,4 +1,4 @@
 ingresses:
 - "https://forebyggingsplan-frontend.dev.nav.no"
 forebyggingsplanClientId: "dev-gcp:pia:forebyggingsplan"
-sykefraværstatistikkApiClientId: "dev-fss:arbeidsgiver:sykefravarsstatistikk-api"
+sykefravarstatistikkApiClientId: "dev-fss:arbeidsgiver:sykefravarsstatistikk-api"
