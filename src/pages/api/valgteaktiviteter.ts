@@ -10,15 +10,17 @@ export default async function handler(
         res,
         process.env.FOREBYGGINGSPLAN_CLIENT_ID
     );
-    const data = await fetch(
+    const response = await fetch(
         `${process.env.FOREBYGGINGSPLAN_API_BASEURL}/valgteaktiviteter/${req.query.orgnr}`,
         {
             headers: {
                 authorization: `Bearer ${token}`,
             },
         }
-    ).then((res) => {
-        return res.json();
-    });
-    return res.status(200).json(data);
+    );
+
+    if (!response.ok) {
+        return res.status(response.status).send(await response.text());
+    }
+    return res.status(200).json(await response.json());
 }
