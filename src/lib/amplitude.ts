@@ -40,6 +40,8 @@ function sendAktivitetsEvent(aktivitet: Aktivitet, hendelse: string) {
         tittel: aktivitet.tittel,
         beskrivelse: aktivitet.beskrivelse,
         aktivitetsmalId: aktivitet.aktivitetsmalId,
-        versjon: aktivitet.aktivitetsmalVersjon,
+        aktivitetsmalVersjon: aktivitet.aktivitetsmalVersjon,
+        status: aktivitet.status,
+        frist: aktivitet.frist,
     });
 }
