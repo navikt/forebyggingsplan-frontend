@@ -1,3 +1,17 @@
+.statistikkContainer {
+    display: flex;
+    gap: 1.5rem;
+    background: var(--navds-global-color-white);
+}
+
+.statistikk {
+    margin: 0.5rem;
+}
+
+.tag {
+    width: 100%;
+}
+
 .rotateOpp {
     transform: rotate(45deg);
 }

@@ -3,7 +3,7 @@ import {
     AggregertSykefraværsstatistikk,
     Statistikkategori,
 } from "../../lib/sykefraværsstatistikk-klient";
-import { BodyShort, Loader } from "@navikt/ds-react";
+import { BodyShort, Loader, Panel, Tag } from "@navikt/ds-react";
 import { Up } from "@navikt/ds-icons";
 import styles from "./Sykefraværsstatistikk.module.css";
 
@@ -30,28 +30,40 @@ export const Sykefraværsstatistikk = ({ sykefraværsstatistikk }: Props) => {
     );
 
     return sykefraværsstatistikk ? (
-        <div>
+        <div className={styles.statistikkContainer}>
             {sykefraværIVirksomhet && (
-                <BodyShort>
-                    I din virksomhet: {sykefraværIVirksomhet}%{" "}
-                    {
-                        <Up
-                            className={roterEtterTrend(trendIVirksomhet)}
-                            title={trendBeskrivelse(trendIVirksomhet)}
-                        />
-                    }
-                </BodyShort>
+                <Panel className={styles.statistikk}>
+                    <BodyShort>SYKEFRAVÆR HOS DERE</BodyShort>
+                    <Tag
+                        variant={trendVariant(trendIVirksomhet)}
+                        className={styles.tag}
+                    >
+                        {
+                            <Up
+                                className={roterEtterTrend(trendIVirksomhet)}
+                                title={trendBeskrivelse(trendIVirksomhet)}
+                            />
+                        }
+                        {sykefraværIVirksomhet} %
+                    </Tag>
+                </Panel>
             )}
             {sykefraværIBransje && (
-                <BodyShort>
-                    I din bransje: {sykefraværIBransje}%{" "}
-                    {
-                        <Up
-                            className={roterEtterTrend(trendIBransje)}
-                            title={trendBeskrivelse(trendIBransje)}
-                        />
-                    }
-                </BodyShort>
+                <Panel className={styles.statistikk}>
+                    <BodyShort>SYKEFRAVÆR I BRANSJEN</BodyShort>
+                    <Tag
+                        variant={trendVariant(trendIBransje)}
+                        className={styles.tag}
+                    >
+                        {
+                            <Up
+                                className={roterEtterTrend(trendIBransje)}
+                                title={trendBeskrivelse(trendIBransje)}
+                            />
+                        }
+                        {sykefraværIBransje} %
+                    </Tag>
+                </Panel>
             )}
         </div>
     ) : (
@@ -82,4 +94,15 @@ const trendBeskrivelse = (trend: string | undefined): string => {
     } else if (trendNummer < 0) {
         return "synkende trend";
     } else return "stigende trend";
+};
+
+type TagVariant = "info" | "warning" | "success";
+
+const trendVariant = (trend: string | undefined): TagVariant => {
+    const trendNummer = Number(trend);
+    if (isNaN(trendNummer) || trendNummer === 0) {
+        return "info";
+    } else if (trendNummer < 0) {
+        return "warning";
+    } else return "success";
 };
