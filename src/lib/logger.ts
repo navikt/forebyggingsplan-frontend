@@ -1,6 +1,6 @@
 import pino from "pino";
 
-export const frontendLogger = (): pino.Logger =>
+const frontendLogger = (): pino.Logger =>
     pino({
         browser: {
             transmit: {
@@ -41,7 +41,7 @@ function errorifyMessages(logEvent: pino.LogEvent): pino.LogEvent {
     return logEvent;
 }
 
-export const backendLogger = (defaultConfig = {}): pino.Logger =>
+const backendLogger = (defaultConfig = {}): pino.Logger =>
     pino({
         ...defaultConfig,
         timestamp: false,
