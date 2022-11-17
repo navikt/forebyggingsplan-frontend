@@ -4,7 +4,7 @@ module.exports = {
         commonjs: true,
         es2021: true,
         node: true,
-        "jest/globals": true
+        "jest/globals": true,
     },
     extends: [
         "eslint:recommended",
@@ -19,7 +19,10 @@ module.exports = {
     ],
     overrides: [
         {
-            files: ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
+            files: [
+                "**/__tests__/**/*.[jt]s?(x)",
+                "**/?(*.)+(spec|test).[jt]s?(x)",
+            ],
             extends: ["plugin:testing-library/react"],
             rules: {
                 "testing-library/no-debugging-utils": "warn",
@@ -30,5 +33,5 @@ module.exports = {
             extends: ["sanity/react", "sanity/typescript"],
         },
     ],
-
+    ignorePatterns: ["*.module.css"],
 };

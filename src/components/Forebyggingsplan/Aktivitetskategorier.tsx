@@ -12,6 +12,8 @@ import { useHentOrgnummer } from "../Layout/Banner/Banner";
 import { ValgtAktivitet } from "../../types/ValgtAktivitet";
 import { useHentValgteAktiviteter } from "../../lib/forebyggingsplan-klient";
 import { loggÅpneAktivitet } from "../../lib/amplitude";
+import { useHentSykefraværsstatistikk } from "../../lib/sykefraværsstatistikk-klient";
+import { Sykefraværsstatistikk } from "../Sykefraværsstatistikk/Sykefraværsstatistikk";
 
 interface Props {
     kategorier: Kategori[];
@@ -26,8 +28,13 @@ export const Aktivitetskategorier = ({ kategorier }: Props) => {
     const [aktivRad, setAktivRad] = useState<Aktivitet>();
     const { orgnr } = useHentOrgnummer();
     const { data: valgteAktiviteter, mutate } = useHentValgteAktiviteter(orgnr);
+    const { data: sykefraværsstatistikk } = useHentSykefraværsstatistikk(orgnr);
     return (
         <div data-theme="light" className={styles.aktivitetskategorier}>
+            <Sykefraværsstatistikk
+                sykefraværsstatistikk={sykefraværsstatistikk}
+            />
+
             {kategorier.map(({ aktiviteter, tittel, beskrivelse }) => {
                 return (
                     <Aktivitetskategori
