@@ -20,7 +20,7 @@ export interface AggregertSykefraværsstatistikk {
     muligeDagsverkTotalt: AggregertStatistikkSiste4Kvartaler[];
 }
 
-interface AggregertStatistikkSiste4Kvartaler {
+export interface AggregertStatistikkSiste4Kvartaler {
     statistikkategori: Statistikkategori;
     label: string;
     verdi: string;
@@ -33,7 +33,7 @@ interface ÅrstallOgKvartal {
     kvartal: number;
 }
 
-type Statistikkategori =
+export type Statistikkategori =
     | "LAND"
     | "SEKTOR"
     | "NÆRING"

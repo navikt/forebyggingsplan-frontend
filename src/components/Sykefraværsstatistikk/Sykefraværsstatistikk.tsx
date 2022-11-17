@@ -1,4 +1,8 @@
-import { AggregertSykefraværsstatistikk } from "../../lib/sykefraværsstatistikk-klient";
+import {
+    AggregertStatistikkSiste4Kvartaler,
+    AggregertSykefraværsstatistikk,
+    Statistikkategori,
+} from "../../lib/sykefraværsstatistikk-klient";
 import { BodyShort, Loader } from "@navikt/ds-react";
 import { Up } from "@navikt/ds-icons";
 import styles from "./Sykefraværsstatistikk.module.css";
@@ -8,20 +12,22 @@ interface Props {
 }
 
 export const Sykefraværsstatistikk = ({ sykefraværsstatistikk }: Props) => {
-    const sykefraværIVirksomhet =
-        sykefraværsstatistikk?.prosentSiste4KvartalerTotalt.find(
-            (e) => e.statistikkategori === "VIRKSOMHET"
-        )?.verdi;
-    const sykefraværIBransje =
-        sykefraværsstatistikk?.prosentSiste4KvartalerTotalt.find(
-            (e) => e.statistikkategori === "BRANSJE"
-        )?.verdi;
-    const trendIVirksomhet = sykefraværsstatistikk?.trendTotalt.find(
-        (e) => e.statistikkategori === "VIRKSOMHET"
-    )?.verdi;
-    const trendIBransje = sykefraværsstatistikk?.trendTotalt.find(
-        (e) => e.statistikkategori === "BRANSJE"
-    )?.verdi;
+    const sykefraværIVirksomhet = finnStatistikkVerdi(
+        "VIRKSOMHET",
+        sykefraværsstatistikk?.prosentSiste4KvartalerTotalt
+    );
+    const sykefraværIBransje = finnStatistikkVerdi(
+        "BRANSJE",
+        sykefraværsstatistikk?.prosentSiste4KvartalerTotalt
+    );
+    const trendIVirksomhet = finnStatistikkVerdi(
+        "VIRKSOMHET",
+        sykefraværsstatistikk?.trendTotalt
+    );
+    const trendIBransje = finnStatistikkVerdi(
+        "BRANSJE",
+        sykefraværsstatistikk?.trendTotalt
+    );
 
     return sykefraværsstatistikk ? (
         <div>
@@ -51,6 +57,13 @@ export const Sykefraværsstatistikk = ({ sykefraværsstatistikk }: Props) => {
     ) : (
         <Loader />
     );
+};
+
+const finnStatistikkVerdi = (
+    kategori: Statistikkategori,
+    liste?: AggregertStatistikkSiste4Kvartaler[]
+): string | undefined => {
+    return liste?.find((e) => e.statistikkategori === kategori)?.verdi;
 };
 
 const roterEtterTrend = (trend: string | undefined): string => {
