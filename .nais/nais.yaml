@@ -36,6 +36,8 @@ spec:
       value: {{ forebyggingsplanClientId }}
     - name: SYKEFRAVARSSTATISTIKK_API_CLIENT_ID
       value: {{ sykefravarstatistikkApiClientId }}
+    - name: SYKEFRAVARSSTATISTIKK_API_BASEURL
+      value: {{ sykefravarstatistikkApiBaseurl }}
   ingresses:
   {{#each ingresses as |url|}}
      - {{url}}

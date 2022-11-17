@@ -17,7 +17,7 @@ export default async function handler(
         process.env.SYKEFRAVARSSTATISTIKK_API_CLIENT_ID
     );
     const data = await fetch(
-        `https://sykefravarsstatistikk-api.dev-fss-pub.nais.io/sykefravarsstatistikk-api/${req.query.orgnr}/v1/sykefravarshistorikk/aggregert`,
+        `${process.env.SYKEFRAVARSSTATISTIKK_API_BASEURL}/${req.query.orgnr}/v1/sykefravarshistorikk/aggregert`,
         {
             headers: {
                 authorization: `Bearer ${token}`,
