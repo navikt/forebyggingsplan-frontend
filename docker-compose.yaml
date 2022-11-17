@@ -7,7 +7,15 @@ services:
     ports:
       - "9090:8080"
     volumes:
-      - ./stubs:/home/wiremock
+      - ./stubs/altinn:/home/wiremock
+
+  sykefravarstatistikkApi:
+    container_name: sykefravarstatistikkApi
+    image: wiremock/wiremock
+    ports:
+      - "9091:8080"
+    volumes:
+      - ./stubs/sykefravarstatistikkApi:/home/wiremock
 
   database:
     container_name: database

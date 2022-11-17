@@ -1,0 +1,13 @@
+{
+    "request" : {
+      "urlPathPattern" : "/\\d+/v1/sykefravarshistorikk/aggregert",
+      "method" : "GET"
+    },
+    "response" : {
+      "status" : 200,
+      "bodyFileName": "sykefravarstatistikkApi.json",
+      "headers" : {
+        "Content-Type" : "application/json"
+      }
+    }
+}
