@@ -11,6 +11,35 @@ interface Props {
     sykefraværsstatistikk?: AggregertSykefraværsstatistikk;
 }
 
+interface StatistikkPanelProps {
+    trend?: string;
+    sykefravær: string;
+    tittel: string;
+}
+
+const StatistikkPanel = ({
+    sykefravær,
+    tittel,
+    trend,
+}: StatistikkPanelProps) => {
+    return (
+        <Panel className={styles.statistikk}>
+            <BodyShort>{tittel}</BodyShort>
+            <Tag variant={"info"} className={styles.tag}>
+                {
+                    <Up
+                        className={`${roterEtterTrend(trend)} ${
+                            styles.trendIkon
+                        }`}
+                        title={trendBeskrivelse(trend)}
+                    />
+                }
+                {sykefravær} %
+            </Tag>
+        </Panel>
+    );
+};
+
 export const Sykefraværsstatistikk = ({ sykefraværsstatistikk }: Props) => {
     const sykefraværIVirksomhet = finnStatistikkVerdi(
         "VIRKSOMHET",
@@ -32,38 +61,18 @@ export const Sykefraværsstatistikk = ({ sykefraværsstatistikk }: Props) => {
     return sykefraværsstatistikk ? (
         <div className={styles.statistikkContainer}>
             {sykefraværIVirksomhet && (
-                <Panel className={styles.statistikk}>
-                    <BodyShort>SYKEFRAVÆR HOS DERE</BodyShort>
-                    <Tag
-                        variant={trendVariant(trendIVirksomhet)}
-                        className={styles.tag}
-                    >
-                        {
-                            <Up
-                                className={roterEtterTrend(trendIVirksomhet)}
-                                title={trendBeskrivelse(trendIVirksomhet)}
-                            />
-                        }
-                        {sykefraværIVirksomhet} %
-                    </Tag>
-                </Panel>
+                <StatistikkPanel
+                    tittel={"SYKEFRAVÆR HOS DEG"}
+                    trend={trendIVirksomhet}
+                    sykefravær={sykefraværIVirksomhet}
+                />
             )}
             {sykefraværIBransje && (
-                <Panel className={styles.statistikk}>
-                    <BodyShort>SYKEFRAVÆR I BRANSJEN</BodyShort>
-                    <Tag
-                        variant={trendVariant(trendIBransje)}
-                        className={styles.tag}
-                    >
-                        {
-                            <Up
-                                className={roterEtterTrend(trendIBransje)}
-                                title={trendBeskrivelse(trendIBransje)}
-                            />
-                        }
-                        {sykefraværIBransje} %
-                    </Tag>
-                </Panel>
+                <StatistikkPanel
+                    tittel={"SYKEFRAVÆR I BRANSJE"}
+                    trend={trendIBransje}
+                    sykefravær={sykefraværIBransje}
+                />
             )}
         </div>
     ) : (
@@ -94,15 +103,4 @@ const trendBeskrivelse = (trend: string | undefined): string => {
     } else if (trendNummer < 0) {
         return "synkende trend";
     } else return "stigende trend";
-};
-
-type TagVariant = "info" | "warning" | "success";
-
-const trendVariant = (trend: string | undefined): TagVariant => {
-    const trendNummer = Number(trend);
-    if (isNaN(trendNummer) || trendNummer === 0) {
-        return "info";
-    } else if (trendNummer < 0) {
-        return "warning";
-    } else return "success";
 };

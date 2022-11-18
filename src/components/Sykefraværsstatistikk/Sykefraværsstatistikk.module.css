@@ -10,6 +10,11 @@
 
 .tag {
     width: 100%;
+    border: none;
+}
+
+.trendIkon {
+    margin-right: 1rem;
 }
 
 .rotateOpp {
