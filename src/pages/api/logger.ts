@@ -3,19 +3,18 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { logger } from "../../lib/logger";
 
 type LogLevels = Exclude<keyof BaseLogger, "string" | "level">;
+const levels: LogLevels[] = [
+    "error",
+    "debug",
+    "fatal",
+    "info",
+    "trace",
+    "silent",
+    "warn",
+];
 
-const validLabel = (label: unknown): label is LogLevels => {
-    const levels: LogLevels[] = [
-        "error",
-        "debug",
-        "fatal",
-        "info",
-        "trace",
-        "silent",
-        "warn",
-    ];
-    return typeof label === "string" && label in levels;
-};
+const validLabel = (label: unknown): label is LogLevels =>
+    typeof label === "string" && label in levels;
 
 const loggingHandler = (req: NextApiRequest, res: NextApiResponse): void => {
     if (req.method !== "POST") {
