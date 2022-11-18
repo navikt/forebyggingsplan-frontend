@@ -24,6 +24,11 @@ For å kjøre appen lokalt, kjør følgende kommandoer i terminal:
 
 Appen vil da være tilgjengelig på http://localhost:4000.
 
+NB: hvis du blir redirectet til `http://host.docker.internal:8080/idporten/authorize` og ikke få koblet til, så sjekk at `/etc/hosts` har linjen:
+```
+127.0.0.1 host.docker.internal
+```
+
 # Sanity
 
 // TODO skriv litt om sanity
