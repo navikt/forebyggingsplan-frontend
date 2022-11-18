@@ -3,7 +3,7 @@ import {
     AggregertSykefraværsstatistikk,
     Statistikkategori,
 } from "../../lib/sykefraværsstatistikk-klient";
-import { BodyShort, Loader, Panel, Tag } from "@navikt/ds-react";
+import { BodyShort, Loader, Panel, Tag, Tooltip } from "@navikt/ds-react";
 import { Up } from "@navikt/ds-icons";
 import styles from "./Sykefraværsstatistikk.module.css";
 
@@ -15,16 +15,20 @@ interface StatistikkPanelProps {
     trend?: string;
     sykefravær: string;
     tittel: string;
+    tooltip: string;
 }
 
 const StatistikkPanel = ({
     sykefravær,
     tittel,
     trend,
+    tooltip,
 }: StatistikkPanelProps) => {
     return (
         <Panel className={styles.statistikk}>
-            <BodyShort>{tittel}</BodyShort>
+            <Tooltip content={tooltip}>
+                <BodyShort>{tittel}</BodyShort>
+            </Tooltip>
             <Tag variant={"info"} className={styles.tag}>
                 {
                     <Up
@@ -65,6 +69,7 @@ export const Sykefraværsstatistikk = ({ sykefraværsstatistikk }: Props) => {
                     tittel={"SYKEFRAVÆR HOS DEG"}
                     trend={trendIVirksomhet}
                     sykefravær={sykefraværIVirksomhet}
+                    tooltip={"Din bedrift"}
                 />
             )}
             {sykefraværIBransje && (
@@ -72,6 +77,11 @@ export const Sykefraværsstatistikk = ({ sykefraværsstatistikk }: Props) => {
                     tittel={"SYKEFRAVÆR I BRANSJE"}
                     trend={trendIBransje}
                     sykefravær={sykefraværIBransje}
+                    tooltip={
+                        sykefraværsstatistikk.prosentSiste4KvartalerTotalt?.find(
+                            (s) => s.statistikkategori === "BRANSJE"
+                        )?.label ?? "Din bransje"
+                    }
                 />
             )}
         </div>
