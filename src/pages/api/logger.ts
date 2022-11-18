@@ -4,6 +4,19 @@ import { logger } from "../../lib/logger";
 
 type LogLevels = Exclude<keyof BaseLogger, "string" | "level">;
 
+const validLabel = (label: unknown): label is LogLevels => {
+    const levels: LogLevels[] = [
+        "error",
+        "debug",
+        "fatal",
+        "info",
+        "trace",
+        "silent",
+        "warn",
+    ];
+    return typeof label === "string" && label in levels;
+};
+
 const loggingHandler = (req: NextApiRequest, res: NextApiResponse): void => {
     if (req.method !== "POST") {
         res.status(405).json({ error: "Method Not Allowed" });
@@ -11,9 +24,13 @@ const loggingHandler = (req: NextApiRequest, res: NextApiResponse): void => {
     }
 
     const { level, ts }: pino.LogEvent = req.body;
-    const label = level.label as unknown as LogLevels;
+    const label = level.label as unknown;
     const messages: [objOrMsg: unknown, msgOrArgs?: string] = req.body.messages;
-
+    if (!validLabel(label)) {
+        return res.status(400).json({
+            error: `Invalid label ${label}`,
+        });
+    }
     logger
         .child({
             x_timestamp: ts,
