@@ -28,13 +28,15 @@ export const Aktivitetskategorier = ({ kategorier }: Props) => {
     const [aktivRad, setAktivRad] = useState<Aktivitet>();
     const { orgnr } = useHentOrgnummer();
     const { data: valgteAktiviteter, mutate } = useHentValgteAktiviteter(orgnr);
-    const { data: sykefraværsstatistikk } = useHentSykefraværsstatistikk(orgnr);
+    const { data: sykefraværsstatistikk, error } =
+        useHentSykefraværsstatistikk(orgnr);
     return (
         <div data-theme="light" className={styles.aktivitetskategorier}>
-            <Sykefraværsstatistikk
-                sykefraværsstatistikk={sykefraværsstatistikk}
-            />
-
+            {!error && (
+                <Sykefraværsstatistikk
+                    sykefraværsstatistikk={sykefraværsstatistikk}
+                />
+            )}
             {kategorier.map(({ aktiviteter, tittel, beskrivelse }) => {
                 return (
                     <Aktivitetskategori
