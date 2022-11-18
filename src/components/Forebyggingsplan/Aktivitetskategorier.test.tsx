@@ -42,9 +42,7 @@ describe("Aktivitetskategorier", () => {
     });
 
     it("Skal kunne åpne en aktivitet", async () => {
-        const { container } = render(
-            <Aktivitetskategorier kategorier={aktivitetskategorierMock} />
-        );
+        render(<Aktivitetskategorier kategorier={aktivitetskategorierMock} />);
         fireEvent.click(screen.getAllByRole("button")[0]);
         expect(
             await screen.findByRole("button", { name: "Dette har vi på plass" })
