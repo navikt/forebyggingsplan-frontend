@@ -67,7 +67,7 @@ export const Sykefraværsstatistikk = ({ sykefraværsstatistikk }: Props) => {
             )}
         </div>
     ) : (
-        <Loader />
+        <Loader variant="interaction" />
     );
 };
 
