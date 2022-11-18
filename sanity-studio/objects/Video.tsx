@@ -27,15 +27,18 @@ const videoOgTekstStyle: CSSProperties = {
     gap: "1rem",
 };
 
-export const VideoPreview = ({ value: { videoId, punktliste, tittel } }: Props) => {
+export const VideoPreview = ({
+    value: { videoId, punktliste, tittel },
+}: Props) => {
     return (
         <div style={videoBoksStyle}>
             <h2>{tittel}</h2>
             <div style={videoOgTekstStyle}>
-                <iframe title={tittel}
-                        src={`https://player.vimeo.com/video/${videoId}`}
-                        referrerPolicy={"no-referrer"}
-                        allowFullScreen
+                <iframe
+                    title={tittel}
+                    src={`https://player.vimeo.com/video/${videoId}`}
+                    referrerPolicy={"no-referrer"}
+                    allowFullScreen
                 />
                 {punktliste && punktliste.length > 1 && (
                     <ul>
@@ -61,7 +64,8 @@ const videoSchema = {
             type: "number",
             name: "videoId",
             title: "ID til video i Vimeo",
-            description: "Her skal bare IDen til videoen hos Vimeo. For https://vimeo.com/705283170 så blir det 705283170",
+            description:
+                "Her skal bare IDen til videoen hos Vimeo. For https://vimeo.com/705283170 så blir det 705283170",
             validation: (rule: Rule) => rule.integer().positive().required(),
         },
         {

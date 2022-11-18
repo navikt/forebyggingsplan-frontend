@@ -1,4 +1,4 @@
-import {Aktivitet} from "./Aktivitet";
+import { Aktivitet } from "./Aktivitet";
 
 export interface Kategori {
     tittel: string;

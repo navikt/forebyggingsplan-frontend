@@ -2,8 +2,9 @@ import { JWK } from "jose";
 import { Issuer } from "openid-client";
 
 function createIssuer() {
-    const issuer = process.env.TOKEN_X_ISSUER
-    if (!issuer) throw new Error("Må ha en tokenx issuer for å kunne veksle tokens")
+    const issuer = process.env.TOKEN_X_ISSUER;
+    if (!issuer)
+        throw new Error("Må ha en tokenx issuer for å kunne veksle tokens");
 
     return new Issuer({
         issuer,
@@ -17,13 +18,17 @@ export async function veksleToken(token: string, intendedAudience?: string) {
     const jwkString = process.env.TOKEN_X_PRIVATE_JWK;
 
     if (!intendedAudience) {
-        throw new Error("Kan ikke veksle et token uten audience!")
+        throw new Error("Kan ikke veksle et token uten audience!");
     }
     if (!client_id) {
-        throw new Error("Mangler miljøvariabel 'TOKEN_X_CLIENT_ID' for å kunne lage en tokenutvekslings-klient")
+        throw new Error(
+            "Mangler miljøvariabel 'TOKEN_X_CLIENT_ID' for å kunne lage en tokenutvekslings-klient"
+        );
     }
     if (!jwkString) {
-        throw new Error("Mangler miljøvariabel 'TOKEN_X_PRIVATE_JWK' for å kunne lage en tokenutvekslings-klient")
+        throw new Error(
+            "Mangler miljøvariabel 'TOKEN_X_PRIVATE_JWK' for å kunne lage en tokenutvekslings-klient"
+        );
     }
     const { Client } = createIssuer();
     const client = new Client(
@@ -32,9 +37,7 @@ export async function veksleToken(token: string, intendedAudience?: string) {
             client_id,
         },
         {
-            keys: [
-                JSON.parse(jwkString) as unknown as JWK,
-            ],
+            keys: [JSON.parse(jwkString) as unknown as JWK],
         }
     );
     const tokenSet = await client.grant(

@@ -1,22 +1,22 @@
 @import "@navikt/ds-css";
 
 :root {
-  --tablet-min-breakpoint: calc(550 / 16)rem;
-  --laptop-min-breakpoint: calc(1100 / 16)rem;
-  --desktop-min-breakpoint: calc(1500 / 16)rem;
+    --tablet-min-breakpoint: calc(550 / 16) rem;
+    --laptop-min-breakpoint: calc(1100 / 16) rem;
+    --desktop-min-breakpoint: calc(1500 / 16) rem;
 }
 
 html,
 body {
-  padding: 0;
-  margin: 0;
+    padding: 0;
+    margin: 0;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+    color: inherit;
+    text-decoration: none;
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }

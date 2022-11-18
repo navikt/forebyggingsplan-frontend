@@ -1,21 +1,21 @@
 {
-    "request" : {
-      "urlPath" : "/altinn/v2/organisasjoner",
-      "method" : "GET",
-      "queryParameters" : {
-        "serviceCode" : {
-          "contains" : "3403"
-        },
-        "serviceEdition" : {
-          "contains" : "2"
+    "request": {
+        "urlPath": "/altinn/v2/organisasjoner",
+        "method": "GET",
+        "queryParameters": {
+            "serviceCode": {
+                "contains": "3403"
+            },
+            "serviceEdition": {
+                "contains": "2"
+            }
         }
-      }
     },
-    "response" : {
-      "status" : 200,
-      "bodyFileName": "altinn.json",
-      "headers" : {
-        "Content-Type" : "application/json"
-      }
+    "response": {
+        "status": 200,
+        "bodyFileName": "altinn.json",
+        "headers": {
+            "Content-Type": "application/json"
+        }
     }
 }

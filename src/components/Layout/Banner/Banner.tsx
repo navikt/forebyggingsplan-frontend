@@ -4,7 +4,7 @@ import { Organisasjon } from "@navikt/bedriftsmeny/lib/organisasjon";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { Heading } from "@navikt/ds-react";
-import {OrgnrSearchParamType} from "@navikt/bedriftsmeny/src/bedriftsmeny/Virksomhetsvelger/utils/utils";
+import { OrgnrSearchParamType } from "@navikt/bedriftsmeny/src/bedriftsmeny/Virksomhetsvelger/utils/utils";
 interface Props {
     organisasjoner: Organisasjon[];
 }
@@ -16,26 +16,26 @@ const Bedriftsmeny = dynamic(() => import("@navikt/bedriftsmeny"), {
 export const useHentOrgnummer = () => {
     const { push, query } = useRouter();
     const retriever = useCallback<OrgnrSearchParamType>(() => {
-            const currentOrgnr =
-                typeof query.bedrift === "string" ? query.bedrift : null;
+        const currentOrgnr =
+            typeof query.bedrift === "string" ? query.bedrift : null;
 
-            return [
-                currentOrgnr,
-                (orgnr: string) => {
-                    if (currentOrgnr !== orgnr) {
-                        if (orgnr === null) {
-                            push("");
-                        } else {
-                            push(`?bedrift=${orgnr}`);
-                        }
+        return [
+            currentOrgnr,
+            (orgnr: string) => {
+                if (currentOrgnr !== orgnr) {
+                    if (orgnr === null) {
+                        push("");
+                    } else {
+                        push(`?bedrift=${orgnr}`);
                     }
-                },
-            ];
-        }, [push, query.bedrift]);
+                }
+            },
+        ];
+    }, [push, query.bedrift]);
     return {
         hook: retriever,
-        orgnr: retriever()[0]
-    }
+        orgnr: retriever()[0],
+    };
 };
 
 export default function Banner({ organisasjoner }: Props) {

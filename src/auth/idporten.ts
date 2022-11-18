@@ -7,11 +7,12 @@ let idportenIssuer: Issuer;
 
 async function hentIssuer() {
     const issuerUrl = process.env.IDPORTEN_WELL_KNOWN_URL;
-    if (!issuerUrl) throw new Error("Mangler miljøvariabelen 'IDPORTEN_WELL_KNOWN_URL' for å kunne lage en issuer")
-    if (!idportenIssuer) {
-        idportenIssuer = await Issuer.discover(
-            issuerUrl
+    if (!issuerUrl)
+        throw new Error(
+            "Mangler miljøvariabelen 'IDPORTEN_WELL_KNOWN_URL' for å kunne lage en issuer"
         );
+    if (!idportenIssuer) {
+        idportenIssuer = await Issuer.discover(issuerUrl);
     }
     return idportenIssuer;
 }

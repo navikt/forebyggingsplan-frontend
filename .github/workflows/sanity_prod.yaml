@@ -1,27 +1,27 @@
 name: Buld and deploy sanity prod
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - sanity-studio/**
-      - .github/workflows/sanity_prod.yaml
+    push:
+        branches:
+            - main
+        paths:
+            - sanity-studio/**
+            - .github/workflows/sanity_prod.yaml
 
 jobs:
-  sanity-deploy:
-    defaults:
-      run:
-        working-directory: sanity-studio
-    runs-on: ubuntu-latest
-    name: Deploy Sanity
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - name: Install deps
-        run: yarn install --immutable
-      - name: Setup sanity cli
-        run: npm install -g @sanity/cli
-      - name: Deploy sanity
-        run: SANITY_AUTH_TOKEN=${{ secrets.SANITY_DEPLOY_TOKEN }} sanity deploy
+    sanity-deploy:
+        defaults:
+            run:
+                working-directory: sanity-studio
+        runs-on: ubuntu-latest
+        name: Deploy Sanity
+        steps:
+            - uses: actions/checkout@v2
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: 16
+            - name: Install deps
+              run: yarn install --immutable
+            - name: Setup sanity cli
+              run: npm install -g @sanity/cli
+            - name: Deploy sanity
+              run: SANITY_AUTH_TOKEN=${{ secrets.SANITY_DEPLOY_TOKEN }} sanity deploy

@@ -4,7 +4,7 @@ import { hentVerifisertToken } from "../auth";
 import { veksleToken } from "../auth/tokenx";
 import { Organisasjon } from "@navikt/bedriftsmeny/lib/organisasjon";
 
-dns.setDefaultResultOrder('ipv4first'); // Dette er for å få lokal kjøring til å virke med Node versjon 17.x med vårt oppsett
+dns.setDefaultResultOrder("ipv4first"); // Dette er for å få lokal kjøring til å virke med Node versjon 17.x med vårt oppsett
 
 export async function hentOrganisasjoner(req: IncomingMessage) {
     const token = await hentVerifisertToken(req);
@@ -23,6 +23,8 @@ export async function hentOrganisasjoner(req: IncomingMessage) {
                 authorization: `Bearer ${tokenxToken}`,
             },
         }
-    ).then((res) => res.json()).catch(console.trace);
+    )
+        .then((res) => res.json())
+        .catch(console.trace);
     return organisasjoner;
 }

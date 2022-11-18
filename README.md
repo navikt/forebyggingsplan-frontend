@@ -1,18 +1,19 @@
-Forebyggingsplan-frontend
-================
+# Forebyggingsplan-frontend
 
 Flate der arbeidsgivere kan jobbe med å forebygge sykefravær i sin virksomhet
 
 # Komme i gang
 
 For å kjøre appen lokalt, kjør følgende kommandoer i terminal:
-- ``docker-compose up``
-- ``npm install``
-- ``npm run dev``
+
+-   `docker-compose up`
+-   `npm install`
+-   `npm run dev`
 
 Appen vil da være tilgjengelig på http://localhost:4000.
 
 # Sanity
+
 // TODO skriv litt om sanity
 
 ---

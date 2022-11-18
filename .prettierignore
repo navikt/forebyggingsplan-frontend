@@ -5,6 +5,7 @@
 node_modules
 /.pnp
 .pnp.js
+package-lock.json
 
 # testing
 /coverage
@@ -15,6 +16,9 @@ node_modules
 
 # production
 /build
+
+# NAIS
+.nais
 
 # misc
 .DS_Store
