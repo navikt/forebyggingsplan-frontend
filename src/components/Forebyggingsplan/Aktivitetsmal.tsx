@@ -12,6 +12,8 @@ import { Seksjon } from "../Seksjon/Seksjon";
 import { block } from "../PortableText/block/Block";
 import { marks } from "../PortableText/marks/Marks";
 import { EksporterTilKalender } from "./EksporterTilKalender";
+import { useHentValgteAktiviteter } from "../../lib/forebyggingsplan-klient";
+import { useHentOrgnummer } from "../Layout/Banner/Banner";
 
 const hovedinnhold: Partial<PortableTextComponents> = {
     types: {
@@ -35,40 +37,46 @@ export function Aktivitetsmal({
         inputProps,
         selectedDay: frist,
     } = UNSAFE_useDatepicker();
+    const { orgnr } = useHentOrgnummer();
+    const { error: valgteAktiviteterError } = useHentValgteAktiviteter(orgnr);
+    console.log("DEBUG:", valgteAktiviteterError);
+
     return (
         <div className={styles.container}>
-            <span className={styles.knappeContainer}>
-                <EksporterTilKalender aktivitet={aktivitet} />
-                {["IKKE_VALGT", "VALGT"].includes(aktivitet.status) && (
-                    <Button
-                        className={styles.detteHarViGjortKnapp}
-                        variant="secondary"
-                        onClick={fullførAktivitet}
-                    >
-                        {aktivitet.status === "VALGT"
-                            ? "Ferdig"
-                            : "Dette har vi på plass"}
-                    </Button>
-                )}
-                {aktivitet.status === "IKKE_VALGT" && (
-                    <div className={styles.detteVilViGjøreContainer}>
-                        <UNSAFE_DatePicker {...datepickerProps}>
-                            <UNSAFE_DatePicker.Input
-                                {...inputProps}
-                                label="Velg dato"
-                            />
-                        </UNSAFE_DatePicker>
-
+            {!valgteAktiviteterError && (
+                <span className={styles.knappeContainer}>
+                    <EksporterTilKalender aktivitet={aktivitet} />
+                    {["IKKE_VALGT", "VALGT"].includes(aktivitet.status) && (
                         <Button
-                            onClick={() => {
-                                velgAktivitet(frist);
-                            }}
+                            className={styles.detteHarViGjortKnapp}
+                            variant="secondary"
+                            onClick={fullførAktivitet}
                         >
-                            Dette vil vi gjøre
+                            {aktivitet.status === "VALGT"
+                                ? "Ferdig"
+                                : "Dette har vi på plass"}
                         </Button>
-                    </div>
-                )}
-            </span>
+                    )}
+                    {aktivitet.status === "IKKE_VALGT" && (
+                        <div className={styles.detteVilViGjøreContainer}>
+                            <UNSAFE_DatePicker {...datepickerProps}>
+                                <UNSAFE_DatePicker.Input
+                                    {...inputProps}
+                                    label="Velg dato"
+                                />
+                            </UNSAFE_DatePicker>
+
+                            <Button
+                                onClick={() => {
+                                    velgAktivitet(frist);
+                                }}
+                            >
+                                Dette vil vi gjøre
+                            </Button>
+                        </div>
+                    )}
+                </span>
+            )}
             {aktivitet.beskrivelse}
             <Heading size="medium" level="3">
                 Mål

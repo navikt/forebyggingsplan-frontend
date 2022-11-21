@@ -11,6 +11,10 @@ import { hentOrganisasjoner } from "../lib/organisasjoner";
 import { Organisasjon } from "@navikt/bedriftsmeny/lib/organisasjon";
 import { Kategori } from "../types/kategori";
 import { Aktivitetskategorier } from "../components/Forebyggingsplan/Aktivitetskategorier";
+import { Alert } from "@navikt/ds-react";
+import { useHentSykefraværsstatistikk } from "../lib/sykefraværsstatistikk-klient";
+import { useHentOrgnummer } from "../components/Layout/Banner/Banner";
+import { useHentValgteAktiviteter } from "../lib/forebyggingsplan-klient";
 
 interface Props {
     kategorier: Kategori[];
@@ -94,9 +98,26 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
 };
 
 function Forside({ kategorier }: Omit<Props, "organisasjoner">) {
+    const { orgnr } = useHentOrgnummer();
+    const { error: statistikkError } = useHentSykefraværsstatistikk(orgnr);
+    const { error: valgteAktiviteterError } = useHentValgteAktiviteter(orgnr);
+
     return (
         <div className={styles.container}>
             <main className={styles.main}>
+                {valgteAktiviteterError && (
+                    <Alert variant={"error"} className={styles.alert}>
+                        Vi har ikke klart å hente ned planen deres.
+                        <br /> Dere kan forsatt se aktivitetene, men ikke
+                        hvilken status dere har gitt dem.
+                    </Alert>
+                )}
+                {statistikkError && (
+                    <Alert variant={"error"} className={styles.alert}>
+                        Vi har ikke klart å hente informasjon om
+                        sykefraværsstatistikk.
+                    </Alert>
+                )}
                 <Aktivitetskategorier kategorier={kategorier} />
             </main>
         </div>

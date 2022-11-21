@@ -1,15 +1,12 @@
 import {
     AggregertStatistikkSiste4Kvartaler,
-    AggregertSykefraværsstatistikk,
     Statistikkategori,
+    useHentSykefraværsstatistikk,
 } from "../../lib/sykefraværsstatistikk-klient";
 import { BodyShort, Loader, Panel, Tag, Tooltip } from "@navikt/ds-react";
 import { Up } from "@navikt/ds-icons";
 import styles from "./Sykefraværsstatistikk.module.css";
-
-interface Props {
-    sykefraværsstatistikk?: AggregertSykefraværsstatistikk;
-}
+import { useHentOrgnummer } from "../Layout/Banner/Banner";
 
 interface StatistikkPanelProps {
     trend?: string;
@@ -44,7 +41,12 @@ const StatistikkPanel = ({
     );
 };
 
-export const Sykefraværsstatistikk = ({ sykefraværsstatistikk }: Props) => {
+export const Sykefraværsstatistikk = () => {
+    const { orgnr } = useHentOrgnummer();
+    const { data: sykefraværsstatistikk, error } =
+        useHentSykefraværsstatistikk(orgnr);
+    if (error) return null;
+
     const sykefraværIVirksomhet = finnStatistikkVerdi(
         "VIRKSOMHET",
         sykefraværsstatistikk?.prosentSiste4KvartalerTotalt
