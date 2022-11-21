@@ -1,15 +1,24 @@
 import { render } from "@testing-library/react";
 import { Sykefraværsstatistikk } from "./Sykefraværsstatistikk";
 import { axe } from "jest-axe";
-import { sykefraværsstatistikkMock } from "./sykefraværsstatistikkMock";
+
+jest.mock("next/router", () => ({
+    useRouter() {
+        return {
+            route: "/",
+            pathname: "",
+            query: {
+                bedrift: "123456789",
+            },
+            asPath: "",
+        };
+    },
+}));
 
 describe("Sykefraværsstatistikk", () => {
     it("Har ingen uu-feil fra axe", async () => {
-        const { container } = render(
-            <Sykefraværsstatistikk
-                sykefraværsstatistikk={sykefraværsstatistikkMock}
-            />
-        );
+        //msw
+        const { container } = render(<Sykefraværsstatistikk />);
         const results = await axe(container);
         expect(results).toHaveNoViolations();
     });

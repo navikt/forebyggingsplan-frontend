@@ -42,6 +42,11 @@ describe("Aktivitetskategorier", () => {
     });
 
     it("Skal kunne åpne en aktivitet", async () => {
+        // TODO msw:
+        global.fetch = jest.fn().mockImplementation(() => ({
+            // Mocker fetch slik at vi får knapper etc.
+            then: jest.fn(),
+        }));
         render(<Aktivitetskategorier kategorier={aktivitetskategorierMock} />);
         fireEvent.click(screen.getAllByRole("button")[0]);
         expect(
