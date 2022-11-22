@@ -5,6 +5,9 @@
 // Learn more: https://github.com/testing-library/jest-dom
 import "@testing-library/jest-dom/extend-expect";
 import { toHaveNoViolations } from "jest-axe";
+import { server } from "./src/mocks/server";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { fetch } from "whatwg-fetch"; // Trenger denne for å få fetch til å funke i tester
 
 expect.extend(toHaveNoViolations);
 
@@ -13,3 +16,7 @@ global.ResizeObserver = jest.fn().mockImplementation(() => ({
     unobserve: jest.fn(),
     disconnect: jest.fn(),
 }));
+
+beforeAll(() => server.listen());
+afterEach(() => server.resetHandlers());
+afterAll(() => server.close());
