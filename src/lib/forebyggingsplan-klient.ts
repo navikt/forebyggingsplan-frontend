@@ -2,11 +2,17 @@ import { ValgtAktivitet } from "../types/ValgtAktivitet";
 import useSWR from "swr";
 import { isoDato } from "./dato";
 
+export const HENT_VALGTE_AKTIVITETER_PATH = `/api/valgteaktiviteter`;
+export const VELG_AKTIVITET_PATH = "/api/aktivitet";
+export const FULLFØR_AKTIVITET_PATH = "/api/fullfor";
+
 const fetcher = (...args: [url: string, options?: RequestInit]) =>
     fetch(...args).then((res) => res.json());
 
 export function useHentValgteAktiviteter(orgnummer: string | null) {
-    const url = orgnummer ? `/api/valgteaktiviteter?orgnr=${orgnummer}` : null;
+    const url = orgnummer
+        ? `${HENT_VALGTE_AKTIVITETER_PATH}?orgnr=${orgnummer}`
+        : null;
     return useSWR<ValgtAktivitet[]>(url, fetcher);
 }
 
@@ -18,7 +24,7 @@ interface ValgtAktivitetDTO {
 
 export function velgAktivitet(valgtAktivitetDto: ValgtAktivitetDTO) {
     if (!valgtAktivitetDto.orgnr) return;
-    return fetch("/api/aktivitet", {
+    return fetch(VELG_AKTIVITET_PATH, {
         method: "POST",
         body: JSON.stringify({
             aktivitetsmalId: valgtAktivitetDto.aktivitetsmalId,
@@ -41,7 +47,7 @@ interface FullførAktivitetDTO {
 
 export function fullførAktivitet(fullførAktivitetDto: FullførAktivitetDTO) {
     if (!fullførAktivitetDto.orgnr) return;
-    return fetch("/api/fullfor", {
+    return fetch(FULLFØR_AKTIVITET_PATH, {
         method: "POST",
         body: JSON.stringify({
             aktivitetsId: fullførAktivitetDto.aktivitetsId,

@@ -39,7 +39,6 @@ export function Aktivitetsmal({
     } = UNSAFE_useDatepicker();
     const { orgnr } = useHentOrgnummer();
     const { error: valgteAktiviteterError } = useHentValgteAktiviteter(orgnr);
-    console.log("DEBUG:", valgteAktiviteterError);
 
     return (
         <div className={styles.container}>

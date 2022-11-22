@@ -3,9 +3,11 @@ import useSWR from "swr";
 const fetcher = (...args: [url: string, options?: RequestInit]) =>
     fetch(...args).then((res) => res.json());
 
+export const HENT_SYKEFRAVERSSTATISTIKK_PATH = `/api/sykefravarsstatistikk`;
+
 export function useHentSykefraværsstatistikk(orgnummer: string | null) {
     const url = orgnummer
-        ? `/api/sykefravarsstatistikk?orgnr=${orgnummer}`
+        ? `${HENT_SYKEFRAVERSSTATISTIKK_PATH}?orgnr=${orgnummer}`
         : null;
     return useSWR<AggregertSykefraværsstatistikk>(url, fetcher);
 }

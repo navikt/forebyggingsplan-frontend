@@ -3,6 +3,21 @@ import { AggregertSykefraværsstatistikk } from "../../lib/sykefraværsstatistik
 export const sykefraværsstatistikkMock: AggregertSykefraværsstatistikk = {
     prosentSiste4KvartalerTotalt: [
         {
+            statistikkategori: "VIRKSOMHET",
+            label: "Virksomhet",
+            verdi: "8.8",
+            antallPersonerIBeregningen: 145,
+            kvartalerIBeregningen: [
+                { årstall: 2021, kvartal: 2 },
+                { årstall: 2021, kvartal: 3 },
+                {
+                    årstall: 2021,
+                    kvartal: 4,
+                },
+                { årstall: 2022, kvartal: 1 },
+            ],
+        },
+        {
             statistikkategori: "BRANSJE",
             label: "Sykehjem",
             verdi: "9.2",
