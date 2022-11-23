@@ -68,7 +68,7 @@ export const Sykefraværsstatistikk = () => {
         <div className={styles.statistikkContainer}>
             {sykefraværIVirksomhet && (
                 <StatistikkPanel
-                    tittel={"SYKEFRAVÆR HOS DEG"}
+                    tittel={"Sykefravær hos deg"}
                     trend={trendIVirksomhet}
                     sykefravær={sykefraværIVirksomhet}
                     tooltip={"Din bedrift"}
@@ -76,7 +76,7 @@ export const Sykefraværsstatistikk = () => {
             )}
             {sykefraværIBransje && (
                 <StatistikkPanel
-                    tittel={"SYKEFRAVÆR I BRANSJE"}
+                    tittel={"Sykefravær i bransje"}
                     trend={trendIBransje}
                     sykefravær={sykefraværIBransje}
                     tooltip={
