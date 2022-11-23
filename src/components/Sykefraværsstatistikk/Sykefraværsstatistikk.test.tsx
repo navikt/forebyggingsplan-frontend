@@ -22,7 +22,6 @@ describe("Sykefraværsstatistikk", () => {
     afterAll(() => server.close());
 
     it("Har ingen uu-feil fra axe", async () => {
-        //msw
         const { container } = render(<Sykefraværsstatistikk />);
 
         await screen.findByText("Sykefravær hos deg"); // Vent på kall til backend (msw)
