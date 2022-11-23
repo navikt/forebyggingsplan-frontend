@@ -1,7 +1,6 @@
 import { screen, render } from "@testing-library/react";
 import { Sykefraværsstatistikk } from "./Sykefraværsstatistikk";
 import { axe } from "jest-axe";
-import { server } from "../../mocks/server";
 
 jest.mock("next/router", () => ({
     useRouter() {
@@ -17,10 +16,6 @@ jest.mock("next/router", () => ({
 }));
 
 describe("Sykefraværsstatistikk", () => {
-    beforeAll(() => server.listen());
-    afterEach(() => server.resetHandlers());
-    afterAll(() => server.close());
-
     it("Har ingen uu-feil fra axe", async () => {
         const { container } = render(<Sykefraværsstatistikk />);
 
