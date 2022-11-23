@@ -7,6 +7,7 @@ import styles from "./Seksjon.module.css";
 import { Bilde } from "../Bilde/Bilde";
 import { block } from "../PortableText/block/Block";
 import { marks } from "../PortableText/marks/Marks";
+import { Sykefraværsstatistikk } from "../Sykefraværsstatistikk/Sykefraværsstatistikk";
 
 export const Seksjon = ({
     value,
@@ -26,6 +27,7 @@ const seksjonsinnhold: Partial<PortableTextComponents> = {
         lovpalagt: Lovpålagt,
         video: VideoVisning,
         bilde: Bilde,
+        statistikk: Sykefraværsstatistikk,
     },
     block,
     marks,
