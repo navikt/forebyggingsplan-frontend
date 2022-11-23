@@ -1,16 +1,19 @@
 import * as React from "react";
-import { CSSProperties } from "react";
-
-const statistikkStyle: CSSProperties = {
-    display: "flex",
-    flexDirection: "column",
-    gap: "1rem",
-    padding: "1rem",
-    borderRadius: "4px",
-};
+import styles from "./statistikkPeview.module.css";
 
 export const Statistikk = () => {
-    return <div style={statistikkStyle}>Her er statistikk :)</div>;
+    return (
+        <div className={styles.statistikkContainer}>
+            <div className={styles.panel}>
+                <p className={styles.bodyShort}>Sykefravær hos deg</p>
+                <span className={styles.tag}>89,3 %</span>
+            </div>
+            <div className={styles.panel}>
+                <p className={styles.bodyShort}>Sykefravær i bransjen</p>
+                <span className={styles.tag}>17,5 %</span>
+            </div>
+        </div>
+    );
 };
 
 const statistikkSchema = {
@@ -28,4 +31,5 @@ const statistikkSchema = {
         component: Statistikk,
     },
 };
+
 export default statistikkSchema;
