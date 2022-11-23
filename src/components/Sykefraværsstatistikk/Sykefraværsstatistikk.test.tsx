@@ -25,7 +25,7 @@ describe("Sykefraværsstatistikk", () => {
         //msw
         const { container } = render(<Sykefraværsstatistikk />);
 
-        await screen.findByText("SYKEFRAVÆR HOS DEG"); // Vent på kall til backend (msw)
+        await screen.findByText("Sykefravær hos deg"); // Vent på kall til backend (msw)
 
         const results = await axe(container);
         expect(results).toHaveNoViolations();
@@ -34,11 +34,11 @@ describe("Sykefraværsstatistikk", () => {
     it("Skal vise sykefravær med riktige verdier", async () => {
         render(<Sykefraværsstatistikk />);
 
-        await screen.findByText("SYKEFRAVÆR HOS DEG"); // Vent på kall til backend (msw)
+        await screen.findByText("Sykefravær hos deg"); // Vent på kall til backend (msw)
 
-        expect(screen.getByText("SYKEFRAVÆR HOS DEG")).toBeInTheDocument();
+        expect(screen.getByText("Sykefravær hos deg")).toBeInTheDocument();
         expect(screen.getByText("8.8 %")).toBeInTheDocument();
-        expect(screen.getByText("SYKEFRAVÆR I BRANSJE")).toBeInTheDocument();
+        expect(screen.getByText("Sykefravær i bransje")).toBeInTheDocument();
         expect(screen.getByText("9.2 %")).toBeInTheDocument();
     });
 });
