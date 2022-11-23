@@ -30,8 +30,20 @@ NB: hvis du blir redirectet til `http://host.docker.internal:8080/idporten/autho
 ```
 
 # Sanity
+Vi bruker Sanity som CMS for å lage innhald og kategoriar til forebyggingsplanen. Dette gjer det lettare for innhaldsprodusentar i eit tverrgfagleg team å vedlikehalde innhaldet på sida.
 
-// TODO skriv litt om sanity
+Slik køyrer du opp Sanity studio for utvikling lokalt
+1. `npm install` i mappa /sanity-studio
+2. `npm start` i samme mappa
+3. Åpne localhost:3333 og logg på med Nav-SSO
+4. 🎉🎉🎉
+
+Sanity i prod:
+https://nav-pia-forebyggingsplan.sanity.studio/desk
+Logg på med Nav-SSO. 
+
+For å kunne bruke Nav-SSO til Sanity må du må bestille tilgang gjennom [MyApps](https://myapps.microsoft.com/). 
+Kontakt #team-pia på Slack for redigeringstilgang.
 
 ---
 
