@@ -9,6 +9,7 @@ import video from "../objects/Video";
 import { lenke } from "../objects/Lenke";
 import { seksjon } from "../objects/Seksjon";
 import { kategori } from "./kategori";
+import statistikk from "../objects/Statistikk";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -24,5 +25,6 @@ export default createSchema({
         video,
         aktivitet,
         kategori,
+        statistikk,
     ]),
 });

@@ -52,6 +52,9 @@ export const seksjon = {
                     type: "lovpalagt",
                 },
                 {
+                    type: "statistikk",
+                },
+                {
                     type: "video",
                 },
                 {
