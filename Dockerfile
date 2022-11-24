@@ -15,7 +15,7 @@ RUN npm config set always-auth true
 
 ENV NEXT_TELEMETRY_DISABLED 1
 
-RUN npm ci
+RUN npm ci --legacy-peer-deps
 RUN npm run build
 
 
