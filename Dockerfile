@@ -8,6 +8,11 @@ COPY tsconfig.json .
 COPY src ./src
 COPY .npmrc ./
 
+RUN --mount=type=secret,id=NODE_AUTH_TOKEN \
+    echo '//npm.pkg.github.com/:_authToken='$(cat /run/secrets/NODE_AUTH_TOKEN) >> .npmrc
+
+RUN npm config set always-auth true
+
 ENV NEXT_TELEMETRY_DISABLED 1
 
 RUN npm ci --prefer-offline --no-audit
