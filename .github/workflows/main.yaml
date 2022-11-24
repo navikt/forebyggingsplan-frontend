@@ -9,6 +9,8 @@ jobs:
     build:
         name: Bygg og test
         runs-on: ubuntu-latest
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
         steps:
             - name: Legg til host.docker.internal i /etc/hosts
               run: sudo echo "127.0.0.1 host.docker.internal" | sudo tee -a /etc/hosts
@@ -21,8 +23,6 @@ jobs:
 
             - name: Installer dependencies
               run: npm ci
-              env:
-                NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
 
             - name: Kjør tester
               run: npm run test:ci
