@@ -16,7 +16,7 @@
 .detteVilViGjøreContainer {
     display: flex;
     flex-direction: column;
-    background-color: var(--navds-global-color-gray-100);
+    background-color: var(--a-gray-100);
     gap: 1rem;
     padding: 1rem;
 }

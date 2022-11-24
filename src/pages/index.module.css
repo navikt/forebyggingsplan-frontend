@@ -1,7 +1,7 @@
 .container {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
-    background: var(--navds-global-color-gray-100);
+    background: var(--a-gray-100);
 }
 
 .main {

@@ -1,7 +1,7 @@
 .statistikkContainer {
     display: flex;
     gap: 1.5rem;
-    background: var(--navds-global-color-white);
+    background: var(--a-white);
 }
 
 .statistikk {
