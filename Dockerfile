@@ -15,7 +15,7 @@ RUN npm config set always-auth true
 
 ENV NEXT_TELEMETRY_DISABLED 1
 
-RUN npm ci --prefer-offline --no-audit
+RUN npm ci
 RUN npm run build
 
 
