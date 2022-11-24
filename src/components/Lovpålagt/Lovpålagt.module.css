@@ -3,7 +3,7 @@
     flex-direction: column;
     gap: 1rem;
     padding: 1rem;
-    background-color: var(--a-surface-info-subtle);
+    background-color: var(--a-surface-danger-subtle);
     border-radius: var(--a-border-radius-medium);
 }
 

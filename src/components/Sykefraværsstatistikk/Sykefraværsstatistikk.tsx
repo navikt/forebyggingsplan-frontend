@@ -26,7 +26,7 @@ const StatistikkPanel = ({
             <Tooltip content={tooltip}>
                 <BodyShort>{tittel}</BodyShort>
             </Tooltip>
-            <Tag variant={"info"} className={styles.tag}>
+            <Tag variant={"neutral"} className={styles.tag}>
                 {
                     <Up
                         className={`${roterEtterTrend(trend)} ${
