@@ -43,6 +43,8 @@ jobs:
             - name: Build docker image and push to ghcr
               id: docker_build
               uses: docker/build-push-action@v3
+              env:
+                NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
               with:
                   push: true
                   tags: ghcr.io/${{ github.repository }}:latest,${{ env.IMAGE }}
