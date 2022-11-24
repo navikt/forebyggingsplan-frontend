@@ -8,6 +8,7 @@ import {
 } from "../../lib/forebyggingsplan-klient";
 import { useHentOrgnummer } from "../Layout/Banner/Banner";
 import { loggFullførAktivitet, loggVelgAktivitet } from "../../lib/amplitude";
+import { useEffect } from "react";
 
 const Aktivitetsmal = dynamic(() =>
     import("./Aktivitetsmal").then((mod) => mod.Aktivitetsmal)
@@ -20,6 +21,22 @@ interface Props {
     oppdaterValgteAktiviteter: () => void;
 }
 
+const settVideoPåPause = (frame: HTMLIFrameElement) =>
+    frame.contentWindow?.postMessage(
+        {
+            method: "pause",
+        },
+        "*"
+    );
+
+const pauseAlleVideoer = ({ aktivitetsmalId }: Aktivitet) => {
+    document
+        .querySelectorAll<HTMLIFrameElement>(
+            `[data-aktivitetsmalid='${aktivitetsmalId}'] iframe`
+        )
+        .forEach(settVideoPåPause);
+};
+
 export const Aktivitetsrad = ({
     aktivitet,
     åpen = false,
@@ -27,6 +44,12 @@ export const Aktivitetsrad = ({
     oppdaterValgteAktiviteter,
 }: Props) => {
     const { orgnr } = useHentOrgnummer();
+
+    useEffect(() => {
+        if (!åpen) {
+            pauseAlleVideoer(aktivitet);
+        }
+    }, [åpen]);
 
     const velgAktivitetHandler = (frist?: Date) => {
         loggVelgAktivitet(aktivitet);
@@ -56,14 +79,12 @@ export const Aktivitetsrad = ({
                 )}{" "}
                 {aktivitet.frist ?? ""}
             </Accordion.Header>
-            <Accordion.Content>
-                {åpen && (
-                    <Aktivitetsmal
-                        aktivitet={aktivitet}
-                        velgAktivitet={velgAktivitetHandler}
-                        fullførAktivitet={fullførAktivitetHandler}
-                    />
-                )}
+            <Accordion.Content data-aktivitetsmalid={aktivitet.aktivitetsmalId}>
+                <Aktivitetsmal
+                    aktivitet={aktivitet}
+                    velgAktivitet={velgAktivitetHandler}
+                    fullførAktivitet={fullførAktivitetHandler}
+                />
             </Accordion.Content>
         </Accordion.Item>
     );

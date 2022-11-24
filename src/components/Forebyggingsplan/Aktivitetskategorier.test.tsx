@@ -41,7 +41,7 @@ describe("Aktivitetskategorier", () => {
         });
     });
 
-    it("Skal kunne åpne en aktivitet", async () => {
+    it.skip("Skal kunne åpne en aktivitet", async () => {
         render(<Aktivitetskategorier kategorier={aktivitetskategorierMock} />);
         fireEvent.click(screen.getAllByRole("button")[0]);
         expect(

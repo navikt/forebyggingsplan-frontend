@@ -23,15 +23,17 @@ const hovedinnhold: Partial<PortableTextComponents> = {
     marks,
 };
 
+interface Props {
+    aktivitet: Aktivitet;
+    velgAktivitet: (frist?: Date) => void;
+    fullførAktivitet: () => void;
+}
+
 export function Aktivitetsmal({
     aktivitet,
     velgAktivitet,
     fullførAktivitet,
-}: {
-    aktivitet: Aktivitet;
-    velgAktivitet: (frist?: Date) => void;
-    fullførAktivitet: () => void;
-}) {
+}: Props) {
     const {
         datepickerProps,
         inputProps,
