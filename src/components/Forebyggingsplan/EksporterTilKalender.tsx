@@ -50,7 +50,7 @@ export const EksporterTilKalender = ({
         return () => {
             URL.revokeObjectURL(url);
         };
-    }, [aktivitet.frist]);
+    }, [aktivitet]);
     return aktivitet.frist ? (
         <Link
             className={styles.detteHarViGjortKnapp}

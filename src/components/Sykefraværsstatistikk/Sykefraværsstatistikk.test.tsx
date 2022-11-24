@@ -19,7 +19,9 @@ describe("Sykefraværsstatistikk", () => {
     it("Har ingen uu-feil fra axe", async () => {
         const { container } = render(<Sykefraværsstatistikk />);
 
-        await screen.findByText("Sykefravær hos deg"); // Vent på kall til backend (msw)
+        expect(
+            await screen.findByText("Sykefravær hos deg")
+        ).toBeInTheDocument(); // Vent på kall til backend (msw)
 
         const results = await axe(container);
         expect(results).toHaveNoViolations();
@@ -27,10 +29,9 @@ describe("Sykefraværsstatistikk", () => {
 
     it("Skal vise sykefravær med riktige verdier", async () => {
         render(<Sykefraværsstatistikk />);
-
-        await screen.findByText("Sykefravær hos deg"); // Vent på kall til backend (msw)
-
-        expect(screen.getByText("Sykefravær hos deg")).toBeInTheDocument();
+        expect(
+            await screen.findByText("Sykefravær hos deg")
+        ).toBeInTheDocument(); // Vent på kall til backend (msw)
         expect(screen.getByText("8.8 %")).toBeInTheDocument();
         expect(screen.getByText("Sykefravær i bransje")).toBeInTheDocument();
         expect(screen.getByText("9.2 %")).toBeInTheDocument();

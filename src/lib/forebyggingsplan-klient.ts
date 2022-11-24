@@ -6,14 +6,43 @@ export const HENT_VALGTE_AKTIVITETER_PATH = `/api/valgteaktiviteter`;
 export const VELG_AKTIVITET_PATH = "/api/aktivitet";
 export const FULLFØR_AKTIVITET_PATH = "/api/fullfor";
 
-const fetcher = (...args: [url: string, options?: RequestInit]) =>
-    fetch(...args).then((res) => res.json());
+class FetchingError extends Error {
+    info: unknown;
+    status: number;
+
+    constructor(message: string, info: unknown, status: number) {
+        super(message);
+        this.info = info;
+        this.status = status;
+    }
+}
+
+export const fetcher = async (url: string) => {
+    const res = await fetch(url);
+    // If the status code is not in the range 200-299,
+    // we still try to parse and throw it.
+    if (!res.ok) {
+        let info;
+        try {
+            info = await res.json();
+        } catch (e) {
+            info = await res.text();
+        }
+        throw new FetchingError(
+            "An error occurred while fetching the data.",
+            info,
+            res.status
+        );
+    }
+
+    return res.json();
+};
 
 export function useHentValgteAktiviteter(orgnummer: string | null) {
     const url = orgnummer
         ? `${HENT_VALGTE_AKTIVITETER_PATH}?orgnr=${orgnummer}`
         : null;
-    return useSWR<ValgtAktivitet[]>(url, fetcher);
+    return useSWR<ValgtAktivitet[]>(url);
 }
 
 interface ValgtAktivitetDTO {

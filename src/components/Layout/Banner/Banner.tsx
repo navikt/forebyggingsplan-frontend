@@ -4,7 +4,8 @@ import { Organisasjon } from "@navikt/bedriftsmeny/lib/organisasjon";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { Heading } from "@navikt/ds-react";
-import { OrgnrSearchParamType } from "@navikt/bedriftsmeny/src/bedriftsmeny/Virksomhetsvelger/utils/utils";
+import { OrgnrSearchParamType } from "@navikt/bedriftsmeny/lib/velger/utils";
+
 interface Props {
     organisasjoner: Organisasjon[];
 }
