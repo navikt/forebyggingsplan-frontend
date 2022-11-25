@@ -6,6 +6,7 @@
 
 .kategori {
     padding: 1.125rem;
+    scroll-margin: 1.125rem;
     background: var(--a-white);
 }
 
@@ -16,5 +17,6 @@
 @media screen and (min-width: 480px) {
     .kategori {
         padding: 2.5rem;
+        scroll-margin: 2.5rem;
     }
 }

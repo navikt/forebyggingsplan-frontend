@@ -8,3 +8,8 @@
 .aktivitetFullført {
     background-color: var(--a-green-100);
 }
+
+.sticky {
+    position: sticky;
+    top: 0;
+}

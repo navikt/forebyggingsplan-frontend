@@ -18,6 +18,7 @@ interface Props {
     aktivitet: Aktivitet;
     åpen?: boolean;
     onClick?: () => void;
+    onClose?: () => void;
     oppdaterValgteAktiviteter: () => void;
 }
 
@@ -29,10 +30,10 @@ const settVideoPåPause = (frame: HTMLIFrameElement) =>
         "*"
     );
 
-const pauseAlleVideoer = ({ aktivitetsmalId }: Aktivitet) => {
+const pauseAlleVideoer = (aktivitetsmalid: string) => {
     document
         .querySelectorAll<HTMLIFrameElement>(
-            `[data-aktivitetsmalid='${aktivitetsmalId}'] iframe`
+            `[data-aktivitetsmalid='${aktivitetsmalid}'] iframe`
         )
         .forEach(settVideoPåPause);
 };
@@ -42,15 +43,15 @@ export const Aktivitetsrad = ({
     åpen = false,
     onClick,
     oppdaterValgteAktiviteter,
+    onClose,
 }: Props) => {
     const { orgnr } = useHentOrgnummer();
-
     useEffect(() => {
         if (!åpen) {
-            pauseAlleVideoer(aktivitet);
+            pauseAlleVideoer(aktivitet.aktivitetsmalId);
+            onClose?.();
         }
-    }, [åpen]);
-
+    }, [åpen, aktivitet.aktivitetsmalId, onClose]);
     const velgAktivitetHandler = (frist?: Date) => {
         loggVelgAktivitet(aktivitet);
         velgAktivitet({
@@ -71,7 +72,9 @@ export const Aktivitetsrad = ({
         <Accordion.Item open={åpen}>
             <Accordion.Header
                 onClick={onClick}
-                className={AktivitetStatusStyle[aktivitet.status]}
+                className={`${AktivitetStatusStyle[aktivitet.status]} ${
+                    styles.sticky
+                }`}
             >
                 {aktivitet.tittel}{" "}
                 {aktivitet.status === "FULLFØRT" && (
@@ -79,7 +82,10 @@ export const Aktivitetsrad = ({
                 )}{" "}
                 {aktivitet.frist ?? ""}
             </Accordion.Header>
-            <Accordion.Content data-aktivitetsmalid={aktivitet.aktivitetsmalId}>
+            <Accordion.Content
+                data-aktivitetsmalid={aktivitet.aktivitetsmalId}
+                className={styles.content}
+            >
                 <Aktivitetsmal
                     aktivitet={aktivitet}
                     velgAktivitet={velgAktivitetHandler}

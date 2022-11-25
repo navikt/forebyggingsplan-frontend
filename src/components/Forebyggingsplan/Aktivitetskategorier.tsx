@@ -2,7 +2,7 @@ import { Accordion, BodyShort, Heading } from "@navikt/ds-react";
 import { Aktivitetsrad } from "./Aktivitetsrad";
 import { Kategori } from "../../types/kategori";
 import styles from "./Aktivitetskategorier.module.css";
-import { useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import {
     Aktivitet,
     AktivitetStatus,
@@ -86,30 +86,33 @@ const Aktivitetskategori = ({
     onKlikkPåRad?: (aktivitet: Aktivitet) => void;
     oppdaterValgteAktiviteter: () => void;
 }) => {
+    const articleRef = useRef<HTMLElement | null>(null);
+
+    const scrollTilKategori = useCallback(() => {
+        articleRef?.current?.scrollIntoView({
+            behavior: "smooth",
+        });
+    }, []);
+
     return (
-        <article className={styles.kategori}>
+        <article className={styles.kategori} ref={articleRef}>
             <Heading size="large" level="2">
                 {tittel}
             </Heading>
             <BodyShort>{beskrivelse}</BodyShort>
             <Accordion className={styles.accordion}>
-                {aktiviteter.sort(sorterStatus).map((aktivitet) => {
-                    return (
-                        <Aktivitetsrad
-                            åpen={
-                                aktivitet.tittel === gjeldendeAktivitet?.tittel
-                            }
-                            key={aktivitet.tittel}
-                            aktivitet={aktivitet}
-                            onClick={() => {
-                                onKlikkPåRad?.(aktivitet);
-                            }}
-                            oppdaterValgteAktiviteter={
-                                oppdaterValgteAktiviteter
-                            }
-                        />
-                    );
-                })}
+                {aktiviteter.sort(sorterStatus).map((aktivitet) => (
+                    <Aktivitetsrad
+                        åpen={aktivitet.tittel === gjeldendeAktivitet?.tittel}
+                        key={aktivitet.tittel}
+                        aktivitet={aktivitet}
+                        onClick={() => {
+                            onKlikkPåRad?.(aktivitet);
+                        }}
+                        onClose={scrollTilKategori}
+                        oppdaterValgteAktiviteter={oppdaterValgteAktiviteter}
+                    />
+                ))}
             </Accordion>
         </article>
     );
