@@ -10,6 +10,7 @@ import { server } from "./src/mocks/server";
 import { fetch } from "whatwg-fetch"; // Trenger denne for å få fetch til å funke i tester
 
 expect.extend(toHaveNoViolations);
+Element.prototype.scrollIntoView = jest.fn();
 
 global.ResizeObserver = jest.fn().mockImplementation(() => ({
     observe: jest.fn(),
