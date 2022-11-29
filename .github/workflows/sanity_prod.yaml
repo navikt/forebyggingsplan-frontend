@@ -23,6 +23,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
+          registry-url: 'https://npm.pkg.github.com'
       - name: Install deps
         run: yarn install --immutable
       - name: Setup sanity cli
