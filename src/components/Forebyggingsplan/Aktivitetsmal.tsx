@@ -4,6 +4,7 @@ import {
     BodyLong,
     Button,
     Heading,
+    Ingress,
     UNSAFE_DatePicker,
     UNSAFE_useDatepicker,
 } from "@navikt/ds-react";
@@ -83,7 +84,7 @@ export function Aktivitetsmal({
                 velgAktivitet={velgAktivitet}
                 fullførAktivitet={fullførAktivitet}
             />
-            {aktivitet.beskrivelse}
+            <Ingress>{aktivitet.beskrivelse}</Ingress>
             <Heading size="medium" level="3">
                 Mål
             </Heading>
