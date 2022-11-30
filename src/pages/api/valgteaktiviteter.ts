@@ -5,6 +5,8 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
+    if (!req.query.orgnr)
+        return res.status(400).json({ error: "Mangler parameter 'orgnr'" });
     const token = await hentTokenXToken(
         req,
         res,

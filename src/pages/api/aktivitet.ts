@@ -5,6 +5,8 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
+    if (!req.body.orgnr)
+        return res.status(400).json({ error: "Mangler 'orgnr' i body" });
     const requestBody = JSON.parse(
         JSON.stringify({
             aktivitetsmalId: req.body.aktivitetsmalId,
