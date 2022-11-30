@@ -5,20 +5,18 @@ import { marks } from "../PortableText/marks/Marks";
 import { block } from "../PortableText/block/Block";
 
 export const LesMer = ({
-    value,
+    value: { innhold, tittel },
 }: PortableTextComponentProps<{
     tittel: string;
     innhold: PortableTextBlock[];
-}>) => {
-    return (
-        <ReadMore header={value.tittel}>
-            <PortableText
-                value={value.innhold}
-                components={{
-                    block,
-                    marks,
-                }}
-            />
-        </ReadMore>
-    );
-};
+}>) => (
+    <ReadMore header={tittel}>
+        <PortableText
+            value={innhold}
+            components={{
+                block,
+                marks,
+            }}
+        />
+    </ReadMore>
+);
