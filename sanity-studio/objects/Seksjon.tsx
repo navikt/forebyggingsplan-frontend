@@ -49,6 +49,9 @@ export const seksjon = {
                     },
                 },
                 {
+                    type: "lesmer",
+                },
+                {
                     type: "lovpalagt",
                 },
                 {
