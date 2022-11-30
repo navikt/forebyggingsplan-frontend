@@ -41,15 +41,26 @@ describe("Aktivitetskategorier", () => {
         });
     });
 
-    it.skip("Skal kunne åpne en aktivitet", async () => {
+    it("Skal kunne åpne en aktivitet", async () => {
         render(<Aktivitetskategorier kategorier={aktivitetskategorierMock} />);
         fireEvent.click(screen.getAllByRole("button")[0]);
-        expect(
-            await screen.findByRole("button", { name: "Dette har vi på plass" })
-        ).toHaveClass("navds-button", "navds-button--secondary");
-        expect(
-            await screen.findByRole("button", { name: "Dette vil vi gjøre" })
-        ).toHaveClass("navds-button", "navds-button--primary");
+
+        const påPlassKnapper = await screen.findAllByRole("button", {
+            name: "Dette har vi på plass",
+        });
+        expect(påPlassKnapper.length).toBeGreaterThanOrEqual(1);
+        påPlassKnapper.forEach((knapp) =>
+            expect(knapp).toHaveClass("navds-button", "navds-button--secondary")
+        );
+
+        const vilGjøreKnapper = await screen.findAllByRole("button", {
+            name: "Dette vil vi gjøre",
+        });
+        expect(vilGjøreKnapper.length).toBeGreaterThanOrEqual(1);
+        vilGjøreKnapper.forEach((knapp) =>
+            expect(knapp).toHaveClass("navds-button", "navds-button--primary")
+        );
+
         expect(
             await screen.findByRole("heading", { level: 3, name: "Mål" })
         ).toBeInTheDocument();
@@ -58,7 +69,8 @@ describe("Aktivitetskategorier", () => {
                 /Du vet hvilke plikter du har til å føre sykefraværsstatstikk/
             )
         ).toBeInTheDocument();
-        fireEvent.click(screen.getByTitle("Åpne datovelger"));
+
+        fireEvent.click(screen.getAllByTitle("Åpne datovelger")[0]);
         expect(await screen.findByRole("dialog")).toBeInTheDocument();
         // const results = await axe(container); // Datepicker aria-control peker på en popup som ikke er åpen/blir rendret.
         // expect(results).toHaveNoViolations();
