@@ -61,6 +61,7 @@ services:
             DB_PASSWORD: test
             DB_DATABASE: postgres
             ALTINN_RETTIGHETER_PROXY_URL: "http://altinn:8080/altinn"
+            NAIS_CLUSTER_NAME: local
         ports:
             - "8081:8081"
             - "5005:5005"
