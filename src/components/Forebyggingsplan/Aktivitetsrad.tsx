@@ -7,7 +7,11 @@ import {
     velgAktivitet,
 } from "../../lib/forebyggingsplan-klient";
 import { useHentOrgnummer } from "../Layout/Banner/Banner";
-import { loggFullførAktivitet, loggVelgAktivitet } from "../../lib/amplitude";
+import {
+    loggFullførAktivitet,
+    loggVelgAktivitet,
+    loggÅpneAktivitet,
+} from "../../lib/amplitude";
 import { useEffect } from "react";
 
 const Aktivitetsmal = dynamic(() =>
@@ -52,6 +56,11 @@ export const Aktivitetsrad = ({
             onClose?.();
         }
     }, [åpen, aktivitet.aktivitetsmalId, onClose]);
+    useEffect(() => {
+        if (åpen) {
+            loggÅpneAktivitet(aktivitet);
+        }
+    }, [åpen, aktivitet]);
     const velgAktivitetHandler = (frist?: Date) => {
         loggVelgAktivitet(aktivitet);
         velgAktivitet({

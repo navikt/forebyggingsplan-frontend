@@ -15,7 +15,7 @@ const AmplitudeBucket = {
 
 init(getAmplitudeBucketId(), "", {
     serverUrl: "https://amplitude.nav.no/collect",
-    useBatch: false, // Skrur av Web Attribution Tracking: https://www.docs.developers.amplitude.com/data/sdks/marketing-analytics-browser/#web-attribution
+    attribution: { disabled: true }, // Skrur av Web Attribution Tracking: https://www.docs.developers.amplitude.com/data/sdks/marketing-analytics-browser/#web-attribution
 });
 
 export const defaultEventProperties = () => {
