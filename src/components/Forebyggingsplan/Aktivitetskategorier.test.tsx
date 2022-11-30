@@ -43,7 +43,11 @@ describe("Aktivitetskategorier", () => {
 
     it("Skal kunne åpne en aktivitet", async () => {
         render(<Aktivitetskategorier kategorier={aktivitetskategorierMock} />);
-        fireEvent.click(screen.getAllByRole("button")[0]);
+        fireEvent.click(
+            screen.getByRole("button", {
+                name: "Bruk sykefraværstatistikken til å forebygge fravær",
+            })
+        );
 
         const påPlassKnapper = await screen.findAllByRole("button", {
             name: "Dette har vi på plass",
@@ -72,7 +76,5 @@ describe("Aktivitetskategorier", () => {
 
         fireEvent.click(screen.getAllByTitle("Åpne datovelger")[0]);
         expect(await screen.findByRole("dialog")).toBeInTheDocument();
-        // const results = await axe(container); // Datepicker aria-control peker på en popup som ikke er åpen/blir rendret.
-        // expect(results).toHaveNoViolations();
     });
 });
