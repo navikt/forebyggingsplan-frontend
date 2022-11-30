@@ -1,7 +1,6 @@
 import { Aktivitet } from "../../types/Aktivitet";
 import { PortableText, PortableTextComponents } from "@portabletext/react";
 import {
-    BodyLong,
     Button,
     Heading,
     Ingress,
@@ -88,7 +87,7 @@ export function Aktivitetsmal({
             <Heading size="medium" level="3">
                 Mål
             </Heading>
-            <BodyLong>{aktivitet.mål}</BodyLong>
+            <Ingress>{aktivitet.mål}</Ingress>
             <PortableText value={aktivitet.innhold} components={hovedinnhold} />
             <Handlinger
                 aktivitet={aktivitet}

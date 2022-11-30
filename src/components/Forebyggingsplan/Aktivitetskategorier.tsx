@@ -1,4 +1,4 @@
-import { Accordion, BodyShort, Heading } from "@navikt/ds-react";
+import {Accordion, Heading, Ingress} from "@navikt/ds-react";
 import { Aktivitetsrad } from "./Aktivitetsrad";
 import { Kategori } from "../../types/kategori";
 import styles from "./Aktivitetskategorier.module.css";
@@ -97,7 +97,7 @@ const Aktivitetskategori = ({
             <Heading size="large" level="2">
                 {tittel}
             </Heading>
-            <BodyShort>{beskrivelse}</BodyShort>
+            <Ingress>{beskrivelse}</Ingress>
             <Accordion className={styles.accordion}>
                 {aktiviteter.sort(sorterStatus).map((aktivitet) => (
                     <Aktivitetsrad
