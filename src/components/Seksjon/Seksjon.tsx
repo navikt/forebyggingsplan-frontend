@@ -1,13 +1,17 @@
-import { PortableText, PortableTextComponents } from "@portabletext/react";
+import {
+    PortableText,
+    PortableTextComponentProps,
+    PortableTextComponents,
+} from "@portabletext/react";
 import { Lovpålagt } from "../Lovpålagt/Lovpålagt";
 import { VideoVisning } from "../VideoVisning/VideoVisning";
-import { PortableTextComponentProps } from "@portabletext/react/src/types";
 import { PortableTextBlock } from "@portabletext/types";
 import styles from "./Seksjon.module.css";
 import { Bilde } from "../Bilde/Bilde";
 import { block } from "../PortableText/block/Block";
 import { marks } from "../PortableText/marks/Marks";
 import { Sykefraværsstatistikk } from "../Sykefraværsstatistikk/Sykefraværsstatistikk";
+import { LesMer } from "../LesMer/LesMer";
 
 export const Seksjon = ({
     value,
@@ -28,6 +32,7 @@ const seksjonsinnhold: Partial<PortableTextComponents> = {
         video: VideoVisning,
         bilde: Bilde,
         statistikk: Sykefraværsstatistikk,
+        lesmer: LesMer,
     },
     block,
     marks,
