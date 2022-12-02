@@ -1,0 +1,25 @@
+.statistikk {
+    margin: 0.5rem;
+}
+
+.tag {
+    width: 100%;
+    border: none;
+    font-size: 1.75rem;
+}
+
+.trendIkon {
+    margin-right: 1rem;
+}
+
+.rotateOpp {
+    transform: rotate(45deg);
+}
+
+.rotateNed {
+    transform: rotate(135deg);
+}
+
+.rotateUendret {
+    transform: rotate(90deg);
+}
