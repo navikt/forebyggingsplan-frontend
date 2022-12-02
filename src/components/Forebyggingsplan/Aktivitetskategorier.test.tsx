@@ -1,7 +1,7 @@
 import { screen, render } from "@testing-library/react";
 import { Aktivitetskategorier } from "./Aktivitetskategorier";
 import { axe } from "jest-axe";
-import { aktivitetskategorierMock } from "./aktivitetskategorierMock";
+import { aktivitetskategorierMock } from "../../mocks/aktivitetskategorierMock";
 import userEvent from "@testing-library/user-event";
 
 jest.mock("next/router", () => ({

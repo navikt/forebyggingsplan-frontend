@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 // ^ Innholdet fra Sanity er custom types, så Typescript liker ikke det den ser
-import { Kategori } from "../../types/kategori";
+import { Kategori } from "../types/kategori";
 
 export const aktivitetskategorierMock: Kategori[] = [
     {
