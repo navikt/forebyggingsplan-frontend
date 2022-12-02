@@ -1,7 +1,8 @@
-import { screen, render, fireEvent } from "@testing-library/react";
+import { screen, render } from "@testing-library/react";
 import { Aktivitetskategorier } from "./Aktivitetskategorier";
 import { axe } from "jest-axe";
 import { aktivitetskategorierMock } from "./aktivitetskategorierMock";
+import userEvent from "@testing-library/user-event";
 
 jest.mock("next/router", () => ({
     useRouter() {
@@ -43,11 +44,10 @@ describe("Aktivitetskategorier", () => {
 
     it("Skal kunne åpne en aktivitet", async () => {
         render(<Aktivitetskategorier kategorier={aktivitetskategorierMock} />);
-        fireEvent.click(
-            screen.getByRole("button", {
-                name: "Bruk sykefraværstatistikken til å forebygge fravær",
-            })
-        );
+        const button = await screen.findByRole("button", {
+            name: "Bruk sykefraværstatistikken til å forebygge fravær",
+        });
+        await userEvent.click(button);
 
         const påPlassKnapper = await screen.findAllByRole("button", {
             name: "Dette har vi på plass",
@@ -57,7 +57,7 @@ describe("Aktivitetskategorier", () => {
             expect(knapp).toHaveClass("navds-button", "navds-button--secondary")
         );
 
-        const vilGjøreKnapper = await screen.findAllByRole("button", {
+        const vilGjøreKnapper = screen.getAllByRole("button", {
             name: "Dette vil vi gjøre",
         });
         expect(vilGjøreKnapper.length).toBeGreaterThanOrEqual(1);
@@ -66,15 +66,19 @@ describe("Aktivitetskategorier", () => {
         );
 
         expect(
-            await screen.findByRole("heading", { level: 3, name: "Mål" })
-        ).toBeInTheDocument();
+            screen.getByRole("heading", { level: 3, name: "Mål" })
+        ).toBeVisible();
         expect(
-            await screen.findByText(
+            screen.getByText(
                 /Du vet hvilke plikter du har til å føre sykefraværsstatstikk/
             )
-        ).toBeInTheDocument();
-
-        fireEvent.click(screen.getAllByTitle("Åpne datovelger")[0]);
-        expect(await screen.findByRole("dialog")).toBeInTheDocument();
+        ).toBeVisible();
+        expect(
+            screen.getByText(
+                "Før fravær og ha oversikt over plager som skyldes forhold på arbeidsplassen"
+            )
+        ).toBeVisible();
+        await userEvent.click(screen.getAllByTitle("Åpne datovelger")[0]);
+        expect(await screen.findByRole("dialog")).toBeVisible();
     });
 });
