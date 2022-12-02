@@ -37,13 +37,10 @@ describe("VideoVisning", () => {
         expect(screen.getByRole("heading", { level: 3 })).toHaveTextContent(
             tekst
         );
-        const videoIframe = screen.getByTitle(tekst);
+        const videoIframe: HTMLIFrameElement = screen.getByTitle(tekst);
         expect(videoIframe).toHaveClass("video__iframe");
-        expect(videoIframe.attributes.getNamedItem("src")).toHaveTextContent(
-            "https://player.vimeo.com/video/123"
-        );
+        expect(videoIframe.src).toBe("https://player.vimeo.com/video/123");
         const punktliste = screen.getByRole("list");
-        expect(punktliste).toBeInTheDocument();
         const { getAllByRole } = within(punktliste);
         const items = getAllByRole("listitem");
         expect(items[0]).toHaveTextContent("Punkt en");
@@ -67,12 +64,10 @@ describe("VideoVisning", () => {
         expect(screen.getByRole("heading", { level: 3 })).toHaveTextContent(
             tekst
         );
-        const videoIframe = screen.getByTitle(tekst);
+        const videoIframe: HTMLIFrameElement = screen.getByTitle(tekst);
         expect(videoIframe).toHaveClass("video__iframe");
-        expect(videoIframe.attributes.getNamedItem("src")).toHaveTextContent(
-            "https://player.vimeo.com/video/123"
-        );
+        expect(videoIframe.src).toBe("https://player.vimeo.com/video/123");
         expect(screen.queryByRole("list")).toBeFalsy();
-        expect(screen.getByText("Ikke punkttekst")).toBeInTheDocument();
+        expect(screen.getByText("Ikke punkttekst")).toBeVisible();
     });
 });
