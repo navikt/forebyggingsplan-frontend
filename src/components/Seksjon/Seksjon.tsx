@@ -12,7 +12,7 @@ import { block } from "../PortableText/block/Block";
 import { marks } from "../PortableText/marks/Marks";
 import { Sykefraværsstatistikk } from "../Sykefraværsstatistikk/Sykefraværsstatistikk";
 import { LesMer } from "../LesMer/LesMer";
-import { Oppgave } from "../../../sanity-studio/objects/Oppgave";
+import { Oppgave } from "../Oppgave/Oppgave";
 
 export const Seksjon = ({
     value,
