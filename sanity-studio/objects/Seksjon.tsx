@@ -4,6 +4,8 @@ import { Lovpålagt } from "./Lovpålagt";
 import { VideoPreview } from "./Video";
 import { Rule } from "@sanity/types";
 import { PortableTextBlock } from "@portabletext/types";
+import { Statistikk } from "./Statistikk";
+import { Oppgave } from "./Oppgave";
 
 export const seksjon = {
     type: "object",
@@ -53,6 +55,9 @@ export const seksjon = {
                 },
                 {
                     type: "lovpalagt",
+                },
+                {
+                    type: "oppgave",
                 },
                 {
                     type: "statistikk",
@@ -109,6 +114,8 @@ export const seksjon = {
                             components={{
                                 types: {
                                     lovpalagt: Lovpålagt,
+                                    oppgave: Oppgave,
+                                    statistikk: Statistikk,
                                     video: VideoPreview,
                                 },
                             }}

@@ -35,7 +35,7 @@ Vi bruker Sanity som CMS for å lage innhald og kategoriar til forebyggingsplane
 Slik køyrer du opp Sanity studio for utvikling lokalt
 1. `npm install` i mappa /sanity-studio
 2. `npm start` i samme mappa
-3. Åpne localhost:3333 og logg på med Nav-SSO
+3. Åpne http://localhost:3333 og logg på med Nav-SSO
 4. 🎉🎉🎉
 
 Sanity i prod:

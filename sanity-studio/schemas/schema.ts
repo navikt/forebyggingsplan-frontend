@@ -11,6 +11,7 @@ import { seksjon } from "../objects/Seksjon";
 import { kategori } from "./kategori";
 import statistikk from "../objects/Statistikk";
 import { lesMer } from "../objects/LesMer";
+import oppgave from "../objects/Oppgave";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -23,6 +24,7 @@ export default createSchema({
         lenke,
         seksjon,
         lovpålagt,
+        oppgave,
         lesMer,
         video,
         aktivitet,
