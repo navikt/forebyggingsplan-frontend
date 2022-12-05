@@ -1,20 +1,31 @@
-import { PortableTextComponentProps } from "@portabletext/react/src/types";
 import styles from "./Oppgave.module.css";
-import { Tag } from "@navikt/ds-react";
+import { Heading, Panel, Tag } from "@navikt/ds-react";
+import { PortableText, PortableTextComponentProps } from "@portabletext/react";
+import { PortableTextBlock } from "@portabletext/types";
+import { block } from "../PortableText/block/Block";
+import { marks } from "../PortableText/marks/Marks";
 
 interface Props {
-    tekst: string;
+    tittel: string;
+    innhold: PortableTextBlock[];
 }
 
 export const Oppgave = ({
-    value: { tekst },
+    value: { tittel, innhold },
 }: PortableTextComponentProps<Props>) => {
     return (
-        <div className={styles.wrapper}>
+        <Panel className={styles.wrapper}>
             <Tag className={styles.tag} variant="neutral">
                 Oppgave
             </Tag>
-            {tekst}
-        </div>
+            <Heading size={"medium"}>{tittel}</Heading>
+            <PortableText
+                value={innhold}
+                components={{
+                    block,
+                    marks,
+                }}
+            />
+        </Panel>
     );
 };

@@ -1,12 +1,28 @@
 import { render, screen } from "@testing-library/react";
 import { axe } from "jest-axe";
 import { Oppgave } from "./Oppgave";
+import { PortableTextBlock } from "@portabletext/types";
 
 describe("Oppgave", () => {
+    const innhold: PortableTextBlock = {
+        _key: "344d441ce325",
+        _type: "block",
+        children: [
+            {
+                _key: "59755abb81a6",
+                _type: "span",
+                marks: [],
+                text: "Innholdstekst",
+            },
+        ],
+        markDefs: [],
+        style: "normal",
+    };
+
     it("Har ingen uu-feil fra axe", async () => {
         const { container } = render(
             <Oppgave
-                value={{ tekst: "Heisann" }}
+                value={{ tittel: "Heisann", innhold: [innhold] }}
                 index={1}
                 isInline={false}
                 renderNode={() => <></>}
@@ -16,10 +32,10 @@ describe("Oppgave", () => {
         expect(results).toHaveNoViolations();
     });
     it("Har tekst og label", async () => {
-        const tekst = "Heisann";
+        const tittel = "Heisann";
         render(
             <Oppgave
-                value={{ tekst: tekst }}
+                value={{ tittel: tittel, innhold: [innhold] }}
                 index={1}
                 isInline={false}
                 renderNode={() => <></>}
@@ -28,10 +44,9 @@ describe("Oppgave", () => {
         expect(screen.getByText("Oppgave")).toBeInTheDocument();
         expect(screen.getByText("Oppgave")).toHaveClass(
             "navds-tag",
-            "tag",
             "navds-tag--neutral"
         );
-        expect(screen.getByText(tekst)).toBeInTheDocument();
-        expect(screen.getByText(tekst)).toHaveClass("wrapper");
+        expect(screen.getByText("Innholdstekst")).toBeInTheDocument();
+        expect(screen.getByText(tittel)).toBeInTheDocument();
     });
 });
