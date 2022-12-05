@@ -55,6 +55,9 @@ export const seksjon = {
                     type: "lovpalagt",
                 },
                 {
+                    type: "oppgave",
+                },
+                {
                     type: "statistikk",
                 },
                 {
