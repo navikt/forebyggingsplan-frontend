@@ -3,6 +3,7 @@
     flex-direction: column;
     gap: 1rem;
     padding: 1rem;
+    margin-bottom: 1rem;
     border-radius: 4px;
     background: rgba(230, 240, 255, 1);
 }
