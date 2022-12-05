@@ -5,15 +5,16 @@ import { PortableTextBlock } from "@portabletext/types";
 
 interface Props {
     value: {
+        oppgavetype: string;
         tittel: string;
         innhold: PortableTextBlock[];
     };
 }
 
-export const Oppgave = ({ value: { tittel, innhold } }: Props) => {
+export const Oppgave = ({ value: { oppgavetype, tittel, innhold } }: Props) => {
     return (
         <div className={styles.oppgaveContainer}>
-            <div className={styles.tag}>Oppgave</div>
+            <div className={styles.tag}>{oppgavetype}</div>
             <h3>{tittel}</h3>
             <PortableText value={innhold} />
         </div>
@@ -25,6 +26,11 @@ const oppgaveSchema = {
     name: "oppgave",
     title: "Oppgave-tekstblokk",
     fields: [
+        {
+            title: "Oppgavetype",
+            name: "oppgavetype",
+            type: "string",
+        },
         {
             title: "Oppgavetittel",
             name: "tittel",
@@ -61,9 +67,14 @@ const oppgaveSchema = {
     ],
     preview: {
         select: {
-            tekst: "tekst",
+            tittel: "tittel",
+            innhold: "innhold",
+            oppgavetype: "oppgavetype",
         },
         component: Oppgave,
+    },
+    initialValue: {
+        oppgavetype: "Oppgave",
     },
 };
 export default oppgaveSchema;

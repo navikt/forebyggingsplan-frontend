@@ -4,25 +4,31 @@ import { Oppgave } from "./Oppgave";
 import { PortableTextBlock } from "@portabletext/types";
 
 describe("Oppgave", () => {
-    const innhold: PortableTextBlock = {
-        _key: "344d441ce325",
-        _type: "block",
-        children: [
-            {
-                _key: "59755abb81a6",
-                _type: "span",
-                marks: [],
-                text: "Innholdstekst",
-            },
-        ],
-        markDefs: [],
-        style: "normal",
-    };
+    const innhold: PortableTextBlock[] = [
+        {
+            _key: "344d441ce325",
+            _type: "block",
+            children: [
+                {
+                    _key: "59755abb81a6",
+                    _type: "span",
+                    marks: [],
+                    text: "Innholdstekst",
+                },
+            ],
+            markDefs: [],
+            style: "normal",
+        },
+    ];
 
     it("Har ingen uu-feil fra axe", async () => {
         const { container } = render(
             <Oppgave
-                value={{ tittel: "Heisann", innhold: [innhold] }}
+                value={{
+                    oppgavetype: "Oppgave",
+                    tittel: "Heisann",
+                    innhold,
+                }}
                 index={1}
                 isInline={false}
                 renderNode={() => <></>}
@@ -35,7 +41,11 @@ describe("Oppgave", () => {
         const tittel = "Heisann";
         render(
             <Oppgave
-                value={{ tittel: tittel, innhold: [innhold] }}
+                value={{
+                    oppgavetype: "Oppgave",
+                    tittel: tittel,
+                    innhold,
+                }}
                 index={1}
                 isInline={false}
                 renderNode={() => <></>}
