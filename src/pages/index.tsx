@@ -131,7 +131,7 @@ const Home = ({
     return (
         <>
             <Head>
-                <title>Forebyggingsplan</title>
+                <title>Slik forebygger du fravær</title>
                 <meta
                     name="description"
                     content="Et verktøy der arbeidsgivere kan jobbe med å forebygge sykefravær i sin virksomhet"

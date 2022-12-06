@@ -45,7 +45,7 @@ export default function Banner({ organisasjoner }: Props) {
             orgnrSearchParam={useHentOrgnummer().hook}
             sidetittel={
                 <Heading size="xlarge" level="1">
-                    Forebyggingsplan
+                    Slik forebygger du sykefravær
                 </Heading>
             }
             organisasjoner={organisasjoner}
