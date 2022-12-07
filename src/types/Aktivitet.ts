@@ -10,6 +10,7 @@ export interface Aktivitet {
     status: AktivitetStatus;
     aktivitetsId?: number;
     frist?: string;
+    fullførtTidspunkt?: string;
     orgnr?: string;
 }
 

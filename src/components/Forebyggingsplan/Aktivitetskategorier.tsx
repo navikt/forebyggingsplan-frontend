@@ -1,4 +1,4 @@
-import {Accordion, Heading, Ingress} from "@navikt/ds-react";
+import { Accordion, Heading, Ingress } from "@navikt/ds-react";
 import { Aktivitetsrad } from "./Aktivitetsrad";
 import { Kategori } from "../../types/kategori";
 import styles from "./Aktivitetskategorier.module.css";
@@ -46,6 +46,8 @@ export const Aktivitetskategorier = ({ kategorier }: Props) => {
                                     ...aktivitet,
                                     status: finnStatus(valgtAktivitet),
                                     frist: valgtAktivitet.frist,
+                                    fullførtTidspunkt:
+                                        valgtAktivitet.fullførtTidspunkt,
                                     orgnr: valgtAktivitet.valgtAv.orgnr,
                                     aktivitetsId: valgtAktivitet.id,
                                 };

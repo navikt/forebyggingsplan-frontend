@@ -89,7 +89,8 @@ export const Aktivitetsrad = ({
                 {aktivitet.status === "FULLFØRT" && (
                     <Tag variant="info">Fullført</Tag>
                 )}{" "}
-                {aktivitet.frist ?? ""}
+                {aktivitet.fullførtTidspunkt?.split("T")[0] ?? ""}
+                {aktivitet.status !== "FULLFØRT" && (aktivitet.frist ?? "")}
             </Accordion.Header>
             <Accordion.Content
                 data-aktivitetsmalid={aktivitet.aktivitetsmalId}
