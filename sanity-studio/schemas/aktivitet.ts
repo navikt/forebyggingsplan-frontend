@@ -36,6 +36,7 @@ export const aktivitet = {
             type: "string",
             name: "maal",
             title: "Målbeskrivelse",
+            validation: (rule: Rule) => rule.required(),
         },
         {
             title: "Innhold",
@@ -79,6 +80,7 @@ export const aktivitet = {
                     type: "seksjon",
                 },
             ],
+            validation: (rule: Rule) => rule.required(),
         },
     ],
 };
