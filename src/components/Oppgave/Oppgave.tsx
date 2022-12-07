@@ -6,26 +6,29 @@ import { block } from "../PortableText/block/Block";
 import { marks } from "../PortableText/marks/Marks";
 
 interface Props {
+    oppgavetype: string;
     tittel: string;
     innhold: PortableTextBlock[];
 }
 
 export const Oppgave = ({
-    value: { tittel, innhold },
+    value: { oppgavetype, tittel, innhold },
 }: PortableTextComponentProps<Props>) => {
     return (
         <Panel className={styles.wrapper}>
             <Tag className={styles.tag} variant="neutral">
-                Oppgave
+                {oppgavetype}
             </Tag>
-            <Heading size={"medium"}>{tittel}</Heading>
-            <PortableText
-                value={innhold}
-                components={{
-                    block,
-                    marks,
-                }}
-            />
+            <div>
+                <Heading size={"medium"}>{tittel}</Heading>
+                <PortableText
+                    value={innhold}
+                    components={{
+                        block,
+                        marks,
+                    }}
+                />
+            </div>
         </Panel>
     );
 };

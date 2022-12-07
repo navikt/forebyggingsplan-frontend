@@ -57,7 +57,7 @@ export const EksporterTilKalender = ({
             href={lastnedUrl}
             download="kalendar.ics"
         >
-            Legg til i kalender
+            Last ned til kalender (ics)
         </Link>
     ) : null;
 };

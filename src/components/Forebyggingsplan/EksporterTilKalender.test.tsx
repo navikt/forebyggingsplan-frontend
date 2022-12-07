@@ -25,8 +25,9 @@ describe("Eksporter til kalender", () => {
         expect(global.URL.revokeObjectURL).toHaveBeenCalledTimes(0);
         expect(global.URL.createObjectURL).toHaveBeenCalledTimes(1);
 
-        const linkTag: HTMLAnchorElement =
-            screen.getByText(/legg til i kalender/i);
+        const linkTag: HTMLAnchorElement = screen.getByText(
+            /last ned til kalender/i
+        );
 
         expect(linkTag.download).toBe("kalendar.ics");
         expect(linkTag.href).toBe("blob:123");
