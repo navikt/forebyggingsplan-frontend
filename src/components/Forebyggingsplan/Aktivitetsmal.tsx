@@ -37,7 +37,6 @@ const Handlinger = ({ aktivitet, fullførAktivitet, velgAktivitet }: Props) => {
 
     return (
         <span className={styles.knappeContainer}>
-            <EksporterTilKalender aktivitet={aktivitet} />
             {aktivitet.status === "IKKE_VALGT" && (
                 <div className={styles.detteVilViGjøreContainer}>
                     <UNSAFE_DatePicker {...datepickerProps}>
@@ -67,6 +66,7 @@ const Handlinger = ({ aktivitet, fullførAktivitet, velgAktivitet }: Props) => {
                     Dette har vi gjort
                 </Button>
             )}
+            <EksporterTilKalender aktivitet={aktivitet} />
         </span>
     );
 };

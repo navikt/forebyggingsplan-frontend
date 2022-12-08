@@ -7,7 +7,7 @@
 
 .knappeContainer {
     display: flex;
-    justify-content: flex-end;
+    flex-wrap: wrap;
     gap: 1rem;
 }
 
@@ -15,10 +15,15 @@
     align-self: end;
 }
 
+.knappeContainer > :nth-child(2) {
+    margin-left: 1rem;
+}
+
 .detteVilViGjøreContainer {
     display: flex;
-    background-color: var(--a-gray-100);
+    flex-wrap: wrap;
     gap: 1rem;
+    background-color: var(--a-gray-100);
     padding: 1rem;
 }
 
