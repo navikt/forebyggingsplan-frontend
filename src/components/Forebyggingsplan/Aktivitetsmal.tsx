@@ -89,11 +89,6 @@ export function Aktivitetsmal({
             </Heading>
             <Ingress>{aktivitet.mål}</Ingress>
             <PortableText value={aktivitet.innhold} components={hovedinnhold} />
-            <Handlinger
-                aktivitet={aktivitet}
-                velgAktivitet={velgAktivitet}
-                fullførAktivitet={fullførAktivitet}
-            />
         </div>
     );
 }
