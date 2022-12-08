@@ -1,0 +1,5 @@
+ingresses:
+- "https://arbeidsgiver.nav.no/forebyggingsplan"
+forebyggingsplanClientId: "prod-gcp:pia:forebyggingsplan"
+sykefravarstatistikkApiClientId: "prod-fss:arbeidsgiver:sykefravarsstatistikk-api"
+sykefravarstatistikkApiBaseurl: "https://sykefravarsstatistikk-api.prod-fss-pub.nais.io/sykefravarsstatistikk-api"
