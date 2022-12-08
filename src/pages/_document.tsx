@@ -8,6 +8,7 @@ import {
     NextScript,
 } from "next/document";
 import {
+    Env,
     Components,
     fetchDecoratorReact,
 } from "@navikt/nav-dekoratoren-moduler/ssr";
@@ -16,6 +17,8 @@ interface Props {
     Dekoratør: Components;
 }
 
+const decoratorEnv = process.env.DECORATOR_ENV as Exclude<Env, "localhost">;
+
 export default class MyDocument extends Document<Props> {
     static async getInitialProps(
         ctx: DocumentContext
@@ -23,7 +26,7 @@ export default class MyDocument extends Document<Props> {
         const initialProps = await Document.getInitialProps(ctx);
 
         const Dekoratør = await fetchDecoratorReact({
-            env: process.env.NAIS_CLUSTER_NAME === "prod-gcp" ? "prod" : "dev",
+            env: decoratorEnv ?? "prod",
             chatbot: false,
             context: "arbeidsgiver",
             breadcrumbs: [],

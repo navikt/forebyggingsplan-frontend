@@ -38,6 +38,8 @@ spec:
       value: {{ sykefravarstatistikkApiClientId }}
     - name: SYKEFRAVARSSTATISTIKK_API_BASEURL
       value: {{ sykefravarstatistikkApiBaseurl }}
+    - name: DECORATOR_ENV
+      value: {{ dekoratorEnv }}
   ingresses:
   {{#each ingresses as |url|}}
      - {{url}}
