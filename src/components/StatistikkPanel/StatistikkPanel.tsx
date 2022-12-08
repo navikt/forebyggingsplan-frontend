@@ -1,5 +1,5 @@
 import styles from "./StatistikkPanel.module.css";
-import { BodyShort, Panel, Tag, Tooltip } from "@navikt/ds-react";
+import { BodyShort, Panel, Tooltip } from "@navikt/ds-react";
 import { Up } from "@navikt/ds-icons";
 
 interface StatistikkPanelProps {
@@ -18,19 +18,15 @@ export const StatistikkPanel = ({
     return (
         <Panel className={styles.statistikk}>
             <Tooltip content={tooltip}>
-                <BodyShort>{tittel}</BodyShort>
+                <BodyShort size={"small"}>{tittel}</BodyShort>
             </Tooltip>
-            <Tag variant={"neutral"} className={styles.tag}>
-                {
-                    <Up
-                        className={`${roterEtterTrend(trend)} ${
-                            styles.trendIkon
-                        }`}
-                        title={trendBeskrivelse(trend)}
-                    />
-                }
+            <BodyShort className={styles.tallContainer}>
+                <Up
+                    className={roterEtterTrend(trend)}
+                    title={trendBeskrivelse(trend)}
+                />
                 {sykefravær} %
-            </Tag>
+            </BodyShort>
         </Panel>
     );
 };
