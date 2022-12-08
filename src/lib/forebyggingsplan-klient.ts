@@ -2,9 +2,9 @@ import { ValgtAktivitet } from "../types/ValgtAktivitet";
 import useSWR from "swr";
 import { isoDato } from "./dato";
 
-export const HENT_VALGTE_AKTIVITETER_PATH = `/api/valgteaktiviteter`;
-export const VELG_AKTIVITET_PATH = "/api/aktivitet";
-export const FULLFØR_AKTIVITET_PATH = "/api/fullfor";
+export const HENT_VALGTE_AKTIVITETER_PATH = `/forebyggingsplan/api/valgteaktiviteter`;
+export const VELG_AKTIVITET_PATH = "/forebyggingsplan/api/aktivitet";
+export const FULLFØR_AKTIVITET_PATH = "/forebyggingsplan/api/fullfor";
 
 class FetchingError extends Error {
     info: unknown;

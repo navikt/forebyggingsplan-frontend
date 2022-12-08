@@ -16,12 +16,12 @@ spec:
       autoLogin: true
   port: 3000
   liveness:
-    path: "/api/isAlive"
+    path: "/forebyggingsplan/api/isAlive"
     port: 3000
     initialDelay: 20
     timeout: 60
   readiness:
-    path: "/api/isReady"
+    path: "/forebyggingsplan/api/isReady"
     port: 3000
     initialDelay: 20
     timeout: 60

@@ -22,7 +22,7 @@ For å kjøre appen lokalt, kjør følgende kommandoer i terminal:
 -   `npm install`
 -   `npm run dev`
 
-Appen vil da være tilgjengelig på http://localhost:4000.
+Appen vil da være tilgjengelig på http://localhost:4000/forebyggingsplan.
 
 NB: hvis du blir redirectet til `http://host.docker.internal:8080/idporten/authorize` og ikke få koblet til, så sjekk at `/etc/hosts` har linjen:
 ```
