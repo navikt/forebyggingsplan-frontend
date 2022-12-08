@@ -10,14 +10,13 @@ const lagKalender = ({
     aktivitetsId,
 }: Aktivitet) => {
     if (!aktivitetFrist) return "";
-    const frist = new Date(aktivitetFrist);
-    const start = `${frist.getFullYear()}${
-        frist.getMonth() + 1
-    }${frist.getDate()}`;
-    const slutt =
-        /* Sett slutt tid en dag frem. Obs! muterer frist */
-        frist.setDate(frist.getDate() + 1) &&
-        `${frist.getFullYear()}${frist.getMonth() + 1}${frist.getDate()}`;
+    const startDato = new Date(aktivitetFrist);
+    const start = startDato.toISOString().substring(0, 10).replaceAll("-", "");
+    const sluttDato = new Date(startDato);
+    sluttDato.setDate(
+        sluttDato.getDate() + 1
+    ); /* Gjør dette til en heldagsevent. */
+    const slutt = sluttDato.toISOString().substring(0, 10).replaceAll("-", "");
     const uid = `${aktivitetsmalId}-${aktivitetsId}@nav.no`;
     return `BEGIN:VCALENDAR
 PRODID:-//NAV/Forebyggingsplan//NONSGML v1.0//NO
