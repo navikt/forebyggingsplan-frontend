@@ -23,7 +23,7 @@ export default class MyDocument extends Document<Props> {
         const initialProps = await Document.getInitialProps(ctx);
 
         const Dekoratør = await fetchDecoratorReact({
-            env: "dev",
+            env: process.env.NAIS_CLUSTER_NAME === "prod-gcp" ? "prod" : "dev",
             chatbot: false,
             context: "arbeidsgiver",
             breadcrumbs: [],
