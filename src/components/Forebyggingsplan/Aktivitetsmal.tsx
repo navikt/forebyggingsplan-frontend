@@ -38,23 +38,12 @@ const Handlinger = ({ aktivitet, fullførAktivitet, velgAktivitet }: Props) => {
     return (
         <span className={styles.knappeContainer}>
             <EksporterTilKalender aktivitet={aktivitet} />
-            {["IKKE_VALGT", "VALGT"].includes(aktivitet.status) && (
-                <Button
-                    className={styles.detteHarViGjortKnapp}
-                    variant="secondary"
-                    onClick={fullførAktivitet}
-                >
-                    {aktivitet.status === "VALGT"
-                        ? "Ferdig"
-                        : "Dette har vi på plass"}
-                </Button>
-            )}
             {aktivitet.status === "IKKE_VALGT" && (
                 <div className={styles.detteVilViGjøreContainer}>
                     <UNSAFE_DatePicker {...datepickerProps}>
                         <UNSAFE_DatePicker.Input
                             {...inputProps}
-                            label="Velg dato"
+                            label="Frist"
                         />
                     </UNSAFE_DatePicker>
 
@@ -66,6 +55,17 @@ const Handlinger = ({ aktivitet, fullførAktivitet, velgAktivitet }: Props) => {
                         Dette vil vi gjøre
                     </Button>
                 </div>
+            )}
+            {["IKKE_VALGT", "VALGT"].includes(aktivitet.status) && (
+                <Button
+                    className={styles.detteHarViGjortKnapp}
+                    variant={
+                        aktivitet.status == "VALGT" ? "primary" : "secondary"
+                    }
+                    onClick={fullførAktivitet}
+                >
+                    Dette har vi gjort
+                </Button>
             )}
         </span>
     );
