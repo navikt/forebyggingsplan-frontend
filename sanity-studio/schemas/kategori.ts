@@ -6,15 +6,33 @@ export const kategori = {
     type: "document",
     fields: [
         {
-            type: "string",
-            name: "tittel",
             title: "Tittel",
+            name: "tittel",
+            type: "string",
             validation: (rule: Rule) => rule.required(),
         },
         {
-            type: "string",
-            name: "beskrivelse",
             title: "Innledning",
+            name: "innhold",
+            type: "array",
+            of: [
+                {
+                    type: "block",
+                    styles: [
+                        {
+                            title: "Normal tekst",
+                            value: "normal",
+                        },
+                    ],
+                    marks: {
+                        decorators: [],
+                        annotations: [],
+                    },
+                },
+                {
+                    type: "statistikk",
+                },
+            ],
             validation: (rule: Rule) => rule.required(),
         },
     ],

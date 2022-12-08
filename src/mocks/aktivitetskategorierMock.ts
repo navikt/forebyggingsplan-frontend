@@ -6,8 +6,11 @@ import { Kategori } from "../types/kategori";
 export const aktivitetskategorierMock: Kategori[] = [
     {
         tittel: "Få det grunnleggende på plass",
-        beskrivelse:
-            "Dette er det en god start på veien til lavere sykefravær.",
+        innhold: [
+            {
+                block: "Dette er det en god start på veien til lavere sykefravær.",
+            },
+        ],
         aktiviteter: [
             {
                 aktivitetsmalId: "3a0f3c60-ac1e-4d4e-9693-e850b5bef984",
@@ -780,7 +783,7 @@ export const aktivitetskategorierMock: Kategori[] = [
     },
     {
         tittel: "Velg forebyggende tiltak",
-        beskrivelse: "Organisatoriske, psykososiale og fysiske tiltak",
+        innhold: "Organisatoriske, psykososiale og fysiske tiltak",
         aktiviteter: [
             {
                 aktivitetsmalId: "61170ac8-0a8c-424f-bfc3-e05140d0171a",
@@ -1455,8 +1458,7 @@ export const aktivitetskategorierMock: Kategori[] = [
     },
     {
         tittel: "Evaluer tiltakene",
-        beskrivelse:
-            "Da vet du hva du skal fortsette med og hva dere bør justere",
+        innhold: "Da vet du hva du skal fortsette med og hva dere bør justere",
         aktiviteter: [],
     },
 ];

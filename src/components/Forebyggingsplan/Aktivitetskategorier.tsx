@@ -1,6 +1,6 @@
-import { Accordion, Heading, Ingress } from "@navikt/ds-react";
+import { Accordion, Heading } from "@navikt/ds-react";
 import { Aktivitetsrad } from "./Aktivitetsrad";
-import { Kategori } from "../../types/kategori";
+import { Kategori, kategoriComponents } from "../../types/kategori";
 import styles from "./Aktivitetskategorier.module.css";
 import { useCallback, useRef, useState } from "react";
 import {
@@ -11,7 +11,8 @@ import {
 import { useHentOrgnummer } from "../Layout/Banner/Banner";
 import { ValgtAktivitet } from "../../types/ValgtAktivitet";
 import { useHentValgteAktiviteter } from "../../lib/forebyggingsplan-klient";
-import { Sykefraværsstatistikk } from "../Sykefraværsstatistikk/Sykefraværsstatistikk";
+import { PortableText } from "@portabletext/react";
+import { PortableTextBlock } from "@portabletext/types";
 
 interface Props {
     kategorier: Kategori[];
@@ -28,13 +29,12 @@ export const Aktivitetskategorier = ({ kategorier }: Props) => {
     const { data: valgteAktiviteter, mutate } = useHentValgteAktiviteter(orgnr);
     return (
         <div data-theme="light" className={styles.aktivitetskategorier}>
-            <Sykefraværsstatistikk />
-            {kategorier.map(({ aktiviteter, tittel, beskrivelse }) => {
+            {kategorier.map(({ aktiviteter, tittel, innhold }) => {
                 return (
                     <Aktivitetskategori
                         key={tittel}
                         tittel={tittel}
-                        beskrivelse={beskrivelse}
+                        innhold={innhold}
                         aktiviteter={aktiviteter.map((aktivitet) => {
                             const valgtAktivitet = valgteAktiviteter?.find(
                                 (valgtaktivitet) =>
@@ -75,12 +75,12 @@ const Aktivitetskategori = ({
     aktiviteter,
     tittel,
     gjeldendeAktivitet,
-    beskrivelse,
+    innhold,
     onKlikkPåRad,
     oppdaterValgteAktiviteter,
 }: {
     tittel: string;
-    beskrivelse: string;
+    innhold: PortableTextBlock;
     aktiviteter: Aktivitet[];
     gjeldendeAktivitet?: Aktivitet;
     onKlikkPåRad?: (aktivitet: Aktivitet) => void;
@@ -99,7 +99,7 @@ const Aktivitetskategori = ({
             <Heading size="large" level="2">
                 {tittel}
             </Heading>
-            <Ingress>{beskrivelse}</Ingress>
+            <PortableText value={innhold} components={kategoriComponents} />
             <Accordion className={styles.accordion}>
                 {aktiviteter.sort(sorterStatus).map((aktivitet) => (
                     <Aktivitetsrad

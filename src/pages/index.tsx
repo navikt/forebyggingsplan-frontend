@@ -23,7 +23,7 @@ interface Props {
 
 interface KategoriDokument extends SanityDocument {
     tittel: string;
-    beskrivelse: string;
+    innhold: PortableTextBlock;
     aktiviteter: AktivitetInnhold[];
 }
 
@@ -68,7 +68,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
             sanity.fetch<KategoriDokument[]>(`
             *[_type == "kategori"] {
                 tittel,
-                beskrivelse,
+                innhold,
                 "aktiviteter": *[_type == "Aktivitet" && references(^._id)]
             }
         `),
@@ -77,9 +77,9 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
         return {
             props: {
                 kategorier: sanityData.map(
-                    ({ tittel, beskrivelse, aktiviteter }) => ({
+                    ({ tittel, innhold, aktiviteter }) => ({
                         tittel,
-                        beskrivelse,
+                        innhold,
                         aktiviteter: aktiviteter.map(aktivitetMapper),
                     })
                 ),

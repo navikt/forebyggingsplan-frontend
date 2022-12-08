@@ -26,7 +26,7 @@ describe("Aktivitetskategorier", () => {
         expect(results).toHaveNoViolations();
     });
 
-    it("Hver kategori har en tittel og en beskrivelse", async () => {
+    it("Hver kategori har en tittel og innhold", async () => {
         render(<Aktivitetskategorier kategorier={aktivitetskategorierMock} />);
         const artikler = screen.getAllByRole("article");
         expect(artikler.length).toBe(3);
@@ -36,9 +36,9 @@ describe("Aktivitetskategorier", () => {
             expect(artikkel).toHaveTextContent(
                 aktivitetskategorierMock[idx].tittel
             );
-            expect(artikkel).toHaveTextContent(
-                aktivitetskategorierMock[idx].beskrivelse
-            );
+            expect(
+                screen.getByText(aktivitetskategorierMock[idx].tittel)
+            ).toBeVisible();
         });
     });
 
