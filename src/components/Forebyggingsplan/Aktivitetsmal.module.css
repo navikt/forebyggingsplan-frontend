@@ -7,15 +7,16 @@
 
 .knappeContainer {
     display: flex;
-    flex-direction: row;
     justify-content: flex-end;
-    align-items: flex-end;
     gap: 1rem;
+}
+
+.knappeContainer button {
+    align-self: end;
 }
 
 .detteVilViGjøreContainer {
     display: flex;
-    flex-direction: column;
     background-color: var(--a-gray-100);
     gap: 1rem;
     padding: 1rem;

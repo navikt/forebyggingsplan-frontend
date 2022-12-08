@@ -50,7 +50,7 @@ describe("Aktivitetskategorier", () => {
         await userEvent.click(button);
 
         const påPlassKnapper = await screen.findAllByRole("button", {
-            name: "Dette har vi på plass",
+            name: "Dette har vi gjort",
         });
         expect(påPlassKnapper.length).toBeGreaterThanOrEqual(1);
         påPlassKnapper.forEach((knapp) =>
