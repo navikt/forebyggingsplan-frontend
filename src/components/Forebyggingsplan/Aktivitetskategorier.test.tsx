@@ -29,9 +29,9 @@ describe("Aktivitetskategorier", () => {
     it("Hver kategori har en tittel og innhold", async () => {
         render(<Aktivitetskategorier kategorier={aktivitetskategorierMock} />);
         const artikler = screen.getAllByRole("article");
-        expect(artikler.length).toBe(3);
+        expect(artikler.length).toBe(2);
         const tittelElementer = screen.getAllByRole("heading", { level: 2 });
-        expect(tittelElementer.length).toBe(3);
+        expect(tittelElementer.length).toBe(2);
         artikler.forEach((artikkel, idx) => {
             expect(artikkel).toHaveTextContent(
                 aktivitetskategorierMock[idx].tittel

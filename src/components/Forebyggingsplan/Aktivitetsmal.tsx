@@ -13,6 +13,7 @@ import { Seksjon } from "../Seksjon/Seksjon";
 import { block } from "../PortableText/block/Block";
 import { marks } from "../PortableText/marks/Marks";
 import { EksporterTilKalender } from "./EksporterTilKalender";
+import { useHentOrgnummer } from "../Layout/Banner/Banner";
 
 const hovedinnhold: Partial<PortableTextComponents> = {
     types: {
@@ -34,6 +35,8 @@ const Handlinger = ({ aktivitet, fullførAktivitet, velgAktivitet }: Props) => {
         inputProps,
         selectedDay: frist,
     } = UNSAFE_useDatepicker();
+    const { orgnr } = useHentOrgnummer();
+    if (!orgnr) return null; // Ingen grunn til å vise knapper dersom vi ikke vet orgnr
 
     return (
         <span className={styles.knappeContainer}>

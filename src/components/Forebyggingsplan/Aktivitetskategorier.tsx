@@ -30,6 +30,7 @@ export const Aktivitetskategorier = ({ kategorier }: Props) => {
     return (
         <div data-theme="light" className={styles.aktivitetskategorier}>
             {kategorier.map(({ aktiviteter, tittel, innhold }) => {
+                if (aktiviteter.length < 1) return null;
                 return (
                     <Aktivitetskategori
                         key={tittel}

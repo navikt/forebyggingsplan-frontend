@@ -12,6 +12,7 @@ export const Sykefraværsstatistikk = () => {
     const { orgnr } = useHentOrgnummer();
     const { data: sykefraværsstatistikk, error } =
         useHentSykefraværsstatistikk(orgnr);
+    if (!orgnr) return null; // Ingen statistikk å vise uten orgnr
     if (error) return null;
 
     const sykefraværIVirksomhet = finnStatistikkVerdi(
