@@ -1,11 +1,9 @@
-.aktivitetIkkeValgt {
-}
-
-.aktivitetValgt {
+/* Bruker ID for å overskrive designsystem-styling når raden er åpen */
+#aktivitetValgt {
     background-color: var(--a-orange-100);
 }
 
-.aktivitetFullført {
+#aktivitetFullført {
     background-color: var(--a-green-100);
 }
 
