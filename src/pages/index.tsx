@@ -63,38 +63,26 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
             },
         };
     }
-    try {
-        const [sanityData, organisasjoner] = await Promise.all([
-            sanity.fetch<KategoriDokument[]>(`
+    const [sanityData, organisasjoner] = await Promise.all([
+        sanity.fetch<KategoriDokument[]>(`
             *[_type == "kategori"] {
                 tittel,
                 innhold,
                 "aktiviteter": *[_type == "Aktivitet" && references(^._id)]
             }
         `),
-            hentOrganisasjoner(context.req),
-        ]);
-        return {
-            props: {
-                kategorier: sanityData.map(
-                    ({ tittel, innhold, aktiviteter }) => ({
-                        tittel,
-                        innhold,
-                        aktiviteter: aktiviteter.map(aktivitetMapper),
-                    })
-                ),
-                organisasjoner,
-            },
-        };
-    } catch (e) {
-        console.error(JSON.stringify(e));
-        return {
-            props: {
-                kategorier: [],
-                organisasjoner: [],
-            },
-        };
-    }
+        hentOrganisasjoner(context.req),
+    ]);
+    return {
+        props: {
+            kategorier: sanityData.map(({ tittel, innhold, aktiviteter }) => ({
+                tittel,
+                innhold,
+                aktiviteter: aktiviteter.map(aktivitetMapper),
+            })),
+            organisasjoner,
+        },
+    };
 };
 
 function Forside({ kategorier }: Omit<Props, "organisasjoner">) {
