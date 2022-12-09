@@ -29,7 +29,16 @@ export default class MyDocument extends Document<Props> {
             env: decoratorEnv ?? "prod",
             chatbot: false,
             context: "arbeidsgiver",
-            breadcrumbs: [],
+            breadcrumbs: [
+                // {
+                //     title: "Forebygge fravær",
+                //     url: "/min-ia",
+                // },
+                {
+                    title: "Slik forebygger du sykefravær",
+                    url: "/forebyggingsplan",
+                },
+            ],
         });
 
         return { ...initialProps, Dekoratør };
