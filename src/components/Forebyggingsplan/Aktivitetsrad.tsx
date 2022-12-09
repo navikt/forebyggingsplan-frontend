@@ -1,5 +1,5 @@
 import { Aktivitet, AktivitetStatus } from "../../types/Aktivitet";
-import { Accordion, Tag } from "@navikt/ds-react";
+import { Accordion } from "@navikt/ds-react";
 import styles from "./Aktivitetsrad.module.css";
 import dynamic from "next/dynamic";
 import {
@@ -13,6 +13,7 @@ import {
     loggÅpneAktivitet,
 } from "../../lib/amplitude";
 import { useEffect } from "react";
+import { AktivitetHeader } from "./AktivitetHeader";
 
 const Aktivitetsmal = dynamic(() =>
     import("./Aktivitetsmal").then((mod) => mod.Aktivitetsmal)
@@ -84,12 +85,7 @@ export const Aktivitetsrad = ({
                 id={AktivitetStatusStyle[aktivitet.status]}
                 className={styles.sticky}
             >
-                {aktivitet.tittel}{" "}
-                {aktivitet.status === "FULLFØRT" && (
-                    <Tag variant="info">Fullført</Tag>
-                )}{" "}
-                {aktivitet.fullførtTidspunkt?.split("T")[0] ?? ""}
-                {aktivitet.status !== "FULLFØRT" && (aktivitet.frist ?? "")}
+                <AktivitetHeader aktivitet={aktivitet} />
             </Accordion.Header>
             <Accordion.Content
                 data-aktivitetsmalid={aktivitet.aktivitetsmalId}
