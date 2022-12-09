@@ -15,6 +15,7 @@ import { Alert } from "@navikt/ds-react";
 import { useHentSykefraværsstatistikk } from "../lib/sykefraværsstatistikk-klient";
 import { useHentOrgnummer } from "../components/Layout/Banner/Banner";
 import { useHentValgteAktiviteter } from "../lib/forebyggingsplan-klient";
+import { logger } from "../lib/logger";
 
 interface Props {
     kategorier: Kategori[];
@@ -64,13 +65,20 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
         };
     }
     const [sanityData, organisasjoner] = await Promise.all([
-        sanity.fetch<KategoriDokument[]>(`
+        sanity
+            .fetch<KategoriDokument[]>(
+                `
             *[_type == "kategori"] {
                 tittel,
                 innhold,
                 "aktiviteter": *[_type == "Aktivitet" && references(^._id)]
             }
-        `),
+        `
+            )
+            .catch((e) => {
+                logger.error(`Sanity nedlasting feilet ${e}`);
+                throw new Error("Klarte ikke å laste ned innhold");
+            }),
         hentOrganisasjoner(context.req),
     ]);
     return {
