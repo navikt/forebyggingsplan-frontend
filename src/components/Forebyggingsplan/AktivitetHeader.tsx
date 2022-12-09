@@ -39,8 +39,6 @@ const AktivitetTag = ({
 };
 
 export const AktivitetHeader = ({ aktivitet }: { aktivitet: Aktivitet }) => {
-    aktivitet.fullførtTidspunkt &&
-        console.log(dateformat.format(new Date(aktivitet.fullførtTidspunkt)));
     const dato = aktivitet.fullførtTidspunkt || aktivitet.frist;
     return (
         <>
