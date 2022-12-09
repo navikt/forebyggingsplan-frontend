@@ -1,5 +1,6 @@
 .statistikkContainer {
     display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
     background: var(--a-white);
     padding: 0.5rem;
