@@ -1,10 +1,9 @@
-/* Bruker ID for å overskrive designsystem-styling når raden er åpen */
-#aktivitetValgt {
-    background-color: var(--a-orange-100);
+.aktivitetValgt {
+    background-color: var(--a-orange-100) !important;
 }
 
-#aktivitetFullført {
-    background-color: var(--a-green-100);
+.aktivitetFullført {
+    background-color: var(--a-green-100) !important;
 }
 
 .sticky {

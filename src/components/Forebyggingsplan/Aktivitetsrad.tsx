@@ -82,8 +82,9 @@ export const Aktivitetsrad = ({
         <Accordion.Item open={åpen}>
             <Accordion.Header
                 onClick={onClick}
-                id={AktivitetStatusStyle[aktivitet.status]}
-                className={styles.sticky}
+                className={`${styles.sticky} ${
+                    AktivitetStatusStyle[aktivitet.status]
+                }`}
             >
                 <AktivitetHeader aktivitet={aktivitet} />
             </Accordion.Header>
