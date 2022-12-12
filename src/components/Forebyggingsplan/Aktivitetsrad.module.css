@@ -9,6 +9,7 @@
 .sticky {
     position: sticky;
     top: 0;
+    z-index: 2; /* Plasser sticky header framfor datepicker-input med "z-index: 1"*/
 }
 
 .accordionHeader > span {

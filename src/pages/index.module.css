@@ -1,4 +1,5 @@
 .container {
+    isolation: isolate;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     background: var(--a-gray-100);

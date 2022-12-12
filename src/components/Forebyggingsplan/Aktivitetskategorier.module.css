@@ -5,6 +5,7 @@
 }
 
 .kategori {
+    isolation: isolate;
     padding: 1.125rem;
     scroll-margin: 1.125rem;
     background: var(--a-white);
