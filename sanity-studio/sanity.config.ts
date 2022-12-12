@@ -1,4 +1,4 @@
-import { defineConfig } from "sanity";
+import { createAuthStore, defineConfig } from "sanity";
 import { deskTool } from "sanity/desk";
 import { schemaTypes } from "./schemas/schema";
 import { visionTool } from "@sanity/vision";
@@ -18,4 +18,18 @@ export default defineConfig({
         }
         return prev.filter((tool) => tool.name !== "vision");
     },
+    auth: createAuthStore({
+        projectId: "2u7e6oll",
+        dataset: "development",
+        mode: "append",
+        redirectOnSingle: false,
+        providers: [
+            {
+                name: "saml",
+                title: "NAV SSO",
+                url: "https://api.sanity.io/v2021-10-01/auth/saml/login/f3270b37",
+            },
+        ],
+        loginMethod: "dual",
+    }),
 });
