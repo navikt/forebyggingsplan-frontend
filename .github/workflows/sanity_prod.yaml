@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Deploy Sanity
     env:
-      SANITY_STUDIO_DATASET: production
+      SANITY_STUDIO_API_DATASET: production
       SANITY_AUTH_TOKEN: ${{ secrets.SANITY_DEPLOY_TOKEN }}
       NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
     steps:
