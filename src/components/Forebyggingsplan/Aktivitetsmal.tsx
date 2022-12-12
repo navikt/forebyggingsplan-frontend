@@ -87,7 +87,7 @@ export function Aktivitetsmal({
                 fullførAktivitet={fullførAktivitet}
             />
             <Ingress>{aktivitet.beskrivelse}</Ingress>
-            <Heading size="medium" level="3">
+            <Heading size="medium" level="4">
                 Mål
             </Heading>
             <Ingress>{aktivitet.mål}</Ingress>

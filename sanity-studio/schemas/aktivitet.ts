@@ -59,6 +59,10 @@ export const aktivitet = {
                             value: "h4",
                         },
                         {
+                            title: "H5",
+                            value: "h5",
+                        },
+                        {
                             title: "Sitat",
                             value: "blockquote",
                         },

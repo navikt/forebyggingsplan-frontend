@@ -36,6 +36,10 @@ export const seksjon = {
                             title: "H5",
                             value: "h5",
                         },
+                        {
+                            title: "H6",
+                            value: "h6",
+                        },
                     ],
                     marks: {
                         decorators: [

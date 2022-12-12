@@ -34,7 +34,7 @@ describe("VideoVisning", () => {
                 renderNode={() => <></>}
             />
         );
-        expect(screen.getByRole("heading", { level: 3 })).toHaveTextContent(
+        expect(screen.getByRole("heading", { level: 4 })).toHaveTextContent(
             tekst
         );
         const videoIframe: HTMLIFrameElement = screen.getByTitle(tekst);
@@ -61,7 +61,7 @@ describe("VideoVisning", () => {
                 renderNode={() => <></>}
             />
         );
-        expect(screen.getByRole("heading", { level: 3 })).toHaveTextContent(
+        expect(screen.getByRole("heading", { level: 4 })).toHaveTextContent(
             tekst
         );
         const videoIframe: HTMLIFrameElement = screen.getByTitle(tekst);

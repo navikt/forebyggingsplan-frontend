@@ -13,7 +13,7 @@ export const VideoVisning = ({
 }: PortableTextComponentProps<Props>) => {
     return (
         <div className={styles.wrapper}>
-            <Heading size="medium" level="3">
+            <Heading size="medium" level="4">
                 {tittel}
             </Heading>
             <div className={styles.video}>

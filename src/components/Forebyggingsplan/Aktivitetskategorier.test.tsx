@@ -30,8 +30,8 @@ describe("Aktivitetskategorier", () => {
         render(<Aktivitetskategorier kategorier={aktivitetskategorierMock} />);
         const artikler = screen.getAllByRole("article");
         expect(artikler.length).toBe(2);
-        const tittelElementer = screen.getAllByRole("heading", { level: 2 });
-        expect(tittelElementer.length).toBe(2);
+        const tittelElementer = screen.getAllByRole("heading", { level: 3 });
+        expect(tittelElementer.length).toBe(3);
         artikler.forEach((artikkel, idx) => {
             expect(artikkel).toHaveTextContent(
                 aktivitetskategorierMock[idx].tittel
@@ -66,7 +66,7 @@ describe("Aktivitetskategorier", () => {
         );
 
         expect(
-            screen.getByRole("heading", { level: 3, name: "Mål" })
+            screen.getByRole("heading", { level: 4, name: "Mål" })
         ).toBeVisible();
         expect(
             screen.getByText(
