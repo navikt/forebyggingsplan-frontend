@@ -33,7 +33,7 @@ module.exports = {
         },
         {
             files: ["sanity-studio/*"],
-            extends: ["sanity/react", "sanity/typescript"],
+            extends: ["sanity/react", "sanity/typescript", "prettier"],
         },
     ],
     ignorePatterns: ["*.module.css"],
