@@ -1,5 +1,6 @@
+import { Heading, Tag, TagProps } from "@navikt/ds-react";
 import { Aktivitet, AktivitetStatus } from "../../types/Aktivitet";
-import { Tag, TagProps } from "@navikt/ds-react";
+import styles from "./AktivitetHeader.module.css";
 
 const dateformat = new Intl.DateTimeFormat("nb-NO", {
     day: "2-digit",
@@ -42,7 +43,9 @@ export const AktivitetHeader = ({ aktivitet }: { aktivitet: Aktivitet }) => {
     const dato = aktivitet.fullførtTidspunkt || aktivitet.frist;
     return (
         <>
-            {aktivitet.tittel}{" "}
+            <Heading level="3" size="small" className={styles.heading}>
+                {aktivitet.tittel}
+            </Heading>
             {aktivitet.status !== "IKKE_VALGT" && (
                 <AktivitetTag
                     dato={dato ? dateformat.format(new Date(dato)) : ""}
