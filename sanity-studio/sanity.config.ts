@@ -6,7 +6,7 @@ import { visionTool } from "@sanity/vision";
 export default defineConfig({
     title: "forebyggingsplan-pia",
     projectId: "2u7e6oll",
-    dataset: "development",
+    dataset: import.meta.env.SANITY_STUDIO_DATASET,
     plugins: [deskTool(), visionTool()],
     schema: {
         types: schemaTypes,
@@ -20,7 +20,7 @@ export default defineConfig({
     },
     auth: createAuthStore({
         projectId: "2u7e6oll",
-        dataset: "development",
+        dataset: import.meta.env.SANITY_STUDIO_DATASET,
         mode: "append",
         redirectOnSingle: false,
         providers: [
