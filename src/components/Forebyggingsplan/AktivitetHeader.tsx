@@ -12,7 +12,7 @@ type ValgteStatuser = Exclude<AktivitetStatus, "IKKE_VALGT">;
 const hentTekst = (status: ValgteStatuser, dato: string) => {
     switch (status) {
         case "VALGT":
-            return `Aktiviteten har frist ${dato}`;
+            return `Dette vil vi gjøre ${dato && "innen " + dato}`;
         case "FULLFØRT":
             return `Dette er utført ${dato}`;
     }
