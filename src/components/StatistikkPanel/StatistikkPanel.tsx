@@ -25,7 +25,7 @@ export const StatistikkPanel = ({
                     className={roterEtterTrend(trend)}
                     title={trendBeskrivelse(trend)}
                 />
-                {sykefravær} %
+                {`${sykefravær} %`}
             </BodyShort>
         </Panel>
     );
