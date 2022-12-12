@@ -10,3 +10,8 @@
     position: sticky;
     top: 0;
 }
+
+.accordionHeader > span {
+    width: 100%;
+    display: flex;
+}

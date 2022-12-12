@@ -84,7 +84,7 @@ export const Aktivitetsrad = ({
                 onClick={onClick}
                 className={`${styles.sticky} ${
                     AktivitetStatusStyle[aktivitet.status]
-                }`}
+                } ${styles.accordionHeader}`}
             >
                 <AktivitetHeader aktivitet={aktivitet} />
             </Accordion.Header>
