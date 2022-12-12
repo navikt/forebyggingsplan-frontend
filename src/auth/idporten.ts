@@ -1,5 +1,6 @@
 import { createRemoteJWKSet, jwtVerify } from "jose";
 import { Issuer } from "openid-client";
+import { logger } from "../lib/logger";
 
 let signeringsnøkler: ReturnType<typeof createRemoteJWKSet>;
 
@@ -36,8 +37,14 @@ const forventetAcrNivå = "Level4";
 export async function verifiserToken(
     token: string
 ): Promise<ReturnType<typeof jwtVerify>> {
-    const signeringsnøkler = await hentSigneringsnøkler();
-    const issuer = await hentIssuer();
+    const signeringsnøkler = await hentSigneringsnøkler().catch((e) => {
+        logger.error(`Feilet under henting av signeringsnøkler ${e}`);
+        throw new Error(`Feilet under kontakt med IDporten`);
+    });
+    const issuer = await hentIssuer().catch((e) => {
+        logger.error(`Feilet under henting av signeringsnøkler ${e}`);
+        throw new Error(`Feilet under kontakt med IDporten`);
+    });
     const { payload, protectedHeader, key } = await jwtVerify(
         token,
         signeringsnøkler,
@@ -45,16 +52,21 @@ export async function verifiserToken(
             algorithms: ["RS256"],
             issuer: issuer.metadata.issuer,
         }
-    );
+    ).catch((e) => {
+        logger.error(`Token validering har feilet: ${e}`);
+        throw new Error(`Token validering har feilet`);
+    });
     if (payload.client_id !== process.env.IDPORTEN_CLIENT_ID) {
-        throw new Error(
+        logger.error(
             `Client_id ${payload.client_id} på tokenet matcher ikke forventet client_id`
         );
+        throw new Error(`Token validering har feilet`);
     }
     if (payload.acr !== forventetAcrNivå) {
-        throw new Error(
+        logger.error(
             `ACR nivå ${payload.acr} på tokenet matcher ikke forventet acr nivå ${forventetAcrNivå}`
         );
+        throw new Error(`Token validering har feilet`);
     }
     return {
         key,
