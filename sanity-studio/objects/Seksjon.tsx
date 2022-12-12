@@ -25,10 +25,6 @@ export const seksjon = {
                             value: "normal",
                         },
                         {
-                            title: "H3",
-                            value: "h3",
-                        },
-                        {
                             title: "H4",
                             value: "h4",
                         },
