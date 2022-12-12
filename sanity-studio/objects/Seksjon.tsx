@@ -6,8 +6,9 @@ import { Rule } from "@sanity/types";
 import { PortableTextBlock } from "@portabletext/types";
 import { Statistikk } from "./Statistikk";
 import { Oppgave } from "./Oppgave";
+import { defineType } from "sanity";
 
-export const seksjon = {
+export const seksjon = defineType({
     type: "object",
     name: "seksjon",
     title: "Seksjon for innhold",
@@ -72,7 +73,6 @@ export const seksjon = {
                     fields: [
                         {
                             type: "string",
-                            options: { isHighlighted: true },
                             name: "tittel",
                             title: "Tittel",
                             description: "Forklarende tittel til bildet",
@@ -80,7 +80,6 @@ export const seksjon = {
                         },
                         {
                             type: "string",
-                            options: { isHighlighted: true },
                             name: "beskrivelse",
                             title: "Beskrivelse",
                             description:
@@ -92,12 +91,12 @@ export const seksjon = {
             ],
         },
     ],
+    components: {
+        preview: (props) => <>{props.media}</>,
+    },
     preview: {
         select: {
             seksjonInnhold: "seksjonInnhold",
-        },
-        component: (props: { value: { media: React.ReactNode } }) => {
-            return <div>{props.value.media}</div>;
         },
         prepare: (value: { seksjonInnhold: PortableTextBlock }) => {
             return {
@@ -125,4 +124,4 @@ export const seksjon = {
             };
         },
     },
-};
+});

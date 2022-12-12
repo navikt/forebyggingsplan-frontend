@@ -1,5 +1,6 @@
 import * as React from "react";
 import { CSSProperties } from "react";
+import { defineType } from "sanity";
 
 interface Props {
     value: {
@@ -33,7 +34,7 @@ export const Lovpålagt = ({ value: { tekst } }: Props) => {
     );
 };
 
-const lovpålagtSchema = {
+const lovpålagtSchema = defineType({
     type: "object",
     name: "lovpalagt",
     title: "Lovpålagt tekstblokk",
@@ -44,11 +45,19 @@ const lovpålagtSchema = {
             title: "Tekstinnhold",
         },
     ],
+    components: {
+        preview: (props) => <>{props.media}</>,
+    },
     preview: {
         select: {
             tekst: "tekst",
         },
-        component: Lovpålagt,
+        prepare: (value: { tekst: string }) => {
+            return {
+                title: "Innhold",
+                media: <Lovpålagt value={{ tekst: value.tekst }} />,
+            };
+        },
     },
-};
+});
 export default lovpålagtSchema;

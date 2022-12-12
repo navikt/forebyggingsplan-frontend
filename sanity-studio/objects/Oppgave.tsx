@@ -1,7 +1,8 @@
 import * as React from "react";
-import styles from "./oppgavePeview.module.css";
+import styles from "./oppgavePreview.module.css";
 import { PortableText } from "@portabletext/react";
 import { PortableTextBlock } from "@portabletext/types";
+import { defineType } from "sanity";
 
 interface Props {
     value: {
@@ -21,7 +22,7 @@ export const Oppgave = ({ value: { oppgavetype, tittel, innhold } }: Props) => {
     );
 };
 
-const oppgaveSchema = {
+const oppgaveSchema = defineType({
     type: "object",
     name: "oppgave",
     title: "Oppgave-tekstblokk",
@@ -65,16 +66,37 @@ const oppgaveSchema = {
             ],
         },
     ],
+    components: {
+        preview: (props) => <>{props.media}</>,
+    },
     preview: {
         select: {
             tittel: "tittel",
             innhold: "innhold",
             oppgavetype: "oppgavetype",
         },
-        component: Oppgave,
+        prepare: (props: {
+            oppgavetype: string;
+            tittel: string;
+            innhold: PortableTextBlock[];
+        }) => {
+            return {
+                title: "Innhold",
+                media: (
+                    <Oppgave
+                        value={{
+                            oppgavetype: props.oppgavetype,
+                            innhold: props.innhold,
+                            tittel: props.tittel,
+                        }}
+                    />
+                ),
+            };
+        },
     },
     initialValue: {
         oppgavetype: "Oppgave",
     },
-};
+});
+
 export default oppgaveSchema;

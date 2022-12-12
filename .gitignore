@@ -34,3 +34,5 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+/sanity-studio/.sanity/runtime/app.js
+/sanity-studio/.sanity/runtime/index.html

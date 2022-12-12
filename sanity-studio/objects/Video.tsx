@@ -1,6 +1,7 @@
 import { Rule } from "@sanity/types";
 import * as React from "react";
 import { CSSProperties } from "react";
+import { defineType } from "sanity";
 
 const MAKS_TEKSTLENGDE = 64;
 
@@ -55,7 +56,7 @@ export const VideoPreview = ({
     );
 };
 
-const videoSchema = {
+const videoSchema = defineType({
     type: "object",
     name: "video",
     title: "Videoavspiller",
@@ -84,13 +85,34 @@ const videoSchema = {
             validation: (rule: Rule) => rule.max(7),
         },
     ],
+    components: {
+        preview: (props) => <>{props.media}</>,
+    },
     preview: {
         select: {
             videoId: "videoId",
             tittel: "tittel",
             punktliste: "punktliste",
         },
-        component: VideoPreview,
+        prepare: (props: {
+            videoId: string;
+            tittel: string;
+            punktliste: string[];
+        }) => {
+            return {
+                title: "Innhold",
+                media: (
+                    <VideoPreview
+                        value={{
+                            videoId: props.videoId,
+                            tittel: props.tittel,
+                            punktliste: props.punktliste,
+                        }}
+                    />
+                ),
+            };
+        },
     },
-};
+});
+
 export default videoSchema;

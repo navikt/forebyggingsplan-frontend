@@ -1,5 +1,6 @@
 import * as React from "react";
-import styles from "./statistikkPeview.module.css";
+import styles from "./statistikkPreview.module.css";
+import { defineType } from "sanity";
 
 export const Statistikk = () => {
     return (
@@ -16,7 +17,7 @@ export const Statistikk = () => {
     );
 };
 
-const statistikkSchema = {
+const statistikkSchema = defineType({
     type: "object",
     name: "statistikk",
     title: "Statistikk-blokk",
@@ -27,9 +28,9 @@ const statistikkSchema = {
             hidden: true,
         },
     ],
-    preview: {
-        component: Statistikk,
+    components: {
+        preview: Statistikk,
     },
-};
+});
 
 export default statistikkSchema;
