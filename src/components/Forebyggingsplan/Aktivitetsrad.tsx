@@ -1,5 +1,5 @@
 import { Aktivitet, AktivitetStatus } from "../../types/Aktivitet";
-import { Accordion } from "@navikt/ds-react";
+import { Accordion, Heading } from "@navikt/ds-react";
 import styles from "./Aktivitetsrad.module.css";
 import dynamic from "next/dynamic";
 import {
@@ -80,14 +80,16 @@ export const Aktivitetsrad = ({
     };
     return (
         <Accordion.Item open={åpen}>
-            <Accordion.Header
-                onClick={onClick}
-                className={`${styles.sticky} ${
-                    AktivitetStatusStyle[aktivitet.status]
-                } ${styles.accordionHeader}`}
-            >
-                <AktivitetHeader aktivitet={aktivitet} />
-            </Accordion.Header>
+            <Heading size="medium" level="3">
+                <Accordion.Header
+                    onClick={onClick}
+                    className={`${styles.sticky} ${
+                        AktivitetStatusStyle[aktivitet.status]
+                    } ${styles.accordionHeader}`}
+                >
+                    <AktivitetHeader aktivitet={aktivitet} />
+                </Accordion.Header>
+            </Heading>
             <Accordion.Content
                 data-aktivitetsmalid={aktivitet.aktivitetsmalId}
                 className={styles.content}

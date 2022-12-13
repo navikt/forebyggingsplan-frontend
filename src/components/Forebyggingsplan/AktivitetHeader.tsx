@@ -1,4 +1,4 @@
-import { Heading, Tag, TagProps } from "@navikt/ds-react";
+import { Tag, TagProps } from "@navikt/ds-react";
 import { Aktivitet, AktivitetStatus } from "../../types/Aktivitet";
 import styles from "./AktivitetHeader.module.css";
 
@@ -28,28 +28,31 @@ const TagVariant: {
     VALGT: "warning",
 };
 
-const AktivitetTag = ({
-    dato,
-    status,
-}: {
+interface AktivitetTagProps {
     dato: string;
     status: ValgteStatuser;
-}) => {
+    className: string;
+}
+
+const AktivitetTag = ({ dato, status, ...rest }: AktivitetTagProps) => {
     const tekst = hentTekst(status, dato);
-    return <Tag variant={TagVariant[status]}>{tekst}</Tag>;
+    return (
+        <Tag variant={TagVariant[status]} {...rest}>
+            {tekst}
+        </Tag>
+    );
 };
 
 export const AktivitetHeader = ({ aktivitet }: { aktivitet: Aktivitet }) => {
     const dato = aktivitet.fullførtTidspunkt || aktivitet.frist;
     return (
         <>
-            <Heading level="3" size="small" className={styles.heading}>
-                {aktivitet.tittel}
-            </Heading>
+            {aktivitet.tittel}
             {aktivitet.status !== "IKKE_VALGT" && (
                 <AktivitetTag
                     dato={dato ? dateformat.format(new Date(dato)) : ""}
                     status={aktivitet.status}
+                    className={styles.aktivitetTag}
                 />
             )}
         </>
