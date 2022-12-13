@@ -39,7 +39,7 @@ const Handlinger = ({ aktivitet, fullførAktivitet, velgAktivitet }: Props) => {
     if (!orgnr) return null; // Ingen grunn til å vise knapper dersom vi ikke vet orgnr
 
     return (
-        <span className={styles.knappeContainer}>
+        <div className={styles.knappeContainer}>
             {aktivitet.status === "IKKE_VALGT" && (
                 <div className={styles.detteVilViGjøreContainer}>
                     <UNSAFE_DatePicker {...datepickerProps}>
@@ -70,7 +70,7 @@ const Handlinger = ({ aktivitet, fullførAktivitet, velgAktivitet }: Props) => {
                 </Button>
             )}
             <EksporterTilKalender aktivitet={aktivitet} />
-        </span>
+        </div>
     );
 };
 
