@@ -16,4 +16,8 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+
+    /* tilsvarer heading size="medium" */
+    font-size: var(--a-font-size-heading-medium);
+    line-height: var(--a-font-line-height-heading-medium);
 }
