@@ -13,12 +13,17 @@ export const block: PortableTextReactComponents["block"] = {
         </Heading>
     ),
     h4: ({ children }) => (
-        <Heading size="small" level="4">
+        <Heading size="medium" level="4">
             {children}
         </Heading>
     ),
     h5: ({ children }) => (
-        <Heading size="xsmall" level="5">
+        <Heading size="small" level="5">
+            {children}
+        </Heading>
+    ),
+    h6: ({ children }) => (
+        <Heading size="xsmall" level="6">
             {children}
         </Heading>
     ),
