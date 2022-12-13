@@ -3,17 +3,17 @@ import { BodyLong, Heading } from "@navikt/ds-react";
 
 export const block: PortableTextReactComponents["block"] = {
     h2: ({ children }) => (
-        <Heading size="large" level="2">
+        <Heading size="large" level="2" spacing>
             {children}
         </Heading>
     ),
     h3: ({ children }) => (
-        <Heading size="medium" level="3">
+        <Heading size="medium" level="3" spacing>
             {children}
         </Heading>
     ),
     h4: ({ children }) => (
-        <Heading size="medium" level="4">
+        <Heading size="medium" level="4" spacing>
             {children}
         </Heading>
     ),

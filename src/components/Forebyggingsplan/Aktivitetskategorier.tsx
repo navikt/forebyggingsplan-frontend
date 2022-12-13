@@ -27,6 +27,7 @@ export const Aktivitetskategorier = ({ kategorier }: Props) => {
     const [aktivRad, setAktivRad] = useState<Aktivitet>();
     const { orgnr } = useHentOrgnummer();
     const { data: valgteAktiviteter, mutate } = useHentValgteAktiviteter(orgnr);
+
     return (
         <div data-theme="light" className={styles.aktivitetskategorier}>
             {kategorier.map(({ aktiviteter, tittel, innhold }) => {
@@ -97,7 +98,7 @@ const Aktivitetskategori = ({
 
     return (
         <article className={styles.kategori} ref={articleRef}>
-            <Heading size="large" level="2">
+            <Heading size="large" level="2" spacing>
                 {tittel}
             </Heading>
             <PortableText value={innhold} components={kategoriComponents} />

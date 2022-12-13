@@ -20,7 +20,7 @@ export const Oppgave = ({
                 {oppgavetype}
             </Tag>
             <div>
-                <Heading size={"medium"} level="4">
+                <Heading size={"medium"} level="4" spacing>
                     {tittel}
                 </Heading>
                 <PortableText
