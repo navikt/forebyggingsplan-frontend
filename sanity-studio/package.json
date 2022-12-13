@@ -16,6 +16,7 @@
     ],
     "dependencies": {
         "@navikt/ds-icons": "2.0.5",
+        "@sanity/orderable-document-list": "^1.0.2",
         "@sanity/vision": "^3.0.6",
         "eslint": "^8.28.0",
         "prop-types": "^15.8.1",

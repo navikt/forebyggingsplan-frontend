@@ -1,4 +1,5 @@
 import { Rule } from "@sanity/types";
+import { orderRankField } from "@sanity/orderable-document-list";
 
 export const kategori = {
     name: "kategori",
@@ -35,5 +36,6 @@ export const kategori = {
             ],
             validation: (rule: Rule) => rule.required(),
         },
+        orderRankField({ type: "kategori" }),
     ],
 };

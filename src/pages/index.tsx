@@ -68,10 +68,10 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
         sanity
             .fetch<KategoriDokument[]>(
                 `
-            *[_type == "kategori"] {
+            *[_type == "kategori"] | order(orderRank) {
                 tittel,
                 innhold,
-                "aktiviteter": *[_type == "Aktivitet" && references(^._id)]
+                "aktiviteter": *[_type == "Aktivitet" && references(^._id)] | order(orderRank)
             }
         `
             )

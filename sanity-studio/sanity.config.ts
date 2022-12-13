@@ -2,12 +2,18 @@ import { createAuthStore, defineConfig } from "sanity";
 import { deskTool } from "sanity/desk";
 import { schemaTypes } from "./schemas/schema";
 import { visionTool } from "@sanity/vision";
+import { deskStruktur } from "./deskStruktur";
 
 export default defineConfig({
     title: "forebyggingsplan-pia",
     projectId: "2u7e6oll",
     dataset: import.meta.env.SANITY_STUDIO_DATASET,
-    plugins: [deskTool(), visionTool()],
+    plugins: [
+        deskTool({
+            structure: deskStruktur,
+        }),
+        visionTool(),
+    ],
     schema: {
         types: schemaTypes,
     },
