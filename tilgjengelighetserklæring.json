@@ -101,85 +101,7 @@
   "auditSample": [
     {
       "type": "Assertion",
-      "date": "2022-12-12T12:54:23.545Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-12-12T14:21:15.407Z",
-        "description": "Har <h3> og <div> inni en <span> i accordion-headers. \n\nVi skal kontakte designsystemet for å gjøre det mulig å endre forelder-span til div.",
-        "outcome": {
-          "id": "earl:failed",
-          "type": [
-            "OutcomeValue",
-            "Fail"
-          ],
-          "title": "Failed"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:parsing",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.545Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-12-12T14:07:45.463Z",
-        "description": "Bruker kan ikke sette frist på oppgave til fortid, men får ingen feilmelding om dette om de prøver.\n\nFår generelt ingen feilmelding om ting går galt i backend.",
-        "outcome": {
-          "id": "earl:failed",
-          "type": [
-            "OutcomeValue",
-            "Fail"
-          ],
-          "title": "Failed"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:error-identification",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.545Z",
+      "date": "2022-12-13T11:38:29.638Z",
       "mode": {
         "type": "TestMode",
         "@value": "earl:manual"
@@ -203,7 +125,7 @@
           "TestSubject",
           "Website"
         ],
-        "date": "2022-12-12T12:53:55.040Z",
+        "date": "2022-12-13T11:31:02.449Z",
         "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
         "title": "Slik forebygger du sykefravær"
       },
@@ -213,1728 +135,12 @@
           "TestCriterion",
           "TestRequirement"
         ],
-        "date": "2022-12-12T12:53:55.041Z"
+        "date": "2022-12-13T11:31:02.450Z"
       }
     },
     {
       "type": "Assertion",
-      "date": "2022-12-12T12:54:23.545Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-12-12T14:08:39.250Z",
-        "description": "Bruker får ikke beskjed om å prøve å sette frist til en dato i fremtiden.",
-        "outcome": {
-          "id": "earl:failed",
-          "type": [
-            "OutcomeValue",
-            "Fail"
-          ],
-          "title": "Failed"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:error-suggestion",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.546Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-12-12T14:22:47.587Z",
-        "description": "",
-        "outcome": {
-          "id": "earl:passed",
-          "type": [
-            "OutcomeValue",
-            "Pass"
-          ],
-          "title": "Passed"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:name-role-value",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.546Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-12-12T14:28:36.904Z",
-        "description": "Feilmeldinger bruker ikke role=\"alert\", men det er slik ting er satt opp i designsystemet.\n\nNote to self:\nHusk å sjekke feilmeldinger, og husk https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=413#status-messages når vi skal implementere det",
-        "outcome": {
-          "id": "earl:passed",
-          "type": [
-            "OutcomeValue",
-            "Pass"
-          ],
-          "title": "Passed"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:status-messages",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.546Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-12-09T11:19:51.510Z",
-        "description": "",
-        "outcome": {
-          "id": "earl:inapplicable",
-          "type": [
-            "OutcomeValue",
-            "NotApplicable"
-          ],
-          "title": "Not present"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:captions-prerecorded",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.546Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-12-09T11:26:06.161Z",
-        "description": "Vi bruker videoer produsert av nav. Disse burde oppfylle dette kravet.",
-        "outcome": {
-          "id": "earl:passed",
-          "type": [
-            "OutcomeValue",
-            "Pass"
-          ],
-          "title": "Passed"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:audio-description-or-media-alternative-prerecorded",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.546Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-11-10T11:19:23.763Z",
-        "description": "",
-        "outcome": {
-          "id": "earl:inapplicable",
-          "type": [
-            "OutcomeValue",
-            "NotApplicable"
-          ],
-          "title": "Not present"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:captions-live",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.546Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-12-09T11:25:39.367Z",
-        "description": "Vi bruker videoer produsert av nav. Disse burde oppfylle dette kravet.",
-        "outcome": {
-          "id": "earl:inapplicable",
-          "type": [
-            "OutcomeValue",
-            "NotApplicable"
-          ],
-          "title": "Not present"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:audio-description-prerecorded",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.546Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-12-09T12:26:33.533Z",
-        "description": "Kjørt Guided Testing: Structure, null feil. Svakhet på statistikkboksen.",
-        "outcome": {
-          "id": "earl:passed",
-          "type": [
-            "OutcomeValue",
-            "Pass"
-          ],
-          "title": "Passed"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:info-and-relationships",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.546Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-11-10T11:37:46.913Z",
-        "description": "",
-        "outcome": {
-          "id": "earl:passed",
-          "type": [
-            "OutcomeValue",
-            "Pass"
-          ],
-          "title": "Passed"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:meaningful-sequence",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.546Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-11-10T11:38:03.046Z",
-        "description": "",
-        "outcome": {
-          "id": "earl:passed",
-          "type": [
-            "OutcomeValue",
-            "Pass"
-          ],
-          "title": "Passed"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:sensory-characteristics",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.546Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-11-10T11:39:08.793Z",
-        "description": "",
-        "outcome": {
-          "id": "earl:passed",
-          "type": [
-            "OutcomeValue",
-            "Pass"
-          ],
-          "title": "Passed"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:orientation",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.546Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-12-09T12:35:50.197Z",
-        "description": "Vi henter ikke informasjon om bruker",
-        "outcome": {
-          "id": "earl:inapplicable",
-          "type": [
-            "OutcomeValue",
-            "NotApplicable"
-          ],
-          "title": "Not present"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:identify-input-purpose",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.546Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-12-09T12:36:01.217Z",
-        "description": "",
-        "outcome": {
-          "id": "earl:passed",
-          "type": [
-            "OutcomeValue",
-            "Pass"
-          ],
-          "title": "Passed"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:use-of-color",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.546Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-11-10T11:46:34.867Z",
-        "description": "",
-        "outcome": {
-          "id": "earl:inapplicable",
-          "type": [
-            "OutcomeValue",
-            "NotApplicable"
-          ],
-          "title": "Not present"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:audio-control",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.546Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-12-12T12:55:10.335Z",
-        "description": "",
-        "outcome": {
-          "id": "earl:passed",
-          "type": [
-            "OutcomeValue",
-            "Pass"
-          ],
-          "title": "Passed"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:contrast-minimum",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.547Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-11-10T11:58:15.639Z",
-        "description": "",
-        "outcome": {
-          "id": "earl:passed",
-          "type": [
-            "OutcomeValue",
-            "Pass"
-          ],
-          "title": "Passed"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:resize-text",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.547Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-12-09T12:44:08.382Z",
-        "description": "\"sykefravær og forebyggende arbeid i bedriften\" bilde",
-        "outcome": {
-          "id": "earl:failed",
-          "type": [
-            "OutcomeValue",
-            "Fail"
-          ],
-          "title": "Failed"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:images-of-text",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.547Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-11-10T12:03:29.549Z",
-        "description": "",
-        "outcome": {
-          "id": "earl:passed",
-          "type": [
-            "OutcomeValue",
-            "Pass"
-          ],
-          "title": "Passed"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:reflow",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.547Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-11-10T12:03:59.309Z",
-        "description": "",
-        "outcome": {
-          "id": "earl:passed",
-          "type": [
-            "OutcomeValue",
-            "Pass"
-          ],
-          "title": "Passed"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:non-text-contrast",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.547Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-11-10T12:17:03.811Z",
-        "description": "",
-        "outcome": {
-          "id": "earl:passed",
-          "type": [
-            "OutcomeValue",
-            "Pass"
-          ],
-          "title": "Passed"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:text-spacing",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.547Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-12-09T11:19:49.368Z",
-        "description": "",
-        "outcome": {
-          "id": "earl:inapplicable",
-          "type": [
-            "OutcomeValue",
-            "NotApplicable"
-          ],
-          "title": "Not present"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:audio-only-and-video-only-prerecorded",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.547Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-11-10T12:19:55.900Z",
-        "description": "",
-        "outcome": {
-          "id": "earl:inapplicable",
-          "type": [
-            "OutcomeValue",
-            "NotApplicable"
-          ],
-          "title": "Not present"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:content-on-hover-or-focus",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.547Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-12-12T13:04:19.883Z",
-        "description": "Firefox: Kan ikke nå alle lenker i header/dekoratør. Kan heller ikke tabbe til footer.",
-        "outcome": {
-          "id": "earl:failed",
-          "type": [
-            "OutcomeValue",
-            "Fail"
-          ],
-          "title": "Failed"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:keyboard",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.547Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-11-10T12:41:04.640Z",
-        "description": "",
-        "outcome": {
-          "id": "earl:passed",
-          "type": [
-            "OutcomeValue",
-            "Pass"
-          ],
-          "title": "Passed"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:no-keyboard-trap",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.547Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-11-10T12:42:51.958Z",
-        "description": "",
-        "outcome": {
-          "id": "earl:inapplicable",
-          "type": [
-            "OutcomeValue",
-            "NotApplicable"
-          ],
-          "title": "Not present"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:character-key-shortcuts",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.547Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-12-09T13:04:35.594Z",
-        "description": "Timeout på innlogget sesjon er \"Essential\".\n\nVi burde likevel la brukeren utvide sessjonen, si ifra om at de er på vei til å bli logget ut.",
-        "outcome": {
-          "id": "earl:passed",
-          "type": [
-            "OutcomeValue",
-            "Pass"
-          ],
-          "title": "Passed"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:timing-adjustable",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.547Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-12-09T13:07:24.791Z",
-        "description": "Vi regner loading spinner som ok.",
-        "outcome": {
-          "id": "earl:inapplicable",
-          "type": [
-            "OutcomeValue",
-            "NotApplicable"
-          ],
-          "title": "Not present"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:pause-stop-hide",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.548Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-12-09T13:08:07.281Z",
-        "description": "",
-        "outcome": {
-          "id": "earl:inapplicable",
-          "type": [
-            "OutcomeValue",
-            "NotApplicable"
-          ],
-          "title": "Not present"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:three-flashes-or-below-threshold",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.548Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-12-09T13:13:26.617Z",
-        "description": "Har \"Hopp til hovedinnhold\", men klarer ikke tab'e til den. Har main element.",
-        "outcome": {
-          "id": "earl:failed",
-          "type": [
-            "OutcomeValue",
-            "Fail"
-          ],
-          "title": "Failed"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:bypass-blocks",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.548Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-11-10T12:52:57.863Z",
-        "description": "",
-        "outcome": {
-          "id": "earl:passed",
-          "type": [
-            "OutcomeValue",
-            "Pass"
-          ],
-          "title": "Passed"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:page-titled",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.548Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-12-12T13:02:57.461Z",
-        "description": "Chrome: Første tab går til midten av siden, og ikke til første element.\n\nFirefox: Hopper over elementer i header/dekoratør\n\n",
-        "outcome": {
-          "id": "earl:failed",
-          "type": [
-            "OutcomeValue",
-            "Fail"
-          ],
-          "title": "Failed"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:focus-order",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.548Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-12-12T13:07:47.258Z",
-        "description": "Brukeren kan laste ned invitasjon til egen kalender ved å trykke på en lenke. For alle aktiviteter har lenken tittelen \"Last ned til min kalender (ics)\".\n\nOm man lister opp alle lenkene på sida vil man ikke få vite hvilken aktivitet man laster ned invitasjon til.\n\nPå den andre sida: lenkene er bare tilgjengelig når brukeren er i kontekst av en aktivitet (åpen accordion-rad), så de vil ikke listes opp samtidig. ",
-        "outcome": {
-          "id": "earl:cantTell",
-          "type": [
-            "OutcomeValue",
-            "CannotTell"
-          ],
-          "title": "Cannot tell"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:link-purpose-in-context",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.548Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-11-10T12:59:11.463Z",
-        "description": "Vi har kun en side",
-        "outcome": {
-          "id": "earl:passed",
-          "type": [
-            "OutcomeValue",
-            "Pass"
-          ],
-          "title": "Passed"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:multiple-ways",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.548Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-12-09T11:17:31.032Z",
-        "description": "bilde som viser oppfølging har ikke en beskrivende alt tekst",
-        "outcome": {
-          "id": "earl:failed",
-          "type": [
-            "OutcomeValue",
-            "Fail"
-          ],
-          "title": "Failed"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:non-text-content",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.548Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-12-12T12:57:48.464Z",
-        "description": "",
-        "outcome": {
-          "id": "earl:passed",
-          "type": [
-            "OutcomeValue",
-            "Pass"
-          ],
-          "title": "Passed"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:headings-and-labels",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.549Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-11-10T13:04:06.529Z",
-        "description": "",
-        "outcome": {
-          "id": "earl:passed",
-          "type": [
-            "OutcomeValue",
-            "Pass"
-          ],
-          "title": "Passed"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:focus-visible",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.549Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-12-12T14:08:47.064Z",
-        "description": "",
-        "outcome": {
-          "id": "earl:inapplicable",
-          "type": [
-            "OutcomeValue",
-            "NotApplicable"
-          ],
-          "title": "Not present"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:error-prevention-legal-financial-data",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.549Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-11-10T13:05:53.811Z",
-        "description": "",
-        "outcome": {
-          "id": "earl:inapplicable",
-          "type": [
-            "OutcomeValue",
-            "NotApplicable"
-          ],
-          "title": "Not present"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:pointer-gestures",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.549Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-11-10T13:07:22.544Z",
-        "description": "",
-        "outcome": {
-          "id": "earl:passed",
-          "type": [
-            "OutcomeValue",
-            "Pass"
-          ],
-          "title": "Passed"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:pointer-cancellation",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.549Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-11-10T13:17:00.421Z",
-        "description": "",
-        "outcome": {
-          "id": "earl:passed",
-          "type": [
-            "OutcomeValue",
-            "Pass"
-          ],
-          "title": "Passed"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:label-in-name",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.549Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-11-10T13:17:12.475Z",
-        "description": "",
-        "outcome": {
-          "id": "earl:inapplicable",
-          "type": [
-            "OutcomeValue",
-            "NotApplicable"
-          ],
-          "title": "Not present"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:motion-actuation",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.550Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-11-10T13:17:36.805Z",
-        "description": "",
-        "outcome": {
-          "id": "earl:passed",
-          "type": [
-            "OutcomeValue",
-            "Pass"
-          ],
-          "title": "Passed"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:language-of-page",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.550Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-11-10T13:19:31.073Z",
-        "description": "",
-        "outcome": {
-          "id": "earl:passed",
-          "type": [
-            "OutcomeValue",
-            "Pass"
-          ],
-          "title": "Passed"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:language-of-parts",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.550Z",
-      "mode": {
-        "type": "TestMode",
-        "@value": "earl:manual"
-      },
-      "result": {
-        "type": "TestResult",
-        "date": "2022-11-10T13:20:09.356Z",
-        "description": "",
-        "outcome": {
-          "id": "earl:passed",
-          "type": [
-            "OutcomeValue",
-            "Pass"
-          ],
-          "title": "Passed"
-        }
-      },
-      "subject": {
-        "id": "_:subject_1",
-        "type": [
-          "TestSubject",
-          "Website"
-        ],
-        "date": "2022-12-12T12:53:55.040Z",
-        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
-        "title": "Slik forebygger du sykefravær"
-      },
-      "test": {
-        "id": "WCAG21:on-focus",
-        "type": [
-          "TestCriterion",
-          "TestRequirement"
-        ],
-        "date": "2022-12-12T12:53:55.041Z"
-      }
-    },
-    {
-      "type": "Assertion",
-      "date": "2022-12-12T12:54:23.550Z",
+      "date": "2022-12-13T11:38:29.638Z",
       "mode": {
         "type": "TestMode",
         "@value": "earl:manual"
@@ -1958,7 +164,7 @@
           "TestSubject",
           "Website"
         ],
-        "date": "2022-12-12T12:53:55.040Z",
+        "date": "2022-12-13T11:31:02.449Z",
         "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
         "title": "Slik forebygger du sykefravær"
       },
@@ -1968,12 +174,12 @@
           "TestCriterion",
           "TestRequirement"
         ],
-        "date": "2022-12-12T12:53:55.041Z"
+        "date": "2022-12-13T11:31:02.450Z"
       }
     },
     {
       "type": "Assertion",
-      "date": "2022-12-12T12:54:23.550Z",
+      "date": "2022-12-13T11:38:29.638Z",
       "mode": {
         "type": "TestMode",
         "@value": "earl:manual"
@@ -1997,7 +203,7 @@
           "TestSubject",
           "Website"
         ],
-        "date": "2022-12-12T12:53:55.040Z",
+        "date": "2022-12-13T11:31:02.449Z",
         "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
         "title": "Slik forebygger du sykefravær"
       },
@@ -2007,12 +213,12 @@
           "TestCriterion",
           "TestRequirement"
         ],
-        "date": "2022-12-12T12:53:55.041Z"
+        "date": "2022-12-13T11:31:02.450Z"
       }
     },
     {
       "type": "Assertion",
-      "date": "2022-12-12T12:54:23.550Z",
+      "date": "2022-12-13T11:38:29.638Z",
       "mode": {
         "type": "TestMode",
         "@value": "earl:manual"
@@ -2036,7 +242,7 @@
           "TestSubject",
           "Website"
         ],
-        "date": "2022-12-12T12:53:55.040Z",
+        "date": "2022-12-13T11:31:02.449Z",
         "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
         "title": "Slik forebygger du sykefravær"
       },
@@ -2046,7 +252,1801 @@
           "TestCriterion",
           "TestRequirement"
         ],
-        "date": "2022-12-12T12:53:55.041Z"
+        "date": "2022-12-13T11:31:02.450Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.638Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-12-12T14:08:39.250Z",
+        "description": "Bruker får ikke beskjed om å prøve å sette frist til en dato i fremtiden.",
+        "outcome": {
+          "id": "earl:failed",
+          "type": [
+            "OutcomeValue",
+            "Fail"
+          ],
+          "title": "Failed"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:error-suggestion",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.450Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.638Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-12-12T14:22:47.587Z",
+        "description": "",
+        "outcome": {
+          "id": "earl:passed",
+          "type": [
+            "OutcomeValue",
+            "Pass"
+          ],
+          "title": "Passed"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:name-role-value",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.450Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.638Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-12-12T14:28:36.904Z",
+        "description": "Feilmeldinger bruker ikke role=\"alert\", men det er slik ting er satt opp i designsystemet.\n\nNote to self:\nHusk å sjekke feilmeldinger, og husk https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=413#status-messages når vi skal implementere det",
+        "outcome": {
+          "id": "earl:passed",
+          "type": [
+            "OutcomeValue",
+            "Pass"
+          ],
+          "title": "Passed"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:status-messages",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.450Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.638Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-12-09T11:19:51.510Z",
+        "description": "",
+        "outcome": {
+          "id": "earl:inapplicable",
+          "type": [
+            "OutcomeValue",
+            "NotApplicable"
+          ],
+          "title": "Not present"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:captions-prerecorded",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.449Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.638Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-12-09T11:26:06.161Z",
+        "description": "Vi bruker videoer produsert av nav. Disse burde oppfylle dette kravet.",
+        "outcome": {
+          "id": "earl:passed",
+          "type": [
+            "OutcomeValue",
+            "Pass"
+          ],
+          "title": "Passed"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:audio-description-or-media-alternative-prerecorded",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.449Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.638Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-11-10T11:19:23.763Z",
+        "description": "",
+        "outcome": {
+          "id": "earl:inapplicable",
+          "type": [
+            "OutcomeValue",
+            "NotApplicable"
+          ],
+          "title": "Not present"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:captions-live",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.449Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.638Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-12-09T11:25:39.367Z",
+        "description": "Vi bruker videoer produsert av nav. Disse burde oppfylle dette kravet.",
+        "outcome": {
+          "id": "earl:inapplicable",
+          "type": [
+            "OutcomeValue",
+            "NotApplicable"
+          ],
+          "title": "Not present"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:audio-description-prerecorded",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.449Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.638Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-12-09T12:26:33.533Z",
+        "description": "Kjørt Guided Testing: Structure, null feil. Svakhet på statistikkboksen.",
+        "outcome": {
+          "id": "earl:passed",
+          "type": [
+            "OutcomeValue",
+            "Pass"
+          ],
+          "title": "Passed"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:info-and-relationships",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.450Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.638Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-11-10T11:37:46.913Z",
+        "description": "",
+        "outcome": {
+          "id": "earl:passed",
+          "type": [
+            "OutcomeValue",
+            "Pass"
+          ],
+          "title": "Passed"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:meaningful-sequence",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.450Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.638Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-11-10T11:38:03.046Z",
+        "description": "",
+        "outcome": {
+          "id": "earl:passed",
+          "type": [
+            "OutcomeValue",
+            "Pass"
+          ],
+          "title": "Passed"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:sensory-characteristics",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.450Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.638Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-11-10T11:39:08.793Z",
+        "description": "",
+        "outcome": {
+          "id": "earl:passed",
+          "type": [
+            "OutcomeValue",
+            "Pass"
+          ],
+          "title": "Passed"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:orientation",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.450Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.638Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-12-09T12:35:50.197Z",
+        "description": "Vi henter ikke informasjon om bruker",
+        "outcome": {
+          "id": "earl:inapplicable",
+          "type": [
+            "OutcomeValue",
+            "NotApplicable"
+          ],
+          "title": "Not present"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:identify-input-purpose",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.450Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.638Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-12-09T12:36:01.217Z",
+        "description": "",
+        "outcome": {
+          "id": "earl:passed",
+          "type": [
+            "OutcomeValue",
+            "Pass"
+          ],
+          "title": "Passed"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:use-of-color",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.450Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.638Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-11-10T11:46:34.867Z",
+        "description": "",
+        "outcome": {
+          "id": "earl:inapplicable",
+          "type": [
+            "OutcomeValue",
+            "NotApplicable"
+          ],
+          "title": "Not present"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:audio-control",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.450Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.638Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-12-12T12:55:10.335Z",
+        "description": "",
+        "outcome": {
+          "id": "earl:passed",
+          "type": [
+            "OutcomeValue",
+            "Pass"
+          ],
+          "title": "Passed"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:contrast-minimum",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.450Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.638Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-11-10T11:58:15.639Z",
+        "description": "",
+        "outcome": {
+          "id": "earl:passed",
+          "type": [
+            "OutcomeValue",
+            "Pass"
+          ],
+          "title": "Passed"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:resize-text",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.450Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.638Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-12-09T12:44:08.382Z",
+        "description": "\"sykefravær og forebyggende arbeid i bedriften\" bilde",
+        "outcome": {
+          "id": "earl:failed",
+          "type": [
+            "OutcomeValue",
+            "Fail"
+          ],
+          "title": "Failed"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:images-of-text",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.450Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.638Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-11-10T12:03:29.549Z",
+        "description": "",
+        "outcome": {
+          "id": "earl:passed",
+          "type": [
+            "OutcomeValue",
+            "Pass"
+          ],
+          "title": "Passed"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:reflow",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.450Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.638Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-11-10T12:03:59.309Z",
+        "description": "",
+        "outcome": {
+          "id": "earl:passed",
+          "type": [
+            "OutcomeValue",
+            "Pass"
+          ],
+          "title": "Passed"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:non-text-contrast",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.450Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.639Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-12-13T11:42:45.908Z",
+        "description": "Når vi tester html-en vår med https://validator.w3.org/ får vi noen feil fra date-picker-komponenten, og tror det er siden den peker på en modal som ikke finnes enda. \"Error: The aria-controls attribute must point to an element in the same document.\"  Vi går ut i fra at designsystemet vil ordne opp i dette.\n\n",
+        "outcome": {
+          "id": "earl:passed",
+          "type": [
+            "OutcomeValue",
+            "Pass"
+          ],
+          "title": "Passed"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:parsing",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.450Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.639Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-11-10T12:17:03.811Z",
+        "description": "",
+        "outcome": {
+          "id": "earl:passed",
+          "type": [
+            "OutcomeValue",
+            "Pass"
+          ],
+          "title": "Passed"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:text-spacing",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.450Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.639Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-12-09T11:19:49.368Z",
+        "description": "",
+        "outcome": {
+          "id": "earl:inapplicable",
+          "type": [
+            "OutcomeValue",
+            "NotApplicable"
+          ],
+          "title": "Not present"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:audio-only-and-video-only-prerecorded",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.449Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.639Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-11-10T12:19:55.900Z",
+        "description": "",
+        "outcome": {
+          "id": "earl:inapplicable",
+          "type": [
+            "OutcomeValue",
+            "NotApplicable"
+          ],
+          "title": "Not present"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:content-on-hover-or-focus",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.450Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.639Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-12-12T13:04:19.883Z",
+        "description": "Firefox: Kan ikke nå alle lenker i header/dekoratør. Kan heller ikke tabbe til footer.",
+        "outcome": {
+          "id": "earl:failed",
+          "type": [
+            "OutcomeValue",
+            "Fail"
+          ],
+          "title": "Failed"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:keyboard",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.450Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.639Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-11-10T12:41:04.640Z",
+        "description": "",
+        "outcome": {
+          "id": "earl:passed",
+          "type": [
+            "OutcomeValue",
+            "Pass"
+          ],
+          "title": "Passed"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:no-keyboard-trap",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.450Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.639Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-11-10T12:42:51.958Z",
+        "description": "",
+        "outcome": {
+          "id": "earl:inapplicable",
+          "type": [
+            "OutcomeValue",
+            "NotApplicable"
+          ],
+          "title": "Not present"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:character-key-shortcuts",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.450Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.639Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-12-09T13:04:35.594Z",
+        "description": "Timeout på innlogget sesjon er \"Essential\".\n\nVi burde likevel la brukeren utvide sessjonen, si ifra om at de er på vei til å bli logget ut.",
+        "outcome": {
+          "id": "earl:passed",
+          "type": [
+            "OutcomeValue",
+            "Pass"
+          ],
+          "title": "Passed"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:timing-adjustable",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.450Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.639Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-12-09T13:07:24.791Z",
+        "description": "Vi regner loading spinner som ok.",
+        "outcome": {
+          "id": "earl:inapplicable",
+          "type": [
+            "OutcomeValue",
+            "NotApplicable"
+          ],
+          "title": "Not present"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:pause-stop-hide",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.450Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.639Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-12-09T13:08:07.281Z",
+        "description": "",
+        "outcome": {
+          "id": "earl:inapplicable",
+          "type": [
+            "OutcomeValue",
+            "NotApplicable"
+          ],
+          "title": "Not present"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:three-flashes-or-below-threshold",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.450Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.639Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-12-09T13:13:26.617Z",
+        "description": "Har \"Hopp til hovedinnhold\", men klarer ikke tab'e til den. Har main element.",
+        "outcome": {
+          "id": "earl:failed",
+          "type": [
+            "OutcomeValue",
+            "Fail"
+          ],
+          "title": "Failed"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:bypass-blocks",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.450Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.639Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-11-10T12:52:57.863Z",
+        "description": "",
+        "outcome": {
+          "id": "earl:passed",
+          "type": [
+            "OutcomeValue",
+            "Pass"
+          ],
+          "title": "Passed"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:page-titled",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.450Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.639Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-12-12T13:02:57.461Z",
+        "description": "Chrome: Første tab går til midten av siden, og ikke til første element.\n\nFirefox: Hopper over elementer i header/dekoratør\n\n",
+        "outcome": {
+          "id": "earl:failed",
+          "type": [
+            "OutcomeValue",
+            "Fail"
+          ],
+          "title": "Failed"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:focus-order",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.450Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.639Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-12-12T13:07:47.258Z",
+        "description": "Brukeren kan laste ned invitasjon til egen kalender ved å trykke på en lenke. For alle aktiviteter har lenken tittelen \"Last ned til min kalender (ics)\".\n\nOm man lister opp alle lenkene på sida vil man ikke få vite hvilken aktivitet man laster ned invitasjon til.\n\nPå den andre sida: lenkene er bare tilgjengelig når brukeren er i kontekst av en aktivitet (åpen accordion-rad), så de vil ikke listes opp samtidig. ",
+        "outcome": {
+          "id": "earl:cantTell",
+          "type": [
+            "OutcomeValue",
+            "CannotTell"
+          ],
+          "title": "Cannot tell"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:link-purpose-in-context",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.450Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.639Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-11-10T12:59:11.463Z",
+        "description": "Vi har kun en side",
+        "outcome": {
+          "id": "earl:passed",
+          "type": [
+            "OutcomeValue",
+            "Pass"
+          ],
+          "title": "Passed"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:multiple-ways",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.450Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.640Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-12-09T11:17:31.032Z",
+        "description": "bilde som viser oppfølging har ikke en beskrivende alt tekst",
+        "outcome": {
+          "id": "earl:failed",
+          "type": [
+            "OutcomeValue",
+            "Fail"
+          ],
+          "title": "Failed"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:non-text-content",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.449Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.640Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-12-12T14:07:45.463Z",
+        "description": "Bruker kan ikke sette frist på oppgave til fortid, men får ingen feilmelding om dette om de prøver.\n\nFår generelt ingen feilmelding om ting går galt i backend.",
+        "outcome": {
+          "id": "earl:failed",
+          "type": [
+            "OutcomeValue",
+            "Fail"
+          ],
+          "title": "Failed"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:error-identification",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.450Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.640Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-12-12T12:57:48.464Z",
+        "description": "",
+        "outcome": {
+          "id": "earl:passed",
+          "type": [
+            "OutcomeValue",
+            "Pass"
+          ],
+          "title": "Passed"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:headings-and-labels",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.450Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.640Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-11-10T13:04:06.529Z",
+        "description": "",
+        "outcome": {
+          "id": "earl:passed",
+          "type": [
+            "OutcomeValue",
+            "Pass"
+          ],
+          "title": "Passed"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:focus-visible",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.450Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.640Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-12-12T14:08:47.064Z",
+        "description": "",
+        "outcome": {
+          "id": "earl:inapplicable",
+          "type": [
+            "OutcomeValue",
+            "NotApplicable"
+          ],
+          "title": "Not present"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:error-prevention-legal-financial-data",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.450Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.640Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-11-10T13:05:53.811Z",
+        "description": "",
+        "outcome": {
+          "id": "earl:inapplicable",
+          "type": [
+            "OutcomeValue",
+            "NotApplicable"
+          ],
+          "title": "Not present"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:pointer-gestures",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.450Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.640Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-11-10T13:07:22.544Z",
+        "description": "",
+        "outcome": {
+          "id": "earl:passed",
+          "type": [
+            "OutcomeValue",
+            "Pass"
+          ],
+          "title": "Passed"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:pointer-cancellation",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.450Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.640Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-11-10T13:17:00.421Z",
+        "description": "",
+        "outcome": {
+          "id": "earl:passed",
+          "type": [
+            "OutcomeValue",
+            "Pass"
+          ],
+          "title": "Passed"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:label-in-name",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.450Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.640Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-11-10T13:17:12.475Z",
+        "description": "",
+        "outcome": {
+          "id": "earl:inapplicable",
+          "type": [
+            "OutcomeValue",
+            "NotApplicable"
+          ],
+          "title": "Not present"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:motion-actuation",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.450Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.640Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-11-10T13:17:36.805Z",
+        "description": "",
+        "outcome": {
+          "id": "earl:passed",
+          "type": [
+            "OutcomeValue",
+            "Pass"
+          ],
+          "title": "Passed"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:language-of-page",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.450Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.640Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-11-10T13:19:31.073Z",
+        "description": "",
+        "outcome": {
+          "id": "earl:passed",
+          "type": [
+            "OutcomeValue",
+            "Pass"
+          ],
+          "title": "Passed"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:language-of-parts",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.450Z"
+      }
+    },
+    {
+      "type": "Assertion",
+      "date": "2022-12-13T11:38:29.641Z",
+      "mode": {
+        "type": "TestMode",
+        "@value": "earl:manual"
+      },
+      "result": {
+        "type": "TestResult",
+        "date": "2022-11-10T13:20:09.356Z",
+        "description": "",
+        "outcome": {
+          "id": "earl:passed",
+          "type": [
+            "OutcomeValue",
+            "Pass"
+          ],
+          "title": "Passed"
+        }
+      },
+      "subject": {
+        "id": "_:subject_1",
+        "type": [
+          "TestSubject",
+          "Website"
+        ],
+        "date": "2022-12-13T11:31:02.449Z",
+        "description": "https://arbeidsgiver.nav.no/forebyggingsplan",
+        "title": "Slik forebygger du sykefravær"
+      },
+      "test": {
+        "id": "WCAG21:on-focus",
+        "type": [
+          "TestCriterion",
+          "TestRequirement"
+        ],
+        "date": "2022-12-13T11:31:02.450Z"
       }
     }
   ],
@@ -2058,7 +2058,7 @@
     "summary": "",
     "title": "Forebygginsplan",
     "commissioner": "",
-    "evaluator": "Utviklere i team Pia: Ingrid og Per-Christian (2.4 og utover). Første del: også Tanet, Christian og Thomas.",
+    "evaluator": "Utviklere i team Pia gjennom flere iterasjoner",
     "documentSteps": [
       {
         "id": "_:about"
