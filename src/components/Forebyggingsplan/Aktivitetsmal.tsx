@@ -42,7 +42,10 @@ const Handlinger = ({ aktivitet, fullførAktivitet, velgAktivitet }: Props) => {
         <div className={styles.knappeContainer}>
             {aktivitet.status === "IKKE_VALGT" && (
                 <div className={styles.detteVilViGjøreContainer}>
-                    <UNSAFE_DatePicker {...datepickerProps}>
+                    <UNSAFE_DatePicker
+                        {...datepickerProps}
+                        fromDate={new Date()}
+                    >
                         <UNSAFE_DatePicker.Input
                             {...inputProps}
                             label="Frist"
