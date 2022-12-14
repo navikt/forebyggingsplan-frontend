@@ -80,6 +80,9 @@ export const aktivitet = {
                 {
                     type: "seksjon",
                 },
+                {
+                    type: "oppgave",
+                },
             ],
             validation: (rule: Rule) => rule.required(),
         },

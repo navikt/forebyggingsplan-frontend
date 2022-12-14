@@ -1,24 +1,19 @@
-import { Aktivitet } from "../../types/Aktivitet";
 import { PortableText, PortableTextComponents } from "@portabletext/react";
-import {
-    Button,
-    Heading,
-    Ingress,
-    UNSAFE_DatePicker,
-    UNSAFE_useDatepicker,
-} from "@navikt/ds-react";
-
+import { useState } from "react";
+import { Button, Heading, Ingress, UNSAFE_DatePicker, UNSAFE_useDatepicker, } from "@navikt/ds-react";
 import styles from "./Aktivitetsmal.module.css";
 import { Seksjon } from "../Seksjon/Seksjon";
+import { Oppgave } from "../Oppgave/Oppgave";
 import { block } from "../PortableText/block/Block";
 import { marks } from "../PortableText/marks/Marks";
 import { EksporterTilKalender } from "./EksporterTilKalender";
 import { useHentOrgnummer } from "../Layout/Banner/Banner";
-import { useState } from "react";
+import { Aktivitet } from "../../types/Aktivitet";
 
 const hovedinnhold: Partial<PortableTextComponents> = {
     types: {
         seksjon: Seksjon,
+        oppgave: Oppgave,
     },
     block,
     marks,
@@ -51,6 +46,7 @@ const Handlinger = ({ aktivitet, fullførAktivitet, velgAktivitet }: Props) => {
         },
     });
     const { orgnr } = useHentOrgnummer();
+
     if (!orgnr) return null; // Ingen grunn til å vise knapper dersom vi ikke vet orgnr
 
     return (
@@ -95,11 +91,7 @@ const Handlinger = ({ aktivitet, fullførAktivitet, velgAktivitet }: Props) => {
     );
 };
 
-export function Aktivitetsmal({
-    aktivitet,
-    velgAktivitet,
-    fullførAktivitet,
-}: Props) {
+export function Aktivitetsmal({ aktivitet, velgAktivitet, fullførAktivitet }: Props) {
     return (
         <div className={styles.container}>
             <Handlinger
