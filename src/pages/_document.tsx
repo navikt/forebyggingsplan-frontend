@@ -39,6 +39,7 @@ export default class MyDocument extends Document<Props> {
                     url: "/forebyggingsplan",
                 },
             ],
+            urlLookupTable: false,
         });
 
         return { ...initialProps, Dekoratør };
