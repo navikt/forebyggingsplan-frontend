@@ -9,3 +9,9 @@
         padding: 1.5rem;
     }
 }
+
+/* Gjør at seksjon får samme padding over og under
+ * ved å fjerne margin på siste element i seksjonen */
+.seksjon > :last-child {
+    margin-bottom: 0;
+}
