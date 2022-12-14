@@ -14,6 +14,7 @@ import { block } from "../PortableText/block/Block";
 import { marks } from "../PortableText/marks/Marks";
 import { EksporterTilKalender } from "./EksporterTilKalender";
 import { useHentOrgnummer } from "../Layout/Banner/Banner";
+import { useState } from "react";
 
 const hovedinnhold: Partial<PortableTextComponents> = {
     types: {
@@ -30,11 +31,25 @@ interface Props {
 }
 
 const Handlinger = ({ aktivitet, fullførAktivitet, velgAktivitet }: Props) => {
+    const [forTidlig, setForTidlig] = useState<boolean>();
+    const [ugyldig, setUgyldig] = useState<boolean>();
     const {
         datepickerProps,
         inputProps,
         selectedDay: frist,
-    } = UNSAFE_useDatepicker();
+    } = UNSAFE_useDatepicker({
+        fromDate: new Date(),
+        onValidate: (val) => {
+            if (val.isBefore) setForTidlig(true);
+            else setForTidlig(false);
+            if (val.isEmpty) {
+                setUgyldig(false);
+            } else {
+                if (val.isWeekend === undefined) setUgyldig(true);
+                else setUgyldig(false);
+            }
+        },
+    });
     const { orgnr } = useHentOrgnummer();
     if (!orgnr) return null; // Ingen grunn til å vise knapper dersom vi ikke vet orgnr
 
@@ -42,13 +57,15 @@ const Handlinger = ({ aktivitet, fullførAktivitet, velgAktivitet }: Props) => {
         <div className={styles.knappeContainer}>
             {aktivitet.status === "IKKE_VALGT" && (
                 <div className={styles.detteVilViGjøreContainer}>
-                    <UNSAFE_DatePicker
-                        {...datepickerProps}
-                        fromDate={new Date()}
-                    >
+                    <UNSAFE_DatePicker {...datepickerProps}>
                         <UNSAFE_DatePicker.Input
                             {...inputProps}
                             label="Frist"
+                            error={
+                                (ugyldig &&
+                                    "Dette er ikke en gyldig dato. Gyldig format er DD.MM.ÅÅÅÅ") ||
+                                (forTidlig && "Frist kan tidligst være idag")
+                            }
                         />
                     </UNSAFE_DatePicker>
 
@@ -56,6 +73,7 @@ const Handlinger = ({ aktivitet, fullførAktivitet, velgAktivitet }: Props) => {
                         onClick={() => {
                             velgAktivitet(frist);
                         }}
+                        disabled={ugyldig || forTidlig}
                     >
                         Dette vil vi gjøre
                     </Button>

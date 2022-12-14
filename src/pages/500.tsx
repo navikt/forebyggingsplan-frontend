@@ -2,7 +2,7 @@ import { BodyShort, Button } from "@navikt/ds-react";
 import { useRouter } from "next/router";
 import styles from "./feilsider.module.css";
 
-export default function Error() {
+export default function Custom500() {
     const router = useRouter();
     return (
         <div className={styles.container}>
