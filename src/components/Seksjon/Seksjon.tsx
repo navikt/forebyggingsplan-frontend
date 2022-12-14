@@ -12,7 +12,6 @@ import { block } from "../PortableText/block/Block";
 import { marks } from "../PortableText/marks/Marks";
 import { Sykefraværsstatistikk } from "../Sykefraværsstatistikk/Sykefraværsstatistikk";
 import { LesMer } from "../LesMer/LesMer";
-import { Oppgave } from "../Oppgave/Oppgave";
 
 export const Seksjon = ({
     value,
@@ -30,7 +29,6 @@ export const Seksjon = ({
 const seksjonsinnhold: Partial<PortableTextComponents> = {
     types: {
         lovpalagt: Lovpålagt,
-        oppgave: Oppgave,
         video: VideoVisning,
         bilde: Bilde,
         statistikk: Sykefraværsstatistikk,

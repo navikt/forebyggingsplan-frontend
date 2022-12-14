@@ -5,7 +5,6 @@ import { VideoPreview } from "./Video";
 import { Rule } from "@sanity/types";
 import { PortableTextBlock } from "@portabletext/types";
 import { Statistikk } from "./Statistikk";
-import { Oppgave } from "./Oppgave";
 import { defineType } from "sanity";
 
 export const seksjon = defineType({
@@ -56,9 +55,6 @@ export const seksjon = defineType({
                 },
                 {
                     type: "lovpalagt",
-                },
-                {
-                    type: "oppgave",
                 },
                 {
                     type: "statistikk",
@@ -114,7 +110,6 @@ export const seksjon = defineType({
                             components={{
                                 types: {
                                     lovpalagt: Lovpålagt,
-                                    oppgave: Oppgave,
                                     statistikk: Statistikk,
                                     video: VideoPreview,
                                 },
