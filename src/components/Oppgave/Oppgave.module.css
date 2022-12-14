@@ -1,4 +1,4 @@
-.wrapper {
+.oppgaveblokk {
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -6,6 +6,12 @@
     margin-bottom: 1rem;
     background-color: var(--a-surface-selected);
     border-radius: var(--a-border-radius-medium);
+}
+
+/* Gjør at oppgave får samme padding over og under
+ * ved å fjerne margin på siste element i oppgaveblokka */
+.oppgaveinnhold > :last-child {
+    margin-bottom: 0;
 }
 
 .tag {

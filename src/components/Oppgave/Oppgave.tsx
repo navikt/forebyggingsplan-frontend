@@ -15,11 +15,11 @@ export const Oppgave = ({
     value: { oppgavetype, tittel, innhold },
 }: PortableTextComponentProps<Props>) => {
     return (
-        <Panel className={styles.wrapper}>
+        <Panel className={styles.oppgaveblokk}>
             <Tag className={styles.tag} variant="neutral">
                 {oppgavetype}
             </Tag>
-            <div>
+            <div className={styles.oppgaveinnhold}>
                 <Heading size={"medium"} level="4" spacing>
                     {tittel}
                 </Heading>
