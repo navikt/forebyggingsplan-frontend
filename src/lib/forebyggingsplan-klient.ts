@@ -63,7 +63,22 @@ export function velgAktivitet(valgtAktivitetDto: ValgtAktivitetDTO) {
         headers: {
             "Content-Type": "application/json",
         },
-    }).then((res) => {
+    }).then(async (res) => {
+        // If the status code is not in the range 200-299,
+        // we still try to parse and throw it.
+        if (!res.ok) {
+            let info;
+            try {
+                info = await res.json();
+            } catch (e) {
+                info = await res.text();
+            }
+            throw new FetchingError(
+                "An error occurred while fetching the data.",
+                info,
+                res.status
+            );
+        }
         return res.json();
     });
 }
@@ -86,7 +101,22 @@ export function fullførAktivitet(fullførAktivitetDto: FullførAktivitetDTO) {
         headers: {
             "Content-Type": "application/json",
         },
-    }).then((res) => {
+    }).then(async (res) => {
+        // If the status code is not in the range 200-299,
+        // we still try to parse and throw it.
+        if (!res.ok) {
+            let info;
+            try {
+                info = await res.json();
+            } catch (e) {
+                info = await res.text();
+            }
+            throw new FetchingError(
+                "An error occurred while fetching the data.",
+                info,
+                res.status
+            );
+        }
         return res.json();
     });
 }
