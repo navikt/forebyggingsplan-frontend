@@ -104,8 +104,9 @@ export const seksjon = defineType({
                 media: (
                     <div
                         style={{
-                            backgroundColor: "lightgray",
+                            backgroundColor: "#f1f1f1",
                             borderRadius: "4px",
+                            padding: "1rem",
                         }}
                     >
                         <PortableText
