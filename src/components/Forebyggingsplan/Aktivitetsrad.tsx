@@ -80,12 +80,12 @@ export const Aktivitetsrad = ({
     };
     return (
         <Accordion.Item open={åpen}>
-            <Heading size="medium" level="3">
+            <Heading size="medium" level="3" className={styles.sticky}>
                 <Accordion.Header
                     onClick={onClick}
-                    className={`${styles.sticky} ${
-                        AktivitetStatusStyle[aktivitet.status]
-                    } ${styles.accordionHeader}`}
+                    className={`
+                        ${AktivitetStatusStyle[aktivitet.status]} 
+                        ${styles.accordionHeader}`}
                 >
                     <AktivitetHeader aktivitet={aktivitet} />
                 </Accordion.Header>
@@ -105,7 +105,7 @@ export const Aktivitetsrad = ({
 };
 
 const AktivitetStatusStyle: { [key in AktivitetStatus]: string } = {
-    IKKE_VALGT: "",
+    IKKE_VALGT: styles.aktivitetIkkeValgt,
     VALGT: styles.aktivitetValgt,
     FULLFØRT: styles.aktivitetFullført,
 };

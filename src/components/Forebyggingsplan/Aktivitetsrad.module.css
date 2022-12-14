@@ -1,3 +1,7 @@
+.aktivitetIkkeValgt {
+    background-color: var(--a-white);
+}
+
 .aktivitetValgt {
     background-color: var(--a-orange-100) !important;
 }
