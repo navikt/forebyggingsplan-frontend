@@ -18,12 +18,15 @@ export const StatistikkPanel = ({
     return (
         <Panel className={styles.statistikk}>
             <Tooltip content={tooltip}>
-                <BodyShort size={"small"}>{tittel}</BodyShort>
+                <BodyShort size={"small"} className={styles.tittel}>
+                    {tittel}
+                </BodyShort>
             </Tooltip>
             <BodyShort className={styles.tallContainer}>
                 <Up
                     className={roterEtterTrend(trend)}
                     title={trendBeskrivelse(trend)}
+                    fontSize="1rem"
                 />
                 {`${sykefravær} %`}
             </BodyShort>
