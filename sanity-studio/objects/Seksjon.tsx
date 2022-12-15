@@ -1,10 +1,10 @@
 import * as React from "react";
 import { PortableText } from "@portabletext/react";
-import { Lovpålagt } from "./Lovpålagt";
+import { LovpålagtPreview } from "./Lovpålagt";
 import { VideoPreview } from "./Video";
 import { Rule } from "@sanity/types";
 import { PortableTextBlock } from "@portabletext/types";
-import { Statistikk } from "./Statistikk";
+import { StatistikkPreview } from "./Statistikk";
 import { defineType } from "sanity";
 
 export const seksjon = defineType({
@@ -109,8 +109,8 @@ export const seksjon = defineType({
                             value={value.seksjonInnhold}
                             components={{
                                 types: {
-                                    lovpalagt: Lovpålagt,
-                                    statistikk: Statistikk,
+                                    lovpalagt: LovpålagtPreview,
+                                    statistikk: StatistikkPreview,
                                     video: VideoPreview,
                                 },
                             }}

@@ -2,7 +2,7 @@ import * as React from "react";
 import styles from "./statistikkPreview.module.css";
 import { defineType } from "sanity";
 
-export const Statistikk = () => {
+export const StatistikkPreview = () => {
     return (
         <div className={styles.statistikkContainer}>
             <div className={styles.panel}>
@@ -29,7 +29,7 @@ const statistikkSchema = defineType({
         },
     ],
     components: {
-        preview: Statistikk,
+        preview: StatistikkPreview,
     },
 });
 

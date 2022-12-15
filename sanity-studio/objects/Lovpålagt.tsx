@@ -25,7 +25,7 @@ const lovpalagdtTagStyle: CSSProperties = {
     width: "max-content",
 };
 
-export const Lovpålagt = ({ value: { tekst } }: Props) => {
+export const LovpålagtPreview = ({ value: { tekst } }: Props) => {
     return (
         <div style={lovpalagdtStyle}>
             <div style={lovpalagdtTagStyle}>Lovpålagt</div>
@@ -55,7 +55,7 @@ const lovpålagtSchema = defineType({
         prepare: (value: { tekst: string }) => {
             return {
                 title: "Innhold",
-                media: <Lovpålagt value={{ tekst: value.tekst }} />,
+                media: <LovpålagtPreview value={{ tekst: value.tekst }} />,
             };
         },
     },

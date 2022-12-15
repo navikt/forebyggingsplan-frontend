@@ -12,7 +12,9 @@ interface Props {
     };
 }
 
-export const Oppgave = ({ value: { oppgavetype, tittel, innhold } }: Props) => {
+export const OppgavePreview = ({
+    value: { oppgavetype, tittel, innhold },
+}: Props) => {
     return (
         <div className={styles.oppgaveContainer}>
             <div className={styles.tag}>{oppgavetype}</div>
@@ -83,7 +85,7 @@ const oppgaveSchema = defineType({
             return {
                 title: "Innhold",
                 media: (
-                    <Oppgave
+                    <OppgavePreview
                         value={{
                             oppgavetype: props.oppgavetype,
                             innhold: props.innhold,

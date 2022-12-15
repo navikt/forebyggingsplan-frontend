@@ -7,7 +7,7 @@ interface Props {
     children?: React.ReactNode;
 }
 
-const Lenke = ({ children, erEksternLenke, url }: Props) => {
+const LenkePreview = ({ children, erEksternLenke, url }: Props) => {
     return (
         <a href={url}>
             {children}
@@ -22,7 +22,7 @@ export const lenke = {
     title: "link",
     blockEditor: {
         icon: ExternalLink,
-        render: Lenke,
+        render: LenkePreview,
     },
     fields: [
         {
