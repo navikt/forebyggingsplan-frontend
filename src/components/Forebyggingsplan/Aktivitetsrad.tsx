@@ -79,7 +79,7 @@ export const Aktivitetsrad = ({
         })?.then(oppdaterValgteAktiviteter);
     };
     return (
-        <Accordion.Item open={åpen}>
+        <Accordion.Item open={åpen} className={styles.accordionItem}>
             <Heading size="medium" level="3" className={styles.sticky}>
                 <Accordion.Header
                     onClick={onClick}

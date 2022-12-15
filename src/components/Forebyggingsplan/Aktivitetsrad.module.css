@@ -16,6 +16,16 @@
     z-index: 2; /* Plasser sticky header framfor datepicker-input med "z-index: 1"*/
 }
 
+/* Om aktiviteten ikkje er siste i lista skal den ha litt luft under seg */
+.accordionItem:not(:last-child) .accordionHeader {
+    margin-bottom: 1.75rem;
+}
+
+.accordionHeader {
+    color: var(--a-text-action);
+    border-bottom: 1px solid var(--a-border-divider);
+}
+
 .accordionHeader > span {
     width: 100%;
     display: flex;
