@@ -6,7 +6,7 @@ import {
 import { Loader } from "@navikt/ds-react";
 import styles from "./Sykefraværsstatistikk.module.css";
 import { useHentOrgnummer } from "../Layout/Banner/Banner";
-import { StatistikkPanel } from "../StatistikkPanel/StatistikkPanel";
+import { StatistikkPanel } from "./StatistikkPanel";
 
 export const Sykefraværsstatistikk = () => {
     const { orgnr } = useHentOrgnummer();
