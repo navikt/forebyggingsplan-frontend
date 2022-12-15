@@ -7,6 +7,7 @@ interface StatistikkPanelProps {
     sykefravær: string;
     tittel: string;
     tooltip: string;
+    bakgrunnsfarge?: Bakgrunnsfarger;
 }
 
 export const StatistikkPanel = ({
@@ -14,9 +15,12 @@ export const StatistikkPanel = ({
     tittel,
     trend,
     tooltip,
+    bakgrunnsfarge = "GRÅ",
 }: StatistikkPanelProps) => {
     return (
-        <Panel className={styles.statistikk}>
+        <Panel
+            className={`${styles.statistikk} ${PanelBakgrunn[bakgrunnsfarge]}`}
+        >
             <Tooltip content={tooltip}>
                 <BodyShort size={"small"} className={styles.tittel}>
                     {tittel}
@@ -49,3 +53,10 @@ const trendBeskrivelse = (trend: string | undefined): string => {
         return "synkende trend";
     } else return "stigende trend";
 };
+
+const PanelBakgrunn: { [key in Bakgrunnsfarger]: string } = {
+    GRÅ: styles.gråBakgrunn,
+    HVIT: styles.hvitBakgrunn,
+};
+
+type Bakgrunnsfarger = "GRÅ" | "HVIT";
