@@ -9,7 +9,10 @@ interface Props {
 
 const LenkePreview = ({ children, erEksternLenke, url }: Props) => {
     return (
-        <a href={url}>
+        <a
+            href={url}
+            style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}
+        >
             {children}
             {erEksternLenke && <ExternalLink />}
         </a>
