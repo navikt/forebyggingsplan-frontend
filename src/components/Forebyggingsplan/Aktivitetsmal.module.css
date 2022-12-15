@@ -5,6 +5,11 @@
     word-wrap: break-word;
 }
 
+.mål {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
 .knappeContainer {
     display: flex;
     flex-wrap: wrap;

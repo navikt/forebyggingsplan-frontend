@@ -1,6 +1,12 @@
 import { PortableText, PortableTextComponents } from "@portabletext/react";
 import { useState } from "react";
-import { Button, Heading, Ingress, UNSAFE_DatePicker, UNSAFE_useDatepicker, } from "@navikt/ds-react";
+import {
+    Button,
+    Heading,
+    Ingress,
+    UNSAFE_DatePicker,
+    UNSAFE_useDatepicker,
+} from "@navikt/ds-react";
 import styles from "./Aktivitetsmal.module.css";
 import { Seksjon } from "../Seksjon/Seksjon";
 import { Oppgave } from "../Oppgave/Oppgave";
@@ -91,7 +97,11 @@ const Handlinger = ({ aktivitet, fullførAktivitet, velgAktivitet }: Props) => {
     );
 };
 
-export function Aktivitetsmal({ aktivitet, velgAktivitet, fullførAktivitet }: Props) {
+export function Aktivitetsmal({
+    aktivitet,
+    velgAktivitet,
+    fullførAktivitet,
+}: Props) {
     return (
         <div className={styles.container}>
             <Handlinger
@@ -100,10 +110,12 @@ export function Aktivitetsmal({ aktivitet, velgAktivitet, fullførAktivitet }: P
                 fullførAktivitet={fullførAktivitet}
             />
             <Ingress>{aktivitet.beskrivelse}</Ingress>
-            <Heading size="medium" level="4">
-                Mål
-            </Heading>
-            <Ingress>{aktivitet.mål}</Ingress>
+            <div className={styles.mål}>
+                <Heading size="medium" level="4">
+                    Mål
+                </Heading>
+                <Ingress>{aktivitet.mål}</Ingress>
+            </div>
             <PortableText value={aktivitet.innhold} components={hovedinnhold} />
         </div>
     );
