@@ -1,39 +1,28 @@
-import { screen, render, within } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { VideoVisning } from "./VideoVisning";
 import { axe } from "jest-axe";
 
 describe("VideoVisning", () => {
+    const videoProps = {
+        value: {
+            tittel: "Heisann",
+            videoId: 123,
+            punktliste: ["Punkt en", "Punkt to"],
+        },
+        index: 1,
+        isInline: false,
+        renderNode: () => <></>,
+    };
+
     it("Har ingen uu-feil fra axe", async () => {
-        const { container } = render(
-            <VideoVisning
-                value={{
-                    tittel: "Heisann",
-                    videoId: 123,
-                    punktliste: ["Punkt en", "Punkt to"],
-                }}
-                index={1}
-                isInline={false}
-                renderNode={() => <></>}
-            />
-        );
+        const { container } = render(<VideoVisning {...videoProps} />);
         const results = await axe(container);
         expect(results).toHaveNoViolations();
     });
 
     it("Har tittel, video og punktliste", async () => {
         const tekst = "Heisann";
-        render(
-            <VideoVisning
-                value={{
-                    tittel: tekst,
-                    videoId: 123,
-                    punktliste: ["Punkt en", "Punkt to"],
-                }}
-                index={1}
-                isInline={false}
-                renderNode={() => <></>}
-            />
-        );
+        render(<VideoVisning {...videoProps} />);
         expect(screen.getByRole("heading", { level: 4 })).toHaveTextContent(
             tekst
         );
@@ -51,14 +40,11 @@ describe("VideoVisning", () => {
         const tekst = "Heisann";
         render(
             <VideoVisning
+                {...videoProps}
                 value={{
-                    tittel: tekst,
-                    videoId: 123,
+                    ...videoProps.value,
                     punktliste: ["Ikke punkttekst"],
                 }}
-                index={1}
-                isInline={false}
-                renderNode={() => <></>}
             />
         );
         expect(screen.getByRole("heading", { level: 4 })).toHaveTextContent(
