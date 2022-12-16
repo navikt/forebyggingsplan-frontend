@@ -50,7 +50,7 @@ export const EksporterTilKalender = ({
             URL.revokeObjectURL(url);
         };
     }, [aktivitet]);
-    return aktivitet.frist ? (
+    return aktivitet.frist && aktivitet.status !== "FULLFØRT" ? (
         <Link
             className={styles.detteHarViGjortKnapp}
             href={lastnedUrl}
