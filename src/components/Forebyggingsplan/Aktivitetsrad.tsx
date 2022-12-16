@@ -3,6 +3,7 @@ import { Accordion, Heading } from "@navikt/ds-react";
 import styles from "./Aktivitetsrad.module.css";
 import dynamic from "next/dynamic";
 import {
+    FetchingError,
     fullførAktivitet,
     velgAktivitet,
 } from "../../lib/forebyggingsplan-klient";
@@ -12,8 +13,9 @@ import {
     loggVelgAktivitet,
     loggÅpneAktivitet,
 } from "../../lib/amplitude";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { AktivitetHeader } from "./AktivitetHeader";
+import { useRouter } from "next/router";
 
 const Aktivitetsmal = dynamic(() =>
     import("./Aktivitetsmal").then((mod) => mod.Aktivitetsmal)
@@ -50,6 +52,8 @@ export const Aktivitetsrad = ({
     oppdaterValgteAktiviteter,
     onClose,
 }: Props) => {
+    const router = useRouter();
+    const [serverFeil, setServerfeil] = useState<string>("");
     const { orgnr } = useHentOrgnummer();
     useEffect(() => {
         if (!åpen) {
@@ -63,20 +67,36 @@ export const Aktivitetsrad = ({
         }
     }, [åpen, aktivitet]);
     const velgAktivitetHandler = (frist?: Date) => {
+        setServerfeil("");
         loggVelgAktivitet(aktivitet);
         velgAktivitet({
             aktivitetsmalId: aktivitet.aktivitetsmalId,
             frist,
             orgnr: orgnr ?? undefined,
-        })?.then(oppdaterValgteAktiviteter);
+        })
+            ?.then(oppdaterValgteAktiviteter)
+            .catch((e: FetchingError) => {
+                if (e.status == 503) {
+                    router.push("/500").then();
+                }
+                setServerfeil(e.message);
+            });
     };
     const fullførAktivitetHandler = () => {
+        setServerfeil("");
         loggFullførAktivitet(aktivitet);
         fullførAktivitet({
             aktivitetsmalId: aktivitet.aktivitetsmalId,
             aktivitetsId: aktivitet.aktivitetsId,
             orgnr: aktivitet.orgnr ?? orgnr ?? undefined,
-        })?.then(oppdaterValgteAktiviteter);
+        })
+            ?.then(oppdaterValgteAktiviteter)
+            .catch((e: FetchingError) => {
+                if (e.status == 503) {
+                    router.push("/500").then();
+                }
+                setServerfeil(e.message);
+            });
     };
     return (
         <Accordion.Item open={åpen} className={styles.accordionItem}>
@@ -98,6 +118,7 @@ export const Aktivitetsrad = ({
                     aktivitet={aktivitet}
                     velgAktivitet={velgAktivitetHandler}
                     fullførAktivitet={fullførAktivitetHandler}
+                    serverFeil={serverFeil}
                 />
             </Accordion.Content>
         </Accordion.Item>
