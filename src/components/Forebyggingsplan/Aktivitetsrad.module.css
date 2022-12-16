@@ -17,8 +17,8 @@
 }
 
 /* Om aktiviteten ikkje er siste i lista skal den ha litt luft under seg */
-.accordionItem:not(:last-child) .accordionHeader {
-    margin-bottom: 1.75rem;
+.accordionItem:not(:first-child) .accordionHeader {
+    margin-top: 1.75rem;
 }
 
 .accordionHeader {
