@@ -15,7 +15,7 @@ export const StatistikkPanel = ({
     tittel,
     trend,
     tooltip,
-    bakgrunnsfarge = "GRÅ",
+    bakgrunnsfarge = "HVIT",
 }: StatistikkPanelProps) => {
     return (
         <Panel
@@ -37,6 +37,7 @@ export const StatistikkPanel = ({
         </Panel>
     );
 };
+
 const roterEtterTrend = (trend: string | undefined): string => {
     const trendNummer = Number(trend);
     if (isNaN(trendNummer) || trendNummer === 0) {
@@ -45,6 +46,7 @@ const roterEtterTrend = (trend: string | undefined): string => {
         return styles.rotateNed;
     } else return styles.rotateOpp;
 };
+
 const trendBeskrivelse = (trend: string | undefined): string => {
     const trendNummer = Number(trend);
     if (isNaN(trendNummer) || trendNummer === 0) {
@@ -55,8 +57,8 @@ const trendBeskrivelse = (trend: string | undefined): string => {
 };
 
 const PanelBakgrunn: { [key in Bakgrunnsfarger]: string } = {
-    GRÅ: styles.gråBakgrunn,
     HVIT: styles.hvitBakgrunn,
+    GRÅ: styles.gråBakgrunn,
 };
 
-type Bakgrunnsfarger = "GRÅ" | "HVIT";
+export type Bakgrunnsfarger = "HVIT" | "GRÅ";

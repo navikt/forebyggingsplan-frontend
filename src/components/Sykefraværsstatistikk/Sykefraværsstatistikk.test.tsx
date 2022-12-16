@@ -1,6 +1,6 @@
-import { screen, render } from "@testing-library/react";
-import { Sykefraværsstatistikk } from "./Sykefraværsstatistikk";
+import { render, screen } from "@testing-library/react";
 import { axe } from "jest-axe";
+import { Sykefraværsstatistikk } from "./Sykefraværsstatistikk";
 
 jest.mock("next/router", () => ({
     useRouter() {
@@ -16,8 +16,15 @@ jest.mock("next/router", () => ({
 }));
 
 describe("Sykefraværsstatistikk", () => {
+    const props = {
+        value: { bakgrunnsfarge: "HVIT" },
+        index: 1,
+        isInline: false,
+        renderNode: () => <></>,
+    };
+
     it("Har ingen uu-feil fra axe", async () => {
-        const { container } = render(<Sykefraværsstatistikk />);
+        const { container } = render(<Sykefraværsstatistikk {...props} />);
 
         expect(
             await screen.findByText("Sykefravær hos deg")
@@ -28,7 +35,7 @@ describe("Sykefraværsstatistikk", () => {
     });
 
     it("Skal vise sykefravær med riktige verdier", async () => {
-        render(<Sykefraværsstatistikk />);
+        render(<Sykefraværsstatistikk {...props} />);
         expect(
             await screen.findByText("Sykefravær hos deg")
         ).toBeInTheDocument(); // Vent på kall til backend (msw)

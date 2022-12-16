@@ -6,12 +6,12 @@
     border-radius: var(--a-border-radius-medium);
 }
 
-.gråBakgrunn {
-    background: var(--a-bg-subtle);
-}
-
 .hvitBakgrunn {
     background: var(--a-bg-default);
+}
+
+.gråBakgrunn {
+    background: var(--a-bg-subtle);
 }
 
 .tittel {

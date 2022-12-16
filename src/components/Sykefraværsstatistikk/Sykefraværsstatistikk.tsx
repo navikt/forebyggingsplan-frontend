@@ -7,8 +7,16 @@ import { Loader } from "@navikt/ds-react";
 import styles from "./Sykefraværsstatistikk.module.css";
 import { useHentOrgnummer } from "../Layout/Banner/Banner";
 import { StatistikkPanel } from "./StatistikkPanel";
+import { PortableTextComponentProps } from "@portabletext/react";
+import { Bakgrunnsfarger } from "./StatistikkPanel";
 
-export const Sykefraværsstatistikk = () => {
+interface Props {
+    bakgrunnsfarge: string;
+}
+
+export const Sykefraværsstatistikk = ({
+    value: { bakgrunnsfarge },
+}: PortableTextComponentProps<Props>) => {
     const { orgnr } = useHentOrgnummer();
     const { data: sykefraværsstatistikk, error } =
         useHentSykefraværsstatistikk(orgnr);
@@ -40,6 +48,7 @@ export const Sykefraværsstatistikk = () => {
                     trend={trendIVirksomhet}
                     sykefravær={sykefraværIVirksomhet}
                     tooltip={"Din bedrift"}
+                    bakgrunnsfarge={bakgrunnsfarge as Bakgrunnsfarger}
                 />
             )}
             {sykefraværIBransje && (
@@ -52,6 +61,7 @@ export const Sykefraværsstatistikk = () => {
                             (s) => s.statistikkategori === "BRANSJE"
                         )?.label ?? "Din bransje"
                     }
+                    bakgrunnsfarge={bakgrunnsfarge as Bakgrunnsfarger}
                 />
             )}
         </div>

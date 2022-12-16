@@ -1,13 +1,10 @@
 .statistikkContainer {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5rem;
-    background: white;
-    padding: 0.5rem;
+    gap: 1rem;
 }
 
 .panel {
-    background-color: rgba(0, 0, 0, 0.05);
     padding: 1rem;
     border-radius: 4px;
     border: 1px solid transparent;
@@ -16,6 +13,14 @@
     align-items: center;
     flex-direction: column;
     gap: 4px;
+}
+
+.hvitBakgrunn {
+    background-color: white;
+}
+
+.gråBakgrunn {
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 .bodyShort {

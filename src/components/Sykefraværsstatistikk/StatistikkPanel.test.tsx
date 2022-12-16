@@ -3,12 +3,26 @@ import { StatistikkPanel } from "./StatistikkPanel";
 import { axe } from "jest-axe";
 
 describe("StatistikkPanel", () => {
-    it("Har ingen axe feil", async () => {
+    it("Har ingen axe feil når bakgrunn er hvit", async () => {
         const { container } = render(
             <StatistikkPanel
-                sykefravær={"10"}
-                tittel={"Sykefravær i virksomhet"}
+                sykefravær="10"
+                tittel="Sykefravær i virksomhet"
                 tooltip="Din virksomhet"
+                bakgrunnsfarge="HVIT"
+            />
+        );
+        const results = await axe(container);
+        expect(results).toHaveNoViolations();
+    });
+
+    it("Har ingen axe feil når bakgrunn er grå", async () => {
+        const { container } = render(
+            <StatistikkPanel
+                sykefravær="10"
+                tittel="Sykefravær i virksomhet"
+                tooltip="Din virksomhet"
+                bakgrunnsfarge="GRÅ"
             />
         );
         const results = await axe(container);
@@ -18,8 +32,8 @@ describe("StatistikkPanel", () => {
     it("Viser 'uendret trend' når trend ikke er gitt til komponenten", async () => {
         render(
             <StatistikkPanel
-                sykefravær={"10"}
-                tittel={"Sykefravær i virksomhet"}
+                sykefravær="10"
+                tittel="Sykefravær i virksomhet"
                 tooltip="Din virksomhet"
             />
         );
@@ -33,10 +47,10 @@ describe("StatistikkPanel", () => {
     it("Viser stigende trend", async () => {
         render(
             <StatistikkPanel
-                sykefravær={"10"}
-                tittel={"Sykefravær i virksomhet"}
+                sykefravær="10"
+                tittel="Sykefravær i virksomhet"
                 tooltip="Din virksomhet"
-                trend={"2"}
+                trend="2"
             />
         );
         expect(
@@ -49,10 +63,10 @@ describe("StatistikkPanel", () => {
     it("Viser synkende trend", async () => {
         render(
             <StatistikkPanel
-                sykefravær={"10"}
-                tittel={"Sykefravær i virksomhet"}
+                sykefravær="10"
+                tittel="Sykefravær i virksomhet"
                 tooltip="Din virksomhet"
-                trend={"-2"}
+                trend="-2"
             />
         );
         expect(
