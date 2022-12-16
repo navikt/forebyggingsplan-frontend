@@ -111,7 +111,7 @@ export function Aktivitetsmal({
             {serverFeil.length > 0 && (
                 <Alert variant={"error"} className={styles.alert}>
                     <BodyShort>
-                        Noe gikk galt mot handlingen din. {serverFeil}
+                        Noe gikk galt med handlingen din. {serverFeil}
                     </BodyShort>
                     <BodyShort>Prøv igjen senere...</BodyShort>
                 </Alert>
