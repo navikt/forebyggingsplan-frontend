@@ -1,13 +1,31 @@
-import { render, screen, within } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { VideoVisning } from "./VideoVisning";
 import { axe } from "jest-axe";
+import { PortableTextBlock } from "@portabletext/types";
 
 describe("VideoVisning", () => {
+    const innhold: PortableTextBlock[] = [
+        {
+            _key: "344d441ce325",
+            _type: "block",
+            children: [
+                {
+                    _key: "59755abb81a6",
+                    _type: "span",
+                    marks: [],
+                    text: "Innholdstekst",
+                },
+            ],
+            markDefs: [],
+            style: "normal",
+        },
+    ];
+
     const videoProps = {
         value: {
             tittel: "Heisann",
             videoId: 123,
-            punktliste: ["Punkt en", "Punkt to"],
+            innhold: innhold,
         },
         index: 1,
         isInline: false,
@@ -20,40 +38,18 @@ describe("VideoVisning", () => {
         expect(results).toHaveNoViolations();
     });
 
-    it("Har tittel, video og punktliste", async () => {
+    it("Har tittel, video og innhold", async () => {
         const tekst = "Heisann";
         render(<VideoVisning {...videoProps} />);
         expect(screen.getByRole("heading", { level: 4 })).toHaveTextContent(
             tekst
         );
-        const videoIframe: HTMLIFrameElement = screen.getByTitle(tekst);
-        expect(videoIframe).toHaveClass("video__iframe");
-        expect(videoIframe.src).toBe("https://player.vimeo.com/video/123");
-        const punktliste = screen.getByRole("list");
-        const { getAllByRole } = within(punktliste);
-        const items = getAllByRole("listitem");
-        expect(items[0]).toHaveTextContent("Punkt en");
-        expect(items[1]).toHaveTextContent("Punkt to");
-    });
 
-    it("Har ikke punktliste dersom det bare er ett punkt", async () => {
-        const tekst = "Heisann";
-        render(
-            <VideoVisning
-                {...videoProps}
-                value={{
-                    ...videoProps.value,
-                    punktliste: ["Ikke punkttekst"],
-                }}
-            />
-        );
-        expect(screen.getByRole("heading", { level: 4 })).toHaveTextContent(
-            tekst
-        );
         const videoIframe: HTMLIFrameElement = screen.getByTitle(tekst);
         expect(videoIframe).toHaveClass("video__iframe");
         expect(videoIframe.src).toBe("https://player.vimeo.com/video/123");
-        expect(screen.queryByRole("list")).toBeFalsy();
-        expect(screen.getByText("Ikke punkttekst")).toBeVisible();
+
+        const innhold = screen.getByText("Innholdstekst");
+        expect(innhold).toBeVisible();
     });
 });
