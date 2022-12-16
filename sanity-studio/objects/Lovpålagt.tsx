@@ -40,9 +40,9 @@ const lovpålagtSchema = defineType({
     title: "Lovpålagt tekstblokk",
     fields: [
         {
-            type: "string",
-            name: "tekst",
             title: "Tekstinnhold",
+            name: "tekst",
+            type: "string",
         },
     ],
     components: {

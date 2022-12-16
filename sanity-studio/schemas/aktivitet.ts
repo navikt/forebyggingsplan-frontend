@@ -2,14 +2,14 @@ import { Rule } from "@sanity/types";
 import { orderRankField } from "@sanity/orderable-document-list";
 
 export const aktivitet = {
+    type: "document",
     name: "Aktivitet",
     title: "Aktivitet i forebyggingsplan",
-    type: "document",
     fields: [
         {
             title: "Kategori",
-            type: "reference",
             name: "kategori",
+            type: "reference",
             validation: (rule: Rule) =>
                 rule
                     .required()
@@ -21,22 +21,22 @@ export const aktivitet = {
             ],
         },
         {
-            type: "string",
-            name: "tittel",
             title: "Tittel på aktiviteten",
+            name: "tittel",
+            type: "string",
             validation: (rule: Rule) => rule.required(),
         },
         {
-            type: "string",
-            name: "beskrivelse",
             title: "Generell beskrivelse på aktiviteten",
             description: "Forsøk å holde denne relativt kort.",
+            name: "beskrivelse",
+            type: "string",
             validation: (rule: Rule) => rule.required(),
         },
         {
-            type: "string",
-            name: "maal",
             title: "Målbeskrivelse",
+            name: "maal",
+            type: "string",
             validation: (rule: Rule) => rule.required(),
         },
         {

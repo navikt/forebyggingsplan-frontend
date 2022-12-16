@@ -2,9 +2,9 @@ import { Rule } from "@sanity/types";
 import { orderRankField } from "@sanity/orderable-document-list";
 
 export const kategori = {
+    type: "document",
     name: "kategori",
     title: "Kategori til aktiviteter",
-    type: "document",
     fields: [
         {
             title: "Tittel",

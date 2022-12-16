@@ -62,25 +62,25 @@ const videoSchema = defineType({
     title: "Videoavspiller",
     fields: [
         {
-            type: "number",
-            name: "videoId",
             title: "ID til video i Vimeo",
             description:
                 "Her skal bare IDen til videoen hos Vimeo. For https://vimeo.com/705283170 så blir det 705283170",
+            name: "videoId",
+            type: "number",
             validation: (rule: Rule) => rule.integer().positive().required(),
         },
         {
-            type: "string",
-            name: "tittel",
             title: "Tittel på videoen",
+            name: "tittel",
+            type: "string",
             validation: (rule: Rule) => rule.required().max(MAKS_TEKSTLENGDE),
         },
         {
-            type: "array",
-            name: "punktliste",
             title: "Punktliste",
             description:
                 "Bullet points som beskriver videoen og eventuelle spørsmål knyttet til den. Det kan være lurt å ha noe beskrivelse for at brukeren skal få bedre utbytte av videoen.",
+            name: "punktliste",
+            type: "array",
             of: [{ type: "string" }],
             validation: (rule: Rule) => rule.max(7),
         },
