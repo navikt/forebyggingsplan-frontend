@@ -1,0 +1,34 @@
+[
+    {
+        "Name": "Forelder",
+        "Type": "Enterprise",
+        "OrganizationNumber": "811076112",
+        "ParentOrganizationNumber": "",
+        "OrganizationForm": "FLI",
+        "Status": "Active"
+    },
+    {
+        "Name": "BALLSTAD OG HAMARØY",
+        "Type": "Business",
+        "OrganizationNumber": "811076732",
+        "ParentOrganizationNumber": "811076112",
+        "OrganizationForm": "BEDR",
+        "Status": "Active"
+    },
+    {
+        "Name": "Tvedestrand",
+        "Type": "Business",
+        "OrganizationNumber": "811076733",
+        "ParentOrganizationNumber": "811076112",
+        "OrganizationForm": "BEDR",
+        "Status": "Active"
+    },
+    {
+        "Name": "Fiktivia",
+        "Type": "Business",
+        "OrganizationNumber": "999999999",
+        "ParentOrganizationNumber": "811076112",
+        "OrganizationForm": "BEDR",
+        "Status": "Active"
+    }
+]

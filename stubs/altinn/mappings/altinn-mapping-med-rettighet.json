@@ -1,4 +1,5 @@
 {
+    "priority": 1,
     "request": {
         "urlPath": "/altinn/v2/organisasjoner",
         "method": "GET",
@@ -13,7 +14,7 @@
     },
     "response": {
         "status": 200,
-        "bodyFileName": "altinn.json",
+        "bodyFileName": "altinn-med-rettighet.json",
         "headers": {
             "Content-Type": "application/json"
         }

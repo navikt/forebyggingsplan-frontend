@@ -1,0 +1,14 @@
+{
+  "priority": 2,
+  "request": {
+    "urlPath": "/altinn/v2/organisasjoner",
+    "method": "GET"
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "altinn-alle-enheter.json",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

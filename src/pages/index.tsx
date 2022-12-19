@@ -11,7 +11,7 @@ import { hentOrganisasjoner } from "../lib/organisasjoner";
 import { Organisasjon } from "@navikt/bedriftsmeny/lib/organisasjon";
 import { Kategori } from "../types/kategori";
 import { Aktivitetskategorier } from "../components/Forebyggingsplan/Aktivitetskategorier";
-import { Alert } from "@navikt/ds-react";
+import { Alert, Link } from "@navikt/ds-react";
 import { useHentSykefraværsstatistikk } from "../lib/sykefraværsstatistikk-klient";
 import { useHentOrgnummer } from "../components/Layout/Banner/Banner";
 import { useHentValgteAktiviteter } from "../lib/forebyggingsplan-klient";
@@ -101,13 +101,27 @@ function Forside({ kategorier }: Omit<Props, "organisasjoner">) {
     return (
         <div className={styles.container}>
             <main className={styles.main}>
-                {valgteAktiviteterError && (
-                    <Alert variant={"error"} className={styles.alert}>
-                        Vi har ikke klart å hente ned planen deres.
-                        <br /> Dere kan forsatt se aktivitetene, men ikke
-                        hvilken status dere har gitt dem.
+                {valgteAktiviteterError?.status === 403 && (
+                    <Alert variant={"info"} className={styles.alert}>
+                        Du har ikke ikke tilgang til å se virksomhetens
+                        sykefraværsstatistikk.{" "}
+                        <Link
+                            href={
+                                "https://arbeidsgiver.nav.no/min-side-arbeidsgiver/informasjon-om-tilgangsstyring"
+                            }
+                        >
+                            Søk om tilgang i Altinn
+                        </Link>
                     </Alert>
                 )}
+                {valgteAktiviteterError &&
+                    valgteAktiviteterError.status !== 403 && (
+                        <Alert variant={"error"} className={styles.alert}>
+                            Vi har ikke klart å hente ned planen deres.
+                            <br /> Dere kan forsatt se aktivitetene, men ikke
+                            hvilken status dere har gitt dem.
+                        </Alert>
+                    )}
                 {statistikkError && (
                     <Alert variant={"error"} className={styles.alert}>
                         Vi har ikke klart å hente informasjon om
