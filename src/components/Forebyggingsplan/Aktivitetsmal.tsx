@@ -81,7 +81,7 @@ const DetteVilViGjøre = ({
                         className={styles.knappMedSentrertLoader}
                         onClick={() => {
                             setLaster(true);
-                            velgAktivitet?.(frist);
+                            velgAktivitet(frist);
                         }}
                         disabled={ugyldig || forTidlig || laster}
                     >
@@ -96,7 +96,7 @@ const DetteVilViGjøre = ({
 
 interface DetteHarViGjortProps {
     aktivitet: Aktivitet;
-    fullførAktivitet?: () => void;
+    fullførAktivitet: () => void;
 }
 
 const DetteHarViGjort = ({
@@ -119,7 +119,7 @@ const DetteHarViGjort = ({
                     disabled={laster}
                     onClick={() => {
                         setLaster(true);
-                        fullførAktivitet?.();
+                        fullførAktivitet();
                     }}
                 >
                     Dette har vi gjort
