@@ -53,17 +53,23 @@ export const Aktivitetsrad = ({
     onClose,
 }: Props) => {
     const router = useRouter();
+    const [varForrigeStateÅpen, setVarForrigeStateÅpen] =
+        useState<boolean>(åpen);
     const [serverFeil, setServerfeil] = useState<string>("");
     const { orgnr } = useHentOrgnummer();
     useEffect(() => {
         if (!åpen) {
             pauseAlleVideoer(aktivitet.aktivitetsmalId);
-            onClose?.();
+            if (varForrigeStateÅpen) {
+                onClose?.();
+            }
+            setVarForrigeStateÅpen(false);
         }
-    }, [åpen, aktivitet.aktivitetsmalId, onClose]);
+    }, [åpen, aktivitet.aktivitetsmalId, onClose, varForrigeStateÅpen]);
     useEffect(() => {
         if (åpen) {
             loggÅpneAktivitet(aktivitet);
+            setVarForrigeStateÅpen(true);
         }
     }, [åpen, aktivitet]);
     const velgAktivitetHandler = (frist?: Date) => {
