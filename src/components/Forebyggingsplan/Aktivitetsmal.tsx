@@ -78,6 +78,7 @@ const DetteVilViGjøre = ({
                     </UNSAFE_DatePicker>
 
                     <Button
+                        className={styles.knappMedSentrertLoader}
                         onClick={() => {
                             setLaster(true);
                             velgAktivitet?.(frist);
@@ -85,7 +86,7 @@ const DetteVilViGjøre = ({
                         disabled={ugyldig || forTidlig || laster}
                     >
                         Dette vil vi gjøre
-                        {laster && <Loader />}
+                        {laster && <Loader size={"xsmall"} />}
                     </Button>
                 </div>
             )}
@@ -111,7 +112,7 @@ const DetteHarViGjort = ({
         <>
             {["IKKE_VALGT", "VALGT"].includes(aktivitet.status) && (
                 <Button
-                    className={styles.detteHarViGjortKnapp}
+                    className={`${styles.detteHarViGjortKnapp} ${styles.knappMedSentrertLoader}`}
                     variant={
                         aktivitet.status == "VALGT" ? "primary" : "secondary"
                     }
@@ -122,7 +123,7 @@ const DetteHarViGjort = ({
                     }}
                 >
                     Dette har vi gjort
-                    {laster && <Loader />}
+                    {laster && <Loader size="xsmall" />}
                 </Button>
             )}
             <EksporterTilKalender aktivitet={aktivitet} />

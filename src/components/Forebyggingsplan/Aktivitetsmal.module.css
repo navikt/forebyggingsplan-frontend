@@ -35,3 +35,9 @@
 .detteHarViGjortKnapp {
     margin-bottom: 1rem;
 }
+
+.knappMedSentrertLoader > span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
