@@ -6,6 +6,7 @@ import {
     Button,
     Heading,
     Ingress,
+    Loader,
     UNSAFE_DatePicker,
     UNSAFE_useDatepicker,
 } from "@navikt/ds-react";
@@ -27,16 +28,18 @@ const hovedinnhold: Partial<PortableTextComponents> = {
     marks,
 };
 
-interface Props {
+interface DetteVilViGjøreProps {
     aktivitet: Aktivitet;
     velgAktivitet: (frist?: Date) => void;
-    fullførAktivitet: () => void;
-    serverFeil: string;
 }
 
-const Handlinger = ({ aktivitet, fullførAktivitet, velgAktivitet }: Props) => {
+const DetteVilViGjøre = ({
+    aktivitet,
+    velgAktivitet,
+}: DetteVilViGjøreProps) => {
     const [forTidlig, setForTidlig] = useState<boolean>();
     const [ugyldig, setUgyldig] = useState<boolean>();
+    const [laster, setLaster] = useState<boolean>(false);
     const {
         datepickerProps,
         inputProps,
@@ -76,36 +79,70 @@ const Handlinger = ({ aktivitet, fullførAktivitet, velgAktivitet }: Props) => {
 
                     <Button
                         onClick={() => {
-                            velgAktivitet(frist);
+                            setLaster(true);
+                            velgAktivitet?.(frist);
                         }}
-                        disabled={ugyldig || forTidlig}
+                        disabled={ugyldig || forTidlig || laster}
                     >
                         Dette vil vi gjøre
+                        {laster && <Loader />}
                     </Button>
                 </div>
             )}
+        </div>
+    );
+};
+
+interface DetteHarViGjortProps {
+    aktivitet: Aktivitet;
+    fullførAktivitet?: () => void;
+}
+
+const DetteHarViGjort = ({
+    aktivitet,
+    fullførAktivitet,
+}: DetteHarViGjortProps) => {
+    const [laster, setLaster] = useState<boolean>(false);
+    const { orgnr } = useHentOrgnummer();
+
+    if (!orgnr) return null; // Ingen grunn til å vise knapper dersom vi ikke vet orgnr
+
+    return (
+        <>
             {["IKKE_VALGT", "VALGT"].includes(aktivitet.status) && (
                 <Button
                     className={styles.detteHarViGjortKnapp}
                     variant={
                         aktivitet.status == "VALGT" ? "primary" : "secondary"
                     }
-                    onClick={fullførAktivitet}
+                    disabled={laster}
+                    onClick={() => {
+                        setLaster(true);
+                        fullførAktivitet?.();
+                    }}
                 >
                     Dette har vi gjort
+                    {laster && <Loader />}
                 </Button>
             )}
             <EksporterTilKalender aktivitet={aktivitet} />
-        </div>
+        </>
     );
 };
+
+interface AktivitetsmalProps {
+    aktivitet: Aktivitet;
+    velgAktivitet: (frist?: Date) => void;
+    fullførAktivitet: () => void;
+    serverFeil: string;
+}
 
 export function Aktivitetsmal({
     aktivitet,
     velgAktivitet,
     fullførAktivitet,
     serverFeil,
-}: Props) {
+}: AktivitetsmalProps) {
     return (
         <div className={styles.container}>
             {serverFeil.length > 0 && (
@@ -116,12 +153,16 @@ export function Aktivitetsmal({
                     <BodyShort>Prøv igjen senere...</BodyShort>
                 </Alert>
             )}
-            <Handlinger
-                aktivitet={aktivitet}
-                velgAktivitet={velgAktivitet}
-                fullførAktivitet={fullførAktivitet}
-                serverFeil={serverFeil}
-            />
+            <div className={styles.knappeContainer}>
+                <DetteVilViGjøre
+                    aktivitet={aktivitet}
+                    velgAktivitet={velgAktivitet}
+                />
+                <DetteHarViGjort
+                    aktivitet={aktivitet}
+                    fullførAktivitet={fullførAktivitet}
+                />
+            </div>
             <Ingress>{aktivitet.beskrivelse}</Ingress>
             <div className={styles.mål}>
                 <Heading size="medium" level="4">
