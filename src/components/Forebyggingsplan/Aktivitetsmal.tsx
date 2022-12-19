@@ -1,6 +1,8 @@
 import { PortableText, PortableTextComponents } from "@portabletext/react";
 import { useState } from "react";
 import {
+    Alert,
+    BodyShort,
     Button,
     Heading,
     Ingress,
@@ -29,6 +31,7 @@ interface Props {
     aktivitet: Aktivitet;
     velgAktivitet: (frist?: Date) => void;
     fullførAktivitet: () => void;
+    serverFeil: string;
 }
 
 const Handlinger = ({ aktivitet, fullførAktivitet, velgAktivitet }: Props) => {
@@ -101,13 +104,23 @@ export function Aktivitetsmal({
     aktivitet,
     velgAktivitet,
     fullførAktivitet,
+    serverFeil,
 }: Props) {
     return (
         <div className={styles.container}>
+            {serverFeil.length > 0 && (
+                <Alert variant={"error"} className={styles.alert}>
+                    <BodyShort>
+                        Noe gikk galt med handlingen din. {serverFeil}
+                    </BodyShort>
+                    <BodyShort>Prøv igjen senere...</BodyShort>
+                </Alert>
+            )}
             <Handlinger
                 aktivitet={aktivitet}
                 velgAktivitet={velgAktivitet}
                 fullførAktivitet={fullførAktivitet}
+                serverFeil={serverFeil}
             />
             <Ingress>{aktivitet.beskrivelse}</Ingress>
             <div className={styles.mål}>

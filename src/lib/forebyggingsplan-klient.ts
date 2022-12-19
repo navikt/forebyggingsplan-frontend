@@ -1,38 +1,25 @@
 import { ValgtAktivitet } from "../types/ValgtAktivitet";
 import useSWR from "swr";
 import { isoDato } from "./dato";
+import { logger } from "./logger";
 
 export const HENT_VALGTE_AKTIVITETER_PATH = `/forebyggingsplan/api/valgteaktiviteter`;
 export const VELG_AKTIVITET_PATH = "/forebyggingsplan/api/aktivitet";
 export const FULLFØR_AKTIVITET_PATH = "/forebyggingsplan/api/fullfor";
 
-class FetchingError extends Error {
-    info: unknown;
+export class FetchingError extends Error {
     status: number;
 
-    constructor(message: string, info: unknown, status: number) {
+    constructor(message: string, status: number) {
         super(message);
-        this.info = info;
         this.status = status;
     }
 }
 
 export const fetcher = async (url: string) => {
     const res = await fetch(url);
-    // If the status code is not in the range 200-299,
-    // we still try to parse and throw it.
     if (!res.ok) {
-        let info;
-        try {
-            info = await res.json();
-        } catch (e) {
-            info = await res.text();
-        }
-        throw new FetchingError(
-            "An error occurred while fetching the data.",
-            info,
-            res.status
-        );
+        await logAndThrowException(res, url, "GET");
     }
 
     return res.json();
@@ -64,20 +51,8 @@ export function velgAktivitet(valgtAktivitetDto: ValgtAktivitetDTO) {
             "Content-Type": "application/json",
         },
     }).then(async (res) => {
-        // If the status code is not in the range 200-299,
-        // we still try to parse and throw it.
         if (!res.ok) {
-            let info;
-            try {
-                info = await res.json();
-            } catch (e) {
-                info = await res.text();
-            }
-            throw new FetchingError(
-                "An error occurred while fetching the data.",
-                info,
-                res.status
-            );
+            await logAndThrowException(res, VELG_AKTIVITET_PATH, "POST");
         }
         return res.json();
     });
@@ -102,21 +77,24 @@ export function fullførAktivitet(fullførAktivitetDto: FullførAktivitetDTO) {
             "Content-Type": "application/json",
         },
     }).then(async (res) => {
-        // If the status code is not in the range 200-299,
-        // we still try to parse and throw it.
         if (!res.ok) {
-            let info;
-            try {
-                info = await res.json();
-            } catch (e) {
-                info = await res.text();
-            }
-            throw new FetchingError(
-                "An error occurred while fetching the data.",
-                info,
-                res.status
-            );
+            await logAndThrowException(res, FULLFØR_AKTIVITET_PATH, "POST");
         }
         return res.json();
     });
+}
+
+async function logAndThrowException(
+    res: Response,
+    url: string,
+    method: string
+) {
+    const info = await res.text();
+    logger.error(
+        `${method} ${url} feilet med kode: ${res.status} og response: ${info}`
+    );
+    if (res.status >= 500) {
+        throw new FetchingError("Serverfeil", res.status);
+    }
+    throw new FetchingError(`Klientfeil: ${info}`, res.status);
 }
