@@ -14,7 +14,7 @@ import {
     loggVelgAktivitet,
     loggÅpneAktivitet,
 } from "../../lib/amplitude";
-import { useEffect, useState } from "react";
+import { CSSProperties, useEffect, useState } from "react";
 import { AktivitetHeader } from "./AktivitetHeader";
 import { useRouter } from "next/router";
 
@@ -105,6 +105,10 @@ export const Aktivitetsrad = ({
                 setServerfeil(e.message);
             });
     };
+    const linkIconFontSize = "1rem";
+    const linkIconFontSizeCSSVariable = {
+        "--link-icon-font-size": linkIconFontSize,
+    } as CSSProperties;
 
     return (
         <Accordion.Item open={åpen} className={styles.accordionItem}>
@@ -113,6 +117,7 @@ export const Aktivitetsrad = ({
                 level="3"
                 className={`${styles.sticky} ${styles.heading}`}
                 id={aktivitet.tittel.replaceAll(" ", "-").toLowerCase()}
+                style={linkIconFontSizeCSSVariable}
             >
                 <Link
                     className={styles.lenkeTilKort}
@@ -121,7 +126,7 @@ export const Aktivitetsrad = ({
                         aktivitet.tittel.replaceAll(" ", "-").toLowerCase()
                     }
                 >
-                    <LinkIkon aria-hidden={true} fontSize="1rem" />
+                    <LinkIkon aria-hidden={true} fontSize={linkIconFontSize} />
                     <span className="navds-sr-only">{aktivitet.tittel}</span>
                 </Link>
                 <Accordion.Header
