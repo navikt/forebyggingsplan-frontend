@@ -105,6 +105,9 @@ export const Aktivitetsrad = ({
                 setServerfeil(e.message);
             });
     };
+    const tittelSomAnchorTag = aktivitet.tittel
+        .replaceAll(" ", "-")
+        .toLowerCase();
     const linkIconFontSize = "1rem";
     const linkIconFontSizeCSSVariable = {
         "--link-icon-font-size": linkIconFontSize,
@@ -116,24 +119,21 @@ export const Aktivitetsrad = ({
                 size="medium"
                 level="3"
                 className={`${styles.sticky} ${styles.heading}`}
-                id={aktivitet.tittel.replaceAll(" ", "-").toLowerCase()}
+                id={tittelSomAnchorTag}
                 style={linkIconFontSizeCSSVariable}
             >
                 <Link
                     className={styles.lenkeTilKort}
-                    href={
-                        "#" +
-                        aktivitet.tittel.replaceAll(" ", "-").toLowerCase()
-                    }
+                    href={`#${tittelSomAnchorTag}`}
                 >
                     <LinkIkon aria-hidden={true} fontSize={linkIconFontSize} />
                     <span className="navds-sr-only">{aktivitet.tittel}</span>
                 </Link>
                 <Accordion.Header
                     onClick={onClick}
-                    className={`
-                        ${AktivitetStatusStyle[aktivitet.status]} 
-                        ${styles.accordionHeader}`}
+                    className={`${AktivitetStatusStyle[aktivitet.status]} ${
+                        styles.accordionHeader
+                    }`}
                 >
                     <AktivitetHeader aktivitet={aktivitet} />
                 </Accordion.Header>
