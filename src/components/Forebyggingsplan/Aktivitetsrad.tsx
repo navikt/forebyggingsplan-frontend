@@ -1,5 +1,6 @@
 import { Aktivitet, AktivitetStatus } from "../../types/Aktivitet";
 import { Accordion, Heading, Link } from "@navikt/ds-react";
+import { Link as LinkIkon } from "@navikt/ds-icons";
 import styles from "./Aktivitetsrad.module.css";
 import dynamic from "next/dynamic";
 import {
@@ -104,6 +105,7 @@ export const Aktivitetsrad = ({
                 setServerfeil(e.message);
             });
     };
+
     return (
         <Accordion.Item open={åpen} className={styles.accordionItem}>
             <Heading
@@ -119,7 +121,8 @@ export const Aktivitetsrad = ({
                         aktivitet.tittel.replaceAll(" ", "-").toLowerCase()
                     }
                 >
-                    i
+                    <LinkIkon aria-hidden={true} fontSize="1rem" />
+                    <span className="navds-sr-only">{aktivitet.tittel}</span>
                 </Link>
                 <Accordion.Header
                     onClick={onClick}
