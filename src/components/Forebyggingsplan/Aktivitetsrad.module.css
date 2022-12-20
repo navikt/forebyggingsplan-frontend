@@ -17,9 +17,17 @@
 }
 
 .heading {
+    --link-and-button-gap: 0.5rem;
     display: flex;
-    gap: 0.5rem;
     align-items: center;
+    gap: var(--link-and-button-gap);
+
+    /* Negativ margin for å utlikne gap + ikon */
+    /* --link-icon-font-size blir definert i komponenten for aktivitetsrad */
+    /* noinspection CssUnresolvedCustomProperty */
+    margin-left: calc(
+        -1 * calc(var(--link-and-button-gap) + var(--link-icon-font-size))
+    );
 }
 
 .heading .lenkeTilKort {
