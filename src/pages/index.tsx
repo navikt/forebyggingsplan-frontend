@@ -122,7 +122,7 @@ function Forside({ kategorier }: Omit<Props, "organisasjoner">) {
                             hvilken status dere har gitt dem.
                         </Alert>
                     )}
-                {statistikkError && (
+                {statistikkError && statistikkError.status !== 403 && (
                     <Alert variant={"error"} className={styles.alert}>
                         Vi har ikke klart å hente informasjon om
                         sykefraværsstatistikk.
