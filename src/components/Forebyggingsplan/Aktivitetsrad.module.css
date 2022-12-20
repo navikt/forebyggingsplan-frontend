@@ -18,10 +18,16 @@
 
 .heading {
     display: flex;
+    gap: 0.5rem;
     align-items: center;
 }
 
-.lenkeTilKort {
+.heading .lenkeTilKort {
+    visibility: hidden;
+}
+
+.heading:hover .lenkeTilKort {
+    visibility: visible;
 }
 
 /* Om aktiviteten ikkje er siste i lista skal den ha litt luft under seg */
