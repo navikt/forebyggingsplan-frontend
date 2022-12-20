@@ -1,7 +1,7 @@
 import { screen, render } from "@testing-library/react";
-import { Aktivitetskategorier } from "./Aktivitetskategorier";
+import { Kategorier } from "./Kategorier";
 import { axe } from "jest-axe";
-import { aktivitetskategorierMock } from "../../mocks/aktivitetskategorierMock";
+import { kategorierMock } from "../../mocks/kategorierMock";
 import userEvent from "@testing-library/user-event";
 
 jest.mock("next/router", () => ({
@@ -17,33 +17,29 @@ jest.mock("next/router", () => ({
     },
 }));
 
-describe("Aktivitetskategorier", () => {
+describe("Kategorier", () => {
     it("Har ingen uu-feil fra axe", async () => {
         const { container } = render(
-            <Aktivitetskategorier kategorier={aktivitetskategorierMock} />
+            <Kategorier kategorier={kategorierMock} />
         );
         const results = await axe(container);
         expect(results).toHaveNoViolations();
     });
 
     it("Hver kategori har en tittel og innhold", async () => {
-        render(<Aktivitetskategorier kategorier={aktivitetskategorierMock} />);
+        render(<Kategorier kategorier={kategorierMock} />);
         const artikler = screen.getAllByRole("article");
         expect(artikler.length).toBe(2);
         const tittelElementer = screen.getAllByRole("heading", { level: 3 });
         expect(tittelElementer.length).toBe(3);
         artikler.forEach((artikkel, idx) => {
-            expect(artikkel).toHaveTextContent(
-                aktivitetskategorierMock[idx].tittel
-            );
-            expect(
-                screen.getByText(aktivitetskategorierMock[idx].tittel)
-            ).toBeVisible();
+            expect(artikkel).toHaveTextContent(kategorierMock[idx].tittel);
+            expect(screen.getByText(kategorierMock[idx].tittel)).toBeVisible();
         });
     });
 
     it("Skal kunne åpne en aktivitet", async () => {
-        render(<Aktivitetskategorier kategorier={aktivitetskategorierMock} />);
+        render(<Kategorier kategorier={kategorierMock} />);
         const button = await screen.findByRole("button", {
             name: "Bruk sykefraværstatistikken til å forebygge fravær",
         });

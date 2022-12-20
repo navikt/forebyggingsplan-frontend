@@ -10,7 +10,7 @@ import { SanityDocument } from "@sanity/client";
 import { hentOrganisasjoner } from "../lib/organisasjoner";
 import { Organisasjon } from "@navikt/bedriftsmeny/lib/organisasjon";
 import { Kategori } from "../types/kategori";
-import { Aktivitetskategorier } from "../components/Forebyggingsplan/Aktivitetskategorier";
+import { Kategorier } from "../components/Forebyggingsplan/Kategorier";
 import { Alert, Link } from "@navikt/ds-react";
 import { useHentSykefraværsstatistikk } from "../lib/sykefraværsstatistikk-klient";
 import { useHentOrgnummer } from "../components/Layout/Banner/Banner";
@@ -128,7 +128,7 @@ function Forside({ kategorier }: Omit<Props, "organisasjoner">) {
                         sykefraværsstatistikk.
                     </Alert>
                 )}
-                <Aktivitetskategorier kategorier={kategorier} />
+                <Kategorier kategorier={kategorier} />
             </main>
         </div>
     );

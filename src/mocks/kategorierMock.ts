@@ -3,7 +3,7 @@
 // ^ Innholdet fra Sanity er custom types, så Typescript liker ikke det den ser
 import { Kategori } from "../types/kategori";
 
-export const aktivitetskategorierMock: Kategori[] = [
+export const kategorierMock: Kategori[] = [
     {
         tittel: "Få det grunnleggende på plass",
         innhold: [
