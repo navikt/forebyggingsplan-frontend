@@ -16,6 +16,8 @@ import { useHentSykefraværsstatistikk } from "../lib/sykefraværsstatistikk-kli
 import { useHentOrgnummer } from "../components/Layout/Banner/Banner";
 import { useHentValgteAktiviteter } from "../lib/forebyggingsplan-klient";
 import { logger } from "../lib/logger";
+//import nock from "nock";
+import { server } from "../mocks/msw";
 
 interface Props {
     kategorier: Kategori[];
@@ -55,8 +57,17 @@ const aktivitetMapper = ({
 export const getServerSideProps: GetServerSideProps<Props> = async (
     context
 ) => {
+    //const isLabs = process.env.NAIS_CLUSTER_NAME === 'labs-gcp';
+    const isLabs = process.env.NAIS_CLUSTER_NAME === "localhost";
+    console.log("NAIS_CLUSTER_NAME: ", process.env.NAIS_CLUSTER_NAME);
+
+    if (isLabs) {
+        console.log("------------- MOCK server starter -------------");
+        server.listen();
+    }
+
     const token = await hentVerifisertToken(context.req);
-    if (!token) {
+    if (!token && !isLabs) {
         return {
             redirect: {
                 destination: "/oauth2/login",
@@ -64,6 +75,28 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
             },
         };
     }
+    const organisasjoner = await hentOrganisasjoner(context.req);
+    console.log("Organisasjoner mottatt", organisasjoner);
+
+    console.log("Sanity: ", sanity);
+    const sanityData = await sanity
+        .fetch<KategoriDokument[]>(
+            `
+            *[_type == "kategori"] | order(orderRank) {
+                tittel,
+                innhold,
+                "aktiviteter": *[_type == "Aktivitet" && references(^._id)] | order(orderRank)
+            }
+        `
+        )
+        .catch((e) => {
+            logger.error(`Sanity nedlasting feilet ${e}`);
+            throw new Error("Klarte ikke å laste ned innhold");
+        });
+
+    console.log("Sanity data mottatt", sanityData);
+
+    /*
     const [sanityData, organisasjoner] = await Promise.all([
         sanity
             .fetch<KategoriDokument[]>(
@@ -80,7 +113,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
                 throw new Error("Klarte ikke å laste ned innhold");
             }),
         hentOrganisasjoner(context.req),
-    ]);
+    ]);*/
     return {
         props: {
             kategorier: sanityData.map(({ tittel, innhold, aktiviteter }) => ({

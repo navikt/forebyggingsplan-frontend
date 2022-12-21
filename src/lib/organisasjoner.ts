@@ -10,14 +10,24 @@ dns.setDefaultResultOrder("ipv4first"); // Dette er for å få lokal kjøring ti
 export async function hentOrganisasjoner(
     req: IncomingMessage
 ): Promise<Organisasjon[]> {
-    const token = await hentVerifisertToken(req);
-    if (!token) {
-        throw new Error("Unauthorized");
+    const isLabs = process.env.NAIS_CLUSTER_NAME === "localhost";
+    let tokenxToken: string | undefined;
+
+    if (isLabs) {
+        tokenxToken = "trenger-ikke-i-labs-miljø";
+    } else {
+        const token = await hentVerifisertToken(req);
+
+        if (!token) {
+            throw new Error("Unauthorized");
+        }
+        tokenxToken = await veksleToken(
+            token,
+            process.env.FOREBYGGINGSPLAN_CLIENT_ID
+        );
     }
-    const tokenxToken = await veksleToken(
-        token,
-        process.env.FOREBYGGINGSPLAN_CLIENT_ID
-    );
+
+    console.log("Fetching organisasjoner ...");
 
     const response = await fetch(
         `${process.env.FOREBYGGINGSPLAN_API_BASEURL}/organisasjoner`,
@@ -27,11 +37,14 @@ export async function hentOrganisasjoner(
             },
         }
     );
+    console.log("Response status for organisasjoner ...", response.status);
+
     if (!response.ok) {
         logger.error(
             `Klarte ikke å hente organisasjoner ${await response.text()}`
         );
         throw new Error("Klarte ikke å hente organisasjoner");
     }
+
     return response.json();
 }
