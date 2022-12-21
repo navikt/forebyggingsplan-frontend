@@ -4,7 +4,7 @@ import styles from "./index.module.css";
 import { Aktivitet } from "../types/Aktivitet";
 import { hentVerifisertToken } from "../auth";
 import Layout from "../components/Layout/Layout";
-import { sanity } from "../lib/sanity";
+import { sanity, sanityLabs } from "../lib/sanity";
 import { PortableTextBlock } from "@portabletext/types";
 import { SanityDocument } from "@sanity/client";
 import { hentOrganisasjoner } from "../lib/organisasjoner";
@@ -24,7 +24,7 @@ interface Props {
     organisasjoner: Organisasjon[];
 }
 
-interface KategoriDokument extends SanityDocument {
+export interface KategoriDokument extends SanityDocument {
     tittel: string;
     innhold: PortableTextBlock;
     aktiviteter: AktivitetInnhold[];
@@ -75,31 +75,10 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
             },
         };
     }
-    const organisasjoner = await hentOrganisasjoner(context.req);
-    console.log("Organisasjoner mottatt", organisasjoner);
 
-    console.log("Sanity: ", sanity);
-    const sanityData = await sanity
-        .fetch<KategoriDokument[]>(
-            `
-            *[_type == "kategori"] | order(orderRank) {
-                tittel,
-                innhold,
-                "aktiviteter": *[_type == "Aktivitet" && references(^._id)] | order(orderRank)
-            }
-        `
-        )
-        .catch((e) => {
-            logger.error(`Sanity nedlasting feilet ${e}`);
-            throw new Error("Klarte ikke å laste ned innhold");
-        });
-
-    console.log("Sanity data mottatt", sanityData);
-
-    /*
     const [sanityData, organisasjoner] = await Promise.all([
-        sanity
-            .fetch<KategoriDokument[]>(
+        (isLabs ? sanityLabs : sanity)
+            .fetch(
                 `
             *[_type == "kategori"] | order(orderRank) {
                 tittel,
@@ -113,7 +92,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
                 throw new Error("Klarte ikke å laste ned innhold");
             }),
         hentOrganisasjoner(context.req),
-    ]);*/
+    ]);
     return {
         props: {
             kategorier: sanityData.map(({ tittel, innhold, aktiviteter }) => ({
