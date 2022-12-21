@@ -24,7 +24,7 @@ describe("VideoVisning", () => {
     const videoProps = {
         value: {
             tittel: "Heisann",
-            videoId: 123,
+            videoUrl: "https://qbrick.com/video",
             innhold: innhold,
         },
         index: 1,
@@ -47,7 +47,7 @@ describe("VideoVisning", () => {
 
         const videoIframe: HTMLIFrameElement = screen.getByTitle(tekst);
         expect(videoIframe).toHaveClass("video__iframe");
-        expect(videoIframe.src).toBe("https://player.vimeo.com/video/123");
+        expect(videoIframe.src).toBe("https://qbrick.com/video");
 
         const innhold = screen.getByText("Innholdstekst");
         expect(innhold).toBeVisible();

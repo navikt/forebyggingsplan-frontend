@@ -8,12 +8,12 @@ import { marks } from "../PortableText/marks/Marks";
 
 interface Props {
     tittel: string;
-    videoId: number;
+    videoUrl: string;
     innhold: PortableTextBlock[];
 }
 
 export const VideoVisning = ({
-    value: { tittel, videoId, innhold },
+    value: { tittel, videoUrl, innhold },
 }: PortableTextComponentProps<Props>) => {
     return (
         <div className={styles.wrapper}>
@@ -32,7 +32,7 @@ export const VideoVisning = ({
                     className={styles.video__iframe}
                     loading="lazy"
                     title={tittel}
-                    src={`https://player.vimeo.com/video/${videoId}`}
+                    src={videoUrl}
                     referrerPolicy={"no-referrer"}
                     allowFullScreen
                 />

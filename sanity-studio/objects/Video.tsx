@@ -9,7 +9,7 @@ const MAKS_TEKSTLENGDE = 64;
 
 interface Props {
     value: {
-        videoId: string;
+        videoUrl: string;
         tittel: string;
         innhold: PortableTextBlock[];
     };
@@ -22,7 +22,7 @@ const videoBoksStyle: CSSProperties = {
 };
 
 export const VideoPreview = ({
-    value: { videoId, tittel, innhold },
+    value: { videoUrl, tittel, innhold },
 }: Props) => {
     return (
         <div style={videoBoksStyle}>
@@ -31,7 +31,7 @@ export const VideoPreview = ({
             <div>
                 <iframe
                     title={tittel}
-                    src={`https://player.vimeo.com/video/${videoId}`}
+                    src={videoUrl}
                     referrerPolicy={"no-referrer"}
                     allowFullScreen
                 />
@@ -46,12 +46,28 @@ const videoSchema = defineType({
     title: "Videoavspiller",
     fields: [
         {
-            title: "ID til video i Vimeo",
-            description:
-                "Her skal bare IDen til videoen hos Vimeo. For https://vimeo.com/705283170 så blir det 705283170",
-            name: "videoId",
-            type: "number",
-            validation: (rule: Rule) => rule.integer().positive().required(),
+            type: "url",
+            name: "videoUrl",
+            title: "Videolenke til Qbrick",
+            validation: (rule: Rule) => [
+                rule
+                    .uri({
+                        scheme: "https",
+                        allowCredentials: false,
+                        allowRelative: false,
+                    })
+                    .required(),
+                rule.custom<string>((url) => {
+                    const baseUrl =
+                        "https://video.qbrick.com/play2/embed/player";
+                    if (url.startsWith(baseUrl) && url.includes("mediaId="))
+                        return true;
+
+                    return {
+                        message: `Urlen må starte med ${baseUrl} og ha en mediaId`,
+                    };
+                }),
+            ],
         },
         {
             title: "Tittel på videoen",
@@ -93,12 +109,12 @@ const videoSchema = defineType({
     },
     preview: {
         select: {
-            videoId: "videoId",
+            videoUrl: "videoUrl",
             tittel: "tittel",
             innhold: "innhold",
         },
         prepare: (props: {
-            videoId: string;
+            videoUrl: string;
             tittel: string;
             punktliste: string[];
             innhold: PortableTextBlock[];
@@ -108,7 +124,7 @@ const videoSchema = defineType({
                 media: (
                     <VideoPreview
                         value={{
-                            videoId: props.videoId,
+                            videoUrl: props.videoUrl,
                             tittel: props.tittel,
                             innhold: props.innhold,
                         }}
