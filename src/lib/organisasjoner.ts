@@ -1,33 +1,18 @@
 import dns from "node:dns";
 import { IncomingMessage } from "http";
-import { hentVerifisertToken } from "../auth";
-import { veksleToken } from "../auth/tokenx";
 import { logger } from "./logger";
 import { Organisasjon } from "@navikt/bedriftsmeny/lib/organisasjon";
+import { hentTokenXToken } from "../auth/hentTokenXToken";
 
 dns.setDefaultResultOrder("ipv4first"); // Dette er for å få lokal kjøring til å virke med Node versjon 17.x med vårt oppsett
 
 export async function hentOrganisasjoner(
     req: IncomingMessage
 ): Promise<Organisasjon[]> {
-    const isLabs = process.env.NAIS_CLUSTER_NAME === "localhost";
-    let tokenxToken: string | undefined;
-
-    if (isLabs) {
-        tokenxToken = "trenger-ikke-i-labs-miljø";
-    } else {
-        const token = await hentVerifisertToken(req);
-
-        if (!token) {
-            throw new Error("Unauthorized");
-        }
-        tokenxToken = await veksleToken(
-            token,
-            process.env.FOREBYGGINGSPLAN_CLIENT_ID
-        );
-    }
-
-    console.log("Fetching organisasjoner ...");
+    const tokenxToken = await hentTokenXToken(
+        req,
+        process.env.FOREBYGGINGSPLAN_CLIENT_ID
+    );
 
     const response = await fetch(
         `${process.env.FOREBYGGINGSPLAN_API_BASEURL}/organisasjoner`,
@@ -37,7 +22,6 @@ export async function hentOrganisasjoner(
             },
         }
     );
-    console.log("Response status for organisasjoner ...", response.status);
 
     if (!response.ok) {
         logger.error(
