@@ -15,11 +15,15 @@ export default async function handler(
     );
 
     const baseUrl = process.env.FOREBYGGINGSPLAN_API_BASEURL;
-    const token = await hentTokenXToken(
-        req,
-        res,
-        process.env.FOREBYGGINGSPLAN_CLIENT_ID
-    );
+    let token;
+    try {
+        token = await hentTokenXToken(
+            req,
+            process.env.FOREBYGGINGSPLAN_CLIENT_ID
+        );
+    } catch (e) {
+        return res.status(401).end();
+    }
 
     const respons = await fetch(`${baseUrl}/fullfor/${req.body.orgnr}`, {
         method: "POST",
