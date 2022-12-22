@@ -53,7 +53,7 @@ jobs:
   deploy:
     strategy:
       matrix:
-        cluster: [ dev, prod ]
+        cluster: [ dev, prod, labs ]
     name: Deploy app to ${{ matrix.cluster }}
     needs: build
     runs-on: ubuntu-latest
