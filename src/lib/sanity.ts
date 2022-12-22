@@ -1,5 +1,6 @@
 import sanityClient from "@sanity/client";
 import { KategoriDokument } from "../pages";
+import { SanityClientLike } from "@sanity/image-url/lib/types/types";
 
 interface SanityCli {
     fetch: (query: string) => Promise<KategoriDokument[]>;
@@ -12,7 +13,7 @@ const sanityConfig = {
     apiVersion: "2022-10-28",
     useCdn: process.env.NODE_ENV === "production",
 };
-export const sanity: SanityCli = sanityClient(sanityConfig);
+export const sanity: SanityCli & SanityClientLike = sanityClient(sanityConfig);
 
 export const sanityLabs: SanityCli = {
     fetch: (query) =>
