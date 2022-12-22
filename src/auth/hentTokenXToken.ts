@@ -8,7 +8,7 @@ export async function hentTokenXToken(
     req: NextApiRequest | IncomingMessage,
     audience?: string
 ) {
-    if (isLabs()) return "this-is-mock-labs-token";
+    if (isLabs()) return "dette-er-mock-labs-token";
 
     const token = await hentVerifisertToken(req);
     if (!token) {
