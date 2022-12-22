@@ -7,6 +7,9 @@ export async function hentTokenXToken(
     req: NextApiRequest | IncomingMessage,
     audience?: string
 ) {
+    const isLabs = process.env.NAIS_CLUSTER_NAME === "localhost";
+    if (isLabs) return "this-is-mock-labs-token";
+
     const token = await hentVerifisertToken(req);
     if (!token) {
         throw new Error("Kunne ikke verifisere token!");
