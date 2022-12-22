@@ -16,8 +16,8 @@ import { useHentSykefraværsstatistikk } from "../lib/sykefraværsstatistikk-kli
 import { useHentOrgnummer } from "../components/Layout/Banner/Banner";
 import { useHentValgteAktiviteter } from "../lib/forebyggingsplan-klient";
 import { logger } from "../lib/logger";
-//import nock from "nock";
 import { server } from "../mocks/msw";
+import { isLabs } from "../lib/miljø";
 
 interface Props {
     kategorier: Kategori[];
@@ -57,17 +57,14 @@ const aktivitetMapper = ({
 export const getServerSideProps: GetServerSideProps<Props> = async (
     context
 ) => {
-    //const isLabs = process.env.NAIS_CLUSTER_NAME === 'labs-gcp';
-    const isLabs = process.env.NAIS_CLUSTER_NAME === "localhost";
-    console.log("NAIS_CLUSTER_NAME: ", process.env.NAIS_CLUSTER_NAME);
-
-    if (isLabs) {
+    const kjørerPåLabs = isLabs();
+    if (kjørerPåLabs) {
         console.log("------------- MOCK server starter -------------");
         server.listen();
     }
 
     const token = await hentVerifisertToken(context.req);
-    if (!token && !isLabs) {
+    if (!token && !kjørerPåLabs) {
         return {
             redirect: {
                 destination: "/oauth2/login",
@@ -77,7 +74,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
     }
 
     const [sanityData, organisasjoner] = await Promise.all([
-        (isLabs ? sanityLabs : sanity)
+        (kjørerPåLabs ? sanityLabs : sanity)
             .fetch(
                 `
             *[_type == "kategori"] | order(orderRank) {

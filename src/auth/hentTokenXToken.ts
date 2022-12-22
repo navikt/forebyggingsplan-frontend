@@ -2,13 +2,13 @@ import { NextApiRequest } from "next";
 import { hentVerifisertToken } from "./index";
 import { veksleToken } from "./tokenx";
 import { IncomingMessage } from "http";
+import { isLabs } from "../lib/miljø";
 
 export async function hentTokenXToken(
     req: NextApiRequest | IncomingMessage,
     audience?: string
 ) {
-    const isLabs = process.env.NAIS_CLUSTER_NAME === "localhost";
-    if (isLabs) return "this-is-mock-labs-token";
+    if (isLabs()) return "this-is-mock-labs-token";
 
     const token = await hentVerifisertToken(req);
     if (!token) {
