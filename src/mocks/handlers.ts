@@ -8,29 +8,44 @@ import { HENT_SYKEFRAVERSSTATISTIKK_PATH } from "../lib/sykefraværsstatistikk-k
 import { sykefraværsstatistikkMock } from "./sykefraværsstatistikkMock";
 
 export const handlers = [
-    rest.get("http://localhost:8081/organisasjoner", async (req, res, ctx) => {
-        console.log("---> organisasjoner", req.url);
-        return res(
-            ctx.json([
-                {
-                    Name: "Forelder",
-                    Type: "Enterprise",
-                    OrganizationNumber: "811076112",
-                    ParentOrganizationNumber: "",
-                    OrganizationForm: "FLI",
-                    Status: "Active",
-                },
-                {
-                    Name: "BALLSTAD OG HAMARØY",
-                    Type: "Business",
-                    OrganizationNumber: "811076732",
-                    ParentOrganizationNumber: "811076112",
-                    OrganizationForm: "BEDR",
-                    Status: "Active",
-                },
-            ])
-        );
-    }),
+    rest.get(
+        `${process.env.FOREBYGGINGSPLAN_API_BASEURL}/organisasjoner`,
+        async (req, res, ctx) => {
+            return res(
+                ctx.json([
+                    {
+                        Name: "Forelder",
+                        Type: "Enterprise",
+                        OrganizationNumber: "811076112",
+                        ParentOrganizationNumber: "",
+                        OrganizationForm: "FLI",
+                        Status: "Active",
+                    },
+                    {
+                        Name: "BALLSTAD OG HAMARØY",
+                        Type: "Business",
+                        OrganizationNumber: "811076732",
+                        ParentOrganizationNumber: "811076112",
+                        OrganizationForm: "BEDR",
+                        Status: "Active",
+                    },
+                ])
+            );
+        }
+    ),
+    rest.get(
+        `${process.env.FOREBYGGINGSPLAN_API_BASEURL}/valgteaktiviteter/:orgnr`,
+        async (req, res, ctx) => {
+            return res(ctx.json([]));
+        }
+    ),
+    rest.get(
+        `${process.env.SYKEFRAVARSSTATISTIKK_API_BASEURL}/:orgnr/v1/sykefravarshistorikk/aggregert`,
+        async (req, res, ctx) => {
+            return res(ctx.json(sykefraværsstatistikkMock));
+        }
+    ),
+
     rest.get(HENT_VALGTE_AKTIVITETER_PATH, async (req, res, ctx) => {
         return res(ctx.json([])); // Hent fra sessionstorage?
     }),
