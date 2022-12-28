@@ -6,6 +6,7 @@ import {
 } from "../lib/forebyggingsplan-klient";
 import { HENT_SYKEFRAVERSSTATISTIKK_PATH } from "../lib/sykefraværsstatistikk-klient";
 import { sykefraværsstatistikkMock } from "./sykefraværsstatistikkMock";
+import { valgtAktivitetMocksHandlers } from "./valgtaktivitetMocks";
 
 export const handlers = [
     rest.get(
@@ -34,12 +35,6 @@ export const handlers = [
         }
     ),
     rest.get(
-        `${process.env.FOREBYGGINGSPLAN_API_BASEURL}/valgteaktiviteter/:orgnr`,
-        async (req, res, ctx) => {
-            return res(ctx.json([]));
-        }
-    ),
-    rest.get(
         `${process.env.SYKEFRAVARSSTATISTIKK_API_BASEURL}/:orgnr/v1/sykefravarshistorikk/aggregert`,
         async (req, res, ctx) => {
             return res(ctx.json(sykefraværsstatistikkMock));
@@ -58,4 +53,5 @@ export const handlers = [
     rest.get(HENT_SYKEFRAVERSSTATISTIKK_PATH, async (req, res, ctx) => {
         return res(ctx.json(sykefraværsstatistikkMock));
     }),
+    ...valgtAktivitetMocksHandlers,
 ];
