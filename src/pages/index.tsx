@@ -16,6 +16,7 @@ import { useHentSykefraværsstatistikk } from "../lib/sykefraværsstatistikk-kli
 import { useHentOrgnummer } from "../components/Layout/Banner/Banner";
 import { useHentValgteAktiviteter } from "../lib/forebyggingsplan-klient";
 import { logger } from "../lib/logger";
+import Script from "next/script";
 
 interface Props {
     kategorier: Kategori[];
@@ -148,6 +149,10 @@ const Home = ({
                 />
                 <link rel="icon" href="https://nav.no/favicon.ico" />
             </Head>
+            <Script
+                src="https://play2.qbrick.com/framework/GoBrain.min.js"
+                strategy="beforeInteractive"
+            />
             <Layout organisasjoner={organisasjoner}>
                 <Forside kategorier={kategorier} />
             </Layout>

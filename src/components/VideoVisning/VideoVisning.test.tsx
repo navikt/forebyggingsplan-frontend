@@ -45,9 +45,10 @@ describe("VideoVisning", () => {
             tekst
         );
 
-        const videoIframe: HTMLIFrameElement = screen.getByTitle(tekst);
-        expect(videoIframe).toHaveClass("video__iframe");
-        expect(videoIframe.src).toBe("https://qbrick.com/video");
+        const videoPlayerDiv: HTMLElement = screen.getByTestId(
+            "QbrickVideoPlayerDiv"
+        );
+        expect(videoPlayerDiv).toBeVisible();
 
         const innhold = screen.getByText("Innholdstekst");
         expect(innhold).toBeVisible();

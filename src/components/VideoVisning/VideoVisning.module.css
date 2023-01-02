@@ -2,10 +2,6 @@
     margin-bottom: 1.5rem;
 }
 
-.video {
-    display: flex;
-}
-
 .video__iframe {
     border: none;
 }
