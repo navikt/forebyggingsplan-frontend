@@ -1,6 +1,8 @@
 import styles from "./QbrickVideoPlayer.module.css";
 import React, { useEffect } from "react";
 
+export const QBRICK_GOBRAIN_VIDEOPLAYER_CONFIG_PATH = `/forebyggingsplan/api/qbrick/config`;
+
 export interface QbrickVideo {
     id: string;
     tags: string[];
@@ -37,10 +39,10 @@ export const QbrickVideoPlayer = (props: QbrickVideoPlayerProps) => {
     const player = () => {
         return {
             __html: `<div data-gobrain-widgetId="${props.video.id}"
-        data-gobrain-autoplay="true"  
+        data-gobrain-autoplay="false"
         data-gobrain-repeat="false" 
         data-gobrain-moduleSettings="{&quot;TopControls&quot;:{&quot;download&quot;:{&quot;enabled&quot;:false},&quot;sharing&quot;:{&quot;enabled&quot;:false}},&quot;MobileControls&quot;:{&quot;download&quot;:{&quot;enabled&quot;:false},&quot;sharing&quot;:{&quot;enabled&quot;:false}}}" 
-        data-gobrain-config="https://video.qbrick.com/play2/api/v1/accounts/763558/configurations/wcag" 
+        data-gobrain-config="${QBRICK_GOBRAIN_VIDEOPLAYER_CONFIG_PATH}"
         data-gobrain-data="https://video.qbrick.com/api/v1/public/accounts/763558/medias/${props.video.id}"></div>`,
         };
     };
