@@ -7,6 +7,9 @@ metadata:
     "team": "pia"
 spec:
   image: {{image}}
+  replicas:
+    min: {{minReplicas}}
+    max: {{maxReplicas}}
   tokenx:
     enabled: true
   idporten:
