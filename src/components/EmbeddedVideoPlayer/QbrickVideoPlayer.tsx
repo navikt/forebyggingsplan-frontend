@@ -3,6 +3,16 @@ import React, { useEffect } from "react";
 
 export const QBRICK_GOBRAIN_VIDEOPLAYER_CONFIG_PATH = `/forebyggingsplan/api/qbrick/config`;
 
+declare global {
+    interface Window {
+        GoBrain: {
+            widgets: (videoId: string) => {
+                on: (action: string, callback: () => void) => void;
+            };
+        };
+    }
+}
+
 export interface QbrickVideo {
     id: string;
     tags: string[];
@@ -18,13 +28,13 @@ export interface QbrickVideoPlayerProps {
 
 export const QbrickVideoPlayer = (props: QbrickVideoPlayerProps) => {
     useEffect(() => {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        if (window && window.GoBrain) {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
+        if (
+            window &&
+            window.GoBrain &&
+            window.GoBrain.widgets(props.video.id)
+        ) {
             window.GoBrain.widgets(props.video.id).on("play", function () {
-                // eslint-disable-next-line @typescript-eslint/no-this-alias,@typescript-eslint/ban-ts-comment
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
                 // eslint-disable-next-line @typescript-eslint/no-this-alias
                 const goBrainWidget = this;
