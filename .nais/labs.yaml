@@ -1,0 +1,9 @@
+ingresses:
+- "https://arbeidsgiver.labs.nais.io/forebyggingsplan"
+forebyggingsplanClientId: "labs-gcp:pia:forebyggingsplan"
+sykefravarstatistikkApiClientId: "labs-fss:arbeidsgiver:sykefravarsstatistikk-api"
+sykefravarstatistikkApiBaseurl: "http://localhost:9091/sykefravarsstatistikk-api"
+forebyggingsplanBaseurl: "http://localhost:8081"
+dekoratorEnv: "prod"
+minReplicas: 1
+maxReplicas: 2

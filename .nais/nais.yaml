@@ -7,6 +7,9 @@ metadata:
     "team": "pia"
 spec:
   image: {{image}}
+  replicas:
+    min: {{minReplicas}}
+    max: {{maxReplicas}}
   tokenx:
     enabled: true
   idporten:
@@ -31,7 +34,7 @@ spec:
         - application: forebyggingsplan
   env:
     - name: FOREBYGGINGSPLAN_API_BASEURL
-      value: http://forebyggingsplan
+      value: {{ forebyggingsplanBaseurl }}
     - name: FOREBYGGINGSPLAN_CLIENT_ID
       value: {{ forebyggingsplanClientId }}
     - name: SYKEFRAVARSSTATISTIKK_API_CLIENT_ID

@@ -7,11 +7,16 @@ export default async function handler(
 ) {
     if (!req.query.orgnr)
         return res.status(400).json({ error: "Mangler parameter 'orgnr'" });
-    const token = await hentTokenXToken(
-        req,
-        res,
-        process.env.FOREBYGGINGSPLAN_CLIENT_ID
-    );
+
+    let token;
+    try {
+        token = await hentTokenXToken(
+            req,
+            process.env.FOREBYGGINGSPLAN_CLIENT_ID
+        );
+    } catch (e) {
+        return res.status(401).end();
+    }
     const response = await fetch(
         `${process.env.FOREBYGGINGSPLAN_API_BASEURL}/valgteaktiviteter/${req.query.orgnr}`,
         {

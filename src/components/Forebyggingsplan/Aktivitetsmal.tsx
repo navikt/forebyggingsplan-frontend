@@ -18,6 +18,7 @@ import { marks } from "../PortableText/marks/Marks";
 import { EksporterTilKalender } from "./EksporterTilKalender";
 import { useHentOrgnummer } from "../Layout/Banner/Banner";
 import { Aktivitet } from "../../types/Aktivitet";
+import { useHentValgteAktiviteter } from "../../lib/forebyggingsplan-klient";
 
 const hovedinnhold: Partial<PortableTextComponents> = {
     types: {
@@ -58,8 +59,9 @@ const DetteVilViGjøre = ({
         },
     });
     const { orgnr } = useHentOrgnummer();
+    const { error } = useHentValgteAktiviteter(orgnr);
 
-    if (!orgnr) return null; // Ingen grunn til å vise knapper dersom vi ikke vet orgnr
+    if (!orgnr || error) return null; // Ingen grunn til å vise knapper dersom vi ikke vet orgnr
 
     return (
         <div className={styles.knappeContainer}>
@@ -105,8 +107,9 @@ const DetteHarViGjort = ({
 }: DetteHarViGjortProps) => {
     const [laster, setLaster] = useState<boolean>(false);
     const { orgnr } = useHentOrgnummer();
+    const { error } = useHentValgteAktiviteter(orgnr);
 
-    if (!orgnr) return null; // Ingen grunn til å vise knapper dersom vi ikke vet orgnr
+    if (!orgnr || error) return null; // Ingen grunn til å vise knapper dersom vi ikke vet orgnr
 
     return (
         <>

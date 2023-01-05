@@ -1,7 +1,7 @@
 import { Accordion, Heading } from "@navikt/ds-react";
 import { Aktivitetsrad } from "./Aktivitetsrad";
 import { Kategori, kategoriComponents } from "../../types/kategori";
-import styles from "./Aktivitetskategorier.module.css";
+import styles from "./Kategorier.module.css";
 import { useCallback, useRef, useState } from "react";
 import {
     Aktivitet,
@@ -23,17 +23,17 @@ export function finnStatus(valgtaktivitet: ValgtAktivitet): AktivitetStatus {
     return "VALGT";
 }
 
-export const Aktivitetskategorier = ({ kategorier }: Props) => {
+export const Kategorier = ({ kategorier }: Props) => {
     const [aktivRad, setAktivRad] = useState<Aktivitet>();
     const { orgnr } = useHentOrgnummer();
     const { data: valgteAktiviteter, mutate } = useHentValgteAktiviteter(orgnr);
 
     return (
-        <div data-theme="light" className={styles.aktivitetskategorier}>
+        <div data-theme="light" className={styles.kategorier}>
             {kategorier.map(({ aktiviteter, tittel, innhold }) => {
                 if (aktiviteter.length < 1) return null;
                 return (
-                    <Aktivitetskategori
+                    <Kategori
                         key={tittel}
                         tittel={tittel}
                         innhold={innhold}
@@ -73,7 +73,7 @@ export const Aktivitetskategorier = ({ kategorier }: Props) => {
     );
 };
 
-const Aktivitetskategori = ({
+const Kategori = ({
     aktiviteter,
     tittel,
     gjeldendeAktivitet,

@@ -14,7 +14,7 @@ const levels: LogLevels[] = [
 ];
 
 const validLabel = (label: unknown): label is LogLevels =>
-    typeof label === "string" && label in levels;
+    typeof label === "string" && levels.some((e) => e === label);
 
 const loggingHandler = (req: NextApiRequest, res: NextApiResponse): void => {
     if (req.method !== "POST") {

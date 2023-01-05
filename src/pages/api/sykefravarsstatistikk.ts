@@ -11,11 +11,16 @@ export default async function handler(
     if (req.method !== "GET")
         return res.status(405).json({ error: "Method Not Allowed" });
 
-    const token = await hentTokenXToken(
-        req,
-        res,
-        process.env.SYKEFRAVARSSTATISTIKK_API_CLIENT_ID
-    );
+    let token;
+    try {
+        token = await hentTokenXToken(
+            req,
+            process.env.SYKEFRAVARSSTATISTIKK_API_CLIENT_ID
+        );
+    } catch (e) {
+        return res.status(401).end();
+    }
+
     const data = await fetch(
         `${process.env.SYKEFRAVARSSTATISTIKK_API_BASEURL}/${req.query.orgnr}/v1/sykefravarshistorikk/aggregert`,
         {

@@ -13,4 +13,5 @@ COPY --chown=nextjs:nodejs .next/static ./.next/static
 USER nextjs
 EXPOSE 3000
 
+ENV NODE_OPTIONS="--no-experimental-fetch"
 CMD ["node", "server.js"]

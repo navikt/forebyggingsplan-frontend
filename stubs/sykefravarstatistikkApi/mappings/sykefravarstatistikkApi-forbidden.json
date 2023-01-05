@@ -1,0 +1,14 @@
+{
+    "priority": 1,
+    "request": {
+        "urlPath": "/999999999/v1/sykefravarshistorikk/aggregert",
+        "method": "GET"
+    },
+    "response": {
+        "status": 403,
+        "bodyFileName": "sykefravarstatistikkApi-forbidden.json",
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    }
+}

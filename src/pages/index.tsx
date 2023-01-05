@@ -4,26 +4,28 @@ import styles from "./index.module.css";
 import { Aktivitet } from "../types/Aktivitet";
 import { hentVerifisertToken } from "../auth";
 import Layout from "../components/Layout/Layout";
-import { sanity } from "../lib/sanity";
+import { sanity, sanityLabs } from "../lib/sanity";
 import { PortableTextBlock } from "@portabletext/types";
 import { SanityDocument } from "@sanity/client";
 import { hentOrganisasjoner } from "../lib/organisasjoner";
 import { Organisasjon } from "@navikt/bedriftsmeny/lib/organisasjon";
 import { Kategori } from "../types/kategori";
-import { Aktivitetskategorier } from "../components/Forebyggingsplan/Aktivitetskategorier";
+import { Kategorier } from "../components/Forebyggingsplan/Kategorier";
 import { Alert, Link } from "@navikt/ds-react";
 import { useHentSykefraværsstatistikk } from "../lib/sykefraværsstatistikk-klient";
 import { useHentOrgnummer } from "../components/Layout/Banner/Banner";
 import { useHentValgteAktiviteter } from "../lib/forebyggingsplan-klient";
 import { logger } from "../lib/logger";
 import Script from "next/script";
+import { server } from "../mocks/msw";
+import { isLabs } from "../lib/miljø";
 
 interface Props {
     kategorier: Kategori[];
     organisasjoner: Organisasjon[];
 }
 
-interface KategoriDokument extends SanityDocument {
+export interface KategoriDokument extends SanityDocument {
     tittel: string;
     innhold: PortableTextBlock;
     aktiviteter: AktivitetInnhold[];
@@ -56,8 +58,14 @@ const aktivitetMapper = ({
 export const getServerSideProps: GetServerSideProps<Props> = async (
     context
 ) => {
+    const kjørerPåLabs = isLabs();
+    if (kjørerPåLabs) {
+        console.log("------------- MOCK server starter -------------");
+        server.listen();
+    }
+
     const token = await hentVerifisertToken(context.req);
-    if (!token) {
+    if (!token && !kjørerPåLabs) {
         return {
             redirect: {
                 destination: "/oauth2/login",
@@ -65,9 +73,10 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
             },
         };
     }
+
     const [sanityData, organisasjoner] = await Promise.all([
-        sanity
-            .fetch<KategoriDokument[]>(
+        (kjørerPåLabs ? sanityLabs : sanity)
+            .fetch(
                 `
             *[_type == "kategori"] | order(orderRank) {
                 tittel,
@@ -123,13 +132,13 @@ function Forside({ kategorier }: Omit<Props, "organisasjoner">) {
                             hvilken status dere har gitt dem.
                         </Alert>
                     )}
-                {statistikkError && (
+                {statistikkError && statistikkError.status !== 403 && (
                     <Alert variant={"error"} className={styles.alert}>
                         Vi har ikke klart å hente informasjon om
                         sykefraværsstatistikk.
                     </Alert>
                 )}
-                <Aktivitetskategorier kategorier={kategorier} />
+                <Kategorier kategorier={kategorier} />
             </main>
         </div>
     );
@@ -149,10 +158,7 @@ const Home = ({
                 />
                 <link rel="icon" href="https://nav.no/favicon.ico" />
             </Head>
-            <Script
-                src="https://play2.qbrick.com/framework/GoBrain.min.js"
-                strategy="beforeInteractive"
-            />
+            <Script src="https://play2.qbrick.com/framework/GoBrain.min.js" />
             <Layout organisasjoner={organisasjoner}>
                 <Forside kategorier={kategorier} />
             </Layout>

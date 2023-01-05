@@ -3,4 +3,7 @@ ingresses:
 forebyggingsplanClientId: "dev-gcp:pia:forebyggingsplan"
 sykefravarstatistikkApiClientId: "dev-fss:arbeidsgiver:sykefravarsstatistikk-api"
 sykefravarstatistikkApiBaseurl: "https://sykefravarsstatistikk-api.dev-fss-pub.nais.io/sykefravarsstatistikk-api"
+forebyggingsplanBaseurl: "http://forebyggingsplan"
 dekoratorEnv: "dev"
+minReplicas: 2
+maxReplicas: 4
