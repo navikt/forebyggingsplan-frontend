@@ -41,8 +41,6 @@ export const VideoVisning = ({
                 }}
             />
             <div data-testid={"QbrickVideoPlayerDiv"}>
-                {" "}
-                {/*OBS: uten div fungerer ikke play/pause lenger*/}
                 <QbrickVideoPlayer
                     video={{
                         metadata: {
