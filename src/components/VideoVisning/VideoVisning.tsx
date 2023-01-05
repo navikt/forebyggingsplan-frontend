@@ -41,16 +41,7 @@ export const VideoVisning = ({
                 }}
             />
             <div data-testid={"QbrickVideoPlayerDiv"}>
-                <QbrickVideoPlayer
-                    video={{
-                        metadata: {
-                            title: "Test video",
-                            description: "Her tester vi QBrick videoer",
-                        },
-                        id: mediaId,
-                        tags: [],
-                    }}
-                />
+                <QbrickVideoPlayer videoId={mediaId} />
             </div>
         </div>
     );

@@ -13,27 +13,14 @@ declare global {
     }
 }
 
-export interface QbrickVideo {
-    id: string;
-    tags: string[];
-    metadata: {
-        title: string;
-        description: string;
-    };
-}
-
 export interface QbrickVideoPlayerProps {
-    video: QbrickVideo;
+    videoId: string;
 }
 
 export const QbrickVideoPlayer = (props: QbrickVideoPlayerProps) => {
     useEffect(() => {
-        if (
-            window &&
-            window.GoBrain &&
-            window.GoBrain.widgets(props.video.id)
-        ) {
-            window.GoBrain.widgets(props.video.id).on("play", function () {
+        if (window && window.GoBrain && window.GoBrain.widgets(props.videoId)) {
+            window.GoBrain.widgets(props.videoId).on("play", function () {
                 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
                 // eslint-disable-next-line @typescript-eslint/no-this-alias
@@ -44,16 +31,16 @@ export const QbrickVideoPlayer = (props: QbrickVideoPlayerProps) => {
                 document.dispatchEvent(new CustomEvent("videoAvspilles"));
             });
         }
-    }, [props.video.id]);
+    }, [props.videoId]);
 
     const player = () => {
         return {
-            __html: `<div data-gobrain-widgetId="${props.video.id}"
+            __html: `<div data-gobrain-widgetId="${props.videoId}"
         data-gobrain-autoplay="false"
         data-gobrain-repeat="false" 
         data-gobrain-moduleSettings="{&quot;TopControls&quot;:{&quot;download&quot;:{&quot;enabled&quot;:false},&quot;sharing&quot;:{&quot;enabled&quot;:false}},&quot;MobileControls&quot;:{&quot;download&quot;:{&quot;enabled&quot;:false},&quot;sharing&quot;:{&quot;enabled&quot;:false}}}" 
         data-gobrain-config="${QBRICK_GOBRAIN_VIDEOPLAYER_CONFIG_PATH}"
-        data-gobrain-data="https://video.qbrick.com/api/v1/public/accounts/763558/medias/${props.video.id}"></div>`,
+        data-gobrain-data="https://video.qbrick.com/api/v1/public/accounts/763558/medias/${props.videoId}"></div>`,
         };
     };
     return (
