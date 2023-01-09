@@ -5,16 +5,29 @@ import { PortableText } from "@portabletext/react";
 import { PortableTextBlock } from "@portabletext/types";
 import { block } from "../PortableText/block/Block";
 import { marks } from "../PortableText/marks/Marks";
+import { QbrickVideoPlayer } from "../EmbeddedVideoPlayer/QbrickVideoPlayer";
 
 interface Props {
     tittel: string;
-    videoId: number;
+    videoUrl: string;
     innhold: PortableTextBlock[];
 }
 
 export const VideoVisning = ({
-    value: { tittel, videoId, innhold },
+    value: { tittel, videoUrl, innhold },
 }: PortableTextComponentProps<Props>) => {
+    const DEFAULT_MEDIA_ID = "702ed6e6-00015227-76bc0ebe";
+    let mediaId = DEFAULT_MEDIA_ID;
+
+    if (videoUrl) {
+        const url = new URL(videoUrl);
+        if (url !== null) {
+            mediaId = url.searchParams.get("mediaId")
+                ? url.searchParams.get("mediaId")!
+                : DEFAULT_MEDIA_ID;
+        }
+    }
+
     return (
         <div className={styles.wrapper}>
             <Heading size="medium" level="4">
@@ -27,15 +40,8 @@ export const VideoVisning = ({
                     marks,
                 }}
             />
-            <div className={styles.video}>
-                <iframe
-                    className={styles.video__iframe}
-                    loading="lazy"
-                    title={tittel}
-                    src={`https://player.vimeo.com/video/${videoId}`}
-                    referrerPolicy={"no-referrer"}
-                    allowFullScreen
-                />
+            <div data-testid={"QbrickVideoPlayerDiv"}>
+                <QbrickVideoPlayer videoId={mediaId} />
             </div>
         </div>
     );
