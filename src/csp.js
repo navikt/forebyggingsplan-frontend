@@ -12,7 +12,7 @@ const csp = {
         "*.nav.no",
         "www.nav.no",
     ],
-    "style-src": ["'self'", "blob:", "*.nav.no", "'unsafe-inline'"],
+    "style-src": ["'self'", "blob:", "*.nav.no"],
     "connect-src": [
         "'self'",
         "*.nav.no",
@@ -36,7 +36,7 @@ const csp = {
     ],
     "frame-src": ["vars.hotjar.com", "*.nav.no"],
     "img-src": ["'self'", "*.hotjar.com", "nav.no", "*.nav.no", "data:"],
-    "manifest-src": ["'self'", "www.nav.no"],
+    "manifest-src": ["'self'", "www.nav.no", "dekoratoren.ekstern.dev.nav.no"],
     "media-src": ["'self'", "blob:"],
     "object-src": ["'self'", "blob:"],
     "worker-src": ["'self'", "blob:"],
