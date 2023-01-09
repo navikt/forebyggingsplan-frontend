@@ -7,6 +7,7 @@ const csp = {
         "'unsafe-eval'",
         "static.hotjar.com",
         "script.hotjar.com",
+        "*.taskanalytics.com/tm.js",
         "*.nav.no",
         "www.nav.no",
     ],
