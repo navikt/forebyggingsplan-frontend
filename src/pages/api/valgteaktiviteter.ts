@@ -27,7 +27,10 @@ export default async function handler(
     );
 
     if (!response.ok) {
-        return res.status(response.status).send(await response.text());
+        return res
+            .status(response.status)
+            .setHeader("Content-Type", "text/plain")
+            .send(await response.text());
     }
     return res.status(200).json(await response.json());
 }

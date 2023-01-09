@@ -40,7 +40,7 @@ export const StatistikkPanel = ({
 
 const roterEtterTrend = (trend: string | undefined): string => {
     const trendNummer = Number(trend);
-    if (isNaN(trendNummer) || trendNummer === 0) {
+    if (Number.isNaN(trendNummer) || trendNummer === 0) {
         return styles.rotateUendret;
     } else if (trendNummer < 0) {
         return styles.rotateNed;
@@ -49,7 +49,7 @@ const roterEtterTrend = (trend: string | undefined): string => {
 
 const trendBeskrivelse = (trend: string | undefined): string => {
     const trendNummer = Number(trend);
-    if (isNaN(trendNummer) || trendNummer === 0) {
+    if (Number.isNaN(trendNummer) || trendNummer === 0) {
         return "uendret trend";
     } else if (trendNummer < 0) {
         return "synkende trend";
