@@ -3,8 +3,8 @@ const csp = {
     "script-src": [
         "'self'",
         "'report-sample'",
-        "'unsafe-inline'",
-        "'unsafe-eval'",
+        // NextJS kjører react-refresh.js (hotreload) på localhost som selv trenger "'unsafe-eval'" i script-src CSP directive
+        process.env.NODE_ENV === "production" ? "" : "'unsafe-eval'",
         "static.hotjar.com",
         "script.hotjar.com",
         "*.psplugin.com",
@@ -12,7 +12,7 @@ const csp = {
         "*.nav.no",
         "www.nav.no",
     ],
-    "style-src": ["'self'", "blob:", "*.nav.no"],
+    "style-src": ["'self'", "blob:", "'unsafe-inline'", "*.nav.no"],
     "connect-src": [
         "'self'",
         "*.nav.no",
