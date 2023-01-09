@@ -32,15 +32,19 @@ const hovedinnhold: Partial<PortableTextComponents> = {
 interface DetteVilViGjøreProps {
     aktivitet: Aktivitet;
     velgAktivitet: (frist?: Date) => void;
+    serverFeil?: string;
 }
 
 const DetteVilViGjøre = ({
     aktivitet,
     velgAktivitet,
+    serverFeil,
 }: DetteVilViGjøreProps) => {
     const [forTidlig, setForTidlig] = useState<boolean>();
     const [ugyldig, setUgyldig] = useState<boolean>();
-    const [laster, setLaster] = useState<boolean>(false);
+    const [venter, setVenter] = useState<boolean>();
+    const laster = venter && !serverFeil;
+
     const {
         datepickerProps,
         inputProps,
@@ -82,7 +86,7 @@ const DetteVilViGjøre = ({
                     <Button
                         className={styles.knappMedSentrertLoader}
                         onClick={() => {
-                            setLaster(true);
+                            setVenter(true);
                             velgAktivitet(frist);
                         }}
                         disabled={ugyldig || forTidlig || laster}
@@ -99,13 +103,16 @@ const DetteVilViGjøre = ({
 interface DetteHarViGjortProps {
     aktivitet: Aktivitet;
     fullførAktivitet: () => void;
+    serverFeil?: string;
 }
 
 const DetteHarViGjort = ({
     aktivitet,
     fullførAktivitet,
+    serverFeil,
 }: DetteHarViGjortProps) => {
-    const [laster, setLaster] = useState<boolean>(false);
+    const [venter, setVenter] = useState<boolean>();
+    const laster = venter && !serverFeil;
     const { orgnr } = useHentOrgnummer();
     const { error } = useHentValgteAktiviteter(orgnr);
 
@@ -121,7 +128,7 @@ const DetteHarViGjort = ({
                     }
                     disabled={laster}
                     onClick={() => {
-                        setLaster(true);
+                        setVenter(true);
                         fullførAktivitet();
                     }}
                 >
@@ -161,10 +168,12 @@ export function Aktivitetsmal({
                 <DetteVilViGjøre
                     aktivitet={aktivitet}
                     velgAktivitet={velgAktivitet}
+                    serverFeil={serverFeil}
                 />
                 <DetteHarViGjort
                     aktivitet={aktivitet}
                     fullførAktivitet={fullførAktivitet}
+                    serverFeil={serverFeil}
                 />
             </div>
             <Ingress>{aktivitet.beskrivelse}</Ingress>
