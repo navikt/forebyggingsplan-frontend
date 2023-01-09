@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+      - innføre-content-security-policy
+
 env:
   IMAGE: ghcr.io/${{ github.repository }}:${{ github.sha }}
 jobs:
@@ -56,6 +58,25 @@ jobs:
         cluster: [ dev, prod, labs ]
     name: Deploy app to ${{ matrix.cluster }}
     needs: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Deploy to ${{ matrix.cluster }}
+        uses: nais/deploy/actions/deploy@v1
+        env:
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          CLUSTER: ${{ matrix.cluster }}-gcp
+          RESOURCE: .nais/nais.yaml
+          VARS: .nais/${{ matrix.cluster }}.yaml
+
+  deploy-branch-to-dev:
+    strategy:
+      matrix:
+        cluster: [ dev ]
+    name: Deploy app to ${{ matrix.cluster }}
+    needs: build
+    if: github.ref == 'refs/heads/innføre-content-security-policy'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
