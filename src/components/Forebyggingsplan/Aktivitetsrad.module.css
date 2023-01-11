@@ -16,28 +16,6 @@
     z-index: 2; /* Plasser sticky header framfor datepicker-input med "z-index: 1"*/
 }
 
-.heading {
-    --link-and-button-gap: 0.5rem;
-    display: flex;
-    align-items: center;
-    gap: var(--link-and-button-gap);
-
-    /* Negativ margin for å utlikne gap + ikon */
-    /* --link-icon-font-size blir definert i komponenten for aktivitetsrad */
-    /* noinspection CssUnresolvedCustomProperty */
-    margin-left: calc(
-        -1 * calc(var(--link-and-button-gap) + var(--link-icon-font-size))
-    );
-}
-
-.heading .lenkeTilKort {
-    visibility: hidden;
-}
-
-.heading:hover .lenkeTilKort {
-    visibility: visible;
-}
-
 /* Om aktiviteten ikkje er siste i lista skal den ha litt luft under seg */
 .accordionItem:not(:first-child) .heading {
     margin-top: 1.75rem;

@@ -1,6 +1,5 @@
 import { Aktivitet, AktivitetStatus } from "../../types/Aktivitet";
-import { Accordion, Heading, Link } from "@navikt/ds-react";
-import { Link as LinkIkon } from "@navikt/ds-icons";
+import { Accordion, Heading } from "@navikt/ds-react";
 import styles from "./Aktivitetsrad.module.css";
 import dynamic from "next/dynamic";
 import {
@@ -14,7 +13,7 @@ import {
     loggVelgAktivitet,
     loggÅpneAktivitet,
 } from "../../lib/amplitude";
-import { CSSProperties, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { AktivitetHeader } from "./AktivitetHeader";
 import { useRouter } from "next/router";
 
@@ -105,13 +104,6 @@ export const Aktivitetsrad = ({
                 setServerfeil(e.message);
             });
     };
-    const tittelSomAnchorTag = aktivitet.tittel
-        .replaceAll(" ", "-")
-        .toLowerCase();
-    const linkIconFontSize = "1rem";
-    const linkIconFontSizeCSSVariable = {
-        "--link-icon-font-size": linkIconFontSize,
-    } as CSSProperties;
 
     return (
         <Accordion.Item open={åpen} className={styles.accordionItem}>
@@ -119,16 +111,7 @@ export const Aktivitetsrad = ({
                 size="medium"
                 level="3"
                 className={`${styles.sticky} ${styles.heading}`}
-                id={tittelSomAnchorTag}
-                style={linkIconFontSizeCSSVariable}
             >
-                <Link
-                    className={styles.lenkeTilKort}
-                    href={`#${tittelSomAnchorTag}`}
-                >
-                    <LinkIkon aria-hidden={true} fontSize={linkIconFontSize} />
-                    <span className="navds-sr-only">{aktivitet.tittel}</span>
-                </Link>
                 <Accordion.Header
                     onClick={onClick}
                     className={`${AktivitetStatusStyle[aktivitet.status]} ${
