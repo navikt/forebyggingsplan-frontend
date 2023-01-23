@@ -1,12 +1,7 @@
 import { Tag, TagProps } from "@navikt/ds-react";
 import { Aktivitet, AktivitetStatus } from "../../types/Aktivitet";
 import styles from "./AktivitetHeader.module.css";
-
-const dateformat = new Intl.DateTimeFormat("nb-NO", {
-    day: "2-digit",
-    month: "short",
-    year: "numeric",
-});
+import { norskDatoformat } from "../../lib/dato";
 
 type ValgteStatuser = Exclude<AktivitetStatus, "IKKE_VALGT">;
 const hentTekst = (status: ValgteStatuser, dato: string) => {
@@ -50,7 +45,7 @@ export const AktivitetHeader = ({ aktivitet }: { aktivitet: Aktivitet }) => {
             {aktivitet.tittel}
             {aktivitet.status !== "IKKE_VALGT" && (
                 <AktivitetTag
-                    dato={dato ? dateformat.format(new Date(dato)) : ""}
+                    dato={dato ? norskDatoformat.format(new Date(dato)) : ""}
                     status={aktivitet.status}
                     className={styles.aktivitetTag}
                 />
