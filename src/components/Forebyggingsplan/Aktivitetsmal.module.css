@@ -10,6 +10,10 @@
     padding-bottom: 1.5rem;
 }
 
+.endreFristContainer {
+    margin-top: 0.5rem;
+}
+
 .knappeContainer {
     display: flex;
     flex-wrap: wrap;

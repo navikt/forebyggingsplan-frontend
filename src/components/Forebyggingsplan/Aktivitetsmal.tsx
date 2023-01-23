@@ -7,6 +7,7 @@ import {
     Heading,
     Ingress,
     Loader,
+    Tag,
     UNSAFE_DatePicker,
     UNSAFE_useDatepicker,
 } from "@navikt/ds-react";
@@ -19,6 +20,7 @@ import { EksporterTilKalender } from "./EksporterTilKalender";
 import { useHentOrgnummer } from "../Layout/Banner/Banner";
 import { Aktivitet } from "../../types/Aktivitet";
 import { useHentValgteAktiviteter } from "../../lib/forebyggingsplan-klient";
+import { norskDatoformat } from "../../lib/dato";
 
 const hovedinnhold: Partial<PortableTextComponents> = {
     types: {
@@ -27,6 +29,24 @@ const hovedinnhold: Partial<PortableTextComponents> = {
     },
     block,
     marks,
+};
+
+interface EndreFristProps {
+    aktivitet: Aktivitet;
+}
+
+const EndreFrist = (props: EndreFristProps) => {
+    const frist = props.aktivitet.frist;
+    return (
+        <div className={styles.endreFristContainer}>
+            {frist && (
+                <Tag variant={"neutral"}>
+                    Aktiviteten har frist{" "}
+                    {norskDatoformat.format(new Date(frist))}
+                </Tag>
+            )}
+        </div>
+    );
 };
 
 interface DetteVilViGjøreProps {
@@ -165,6 +185,7 @@ export function Aktivitetsmal({
                 </Alert>
             )}
             <div className={styles.knappeContainer}>
+                <EndreFrist aktivitet={aktivitet} />
                 <DetteVilViGjøre
                     aktivitet={aktivitet}
                     velgAktivitet={velgAktivitet}
