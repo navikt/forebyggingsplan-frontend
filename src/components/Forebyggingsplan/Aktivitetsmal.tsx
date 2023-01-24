@@ -37,14 +37,30 @@ interface EndreFristProps {
 
 const EndreFrist = (props: EndreFristProps) => {
     const frist = props.aktivitet.frist;
+
+    if (
+        props.aktivitet.status === "IKKE_VALGT" ||
+        props.aktivitet.status === "FULLFØRT"
+    )
+        return null;
+
     return (
-        <div className={styles.endreFristContainer}>
+        <div>
             {frist && (
                 <Tag variant={"neutral"}>
                     Aktiviteten har frist{" "}
                     {norskDatoformat.format(new Date(frist))}
                 </Tag>
             )}
+            {!frist && (
+                <Tag variant={"neutral"}>Aktiviteten har ingen frist</Tag>
+            )}
+            <Button
+                variant="tertiary"
+                className={`${styles.knappMedSentrertLoader} ${styles.endreFristKnapp}`}
+            >
+                Endre frist
+            </Button>
         </div>
     );
 };
@@ -85,37 +101,35 @@ const DetteVilViGjøre = ({
     const { orgnr } = useHentOrgnummer();
     const { error } = useHentValgteAktiviteter(orgnr);
 
-    if (!orgnr || error) return null; // Ingen grunn til å vise knapper dersom vi ikke vet orgnr
+    if (!orgnr || error || aktivitet.status !== "IKKE_VALGT") return null; // Ingen grunn til å vise knapper dersom vi ikke vet orgnr
 
     return (
         <div className={styles.knappeContainer}>
-            {aktivitet.status === "IKKE_VALGT" && (
-                <div className={styles.detteVilViGjøreContainer}>
-                    <UNSAFE_DatePicker {...datepickerProps}>
-                        <UNSAFE_DatePicker.Input
-                            {...inputProps}
-                            label="Frist"
-                            error={
-                                (ugyldig &&
-                                    "Dette er ikke en gyldig dato. Gyldig format er DD.MM.ÅÅÅÅ") ||
-                                (forTidlig && "Frist kan tidligst være idag")
-                            }
-                        />
-                    </UNSAFE_DatePicker>
+            <div className={styles.detteVilViGjøreContainer}>
+                <UNSAFE_DatePicker {...datepickerProps}>
+                    <UNSAFE_DatePicker.Input
+                        {...inputProps}
+                        label="Frist"
+                        error={
+                            (ugyldig &&
+                                "Dette er ikke en gyldig dato. Gyldig format er DD.MM.ÅÅÅÅ") ||
+                            (forTidlig && "Frist kan tidligst være idag")
+                        }
+                    />
+                </UNSAFE_DatePicker>
 
-                    <Button
-                        className={styles.knappMedSentrertLoader}
-                        onClick={() => {
-                            setVenter(true);
-                            velgAktivitet(frist);
-                        }}
-                        disabled={ugyldig || forTidlig || laster}
-                    >
-                        Dette vil vi gjøre
-                        {laster && <Loader size={"xsmall"} />}
-                    </Button>
-                </div>
-            )}
+                <Button
+                    className={styles.knappMedSentrertLoader}
+                    onClick={() => {
+                        setVenter(true);
+                        velgAktivitet(frist);
+                    }}
+                    disabled={ugyldig || forTidlig || laster}
+                >
+                    Dette vil vi gjøre
+                    {laster && <Loader size={"xsmall"} />}
+                </Button>
+            </div>
         </div>
     );
 };
