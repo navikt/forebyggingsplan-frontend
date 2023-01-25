@@ -7,6 +7,7 @@ import {
     Heading,
     Ingress,
     Loader,
+    Modal,
     Tag,
     UNSAFE_DatePicker,
     UNSAFE_useDatepicker,
@@ -35,13 +36,11 @@ interface EndreFristProps {
     aktivitet: Aktivitet;
 }
 
-const EndreFrist = (props: EndreFristProps) => {
-    const frist = props.aktivitet.frist;
+const EndreFrist = ({ aktivitet }: EndreFristProps) => {
+    const [open, setOpen] = useState(false);
+    const frist = aktivitet.frist;
 
-    if (
-        props.aktivitet.status === "IKKE_VALGT" ||
-        props.aktivitet.status === "FULLFØRT"
-    )
+    if (aktivitet.status === "IKKE_VALGT" || aktivitet.status === "FULLFØRT")
         return null;
 
     return (
@@ -58,10 +57,46 @@ const EndreFrist = (props: EndreFristProps) => {
             <Button
                 variant="tertiary"
                 className={`${styles.knappMedSentrertLoader} ${styles.endreFristKnapp}`}
+                onClick={() => setOpen(true)}
             >
                 Endre frist
             </Button>
+            <EndreFristModal
+                aktivitet={aktivitet}
+                open={open}
+                setOpen={setOpen}
+            />
         </div>
+    );
+};
+
+interface EndreFristModalProps {
+    aktivitet: Aktivitet;
+    open: boolean;
+    setOpen: (open: boolean) => void;
+}
+
+const EndreFristModal = ({
+    aktivitet,
+    open,
+    setOpen,
+}: EndreFristModalProps) => {
+    return (
+        <Modal
+            open={open}
+            aria-label="Modal demo"
+            onClose={() => setOpen(false)}
+            aria-labelledby="modal-heading"
+        >
+            <Modal.Content>
+                <Heading spacing level="1" size="large" id="modal-heading">
+                    Rndre frist
+                </Heading>
+                <Heading spacing level="2" size="medium">
+                    ${aktivitet.tittel}.
+                </Heading>
+            </Modal.Content>
+        </Modal>
     );
 };
 
