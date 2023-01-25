@@ -3,12 +3,14 @@ import { Accordion, Heading } from "@navikt/ds-react";
 import styles from "./Aktivitetsrad.module.css";
 import dynamic from "next/dynamic";
 import {
+    endreFrist,
     FetchingError,
     fullførAktivitet,
     velgAktivitet,
 } from "../../lib/forebyggingsplan-klient";
 import { useHentOrgnummer } from "../Layout/Banner/Banner";
 import {
+    loggEndreFrist,
     loggFullførAktivitet,
     loggVelgAktivitet,
     loggÅpneAktivitet,
@@ -88,6 +90,26 @@ export const Aktivitetsrad = ({
                 setServerfeil(e.message);
             });
     };
+    const endreFristHandler = (frist?: Date) => {
+        setServerfeil("");
+        if (!aktivitet.aktivitetsId) return;
+
+        loggEndreFrist(aktivitet);
+        endreFrist({
+            aktivitetsId: aktivitet.aktivitetsId,
+            aktivitetsmalId: aktivitet.aktivitetsmalId,
+            frist,
+            orgnr: orgnr ?? undefined,
+        })
+            ?.then(oppdaterValgteAktiviteter)
+            .catch((e: FetchingError) => {
+                if (e.status == 503) {
+                    router.push("/500").then();
+                }
+                setServerfeil(e.message);
+            });
+    };
+
     const fullførAktivitetHandler = () => {
         setServerfeil("");
         loggFullførAktivitet(aktivitet);
@@ -128,6 +150,7 @@ export const Aktivitetsrad = ({
                 <Aktivitetsmal
                     aktivitet={aktivitet}
                     velgAktivitet={velgAktivitetHandler}
+                    endreFristHandler={endreFristHandler}
                     fullførAktivitet={fullførAktivitetHandler}
                     serverFeil={serverFeil}
                 />
