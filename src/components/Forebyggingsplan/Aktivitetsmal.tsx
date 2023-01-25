@@ -34,9 +34,10 @@ const hovedinnhold: Partial<PortableTextComponents> = {
 
 interface EndreFristProps {
     aktivitet: Aktivitet;
+    endreFristHandler: (frist?: Date) => void;
 }
 
-const EndreFrist = ({ aktivitet }: EndreFristProps) => {
+const EndreFrist = ({ aktivitet, endreFristHandler }: EndreFristProps) => {
     const [open, setOpen] = useState(false);
     const frist = aktivitet.frist;
 
@@ -65,6 +66,7 @@ const EndreFrist = ({ aktivitet }: EndreFristProps) => {
                 aktivitet={aktivitet}
                 open={open}
                 setOpen={setOpen}
+                endreFristHandler={endreFristHandler}
             />
         </div>
     );
@@ -74,13 +76,17 @@ interface EndreFristModalProps {
     aktivitet: Aktivitet;
     open: boolean;
     setOpen: (open: boolean) => void;
+    endreFristHandler: () => void;
 }
 
 const EndreFristModal = ({
     aktivitet,
     open,
     setOpen,
+    endreFristHandler,
 }: EndreFristModalProps) => {
+    const gammelDato = aktivitet.frist ? new Date(aktivitet.frist) : undefined;
+
     return (
         <Modal
             open={open}
@@ -90,27 +96,34 @@ const EndreFristModal = ({
         >
             <Modal.Content>
                 <Heading spacing level="1" size="large" id="modal-heading">
-                    Rndre frist
+                    Endre frist
                 </Heading>
                 <Heading spacing level="2" size="medium">
-                    ${aktivitet.tittel}.
+                    {aktivitet.tittel}
                 </Heading>
+                <DatoVelger
+                    gammelDato={gammelDato}
+                    erSynlig={true}
+                    datoCallback={endreFristHandler}
+                />
             </Modal.Content>
         </Modal>
     );
 };
 
-interface DetteVilViGjøreProps {
-    aktivitet: Aktivitet;
-    velgAktivitet: (frist?: Date) => void;
+interface DatoVelgerProps {
+    erSynlig: boolean;
+    gammelDato?: Date | undefined;
+    datoCallback: (frist?: Date) => void;
     serverFeil?: string;
 }
 
-const DetteVilViGjøre = ({
-    aktivitet,
-    velgAktivitet,
+const DatoVelger = ({
+    erSynlig,
+    gammelDato,
+    datoCallback,
     serverFeil,
-}: DetteVilViGjøreProps) => {
+}: DatoVelgerProps) => {
     const [forTidlig, setForTidlig] = useState<boolean>();
     const [ugyldig, setUgyldig] = useState<boolean>();
     const [venter, setVenter] = useState<boolean>();
@@ -122,6 +135,7 @@ const DetteVilViGjøre = ({
         selectedDay: frist,
     } = UNSAFE_useDatepicker({
         fromDate: new Date(),
+        defaultSelected: gammelDato,
         onValidate: (val) => {
             if (val.isBefore) setForTidlig(true);
             else setForTidlig(false);
@@ -136,7 +150,7 @@ const DetteVilViGjøre = ({
     const { orgnr } = useHentOrgnummer();
     const { error } = useHentValgteAktiviteter(orgnr);
 
-    if (!orgnr || error || aktivitet.status !== "IKKE_VALGT") return null; // Ingen grunn til å vise knapper dersom vi ikke vet orgnr
+    if (!orgnr || error || !erSynlig) return null; // Ingen grunn til å vise knapper dersom vi ikke vet orgnr
 
     return (
         <div className={styles.knappeContainer}>
@@ -157,7 +171,7 @@ const DetteVilViGjøre = ({
                     className={styles.knappMedSentrertLoader}
                     onClick={() => {
                         setVenter(true);
-                        velgAktivitet(frist);
+                        datoCallback(frist);
                     }}
                     disabled={ugyldig || forTidlig || laster}
                 >
@@ -213,6 +227,7 @@ const DetteHarViGjort = ({
 interface AktivitetsmalProps {
     aktivitet: Aktivitet;
     velgAktivitet: (frist?: Date) => void;
+    endreFristHandler: (frist?: Date) => void;
     fullførAktivitet: () => void;
     serverFeil: string;
 }
@@ -220,6 +235,7 @@ interface AktivitetsmalProps {
 export function Aktivitetsmal({
     aktivitet,
     velgAktivitet,
+    endreFristHandler,
     fullførAktivitet,
     serverFeil,
 }: AktivitetsmalProps) {
@@ -234,10 +250,14 @@ export function Aktivitetsmal({
                 </Alert>
             )}
             <div className={styles.knappeContainer}>
-                <EndreFrist aktivitet={aktivitet} />
-                <DetteVilViGjøre
+                <EndreFrist
                     aktivitet={aktivitet}
-                    velgAktivitet={velgAktivitet}
+                    endreFristHandler={endreFristHandler}
+                />
+
+                <DatoVelger
+                    erSynlig={aktivitet.status === "IKKE_VALGT"}
+                    datoCallback={velgAktivitet}
                     serverFeil={serverFeil}
                 />
                 <DetteHarViGjort
