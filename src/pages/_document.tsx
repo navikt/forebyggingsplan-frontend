@@ -35,7 +35,7 @@ export default class MyDocument extends Document<Props> {
                 //     url: "/min-ia",
                 // },
                 {
-                    title: "Slik forebygger du sykefravær",
+                    title: "Slik forebygger dere sykefravær",
                     url: "/forebyggingsplan",
                 },
             ],
