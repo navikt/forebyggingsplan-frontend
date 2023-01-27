@@ -34,7 +34,7 @@ const hovedinnhold: Partial<PortableTextComponents> = {
 
 interface EndreFristProps {
     aktivitet: Aktivitet;
-    endreFristHandler: (frist?: Date) => void;
+    endreFristHandler: (stoppSpinner?: () => void, frist?: Date) => void;
 }
 
 const EndreFrist = ({ aktivitet, endreFristHandler }: EndreFristProps) => {
@@ -116,7 +116,7 @@ interface DatoVelgerProps {
     erSynlig: boolean;
     gammelDato?: Date | undefined;
     bekreftelsestekst: string;
-    datoCallback: (frist?: Date) => void;
+    datoCallback: (stoppSpinner?: () => void, frist?: Date) => void;
     serverFeil?: string;
 }
 
@@ -155,6 +155,10 @@ const DatoVelger = ({
 
     if (!orgnr || error || !erSynlig) return null; // Ingen grunn til å vise knapper dersom vi ikke vet orgnr
 
+    const stoppSpinner = () => {
+        setVenter(false);
+    };
+
     return (
         <div className={styles.knappeContainer}>
             <div className={styles.detteVilViGjøreContainer}>
@@ -174,7 +178,7 @@ const DatoVelger = ({
                     className={styles.knappMedSentrertLoader}
                     onClick={() => {
                         setVenter(true);
-                        datoCallback(frist);
+                        datoCallback(stoppSpinner, frist);
                     }}
                     disabled={ugyldig || forTidlig || laster}
                 >
@@ -229,8 +233,8 @@ const DetteHarViGjort = ({
 
 interface AktivitetsmalProps {
     aktivitet: Aktivitet;
-    velgAktivitet: (frist?: Date) => void;
-    endreFristHandler: (frist?: Date) => void;
+    velgAktivitet: (stoppSpinner?: () => void, frist?: Date) => void;
+    endreFristHandler: (stoppSpinner?: () => void, frist?: Date) => void;
     fullførAktivitet: () => void;
     serverFeil: string;
 }

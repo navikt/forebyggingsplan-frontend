@@ -74,7 +74,7 @@ export const Aktivitetsrad = ({
             setVarForrigeStateÅpen(true);
         }
     }, [åpen, aktivitet]);
-    const velgAktivitetHandler = (frist?: Date) => {
+    const velgAktivitetHandler = (stoppSpinner?: () => void, frist?: Date) => {
         setServerfeil("");
         loggVelgAktivitet(aktivitet);
         velgAktivitet({
@@ -83,6 +83,7 @@ export const Aktivitetsrad = ({
             orgnr: orgnr ?? undefined,
         })
             ?.then(oppdaterValgteAktiviteter)
+            .then(stoppSpinner)
             .catch((e: FetchingError) => {
                 if (e.status == 503) {
                     router.push("/500").then();
@@ -90,7 +91,7 @@ export const Aktivitetsrad = ({
                 setServerfeil(e.message);
             });
     };
-    const endreFristHandler = (frist?: Date) => {
+    const endreFristHandler = (stoppSpinner?: () => void, frist?: Date) => {
         setServerfeil("");
         if (!aktivitet.aktivitetsId) return;
 
@@ -102,6 +103,7 @@ export const Aktivitetsrad = ({
             orgnr: orgnr ?? undefined,
         })
             ?.then(oppdaterValgteAktiviteter)
+            .then(stoppSpinner)
             .catch((e: FetchingError) => {
                 if (e.status == 503) {
                     router.push("/500").then();
