@@ -20,7 +20,7 @@ import { AktivitetHeader } from "./AktivitetHeader";
 import { useRouter } from "next/router";
 
 const Aktivitetsmal = dynamic(() =>
-    import("./Aktivitetsmal").then((mod) => mod.Aktivitetsmal)
+    import("./Aktivitetsmal/Aktivitetsmal").then((mod) => mod.Aktivitetsmal)
 );
 
 interface Props {

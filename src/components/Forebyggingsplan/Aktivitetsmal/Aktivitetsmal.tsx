@@ -9,19 +9,18 @@ import {
     Loader,
     Modal,
     Tag,
-    UNSAFE_DatePicker,
-    UNSAFE_useDatepicker,
 } from "@navikt/ds-react";
 import styles from "./Aktivitetsmal.module.css";
-import { Seksjon } from "../Seksjon/Seksjon";
-import { Oppgave } from "../Oppgave/Oppgave";
-import { block } from "../PortableText/block/Block";
-import { marks } from "../PortableText/marks/Marks";
-import { EksporterTilKalender } from "./EksporterTilKalender";
-import { useHentOrgnummer } from "../Layout/Banner/Banner";
-import { Aktivitet } from "../../types/Aktivitet";
-import { useHentValgteAktiviteter } from "../../lib/forebyggingsplan-klient";
-import { norskDatoformat } from "../../lib/dato";
+import { Seksjon } from "../../Seksjon/Seksjon";
+import { Oppgave } from "../../Oppgave/Oppgave";
+import { block } from "../../PortableText/block/Block";
+import { marks } from "../../PortableText/marks/Marks";
+import { EksporterTilKalender } from "../EksporterTilKalender";
+import { useHentOrgnummer } from "../../Layout/Banner/Banner";
+import { Aktivitet } from "../../../types/Aktivitet";
+import { useHentValgteAktiviteter } from "../../../lib/forebyggingsplan-klient";
+import { norskDatoformat } from "../../../lib/dato";
+import { DatoVelger } from "./DatoVelger/DatoVelger";
 
 const hovedinnhold: Partial<PortableTextComponents> = {
     types: {
@@ -109,84 +108,6 @@ const EndreFristModal = ({
                 />
             </Modal.Content>
         </Modal>
-    );
-};
-
-interface DatoVelgerProps {
-    erSynlig: boolean;
-    gammelDato?: Date | undefined;
-    bekreftelsestekst: string;
-    datoCallback: (stoppSpinner?: () => void, frist?: Date) => void;
-    serverFeil?: string;
-}
-
-const DatoVelger = ({
-    erSynlig,
-    gammelDato,
-    bekreftelsestekst,
-    datoCallback,
-    serverFeil,
-}: DatoVelgerProps) => {
-    const [forTidlig, setForTidlig] = useState<boolean>();
-    const [ugyldig, setUgyldig] = useState<boolean>();
-    const [venter, setVenter] = useState<boolean>();
-    const laster = venter && !serverFeil;
-
-    const {
-        datepickerProps,
-        inputProps,
-        selectedDay: frist,
-    } = UNSAFE_useDatepicker({
-        fromDate: new Date(),
-        defaultSelected: gammelDato,
-        onValidate: (val) => {
-            if (val.isBefore) setForTidlig(true);
-            else setForTidlig(false);
-            if (val.isEmpty) {
-                setUgyldig(false);
-            } else {
-                if (val.isWeekend === undefined) setUgyldig(true);
-                else setUgyldig(false);
-            }
-        },
-    });
-    const { orgnr } = useHentOrgnummer();
-    const { error } = useHentValgteAktiviteter(orgnr);
-
-    if (!orgnr || error || !erSynlig) return null; // Ingen grunn til å vise knapper dersom vi ikke vet orgnr
-
-    const stoppSpinner = () => {
-        setVenter(false);
-    };
-
-    return (
-        <div className={styles.knappeContainer}>
-            <div className={styles.detteVilViGjøreContainer}>
-                <UNSAFE_DatePicker {...datepickerProps}>
-                    <UNSAFE_DatePicker.Input
-                        {...inputProps}
-                        label="Frist"
-                        error={
-                            (ugyldig &&
-                                "Dette er ikke en gyldig dato. Gyldig format er DD.MM.ÅÅÅÅ") ||
-                            (forTidlig && "Frist kan tidligst være idag")
-                        }
-                    />
-                </UNSAFE_DatePicker>
-
-                <Button
-                    className={styles.knappMedSentrertLoader}
-                    onClick={() => {
-                        setVenter(true);
-                        datoCallback(stoppSpinner, frist);
-                    }}
-                    disabled={ugyldig || forTidlig || laster}
-                >
-                    {bekreftelsestekst}
-                    {laster && <Loader size={"xsmall"} />}
-                </Button>
-            </div>
-        </div>
     );
 };
 
