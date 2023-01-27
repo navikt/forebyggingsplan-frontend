@@ -90,11 +90,11 @@ const EndreFristModal = ({
     return (
         <Modal
             open={open}
-            aria-label="Modal demo"
+            aria-label="Endre frist"
             onClose={() => setOpen(false)}
             aria-labelledby="modal-heading"
         >
-            <Modal.Content>
+            <Modal.Content className={styles.endreFristModal}>
                 <Heading spacing level="1" size="large" id="modal-heading">
                     Endre frist
                 </Heading>
@@ -104,6 +104,7 @@ const EndreFristModal = ({
                 <DatoVelger
                     gammelDato={gammelDato}
                     erSynlig={true}
+                    bekreftelsestekst={"Lagre"}
                     datoCallback={endreFristHandler}
                 />
             </Modal.Content>
@@ -114,6 +115,7 @@ const EndreFristModal = ({
 interface DatoVelgerProps {
     erSynlig: boolean;
     gammelDato?: Date | undefined;
+    bekreftelsestekst: string;
     datoCallback: (frist?: Date) => void;
     serverFeil?: string;
 }
@@ -121,6 +123,7 @@ interface DatoVelgerProps {
 const DatoVelger = ({
     erSynlig,
     gammelDato,
+    bekreftelsestekst,
     datoCallback,
     serverFeil,
 }: DatoVelgerProps) => {
@@ -175,7 +178,7 @@ const DatoVelger = ({
                     }}
                     disabled={ugyldig || forTidlig || laster}
                 >
-                    Dette vil vi gjøre
+                    {bekreftelsestekst}
                     {laster && <Loader size={"xsmall"} />}
                 </Button>
             </div>
@@ -254,10 +257,10 @@ export function Aktivitetsmal({
                     aktivitet={aktivitet}
                     endreFristHandler={endreFristHandler}
                 />
-
                 <DatoVelger
                     erSynlig={aktivitet.status === "IKKE_VALGT"}
                     datoCallback={velgAktivitet}
+                    bekreftelsestekst={"Dette vil vi gjøre"}
                     serverFeil={serverFeil}
                 />
                 <DetteHarViGjort
