@@ -24,11 +24,17 @@ export const DetteHarViGjort = ({
 
     if (!orgnr || error) return null; // Ingen grunn til å vise knapper dersom vi ikke vet orgnr
 
+    const knappStyleHvisIkkeValgtAktivitet = ["IKKE_VALGT"].includes(
+        aktivitet.status
+    )
+        ? styles.detteHarViGjortKnapp
+        : undefined;
+
     return (
         <>
             {["IKKE_VALGT", "VALGT"].includes(aktivitet.status) && (
                 <Button
-                    className={`${styles.detteHarViGjortKnapp} ${styles.knappMedSentrertLoader}`}
+                    className={`${styles.knappMedSentrertLoader} ${knappStyleHvisIkkeValgtAktivitet}`}
                     variant={
                         aktivitet.status == "VALGT" ? "primary" : "secondary"
                     }

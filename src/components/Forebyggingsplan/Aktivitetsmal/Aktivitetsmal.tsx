@@ -41,7 +41,7 @@ const EndreFrist = ({ aktivitet, endreFristHandler }: EndreFristProps) => {
         return null;
 
     return (
-        <div>
+        <div className={styles.endreFristContainer}>
             {frist && (
                 <Tag variant={"neutral"}>
                     Aktiviteten har frist{" "}
@@ -53,7 +53,7 @@ const EndreFrist = ({ aktivitet, endreFristHandler }: EndreFristProps) => {
             )}
             <Button
                 variant="tertiary"
-                className={`${styles.knappMedSentrertLoader} ${styles.endreFristKnapp}`}
+                className={styles.knappMedSentrertLoader}
                 onClick={() => setModalOpen(true)}
             >
                 Endre frist
