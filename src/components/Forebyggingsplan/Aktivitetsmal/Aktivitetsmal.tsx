@@ -85,12 +85,13 @@ const EndreFristModal = ({
 
     return (
         <Modal
+            className={styles.endreFristModal}
             open={open}
             aria-label="Endre frist"
             onClose={() => setModalOpen(false)}
             aria-labelledby="modal-heading"
         >
-            <Modal.Content className={styles.endreFristModal}>
+            <Modal.Content>
                 <Heading spacing level="1" size="large" id="modal-heading">
                     Endre frist
                 </Heading>
