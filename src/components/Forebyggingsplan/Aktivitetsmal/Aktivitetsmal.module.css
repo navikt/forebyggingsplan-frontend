@@ -15,7 +15,7 @@
 }
 
 .endreFristModal {
-    min-height: 40rem;
+    overflow: visible;
 }
 
 .knappeContainer {
