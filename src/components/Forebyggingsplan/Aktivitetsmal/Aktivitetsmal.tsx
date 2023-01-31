@@ -30,7 +30,7 @@ const hovedinnhold: Partial<PortableTextComponents> = {
 
 interface EndreFristProps {
     aktivitet: Aktivitet;
-    endreFristHandler: (stoppSpinner?: () => void, frist?: Date) => void;
+    endreFristHandler: (frist?: Date) => Promise<void> | undefined;
 }
 
 const EndreFrist = ({ aktivitet, endreFristHandler }: EndreFristProps) => {
@@ -72,7 +72,7 @@ interface EndreFristModalProps {
     aktivitet: Aktivitet;
     open: boolean;
     setModalOpen: (open: boolean) => void;
-    endreFristHandler: () => void;
+    endreFristHandler: (frist?: Date) => Promise<void> | undefined;
 }
 
 const EndreFristModal = ({
@@ -102,8 +102,8 @@ const EndreFristModal = ({
                     gammelDato={gammelDato}
                     erSynlig={true}
                     bekreftelsestekst={"Lagre"}
-                    datoCallback={endreFristHandler}
                     setModalOpen={setModalOpen}
+                    datoCallback={endreFristHandler}
                 />
             </Modal.Content>
         </Modal>
@@ -112,18 +112,18 @@ const EndreFristModal = ({
 
 interface AktivitetsmalProps {
     aktivitet: Aktivitet;
-    velgAktivitet: (stoppSpinner?: () => void, frist?: Date) => void;
-    endreFristHandler: (stoppSpinner?: () => void, frist?: Date) => void;
+    velgAktivitet: (frist?: Date) => Promise<void> | undefined;
     fullførAktivitet: () => void;
     serverFeil: string;
+    endreFristHandler: (frist?: Date) => Promise<void> | undefined;
 }
 
 export function Aktivitetsmal({
     aktivitet,
     velgAktivitet,
-    endreFristHandler,
     fullførAktivitet,
     serverFeil,
+    endreFristHandler,
 }: AktivitetsmalProps) {
     return (
         <div className={styles.container}>
@@ -142,9 +142,9 @@ export function Aktivitetsmal({
                 />
                 <DatoVelger
                     erSynlig={aktivitet.status === "IKKE_VALGT"}
-                    datoCallback={velgAktivitet}
                     bekreftelsestekst={"Dette vil vi gjøre"}
                     serverFeil={serverFeil}
+                    datoCallback={velgAktivitet}
                 />
                 <DetteHarViGjort
                     aktivitet={aktivitet}

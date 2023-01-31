@@ -59,6 +59,7 @@ export const Aktivitetsrad = ({
         useState<boolean>(åpen);
     const [serverFeil, setServerfeil] = useState<string>("");
     const { orgnr } = useHentOrgnummer();
+
     useEffect(() => {
         if (!åpen) {
             pauseAlleVideoer(aktivitet.aktivitetsmalId);
@@ -68,22 +69,24 @@ export const Aktivitetsrad = ({
             setVarForrigeStateÅpen(false);
         }
     }, [åpen, aktivitet.aktivitetsmalId, onClose, varForrigeStateÅpen]);
+
     useEffect(() => {
         if (åpen) {
             loggÅpneAktivitet(aktivitet);
             setVarForrigeStateÅpen(true);
         }
     }, [åpen, aktivitet]);
-    const velgAktivitetHandler = (stoppSpinner?: () => void, frist?: Date) => {
+
+    const velgAktivitetHandler = (frist?: Date): Promise<void> | undefined => {
         setServerfeil("");
         loggVelgAktivitet(aktivitet);
-        velgAktivitet({
+
+        return velgAktivitet({
             aktivitetsmalId: aktivitet.aktivitetsmalId,
             frist,
             orgnr: orgnr ?? undefined,
         })
             ?.then(oppdaterValgteAktiviteter)
-            .then(stoppSpinner)
             .catch((e: FetchingError) => {
                 if (e.status == 503) {
                     router.push("/500").then();
@@ -91,19 +94,20 @@ export const Aktivitetsrad = ({
                 setServerfeil(e.message);
             });
     };
-    const endreFristHandler = (stoppSpinner?: () => void, frist?: Date) => {
+
+    const endreFristHandler = (frist?: Date): Promise<void> | undefined => {
         setServerfeil("");
         if (!aktivitet.aktivitetsId) return;
 
         loggEndreFrist(aktivitet);
-        endreFrist({
+
+        return endreFrist({
             aktivitetsId: aktivitet.aktivitetsId,
             aktivitetsmalId: aktivitet.aktivitetsmalId,
             frist,
             orgnr: orgnr ?? undefined,
         })
             ?.then(oppdaterValgteAktiviteter)
-            .then(stoppSpinner)
             .catch((e: FetchingError) => {
                 if (e.status == 503) {
                     router.push("/500").then();
@@ -152,9 +156,9 @@ export const Aktivitetsrad = ({
                 <Aktivitetsmal
                     aktivitet={aktivitet}
                     velgAktivitet={velgAktivitetHandler}
-                    endreFristHandler={endreFristHandler}
                     fullførAktivitet={fullførAktivitetHandler}
                     serverFeil={serverFeil}
+                    endreFristHandler={endreFristHandler}
                 />
             </Accordion.Content>
         </Accordion.Item>

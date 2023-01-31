@@ -13,18 +13,18 @@ interface DatoVelgerProps {
     erSynlig: boolean;
     gammelDato?: Date | undefined;
     bekreftelsestekst: string;
-    datoCallback: (stoppSpinner?: () => void, frist?: Date) => void;
     serverFeil?: string;
     setModalOpen?: (open: boolean) => void;
+    datoCallback: (frist?: Date) => Promise<void> | undefined;
 }
 
 export const DatoVelger = ({
     erSynlig,
     gammelDato,
     bekreftelsestekst,
-    datoCallback,
     serverFeil,
     setModalOpen,
+    datoCallback,
 }: DatoVelgerProps) => {
     const [forTidlig, setForTidlig] = useState<boolean>();
     const [ugyldig, setUgyldig] = useState<boolean>();
@@ -54,11 +54,6 @@ export const DatoVelger = ({
 
     if (!orgnr || error || !erSynlig) return null; // Ingen grunn til å vise knapper dersom vi ikke vet orgnr
 
-    const datoFerdigOppdatert = () => {
-        setVenter(false);
-        if (setModalOpen) setModalOpen(false);
-    };
-
     return (
         <div className={styles.datoVelgerContainer}>
             <UNSAFE_DatePicker {...datepickerProps}>
@@ -77,7 +72,10 @@ export const DatoVelger = ({
                 className={styles.knappMedSentrertLoader}
                 onClick={() => {
                     setVenter(true);
-                    datoCallback(datoFerdigOppdatert, frist);
+                    datoCallback(frist)?.then(() => {
+                        setVenter(false);
+                        if (setModalOpen) setModalOpen(false);
+                    });
                 }}
                 disabled={ugyldig || forTidlig || laster}
             >
