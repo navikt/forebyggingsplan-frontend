@@ -46,7 +46,7 @@ export default function Banner({ organisasjoner }: Props) {
             orgnrSearchParam={useHentOrgnummer().hook}
             sidetittel={
                 <Heading size="xlarge" level="1">
-                    Slik forebygger du sykefravær
+                    Slik forebygger dere sykefravær
                 </Heading>
             }
             undertittel="Inkluderende arbeidsliv"
