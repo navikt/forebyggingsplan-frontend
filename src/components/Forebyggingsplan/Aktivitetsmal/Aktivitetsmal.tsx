@@ -34,7 +34,7 @@ interface EndreFristProps {
 }
 
 const EndreFrist = ({ aktivitet, endreFristHandler }: EndreFristProps) => {
-    const [open, setOpen] = useState(false);
+    const [modalOpen, setModalOpen] = useState(false);
     const frist = aktivitet.frist;
 
     if (aktivitet.status === "IKKE_VALGT" || aktivitet.status === "FULLFØRT")
@@ -54,14 +54,14 @@ const EndreFrist = ({ aktivitet, endreFristHandler }: EndreFristProps) => {
             <Button
                 variant="tertiary"
                 className={`${styles.knappMedSentrertLoader} ${styles.endreFristKnapp}`}
-                onClick={() => setOpen(true)}
+                onClick={() => setModalOpen(true)}
             >
                 Endre frist
             </Button>
             <EndreFristModal
                 aktivitet={aktivitet}
-                open={open}
-                setOpen={setOpen}
+                open={modalOpen}
+                setModalOpen={setModalOpen}
                 endreFristHandler={endreFristHandler}
             />
         </div>
@@ -71,14 +71,14 @@ const EndreFrist = ({ aktivitet, endreFristHandler }: EndreFristProps) => {
 interface EndreFristModalProps {
     aktivitet: Aktivitet;
     open: boolean;
-    setOpen: (open: boolean) => void;
+    setModalOpen: (open: boolean) => void;
     endreFristHandler: () => void;
 }
 
 const EndreFristModal = ({
     aktivitet,
     open,
-    setOpen,
+    setModalOpen,
     endreFristHandler,
 }: EndreFristModalProps) => {
     const gammelDato = aktivitet.frist ? new Date(aktivitet.frist) : undefined;
@@ -87,7 +87,7 @@ const EndreFristModal = ({
         <Modal
             open={open}
             aria-label="Endre frist"
-            onClose={() => setOpen(false)}
+            onClose={() => setModalOpen(false)}
             aria-labelledby="modal-heading"
         >
             <Modal.Content className={styles.endreFristModal}>
@@ -102,6 +102,7 @@ const EndreFristModal = ({
                     erSynlig={true}
                     bekreftelsestekst={"Lagre"}
                     datoCallback={endreFristHandler}
+                    setModalOpen={setModalOpen}
                 />
             </Modal.Content>
         </Modal>
