@@ -6,7 +6,6 @@ import {
     Button,
     Heading,
     Ingress,
-    Loader,
     Modal,
     Tag,
 } from "@navikt/ds-react";
@@ -15,12 +14,10 @@ import { Seksjon } from "../../Seksjon/Seksjon";
 import { Oppgave } from "../../Oppgave/Oppgave";
 import { block } from "../../PortableText/block/Block";
 import { marks } from "../../PortableText/marks/Marks";
-import { EksporterTilKalender } from "../EksporterTilKalender";
-import { useHentOrgnummer } from "../../Layout/Banner/Banner";
 import { Aktivitet } from "../../../types/Aktivitet";
-import { useHentValgteAktiviteter } from "../../../lib/forebyggingsplan-klient";
 import { norskDatoformat } from "../../../lib/dato";
 import { DatoVelger } from "./DatoVelger/DatoVelger";
+import { DetteHarViGjort } from "./DetteHarViGjort/DetteHarViGjort";
 
 const hovedinnhold: Partial<PortableTextComponents> = {
     types: {
@@ -108,47 +105,6 @@ const EndreFristModal = ({
                 />
             </Modal.Content>
         </Modal>
-    );
-};
-
-interface DetteHarViGjortProps {
-    aktivitet: Aktivitet;
-    fullførAktivitet: () => void;
-    serverFeil?: string;
-}
-
-const DetteHarViGjort = ({
-    aktivitet,
-    fullførAktivitet,
-    serverFeil,
-}: DetteHarViGjortProps) => {
-    const [venter, setVenter] = useState<boolean>();
-    const laster = venter && !serverFeil;
-    const { orgnr } = useHentOrgnummer();
-    const { error } = useHentValgteAktiviteter(orgnr);
-
-    if (!orgnr || error) return null; // Ingen grunn til å vise knapper dersom vi ikke vet orgnr
-
-    return (
-        <>
-            {["IKKE_VALGT", "VALGT"].includes(aktivitet.status) && (
-                <Button
-                    className={`${styles.detteHarViGjortKnapp} ${styles.knappMedSentrertLoader}`}
-                    variant={
-                        aktivitet.status == "VALGT" ? "primary" : "secondary"
-                    }
-                    disabled={laster}
-                    onClick={() => {
-                        setVenter(true);
-                        fullførAktivitet();
-                    }}
-                >
-                    Dette har vi gjort
-                    {laster && <Loader size="xsmall" />}
-                </Button>
-            )}
-            <EksporterTilKalender aktivitet={aktivitet} />
-        </>
     );
 };
 
