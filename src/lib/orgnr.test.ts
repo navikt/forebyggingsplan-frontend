@@ -1,4 +1,4 @@
-import { erGyldigOrgnr } from "./utils";
+import { erGyldigOrgnr } from "./orgnr";
 
 describe("Valider orgnr", () => {
     it("Sjekk at tom string ikke er gyldig orgnr", async () => {
@@ -9,6 +9,7 @@ describe("Valider orgnr", () => {
         expect(erGyldigOrgnr("Hei")).toBe(false);
         expect(erGyldigOrgnr("Hei9876")).toBe(false);
         expect(erGyldigOrgnr("1234567890")).toBe(false);
+        expect(erGyldigOrgnr("123456789\\/..")).toBe(false);
     });
 
     it("9 siffer orgnr er gyldig", async () => {
