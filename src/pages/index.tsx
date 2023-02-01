@@ -17,7 +17,7 @@ import { useHentOrgnummer } from "../components/Layout/Banner/Banner";
 import { useHentValgteAktiviteter } from "../lib/forebyggingsplan-klient";
 import { logger } from "../lib/logger";
 import { server } from "../mocks/msw";
-import { isMock } from "../lib/miljø";
+import { isMock, isProd } from "../lib/miljø";
 
 interface Props {
     kategorier: Kategori[];
@@ -107,6 +107,10 @@ function Forside({ kategorier }: Omit<Props, "organisasjoner">) {
     const { error: statistikkError } = useHentSykefraværsstatistikk(orgnr);
     const { error: valgteAktiviteterError } = useHentValgteAktiviteter(orgnr);
 
+    const serviceCode = "3403";
+    const serviceEdition = isProd() ? "2" : "1";
+    const altinnHost = isProd() ? "altinn.no" : "tt02.altinn.no";
+
     return (
         <div className={styles.container}>
             <main className={styles.main}>
@@ -115,9 +119,7 @@ function Forside({ kategorier }: Omit<Props, "organisasjoner">) {
                         Du har ikke ikke tilgang til å se virksomhetens
                         sykefraværsstatistikk.{" "}
                         <Link
-                            href={
-                                "https://arbeidsgiver.nav.no/min-side-arbeidsgiver/informasjon-om-tilgangsstyring"
-                            }
+                            href={`https://${altinnHost}/ui/DelegationRequest?offeredBy=${orgnr}&resources=${serviceCode}_${serviceEdition}`}
                         >
                             Søk om tilgang i Altinn
                         </Link>
