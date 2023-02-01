@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { hentTokenXToken } from "../../auth/hentTokenXToken";
+import { erGyldigOrgnr } from "../../lib/utils";
 
 export default async function handler(
     req: NextApiRequest,
@@ -25,17 +26,19 @@ export default async function handler(
         return res.status(401).end();
     }
 
-    const respons = await fetch(
-        `${baseUrl}/valgteaktiviteter/${req.body.orgnr}`,
-        {
-            method: "POST",
-            body: JSON.stringify(requestBody),
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`,
-            },
-        }
-    );
+    const orgnr: string = req.body.orgnr;
+    if (!erGyldigOrgnr(orgnr)) {
+        return res.status(400).end();
+    }
+
+    const respons = await fetch(`${baseUrl}/valgteaktiviteter/${orgnr}`, {
+        method: "POST",
+        body: JSON.stringify(requestBody),
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        },
+    });
     const { status, responseBody } = {
         status: respons.status,
         responseBody: respons.ok ? await respons.json() : await respons.text(),

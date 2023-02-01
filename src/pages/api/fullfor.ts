@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { hentTokenXToken } from "../../auth/hentTokenXToken";
+import { erGyldigOrgnr } from "../../lib/utils";
 
 export default async function handler(
     req: NextApiRequest,
@@ -25,7 +26,12 @@ export default async function handler(
         return res.status(401).end();
     }
 
-    const respons = await fetch(`${baseUrl}/fullfor/${req.body.orgnr}`, {
+    const orgnr: string = req.body.orgnr;
+    if (!erGyldigOrgnr(orgnr)) {
+        return res.status(400).end();
+    }
+
+    const respons = await fetch(`${baseUrl}/fullfor/${orgnr}`, {
         method: "POST",
         body: JSON.stringify(requestBody),
         headers: {
