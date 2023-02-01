@@ -1,0 +1,10 @@
+navn: "forebyggingsplan-frontend-mock"
+ingresses:
+- "https://arbeidsgiver.ekstern.dev.nav.no/forebyggingsplan"
+forebyggingsplanClientId: "dev-gcp:pia:forebyggingsplan-mock"
+sykefravarstatistikkApiClientId: "dev-gcp-fss:arbeidsgiver:sykefravarsstatistikk-api"
+sykefravarstatistikkApiBaseurl: "http://localhost:9091/sykefravarsstatistikk-api"
+forebyggingsplanBaseurl: "http://localhost:8081"
+dekoratorEnv: "dev"
+minReplicas: 1
+maxReplicas: 2

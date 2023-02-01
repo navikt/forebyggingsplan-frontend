@@ -1,3 +1,4 @@
+navn: "forebyggingsplan-frontend"
 ingresses:
 - "https://forebyggingsplan-frontend.dev.nav.no/forebyggingsplan"
 forebyggingsplanClientId: "dev-gcp:pia:forebyggingsplan"

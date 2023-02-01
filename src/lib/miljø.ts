@@ -1,4 +1,4 @@
-type Miljø = "labs-gcp" | "prod-gcp" | "dev-gcp" | "localhost";
+type AppName = "forebyggingsplan-frontend-mock" | "forebyggingsplan-frontend";
 
-export const isLabs = () =>
-    (process.env.NAIS_CLUSTER_NAME as Miljø) === "labs-gcp";
+export const isMock = () =>
+    (process.env.NAIS_APP_NAME as AppName) === "forebyggingsplan-frontend-mock";

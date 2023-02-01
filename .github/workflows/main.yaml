@@ -55,7 +55,7 @@ jobs:
   deploy:
     strategy:
       matrix:
-        cluster: [ dev, prod, labs ]
+        cluster: [ dev, prod ]
     name: Deploy app to ${{ matrix.cluster }}
     needs: build
     if: github.ref == 'refs/heads/main'
@@ -70,20 +70,19 @@ jobs:
           RESOURCE: .nais/nais.yaml
           VARS: .nais/${{ matrix.cluster }}.yaml
 
-  deploy-branch-to-dev:
+  deploy-main-to-dev-ekstern:
     strategy:
       matrix:
         cluster: [ dev ]
-    name: Deploy app to ${{ matrix.cluster }}
+    name: Deploy app to dev-ekstern
     needs: build
-    if: github.ref == 'refs/heads/innføre-content-security-policy'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Deploy to ${{ matrix.cluster }}
+      - name: Deploy to dev-ekstern
         uses: nais/deploy/actions/deploy@v1
         env:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: ${{ matrix.cluster }}-gcp
           RESOURCE: .nais/nais.yaml
-          VARS: .nais/${{ matrix.cluster }}.yaml
+          VARS: .nais/dev-ekstern.yaml

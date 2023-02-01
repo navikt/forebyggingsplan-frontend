@@ -17,7 +17,7 @@ import { useHentOrgnummer } from "../components/Layout/Banner/Banner";
 import { useHentValgteAktiviteter } from "../lib/forebyggingsplan-klient";
 import { logger } from "../lib/logger";
 import { server } from "../mocks/msw";
-import { isLabs } from "../lib/miljø";
+import { isMock } from "../lib/miljø";
 
 interface Props {
     kategorier: Kategori[];
@@ -57,14 +57,14 @@ const aktivitetMapper = ({
 export const getServerSideProps: GetServerSideProps<Props> = async (
     context
 ) => {
-    const kjørerPåLabs = isLabs();
-    if (kjørerPåLabs) {
+    const kjørerSomMock = isMock();
+    if (kjørerSomMock) {
         console.log("------------- MOCK server starter -------------");
         server.listen();
     }
 
     const token = await hentVerifisertToken(context.req);
-    if (!token && !kjørerPåLabs) {
+    if (!token && !kjørerSomMock) {
         return {
             redirect: {
                 destination: "/oauth2/login",
@@ -74,7 +74,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
     }
 
     const [sanityData, organisasjoner] = await Promise.all([
-        (kjørerPåLabs ? sanityLabs : sanity)
+        (kjørerSomMock ? sanityLabs : sanity)
             .fetch(
                 `
             *[_type == "kategori"] | order(orderRank) {
