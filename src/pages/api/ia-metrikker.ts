@@ -32,17 +32,14 @@ export default async function handler(
         return res.status(401).end();
     }
 
-    const data = await fetch(
-        `${process.env.IA_METRIKKER_API_BASEURL}/ia-tjenester-metrikker`,
-        {
-            method: "POST",
-            body: JSON.stringify(requestBody),
-            headers: {
-                "Content-Type": "application/json",
-                authorization: `Bearer ${token}`,
-            },
-        }
-    )
+    const data = await fetch(`${process.env.IA_METRIKKER_API_BASEURL}`, {
+        method: "POST",
+        body: JSON.stringify(requestBody),
+        headers: {
+            "Content-Type": "application/json",
+            authorization: `Bearer ${token}`,
+        },
+    })
         .then((res) => res.json())
         .catch(logger.warn);
 
