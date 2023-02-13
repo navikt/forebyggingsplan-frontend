@@ -41,6 +41,10 @@ spec:
       value: {{ sykefravarstatistikkApiClientId }}
     - name: SYKEFRAVARSSTATISTIKK_API_BASEURL
       value: {{ sykefravarstatistikkApiBaseurl }}
+    - name: IA_METRIKKER_API_CLIENT_ID
+      value: {{ iaMetrikkerApiClientId }}
+    - name: IA_METRIKKER_API_BASEURL
+      value: {{ iaMetrikkerApiBaseurl }}
     - name: DECORATOR_ENV
       value: {{ dekoratorEnv }}
   ingresses:

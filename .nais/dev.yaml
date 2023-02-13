@@ -4,6 +4,8 @@ ingresses:
 forebyggingsplanClientId: "dev-gcp:pia:forebyggingsplan"
 sykefravarstatistikkApiClientId: "dev-fss:arbeidsgiver:sykefravarsstatistikk-api"
 sykefravarstatistikkApiBaseurl: "https://sykefravarsstatistikk-api.dev-fss-pub.nais.io/sykefravarsstatistikk-api"
+iaMetrikkerApiClientId: "dev-gcp:arbeidsgiver:ia-tjenester-metrikker"
+iaMetrikkerApiBaseurl: "https://ia-tjenester-metrikker.dev.nav.no/ia-tjenester-metrikker"
 forebyggingsplanBaseurl: "http://forebyggingsplan"
 dekoratorEnv: "dev"
 minReplicas: 2

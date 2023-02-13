@@ -18,6 +18,7 @@ import {
 import { useEffect, useState } from "react";
 import { AktivitetHeader } from "./AktivitetHeader";
 import { useRouter } from "next/router";
+import { loggIaMetrikkInformasjonstjeneste } from "../../lib/ia-metrikker-klient";
 
 const Aktivitetsmal = dynamic(() =>
     import("./Aktivitetsmal/Aktivitetsmal").then((mod) => mod.Aktivitetsmal)
@@ -73,9 +74,10 @@ export const Aktivitetsrad = ({
     useEffect(() => {
         if (åpen) {
             loggÅpneAktivitet(aktivitet);
+            loggIaMetrikkInformasjonstjeneste(orgnr);
             setVarForrigeStateÅpen(true);
         }
-    }, [åpen, aktivitet]);
+    }, [åpen, aktivitet, orgnr]);
 
     const velgAktivitetHandler = (frist?: Date): Promise<void> | undefined => {
         setServerfeil("");

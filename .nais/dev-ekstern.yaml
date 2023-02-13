@@ -4,6 +4,8 @@ ingresses:
 forebyggingsplanClientId: "dev-gcp:pia:forebyggingsplan-mock"
 sykefravarstatistikkApiClientId: "dev-gcp-fss:arbeidsgiver:sykefravarsstatistikk-api"
 sykefravarstatistikkApiBaseurl: "http://localhost:9091/sykefravarsstatistikk-api"
+iaMetrikkerApiClientId: "dev-gcp:arbeidsgiver:ia-tjenester-metrikker"
+iaMetrikkerApiBaseurl: "http://localhost:9091/ia-tjenester-metrikker"
 forebyggingsplanBaseurl: "http://localhost:8081"
 dekoratorEnv: "dev"
 minReplicas: 1

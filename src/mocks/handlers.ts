@@ -7,6 +7,7 @@ import {
 import { HENT_SYKEFRAVERSSTATISTIKK_PATH } from "../lib/sykefraværsstatistikk-klient";
 import { sykefraværsstatistikkMock } from "./sykefraværsstatistikkMock";
 import { valgtAktivitetMocksHandlers } from "./valgtaktivitetMocks";
+import { IA_METRIKK_PATH } from "../lib/ia-metrikker-klient";
 
 export const handlers = [
     rest.get(
@@ -52,6 +53,9 @@ export const handlers = [
     }),
     rest.get(HENT_SYKEFRAVERSSTATISTIKK_PATH, async (req, res, ctx) => {
         return res(ctx.json(sykefraværsstatistikkMock));
+    }),
+    rest.post(IA_METRIKK_PATH, async (req, res, ctx) => {
+        return res(ctx.json({ status: "created" }));
     }),
     ...valgtAktivitetMocksHandlers,
 ];

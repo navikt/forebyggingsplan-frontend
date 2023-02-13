@@ -113,7 +113,7 @@ export function fullførAktivitet(fullførAktivitetDto: FullførAktivitetDTO) {
     });
 }
 
-async function logAndThrowException(
+export async function logAndThrowException(
     res: Response,
     url: string,
     method: string
