@@ -1,5 +1,10 @@
-export const isoDato = (dato?: Date) =>
-    dato && dato.toISOString().substring(0, 10);
+export const isoDato = (dato?: Date) => {
+    if (dato) {
+        dato.setHours(12);
+        return dato.toISOString().substring(0, 10);
+    }
+    return undefined;
+};
 
 export const norskDatoformat = new Intl.DateTimeFormat("nb-NO", {
     day: "2-digit",
