@@ -119,7 +119,7 @@ export async function logAndThrowException(
     method: string
 ) {
     const info = await res.text();
-    logger.error(
+    logger.warn(
         `${method} ${url} feilet med kode: ${res.status} og response: ${info}`
     );
     if (res.status >= 500) {
