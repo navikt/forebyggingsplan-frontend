@@ -1,7 +1,7 @@
 {
     "priority": 3,
     "request": {
-        "urlPathPattern": "/ia-tjenester-metrikker",
+        "urlPathPattern": "/ia-tjenester-metrikker/innlogget/mottatt-iatjeneste",
         "method": "POST"
     },
     "response": {
