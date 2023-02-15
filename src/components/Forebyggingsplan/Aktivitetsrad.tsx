@@ -14,11 +14,14 @@ import {
     loggFullførAktivitet,
     loggVelgAktivitet,
     loggÅpneAktivitet,
-} from "../../lib/amplitude";
+} from "../../lib/amplitude-klient";
 import { useEffect, useState } from "react";
 import { AktivitetHeader } from "./AktivitetHeader";
 import { useRouter } from "next/router";
-import { loggIaMetrikkInformasjonstjeneste } from "../../lib/ia-metrikker-klient";
+import {
+    lagreIaMetrikkInformasjonstjeneste,
+    lagreIaMetrikkInteraksjonstjeneste,
+} from "../../lib/ia-metrikker-klient";
 
 const Aktivitetsmal = dynamic(() =>
     import("./Aktivitetsmal/Aktivitetsmal").then((mod) => mod.Aktivitetsmal)
@@ -73,11 +76,13 @@ export const Aktivitetsrad = ({
 
     useEffect(() => {
         if (åpen) {
-            loggÅpneAktivitet(aktivitet);
-            loggIaMetrikkInformasjonstjeneste(orgnr);
+            if (!varForrigeStateÅpen) {
+                loggÅpneAktivitet(aktivitet);
+                lagreIaMetrikkInformasjonstjeneste(orgnr);
+            }
             setVarForrigeStateÅpen(true);
         }
-    }, [åpen, aktivitet, orgnr]);
+    }, [åpen, varForrigeStateÅpen, aktivitet, orgnr]);
 
     const velgAktivitetHandler = (frist?: Date): Promise<void> | undefined => {
         setServerfeil("");
@@ -88,7 +93,10 @@ export const Aktivitetsrad = ({
             frist,
             orgnr: orgnr ?? undefined,
         })
-            ?.then(oppdaterValgteAktiviteter)
+            ?.then(() => {
+                oppdaterValgteAktiviteter();
+                lagreIaMetrikkInteraksjonstjeneste(orgnr);
+            })
             .catch((e: FetchingError) => {
                 if (e.status == 503) {
                     router.push("/500").then();
@@ -109,7 +117,10 @@ export const Aktivitetsrad = ({
             frist,
             orgnr: orgnr ?? undefined,
         })
-            ?.then(oppdaterValgteAktiviteter)
+            ?.then(() => {
+                oppdaterValgteAktiviteter();
+                lagreIaMetrikkInteraksjonstjeneste(orgnr);
+            })
             .catch((e: FetchingError) => {
                 if (e.status == 503) {
                     router.push("/500").then();
@@ -121,12 +132,16 @@ export const Aktivitetsrad = ({
     const fullførAktivitetHandler = () => {
         setServerfeil("");
         loggFullførAktivitet(aktivitet);
+
         fullførAktivitet({
             aktivitetsmalId: aktivitet.aktivitetsmalId,
             aktivitetsId: aktivitet.aktivitetsId,
             orgnr: aktivitet.orgnr ?? orgnr ?? undefined,
         })
-            ?.then(oppdaterValgteAktiviteter)
+            ?.then(() => {
+                oppdaterValgteAktiviteter();
+                lagreIaMetrikkInteraksjonstjeneste(orgnr);
+            })
             .catch((e: FetchingError) => {
                 if (e.status == 503) {
                     router.push("/500").then();

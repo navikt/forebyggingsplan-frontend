@@ -3,11 +3,15 @@ import { logAndThrowException } from "./forebyggingsplan-klient";
 export const IA_METRIKK_PATH = "/forebyggingsplan/api/ia-metrikker";
 type MetrikkType = "INFORMASJONSTJENESTE" | "INTERAKSJONSTJENESTE";
 
-export const loggIaMetrikkInformasjonstjeneste = (orgnr: string | null) => {
-    sendAktivitetsEvent(orgnr, "INFORMASJONSTJENESTE");
+export const lagreIaMetrikkInformasjonstjeneste = (orgnr: string | null) => {
+    sendIaMetrikkEvent(orgnr, "INFORMASJONSTJENESTE");
 };
 
-function sendAktivitetsEvent(orgnr: string | null, type: MetrikkType) {
+export const lagreIaMetrikkInteraksjonstjeneste = (orgnr: string | null) => {
+    sendIaMetrikkEvent(orgnr, "INTERAKSJONSTJENESTE");
+};
+
+const sendIaMetrikkEvent = (orgnr: string | null, type: MetrikkType) => {
     if (!orgnr) return;
 
     return fetch(IA_METRIKK_PATH, {
@@ -25,4 +29,4 @@ function sendAktivitetsEvent(orgnr: string | null, type: MetrikkType) {
         }
         return res.json();
     });
-}
+};
