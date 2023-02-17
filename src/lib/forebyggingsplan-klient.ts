@@ -59,7 +59,7 @@ export function velgAktivitet(valgtAktivitetDto: ValgtAktivitetDTO) {
     });
 }
 
-interface EndreFristDTO {
+export interface EndreFristDTO {
     aktivitetsId: number;
     aktivitetsmalId: string;
     frist?: Date;

@@ -3,6 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
+        "mock": "NAIS_APP_NAME=forebyggingsplan-frontend-mock next dev",
         "dev": "next dev",
         "build": "next build",
         "start": "next start",

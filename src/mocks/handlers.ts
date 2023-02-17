@@ -1,5 +1,6 @@
 import { rest } from "msw";
 import {
+    ENDRE_FRIST_PATH,
     FULLFØR_AKTIVITET_PATH,
     HENT_VALGTE_AKTIVITETER_PATH,
     VELG_AKTIVITET_PATH,
@@ -50,6 +51,9 @@ export const handlers = [
     }),
     rest.post(FULLFØR_AKTIVITET_PATH, async (req, res, ctx) => {
         return res(ctx.json(null)); // Lagre
+    }),
+    rest.post(ENDRE_FRIST_PATH, async (req, res, ctx) => {
+        return res(ctx.json(null));
     }),
     rest.get(HENT_SYKEFRAVERSSTATISTIKK_PATH, async (req, res, ctx) => {
         return res(ctx.json(sykefraværsstatistikkMock));
