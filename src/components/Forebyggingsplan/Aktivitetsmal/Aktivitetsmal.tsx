@@ -1,5 +1,5 @@
 import { PortableText, PortableTextComponents } from "@portabletext/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
     Alert,
     BodyShort,
@@ -82,6 +82,10 @@ const EndreFristModal = ({
     endreFristHandler,
 }: EndreFristModalProps) => {
     const gammelDato = aktivitet.frist ? new Date(aktivitet.frist) : undefined;
+
+    useEffect(() => {
+        Modal.setAppElement("body");
+    }, []);
 
     return (
         <Modal
