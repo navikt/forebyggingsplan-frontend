@@ -15,4 +15,20 @@ describe("Valider orgnr", () => {
     it("9 siffer orgnr er gyldig", async () => {
         expect(erGyldigOrgnr("123456789")).toBe(true);
     });
+
+    it("liste av ett gyldig orgnummer er gyldig", async () => {
+        expect(erGyldigOrgnr([123456789])).toBe(true);
+    });
+
+    it("liste av flere gyldige orgnummere er ugyldig", async () => {
+        expect(erGyldigOrgnr([123456789, 987654321])).toBe(false);
+    });
+
+    it("tom liste er ugyldig", async () => {
+        expect(erGyldigOrgnr([])).toBe(false);
+    });
+
+    it("undefined er ugyldig", async () => {
+        expect(erGyldigOrgnr([])).toBe(false);
+    });
 });

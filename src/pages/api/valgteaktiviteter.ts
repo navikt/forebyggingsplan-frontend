@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { hentTokenXToken } from "../../auth/hentTokenXToken";
+import { erGyldigOrgnr } from "../../lib/orgnr";
 
 export default async function handler(
     req: NextApiRequest,
@@ -7,6 +8,11 @@ export default async function handler(
 ) {
     if (!req.query.orgnr)
         return res.status(400).json({ error: "Mangler parameter 'orgnr'" });
+
+    const orgnr = req.query.orgnr;
+    if (!erGyldigOrgnr(orgnr)) {
+        return res.status(400).end();
+    }
 
     let token;
     try {
@@ -18,7 +24,7 @@ export default async function handler(
         return res.status(401).end();
     }
     const response = await fetch(
-        `${process.env.FOREBYGGINGSPLAN_API_BASEURL}/valgteaktiviteter/${req.query.orgnr}`,
+        `${process.env.FOREBYGGINGSPLAN_API_BASEURL}/valgteaktiviteter/${orgnr}`,
         {
             headers: {
                 authorization: `Bearer ${token}`,
