@@ -17,7 +17,7 @@ import { useHentOrgnummer } from "../components/Layout/Banner/Banner";
 import { useHentValgteAktiviteter } from "../lib/forebyggingsplan-klient";
 import { logger } from "../lib/logger";
 import { server } from "../mocks/msw";
-import { isMock, isProd } from "../lib/miljø";
+import { isMock, isDev } from "../lib/miljø";
 
 interface Props {
     kategorier: Kategori[];
@@ -108,8 +108,8 @@ function Forside({ kategorier }: Omit<Props, "organisasjoner">) {
     const { error: valgteAktiviteterError } = useHentValgteAktiviteter(orgnr);
 
     const serviceCode = "3403";
-    const serviceEdition = isProd() ? "2" : "1";
-    const altinnHost = isProd() ? "altinn.no" : "tt02.altinn.no";
+    const serviceEdition = isDev() ? "1" : "2";
+    const altinnHost = isDev() ? "tt02.altinn.no" : "altinn.no";
 
     return (
         <div className={styles.container}>
