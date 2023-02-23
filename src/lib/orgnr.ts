@@ -1,5 +1,4 @@
-export const erGyldigOrgnr = (orgnr: unknown | undefined): boolean => {
-    if (!orgnr) return false;
+export const erGyldigOrgnr = (orgnr: string): boolean => {
     const validerOrgnr = new RegExp("^[0-9]{9}$");
-    return validerOrgnr.test(orgnr.toString());
+    return validerOrgnr.test(orgnr);
 };

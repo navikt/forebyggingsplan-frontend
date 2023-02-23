@@ -11,10 +11,6 @@ export default async function handler(
         return res.status(405).json({ error: "Method Not Allowed" });
     if (!req.query.orgnr)
         return res.status(400).json({ error: "Mangler parameter 'orgnr'" });
-    const orgnr = req.query.orgnr;
-    if (!erGyldigOrgnr(orgnr)) {
-        return res.status(400).end();
-    }
 
     let token;
     try {
@@ -26,6 +22,10 @@ export default async function handler(
         return res.status(401).end();
     }
 
+    const orgnr = req.query.orgnr as string;
+    if (!erGyldigOrgnr(orgnr)) {
+        return res.status(400).end();
+    }
     const data = await fetch(
         `${process.env.SYKEFRAVARSSTATISTIKK_API_BASEURL}/${orgnr}/v1/sykefravarshistorikk/aggregert`,
         {

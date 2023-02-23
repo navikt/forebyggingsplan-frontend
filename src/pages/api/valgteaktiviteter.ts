@@ -9,11 +9,6 @@ export default async function handler(
     if (!req.query.orgnr)
         return res.status(400).json({ error: "Mangler parameter 'orgnr'" });
 
-    const orgnr = req.query.orgnr;
-    if (!erGyldigOrgnr(orgnr)) {
-        return res.status(400).end();
-    }
-
     let token;
     try {
         token = await hentTokenXToken(
@@ -22,6 +17,11 @@ export default async function handler(
         );
     } catch (e) {
         return res.status(401).end();
+    }
+
+    const orgnr = req.query.orgnr as string;
+    if (!erGyldigOrgnr(orgnr)) {
+        return res.status(400).end();
     }
     const response = await fetch(
         `${process.env.FOREBYGGINGSPLAN_API_BASEURL}/valgteaktiviteter/${orgnr}`,
