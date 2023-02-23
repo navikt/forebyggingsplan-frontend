@@ -1,7 +1,6 @@
 import { Aktivitet, AktivitetStatus } from "../../types/Aktivitet";
 import { Accordion, Heading } from "@navikt/ds-react";
 import styles from "./Aktivitetsrad.module.css";
-import dynamic from "next/dynamic";
 import {
     endreFrist,
     FetchingError,
@@ -22,10 +21,7 @@ import {
     lagreIaMetrikkInformasjonstjeneste,
     lagreIaMetrikkInteraksjonstjeneste,
 } from "../../lib/ia-metrikker-klient";
-
-const Aktivitetsmal = dynamic(() =>
-    import("./Aktivitetsmal/Aktivitetsmal").then((mod) => mod.Aktivitetsmal)
-);
+import { Aktivitetsmal } from "./Aktivitetsmal/Aktivitetsmal";
 
 interface Props {
     aktivitet: Aktivitet;
