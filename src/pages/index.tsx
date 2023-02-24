@@ -22,6 +22,7 @@ import { isMock, isDev } from "../lib/miljø";
 interface Props {
     kategorier: Kategori[];
     organisasjoner: Organisasjon[];
+    altinnHost: string;
 }
 
 export interface KategoriDokument extends SanityDocument {
@@ -90,6 +91,9 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
             }),
         hentOrganisasjoner(context.req),
     ]);
+
+    const altinnHost = isDev() ? "tt02.altinn.no" : "altinn.no";
+
     return {
         props: {
             kategorier: sanityData.map(({ tittel, innhold, aktiviteter }) => ({
@@ -98,18 +102,18 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
                 aktiviteter: aktiviteter.map(aktivitetMapper),
             })),
             organisasjoner,
+            altinnHost,
         },
     };
 };
 
-function Forside({ kategorier }: Omit<Props, "organisasjoner">) {
+function Forside({ kategorier, altinnHost }: Omit<Props, "organisasjoner">) {
     const { orgnr } = useHentOrgnummer();
     const { error: statistikkError } = useHentSykefraværsstatistikk(orgnr);
     const { error: valgteAktiviteterError } = useHentValgteAktiviteter(orgnr);
 
     const serviceCode = "3403";
     const serviceEdition = isDev() ? "1" : "2";
-    const altinnHost = isDev() ? "tt02.altinn.no" : "altinn.no";
 
     return (
         <div className={styles.container}>
@@ -148,6 +152,7 @@ function Forside({ kategorier }: Omit<Props, "organisasjoner">) {
 const Home = ({
     kategorier,
     organisasjoner,
+    altinnHost,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
     return (
         <>
@@ -160,7 +165,7 @@ const Home = ({
                 <link rel="icon" href="https://nav.no/favicon.ico" />
             </Head>
             <Layout organisasjoner={organisasjoner}>
-                <Forside kategorier={kategorier} />
+                <Forside kategorier={kategorier} altinnHost={altinnHost} />
             </Layout>
         </>
     );
