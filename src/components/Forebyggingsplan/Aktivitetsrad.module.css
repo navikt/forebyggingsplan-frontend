@@ -35,3 +35,12 @@
     font-size: var(--a-font-size-heading-medium);
     line-height: var(--a-font-line-height-heading-medium);
 }
+
+/* Fordi vi har ein heading mellom Accordion.Item og Accordion.Header må vi jukse litt
+/*   for å få chevron til å snu seg når vi opnar kort.
+/* Selectoren som snur chevron i ds per 2023-02-24: ".navds-accordion__item--open > .navds-accordion__header > .navds-accordion__expand-icon" */
+:global(.navds-accordion__item--open)
+    .accordionHeader
+    > :global(.navds-accordion__expand-icon) {
+    transform: rotate(180deg);
+}
