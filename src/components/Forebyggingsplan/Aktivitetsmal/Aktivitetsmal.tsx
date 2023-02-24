@@ -99,9 +99,9 @@ const EndreFristModal = ({
                 <Heading spacing level="1" size="large" id="modal-heading">
                     Endre frist
                 </Heading>
-                <Heading spacing level="2" size="medium">
-                    {aktivitet.tittel}
-                </Heading>
+                <BodyShort spacing>
+                    Endre frist for aktiviteten &quot;{aktivitet.tittel}&quot;
+                </BodyShort>
                 <DatoVelger
                     gammelDato={gammelDato}
                     erSynlig={true}
