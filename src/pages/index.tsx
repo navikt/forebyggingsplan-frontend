@@ -22,7 +22,13 @@ import { isMock, isDev } from "../lib/miljø";
 interface Props {
     kategorier: Kategori[];
     organisasjoner: Organisasjon[];
-    altinnHost: string;
+    altinnKonfig: AltinnKonfig;
+}
+
+interface AltinnKonfig {
+    host: string;
+    serviceEdition: string;
+    serviceCode: string;
 }
 
 export interface KategoriDokument extends SanityDocument {
@@ -93,6 +99,8 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
     ]);
 
     const altinnHost = isDev() ? "tt02.altinn.no" : "altinn.no";
+    const serviceEdition = isDev() ? "1" : "2";
+    const serviceCode = "3403";
 
     return {
         props: {
@@ -102,18 +110,19 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
                 aktiviteter: aktiviteter.map(aktivitetMapper),
             })),
             organisasjoner,
-            altinnHost,
+            altinnKonfig: {
+                host: altinnHost,
+                serviceEdition,
+                serviceCode,
+            },
         },
     };
 };
 
-function Forside({ kategorier, altinnHost }: Omit<Props, "organisasjoner">) {
+function Forside({ kategorier, altinnKonfig }: Omit<Props, "organisasjoner">) {
     const { orgnr } = useHentOrgnummer();
     const { error: statistikkError } = useHentSykefraværsstatistikk(orgnr);
     const { error: valgteAktiviteterError } = useHentValgteAktiviteter(orgnr);
-
-    const serviceCode = "3403";
-    const serviceEdition = isDev() ? "1" : "2";
 
     return (
         <div className={styles.container}>
@@ -123,7 +132,7 @@ function Forside({ kategorier, altinnHost }: Omit<Props, "organisasjoner">) {
                         Du har ikke ikke tilgang til å se virksomhetens
                         sykefraværsstatistikk.{" "}
                         <Link
-                            href={`https://${altinnHost}/ui/DelegationRequest?offeredBy=${orgnr}&resources=${serviceCode}_${serviceEdition}`}
+                            href={`https://${altinnKonfig.host}/ui/DelegationRequest?offeredBy=${orgnr}&resources=${altinnKonfig.serviceCode}_${altinnKonfig.serviceEdition}`}
                         >
                             Søk om tilgang i Altinn
                         </Link>
@@ -152,7 +161,7 @@ function Forside({ kategorier, altinnHost }: Omit<Props, "organisasjoner">) {
 const Home = ({
     kategorier,
     organisasjoner,
-    altinnHost,
+    altinnKonfig,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
     return (
         <>
@@ -165,7 +174,7 @@ const Home = ({
                 <link rel="icon" href="https://nav.no/favicon.ico" />
             </Head>
             <Layout organisasjoner={organisasjoner}>
-                <Forside kategorier={kategorier} altinnHost={altinnHost} />
+                <Forside kategorier={kategorier} altinnKonfig={altinnKonfig} />
             </Layout>
         </>
     );
