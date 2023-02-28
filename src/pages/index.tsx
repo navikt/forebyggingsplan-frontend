@@ -16,13 +16,18 @@ import { useHentSykefraværsstatistikk } from "../lib/sykefraværsstatistikk-kli
 import { useHentOrgnummer } from "../components/Layout/Banner/Banner";
 import { useHentValgteAktiviteter } from "../lib/forebyggingsplan-klient";
 import { logger } from "../lib/logger";
-import Script from "next/script";
-import { server } from "../mocks/msw";
-import { isLabs } from "../lib/miljø";
+import { isDev, isMock } from "../lib/miljø";
 
 interface Props {
     kategorier: Kategori[];
     organisasjoner: Organisasjon[];
+    altinnKonfig: AltinnKonfig;
+}
+
+interface AltinnKonfig {
+    host: string;
+    serviceEdition: string;
+    serviceCode: string;
 }
 
 export interface KategoriDokument extends SanityDocument {
@@ -58,14 +63,9 @@ const aktivitetMapper = ({
 export const getServerSideProps: GetServerSideProps<Props> = async (
     context
 ) => {
-    const kjørerPåLabs = isLabs();
-    if (kjørerPåLabs) {
-        console.log("------------- MOCK server starter -------------");
-        server.listen();
-    }
-
+    const kjørerSomMock = isMock();
     const token = await hentVerifisertToken(context.req);
-    if (!token && !kjørerPåLabs) {
+    if (!token && !kjørerSomMock) {
         return {
             redirect: {
                 destination: "/oauth2/login",
@@ -75,7 +75,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
     }
 
     const [sanityData, organisasjoner] = await Promise.all([
-        (kjørerPåLabs ? sanityLabs : sanity)
+        (kjørerSomMock ? sanityLabs : sanity)
             .fetch(
                 `
             *[_type == "kategori"] | order(orderRank) {
@@ -91,6 +91,11 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
             }),
         hentOrganisasjoner(context.req),
     ]);
+
+    const altinnHost = isDev() ? "tt02.altinn.no" : "altinn.no";
+    const serviceEdition = isDev() ? "1" : "2";
+    const serviceCode = "3403";
+
     return {
         props: {
             kategorier: sanityData.map(({ tittel, innhold, aktiviteter }) => ({
@@ -99,11 +104,16 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
                 aktiviteter: aktiviteter.map(aktivitetMapper),
             })),
             organisasjoner,
+            altinnKonfig: {
+                host: altinnHost,
+                serviceEdition,
+                serviceCode,
+            },
         },
     };
 };
 
-function Forside({ kategorier }: Omit<Props, "organisasjoner">) {
+function Forside({ kategorier, altinnKonfig }: Omit<Props, "organisasjoner">) {
     const { orgnr } = useHentOrgnummer();
     const { error: statistikkError } = useHentSykefraværsstatistikk(orgnr);
     const { error: valgteAktiviteterError } = useHentValgteAktiviteter(orgnr);
@@ -116,9 +126,7 @@ function Forside({ kategorier }: Omit<Props, "organisasjoner">) {
                         Du har ikke ikke tilgang til å se virksomhetens
                         sykefraværsstatistikk.{" "}
                         <Link
-                            href={
-                                "https://arbeidsgiver.nav.no/min-side-arbeidsgiver/informasjon-om-tilgangsstyring"
-                            }
+                            href={`https://${altinnKonfig.host}/ui/DelegationRequest?offeredBy=${orgnr}&resources=${altinnKonfig.serviceCode}_${altinnKonfig.serviceEdition}`}
                         >
                             Søk om tilgang i Altinn
                         </Link>
@@ -147,6 +155,7 @@ function Forside({ kategorier }: Omit<Props, "organisasjoner">) {
 const Home = ({
     kategorier,
     organisasjoner,
+    altinnKonfig,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
     return (
         <>
@@ -160,7 +169,7 @@ const Home = ({
             </Head>
             <Script src="https://play2.qbrick.com/framework/GoBrain.min.js" />
             <Layout organisasjoner={organisasjoner}>
-                <Forside kategorier={kategorier} />
+                <Forside kategorier={kategorier} altinnKonfig={altinnKonfig} />
             </Layout>
         </>
     );

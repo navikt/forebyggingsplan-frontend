@@ -1,7 +1,7 @@
 apiVersion: "nais.io/v1alpha1"
 kind: "Application"
 metadata:
-  name: "forebyggingsplan-frontend"
+  name: {{navn}}
   namespace: "pia"
   labels:
     "team": "pia"
@@ -41,6 +41,10 @@ spec:
       value: {{ sykefravarstatistikkApiClientId }}
     - name: SYKEFRAVARSSTATISTIKK_API_BASEURL
       value: {{ sykefravarstatistikkApiBaseurl }}
+    - name: IA_METRIKKER_API_CLIENT_ID
+      value: {{ iaMetrikkerApiClientId }}
+    - name: IA_METRIKKER_API_BASEURL
+      value: {{ iaMetrikkerApiBaseurl }}
     - name: DECORATOR_ENV
       value: {{ dekoratorEnv }}
   ingresses:

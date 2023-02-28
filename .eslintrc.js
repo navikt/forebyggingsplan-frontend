@@ -34,6 +34,9 @@ module.exports = {
         {
             files: ["sanity-studio/*"],
             extends: ["sanity/react", "sanity/typescript", "prettier"],
+            rules: {
+                "no-process-env": "off",
+            },
         },
     ],
     ignorePatterns: ["*.module.css"],

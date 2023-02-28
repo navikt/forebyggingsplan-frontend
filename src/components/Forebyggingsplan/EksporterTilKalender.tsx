@@ -1,4 +1,3 @@
-import styles from "./EksporterTilKalender.module.css";
 import { Aktivitet } from "../../types/Aktivitet";
 import { useEffect, useState } from "react";
 import { Link } from "@navikt/ds-react";
@@ -51,11 +50,7 @@ export const EksporterTilKalender = ({
         };
     }, [aktivitet]);
     return aktivitet.frist && aktivitet.status !== "FULLFØRT" ? (
-        <Link
-            className={styles.kalenderLenke}
-            href={lastnedUrl}
-            download="kalendar.ics"
-        >
+        <Link href={lastnedUrl} download="kalendar.ics">
             Last ned til kalender (ics)
         </Link>
     ) : null;

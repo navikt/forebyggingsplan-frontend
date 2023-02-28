@@ -16,28 +16,6 @@
     z-index: 2; /* Plasser sticky header framfor datepicker-input med "z-index: 1"*/
 }
 
-.heading {
-    --link-and-button-gap: 0.5rem;
-    display: flex;
-    align-items: center;
-    gap: var(--link-and-button-gap);
-
-    /* Negativ margin for å utlikne gap + ikon */
-    /* --link-icon-font-size blir definert i komponenten for aktivitetsrad */
-    /* noinspection CssUnresolvedCustomProperty */
-    margin-left: calc(
-        -1 * calc(var(--link-and-button-gap) + var(--link-icon-font-size))
-    );
-}
-
-.heading .lenkeTilKort {
-    visibility: hidden;
-}
-
-.heading:hover .lenkeTilKort {
-    visibility: visible;
-}
-
 /* Om aktiviteten ikkje er siste i lista skal den ha litt luft under seg */
 .accordionItem:not(:first-child) .heading {
     margin-top: 1.75rem;
@@ -56,4 +34,13 @@
     /* tilsvarer heading size="medium" */
     font-size: var(--a-font-size-heading-medium);
     line-height: var(--a-font-line-height-heading-medium);
+}
+
+/* Fordi vi har ein heading mellom Accordion.Item og Accordion.Header må vi jukse litt
+/*   for å få chevron til å snu seg når vi opnar kort.
+/* Selectoren som snur chevron i ds per 2023-02-24: ".navds-accordion__item--open > .navds-accordion__header > .navds-accordion__expand-icon" */
+:global(.navds-accordion__item--open)
+    .accordionHeader
+    > :global(.navds-accordion__expand-icon) {
+    transform: rotate(180deg);
 }

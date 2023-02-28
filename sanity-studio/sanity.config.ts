@@ -7,7 +7,7 @@ import { deskStruktur } from "./deskStruktur";
 export default defineConfig({
     title: "forebyggingsplan-pia",
     projectId: "2u7e6oll",
-    dataset: import.meta.env.SANITY_STUDIO_DATASET,
+    dataset: process.env.SANITY_STUDIO_DATASET,
     plugins: [
         deskTool({
             structure: deskStruktur,
@@ -19,14 +19,14 @@ export default defineConfig({
     },
     tools: (prev) => {
         // 👇 Uses environment variables set by Vite in development mode
-        if (import.meta.env.DEV) {
+        if (process.env.DEV) {
             return prev;
         }
         return prev.filter((tool) => tool.name !== "vision");
     },
     auth: createAuthStore({
         projectId: "2u7e6oll",
-        dataset: import.meta.env.SANITY_STUDIO_DATASET,
+        dataset: process.env.SANITY_STUDIO_DATASET,
         mode: "append",
         redirectOnSingle: false,
         providers: [

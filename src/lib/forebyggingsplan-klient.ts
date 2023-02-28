@@ -5,6 +5,7 @@ import { logger } from "./logger";
 
 export const HENT_VALGTE_AKTIVITETER_PATH = `/forebyggingsplan/api/valgteaktiviteter`;
 export const VELG_AKTIVITET_PATH = "/forebyggingsplan/api/aktivitet";
+export const ENDRE_FRIST_PATH = "/forebyggingsplan/api/endre-frist";
 export const FULLFØR_AKTIVITET_PATH = "/forebyggingsplan/api/fullfor";
 
 export class FetchingError extends Error {
@@ -58,6 +59,34 @@ export function velgAktivitet(valgtAktivitetDto: ValgtAktivitetDTO) {
     });
 }
 
+export interface EndreFristDTO {
+    aktivitetsId: number;
+    aktivitetsmalId: string;
+    frist?: Date;
+    orgnr?: string;
+}
+
+export function endreFrist(endreFristDTO: EndreFristDTO) {
+    if (!endreFristDTO.orgnr) return;
+    return fetch(ENDRE_FRIST_PATH, {
+        method: "POST",
+        body: JSON.stringify({
+            aktivitetsId: endreFristDTO.aktivitetsId,
+            aktivitetsmalId: endreFristDTO.aktivitetsmalId,
+            frist: isoDato(endreFristDTO.frist),
+            orgnr: endreFristDTO.orgnr,
+        }),
+        headers: {
+            "Content-Type": "application/json",
+        },
+    }).then(async (res) => {
+        if (!res.ok) {
+            await logAndThrowException(res, ENDRE_FRIST_PATH, "POST");
+        }
+        return res.json();
+    });
+}
+
 interface FullførAktivitetDTO {
     aktivitetsId?: number;
     aktivitetsmalId: string;
@@ -84,13 +113,13 @@ export function fullførAktivitet(fullførAktivitetDto: FullførAktivitetDTO) {
     });
 }
 
-async function logAndThrowException(
+export async function logAndThrowException(
     res: Response,
     url: string,
     method: string
 ) {
     const info = await res.text();
-    logger.error(
+    logger.warn(
         `${method} ${url} feilet med kode: ${res.status} og response: ${info}`
     );
     if (res.status >= 500) {

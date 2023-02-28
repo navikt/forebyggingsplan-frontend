@@ -20,8 +20,15 @@
     align-self: end;
 }
 
-.knappeContainer > :nth-child(2) {
-    margin-left: 1rem;
+.endreFristContainer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+}
+
+.endreFristModal {
+    overflow: visible;
 }
 
 .detteVilViGjøreContainer {
@@ -30,10 +37,6 @@
     gap: 1rem;
     background-color: var(--a-gray-100);
     padding: 1rem;
-}
-
-.detteHarViGjortKnapp {
-    margin-bottom: 1rem;
 }
 
 .knappMedSentrertLoader > span {

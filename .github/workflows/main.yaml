@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+      - innføre-content-security-policy
+
 env:
   IMAGE: ghcr.io/${{ github.repository }}:${{ github.sha }}
 jobs:
@@ -11,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
+      NEXT_TELEMETRY_DISABLED: 1
     steps:
       - name: Legg til host.docker.internal i /etc/hosts
         run: sudo echo "127.0.0.1 host.docker.internal" | sudo tee -a /etc/hosts
@@ -53,15 +56,51 @@ jobs:
   deploy:
     strategy:
       matrix:
-        cluster: [ dev, prod, labs ]
+        cluster: [ dev, prod ]
     name: Deploy app to ${{ matrix.cluster }}
     needs: build
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Deploy to ${{ matrix.cluster }}
         uses: nais/deploy/actions/deploy@v1
         env:
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          CLUSTER: ${{ matrix.cluster }}-gcp
+          RESOURCE: .nais/nais.yaml
+          VARS: .nais/${{ matrix.cluster }}.yaml
+
+  deploy-main-to-dev-ekstern:
+    strategy:
+      matrix:
+        cluster: [ dev ]
+    name: Deploy app to dev-ekstern
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Deploy to dev-ekstern
+        uses: nais/deploy/actions/deploy@v1
+        env:
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          CLUSTER: ${{ matrix.cluster }}-gcp
+          RESOURCE: .nais/nais.yaml
+          VARS: .nais/dev-ekstern.yaml
+
+  deploy-main-to-labs:
+    strategy:
+      matrix:
+        cluster: [ labs ]
+    name: Deploy app to labs
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Deploy to dev-ekstern
+        uses: nais/deploy/actions/deploy@v1
+        env:
+          DEPLOY_SERVER: deploy.nais.io:443
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: ${{ matrix.cluster }}-gcp
           RESOURCE: .nais/nais.yaml

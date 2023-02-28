@@ -1,3 +1,13 @@
-export const isoDato = (dato?: Date) =>
-    dato &&
-    new Intl.DateTimeFormat("en-CA", { dateStyle: "short" }).format(dato);
+export const isoDato = (dato?: Date) => {
+    if (dato) {
+        dato.setHours(12);
+        return dato.toISOString().substring(0, 10);
+    }
+    return undefined;
+};
+
+export const norskDatoformat = new Intl.DateTimeFormat("nb-NO", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+});

@@ -5,6 +5,15 @@ import { fetcher } from "../lib/forebyggingsplan-klient";
 import { SWRConfig } from "swr";
 import { useEffect } from "react";
 import { init } from "@amplitude/analytics-browser";
+import { isMock } from "../lib/miljø";
+import { server } from "../mocks/msw";
+
+if (isMock() && typeof window === "undefined") {
+    console.log("-------------                     -------------");
+    console.log("------------- MOCK server starter -------------");
+    console.log("-------------                     -------------");
+    server.listen();
+}
 
 function MyApp({ Component, pageProps }: AppProps) {
     useEffect(() => {

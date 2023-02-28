@@ -8,14 +8,16 @@ export default async function handler(
 ) {
     if (!req.body.orgnr)
         return res.status(400).json({ error: "Mangler 'orgnr' i body" });
+
     const requestBody = JSON.parse(
         JSON.stringify({
+            aktivitetsId: req.body.aktivitetsId,
             aktivitetsmalId: req.body.aktivitetsmalId,
             frist: req.body.frist,
         })
     );
-
     const baseUrl = process.env.FOREBYGGINGSPLAN_API_BASEURL;
+
     let token;
     try {
         token = await hentTokenXToken(
@@ -31,14 +33,17 @@ export default async function handler(
         return res.status(400).end();
     }
 
-    const respons = await fetch(`${baseUrl}/valgteaktiviteter/${orgnr}`, {
-        method: "POST",
-        body: JSON.stringify(requestBody),
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-        },
-    });
+    const respons = await fetch(
+        `${baseUrl}/valgteaktiviteter/${orgnr}/endre-frist`,
+        {
+            method: "POST",
+            body: JSON.stringify(requestBody),
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+        }
+    );
     const { status, responseBody } = {
         status: respons.status,
         responseBody: respons.ok ? await respons.json() : await respons.text(),

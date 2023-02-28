@@ -1,0 +1,22 @@
+.datoVelgerContainer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 1rem;
+    background-color: var(--a-gray-100);
+    padding: 2rem;
+}
+
+.datoVelgerContainer button {
+    align-self: end;
+}
+
+.knappMedSentrertLoader {
+    min-width: 7rem;
+}
+
+.knappMedSentrertLoader > span {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.5rem;
+}
