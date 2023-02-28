@@ -9,4 +9,4 @@ iaMetrikkerApiBaseurl: "http://localhost:9091/ia-tjenester-metrikker"
 forebyggingsplanBaseurl: "http://localhost:8081"
 dekoratorEnv: "dev"
 minReplicas: 1
-maxReplicas: 2
+maxReplicas: 1

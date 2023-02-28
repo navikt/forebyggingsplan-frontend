@@ -16,8 +16,7 @@ import { useHentSykefraværsstatistikk } from "../lib/sykefraværsstatistikk-kli
 import { useHentOrgnummer } from "../components/Layout/Banner/Banner";
 import { useHentValgteAktiviteter } from "../lib/forebyggingsplan-klient";
 import { logger } from "../lib/logger";
-import { server } from "../mocks/msw";
-import { isMock, isDev } from "../lib/miljø";
+import { isDev, isMock } from "../lib/miljø";
 
 interface Props {
     kategorier: Kategori[];
@@ -65,11 +64,6 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
     context
 ) => {
     const kjørerSomMock = isMock();
-    if (kjørerSomMock) {
-        console.log("------------- MOCK server starter -------------");
-        server.listen();
-    }
-
     const token = await hentVerifisertToken(context.req);
     if (!token && !kjørerSomMock) {
         return {

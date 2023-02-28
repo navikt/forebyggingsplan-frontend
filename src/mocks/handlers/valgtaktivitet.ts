@@ -1,8 +1,8 @@
 import { rest } from "msw";
-import { ValgtAktivitet } from "../types/ValgtAktivitet";
-import { EndreFristDTO } from "../lib/forebyggingsplan-klient";
+import { ValgtAktivitet } from "../../types/ValgtAktivitet";
+import { EndreFristDTO } from "../../lib/forebyggingsplan-klient";
 
-export const valgtAktivitetMocksHandlers = [
+export const valgtAktivitetHandlers = [
     rest.get(
         `${process.env.FOREBYGGINGSPLAN_API_BASEURL}/valgteaktiviteter/:orgnr`,
         async (req, res, ctx) => {
@@ -45,16 +45,6 @@ export const valgtAktivitetMocksHandlers = [
             return res(ctx.json(valgtAktivitet));
         }
     ),
-    rest.post(
-        `${process.env.IA_METRIKKER_API_BASEURL}/innlogget/mottatt-iatjeneste`,
-        async (req, res, ctx) => {
-            const response = {
-                status: "created",
-            };
-            return res(ctx.json(response));
-        }
-    ),
-
     rest.post(
         `${process.env.FOREBYGGINGSPLAN_API_BASEURL}/valgteaktiviteter/:orgnr/endre-frist`,
         async (req, res, ctx) => {
