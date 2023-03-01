@@ -11,7 +11,7 @@ import { hentOrganisasjoner } from "../lib/organisasjoner";
 import { Organisasjon } from "@navikt/bedriftsmeny/lib/organisasjon";
 import { Kategori } from "../types/kategori";
 import { Kategorier } from "../components/Forebyggingsplan/Kategorier";
-import { Alert, Link } from "@navikt/ds-react";
+import { Alert, BodyShort, Heading, Link } from "@navikt/ds-react";
 import { useHentSykefraværsstatistikk } from "../lib/sykefraværsstatistikk-klient";
 import { useHentOrgnummer } from "../components/Layout/Banner/Banner";
 import { useHentValgteAktiviteter } from "../lib/forebyggingsplan-klient";
@@ -22,6 +22,7 @@ interface Props {
     kategorier: Kategori[];
     organisasjoner: Organisasjon[];
     altinnKonfig: AltinnKonfig;
+    kjørerMocket: boolean;
 }
 
 interface AltinnKonfig {
@@ -63,9 +64,9 @@ const aktivitetMapper = ({
 export const getServerSideProps: GetServerSideProps<Props> = async (
     context
 ) => {
-    const kjørerSomMock = isMock();
+    const kjørerMocket = isMock();
     const token = await hentVerifisertToken(context.req);
-    if (!token && !kjørerSomMock) {
+    if (!token && !kjørerMocket) {
         return {
             redirect: {
                 destination: "/oauth2/login",
@@ -75,7 +76,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
     }
 
     const [sanityData, organisasjoner] = await Promise.all([
-        (kjørerSomMock ? sanityLabs : sanity)
+        (kjørerMocket ? sanityLabs : sanity)
             .fetch(
                 `
             *[_type == "kategori"] | order(orderRank) {
@@ -109,11 +110,16 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
                 serviceEdition,
                 serviceCode,
             },
+            kjørerMocket,
         },
     };
 };
 
-function Forside({ kategorier, altinnKonfig }: Omit<Props, "organisasjoner">) {
+function Forside({
+    kategorier,
+    altinnKonfig,
+    kjørerMocket,
+}: Omit<Props, "organisasjoner">) {
     const { orgnr } = useHentOrgnummer();
     const { error: statistikkError } = useHentSykefraværsstatistikk(orgnr);
     const { error: valgteAktiviteterError } = useHentValgteAktiviteter(orgnr);
@@ -121,6 +127,21 @@ function Forside({ kategorier, altinnKonfig }: Omit<Props, "organisasjoner">) {
     return (
         <div className={styles.container}>
             <main className={styles.main}>
+                {kjørerMocket && (
+                    <Alert
+                        variant="warning"
+                        size="medium"
+                        className={styles.alert}
+                    >
+                        <Heading spacing size="small">
+                            Dette er en testversjon
+                        </Heading>
+                        <BodyShort>
+                            Her kan du bli bedre kjent med siden Slik forebygger
+                            dere sykefravær
+                        </BodyShort>
+                    </Alert>
+                )}
                 {valgteAktiviteterError?.status === 403 && (
                     <Alert variant={"info"} className={styles.alert}>
                         Du har ikke ikke tilgang til å se virksomhetens
@@ -156,6 +177,7 @@ const Home = ({
     kategorier,
     organisasjoner,
     altinnKonfig,
+    kjørerMocket,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
     return (
         <>
@@ -168,7 +190,11 @@ const Home = ({
                 <link rel="icon" href="https://nav.no/favicon.ico" />
             </Head>
             <Layout organisasjoner={organisasjoner}>
-                <Forside kategorier={kategorier} altinnKonfig={altinnKonfig} />
+                <Forside
+                    kategorier={kategorier}
+                    altinnKonfig={altinnKonfig}
+                    kjørerMocket={kjørerMocket}
+                />
             </Layout>
         </>
     );
