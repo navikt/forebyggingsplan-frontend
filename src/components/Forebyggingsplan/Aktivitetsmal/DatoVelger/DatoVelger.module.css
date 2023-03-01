@@ -3,8 +3,7 @@
     flex-wrap: wrap;
     align-items: flex-end;
     gap: 1rem;
-    background-color: var(--a-gray-100);
-    padding: 2rem;
+    padding: 1rem;
 }
 
 .datoVelgerContainer button {

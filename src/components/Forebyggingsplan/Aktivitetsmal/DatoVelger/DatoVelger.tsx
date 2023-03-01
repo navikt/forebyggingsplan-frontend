@@ -51,8 +51,11 @@ export const DatoVelger = ({
     });
     const { orgnr } = useHentOrgnummer();
     const { error } = useHentValgteAktiviteter(orgnr);
+    const visDatoVelger = error === undefined;
+    const datoVelgerAktivert =
+        !(ugyldig || forTidlig || laster) && visDatoVelger;
 
-    if (!orgnr || error || !erSynlig) return null; // Ingen grunn til å vise knapper dersom vi ikke vet orgnr
+    if (!orgnr || !erSynlig) return null; // Ingen grunn til å vise knapper dersom vi ikke vet orgnr
 
     return (
         <div className={styles.datoVelgerContainer}>
@@ -60,6 +63,7 @@ export const DatoVelger = ({
                 <UNSAFE_DatePicker.Input
                     {...inputProps}
                     label="Frist"
+                    disabled={!datoVelgerAktivert}
                     error={
                         (ugyldig &&
                             "Dette er ikke en gyldig dato. Gyldig format er DD.MM.ÅÅÅÅ") ||
@@ -77,7 +81,7 @@ export const DatoVelger = ({
                         if (setModalOpen) setModalOpen(false);
                     });
                 }}
-                disabled={ugyldig || forTidlig || laster}
+                disabled={!datoVelgerAktivert}
             >
                 {bekreftelsestekst}
                 {laster && <Loader size={"xsmall"} />}

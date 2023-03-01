@@ -16,7 +16,7 @@ import { useHentSykefraværsstatistikk } from "../lib/sykefraværsstatistikk-kli
 import { useHentOrgnummer } from "../components/Layout/Banner/Banner";
 import { useHentValgteAktiviteter } from "../lib/forebyggingsplan-klient";
 import { logger } from "../lib/logger";
-import { isDev, isMock } from "../lib/miljø";
+import { AltinnKonfig, getAltinnKonfig, isMock } from "../lib/miljø";
 import TestVersjonBanner from "../components/Banner/TestVersjonBanner";
 
 interface Props {
@@ -24,12 +24,6 @@ interface Props {
     organisasjoner: Organisasjon[];
     altinnKonfig: AltinnKonfig;
     kjørerMocket: boolean;
-}
-
-interface AltinnKonfig {
-    host: string;
-    serviceEdition: string;
-    serviceCode: string;
 }
 
 export interface KategoriDokument extends SanityDocument {
@@ -94,10 +88,6 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
         hentOrganisasjoner(context.req),
     ]);
 
-    const altinnHost = isDev() ? "tt02.altinn.no" : "altinn.no";
-    const serviceEdition = isDev() ? "1" : "2";
-    const serviceCode = "3403";
-
     return {
         props: {
             kategorier: sanityData.map(({ tittel, innhold, aktiviteter }) => ({
@@ -106,11 +96,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
                 aktiviteter: aktiviteter.map(aktivitetMapper),
             })),
             organisasjoner,
-            altinnKonfig: {
-                host: altinnHost,
-                serviceEdition,
-                serviceCode,
-            },
+            altinnKonfig: getAltinnKonfig(),
             kjørerMocket,
         },
     };
@@ -130,9 +116,9 @@ function Forside({
             <main className={styles.main}>
                 {kjørerMocket && <TestVersjonBanner />}
                 {valgteAktiviteterError?.status === 403 && (
-                    <Alert variant={"info"} className={styles.alert}>
-                        Du har ikke ikke tilgang til å se virksomhetens
-                        sykefraværsstatistikk.{" "}
+                    <Alert variant={"warning"} className={styles.alert}>
+                        Du har ikke ikke tilgang til å gjøre endringer på denne
+                        siden.{" "}
                         <Link
                             href={`https://${altinnKonfig.host}/ui/DelegationRequest?offeredBy=${orgnr}&resources=${altinnKonfig.serviceCode}_${altinnKonfig.serviceEdition}`}
                         >

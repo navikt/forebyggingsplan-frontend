@@ -21,8 +21,13 @@ export const DetteHarViGjort = ({
     const laster = venter && !serverFeil;
     const { orgnr } = useHentOrgnummer();
     const { error } = useHentValgteAktiviteter(orgnr);
+    const harForebyggeFraværRettighet = error === undefined; //alt har gått bra
+    const visDetteHarViGjortKnapp =
+        ["IKKE_VALGT", "VALGT"].includes(aktivitet.status) ||
+        !harForebyggeFraværRettighet;
+    const detteHarViGjortKnappAktivert = !laster && harForebyggeFraværRettighet;
 
-    if (!orgnr || error) return null; // Ingen grunn til å vise knapper dersom vi ikke vet orgnr
+    if (!orgnr) return null; // Ingen grunn til å vise knapper dersom vi ikke vet orgnr
 
     const knappStyleHvisIkkeValgtAktivitet = ["IKKE_VALGT"].includes(
         aktivitet.status
@@ -32,13 +37,13 @@ export const DetteHarViGjort = ({
 
     return (
         <>
-            {["IKKE_VALGT", "VALGT"].includes(aktivitet.status) && (
+            {visDetteHarViGjortKnapp && (
                 <Button
                     className={`${styles.knappMedSentrertLoader} ${knappStyleHvisIkkeValgtAktivitet}`}
                     variant={
                         aktivitet.status == "VALGT" ? "primary" : "secondary"
                     }
-                    disabled={laster}
+                    disabled={!detteHarViGjortKnappAktivert}
                     onClick={() => {
                         setVenter(true);
                         fullførAktivitet();
