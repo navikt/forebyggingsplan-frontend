@@ -31,22 +31,6 @@ interface Props {
     oppdaterValgteAktiviteter: () => void;
 }
 
-const settVideoPåPause = (frame: HTMLIFrameElement) =>
-    frame.contentWindow?.postMessage(
-        {
-            method: "pause",
-        },
-        "*"
-    );
-
-const pauseAlleVideoer = (aktivitetsmalid: string) => {
-    document
-        .querySelectorAll<HTMLIFrameElement>(
-            `[data-aktivitetsmalid='${aktivitetsmalid}'] iframe`
-        )
-        .forEach(settVideoPåPause);
-};
-
 export const Aktivitetsrad = ({
     aktivitet,
     åpen = false,
@@ -62,7 +46,6 @@ export const Aktivitetsrad = ({
 
     useEffect(() => {
         if (!åpen) {
-            pauseAlleVideoer(aktivitet.aktivitetsmalId);
             if (varForrigeStateÅpen) {
                 onClose?.();
             }
