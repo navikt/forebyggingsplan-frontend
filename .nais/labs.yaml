@@ -7,6 +7,6 @@ sykefravarstatistikkApiBaseurl: "http://localhost:9091/sykefravarsstatistikk-api
 iaMetrikkerApiClientId: "dev-gcp:arbeidsgiver:ia-tjenester-metrikker"
 iaMetrikkerApiBaseurl: "http://localhost:9091/ia-tjenester-metrikker"
 forebyggingsplanBaseurl: "http://localhost:8081"
-dekoratorEnv: "dev"
+dekoratorEnv: "prod"
 minReplicas: 1
 maxReplicas: 1
