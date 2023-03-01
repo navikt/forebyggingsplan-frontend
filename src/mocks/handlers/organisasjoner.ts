@@ -7,18 +7,18 @@ export const organisasjonerHandlers = [
             return res(
                 ctx.json([
                     {
-                        Name: "Forelder",
+                        Name: "FLESK OG FISK AS",
                         Type: "Enterprise",
-                        OrganizationNumber: "811076112",
+                        OrganizationNumber: "111111111",
                         ParentOrganizationNumber: "",
                         OrganizationForm: "FLI",
                         Status: "Active",
                     },
                     {
-                        Name: "BALLSTAD OG HAMARØY",
+                        Name: "FLESK OG FISK OSLO",
                         Type: "Business",
-                        OrganizationNumber: "811076732",
-                        ParentOrganizationNumber: "811076112",
+                        OrganizationNumber: "910969439",
+                        ParentOrganizationNumber: "111111111",
                         OrganizationForm: "BEDR",
                         Status: "Active",
                     },
