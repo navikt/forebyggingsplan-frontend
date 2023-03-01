@@ -11,12 +11,13 @@ import { hentOrganisasjoner } from "../lib/organisasjoner";
 import { Organisasjon } from "@navikt/bedriftsmeny/lib/organisasjon";
 import { Kategori } from "../types/kategori";
 import { Kategorier } from "../components/Forebyggingsplan/Kategorier";
-import { Alert, BodyShort, Heading, Link } from "@navikt/ds-react";
+import { Alert, Link } from "@navikt/ds-react";
 import { useHentSykefraværsstatistikk } from "../lib/sykefraværsstatistikk-klient";
 import { useHentOrgnummer } from "../components/Layout/Banner/Banner";
 import { useHentValgteAktiviteter } from "../lib/forebyggingsplan-klient";
 import { logger } from "../lib/logger";
 import { isDev, isMock } from "../lib/miljø";
+import TestVersjonBanner from "../components/Banner/TestVersjonBanner";
 
 interface Props {
     kategorier: Kategori[];
@@ -127,21 +128,7 @@ function Forside({
     return (
         <div className={styles.container}>
             <main className={styles.main}>
-                {kjørerMocket && (
-                    <Alert
-                        variant="warning"
-                        size="medium"
-                        className={styles.alert}
-                    >
-                        <Heading spacing size="small">
-                            Dette er en testversjon
-                        </Heading>
-                        <BodyShort>
-                            Her kan du bli bedre kjent med siden Slik forebygger
-                            dere sykefravær
-                        </BodyShort>
-                    </Alert>
-                )}
+                {kjørerMocket && <TestVersjonBanner />}
                 {valgteAktiviteterError?.status === 403 && (
                     <Alert variant={"info"} className={styles.alert}>
                         Du har ikke ikke tilgang til å se virksomhetens
