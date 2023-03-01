@@ -30,14 +30,15 @@ const loggingHandler = (req: NextApiRequest, res: NextApiResponse): void => {
             error: `Invalid label ${label}`,
         });
     }
-    logger
-        .child({
-            x_timestamp: ts,
-            x_isFrontend: true,
-            x_userAgent: req.headers["user-agent"],
-            x_request_id: req.headers["x-request-id"] ?? "not-set",
-        })
-        [label](...messages);
+    const logChild = logger.child({
+        x_timestamp: ts,
+        x_isFrontend: true,
+        x_userAgent: req.headers["user-agent"],
+        x_request_id: req.headers["x-request-id"] ?? "not-set",
+    });
+    if (Object.hasOwn(logChild, label)) {
+        logChild[label](...messages);
+    }
 
     res.status(200).json({ ok: `ok` });
 };
