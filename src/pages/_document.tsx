@@ -30,10 +30,10 @@ export default class MyDocument extends Document<Props> {
             chatbot: false,
             context: "arbeidsgiver",
             breadcrumbs: [
-                // {
-                //     title: "Forebygge fravær",
-                //     url: "/min-ia",
-                // },
+                {
+                    title: "Forebygge fravær",
+                    url: "/forebygge-fravar",
+                },
                 {
                     title: "Slik forebygger dere sykefravær",
                     url: "/forebyggingsplan",
