@@ -20,8 +20,8 @@ export const getAltinnKonfig = (): AltinnKonfig => {
     console.log("NAIS CLUSTER NAME: ", process.env.NAIS_CLUSTER_NAME);
     const altinnHost =
         isDev() || isLocalhost() ? "tt02.altinn.no" : "altinn.no";
-    const serviceEdition = isDev() || isLocalhost() ? "1" : "2";
-    const serviceCode = "3403";
+    const serviceCode = "5934";
+    const serviceEdition = "1";
 
     return {
         host: altinnHost,
