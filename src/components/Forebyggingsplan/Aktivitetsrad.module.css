@@ -13,10 +13,10 @@
 .sticky {
     position: sticky;
     top: 0;
-    z-index: 2; /* Plasser sticky header framfor datepicker-input med "z-index: 1"*/
+    z-index: 2; /* Plasser sticky header framfor datepicker-input som har "z-index: 1"*/
 }
 
-/* Om aktiviteten ikkje er siste i lista skal den ha litt luft under seg */
+/* Om aktiviteten ikkje er fyrste i lista skal den ha litt luft over seg */
 .accordionItem:not(:first-child) .heading {
     margin-top: 1.75rem;
 }
