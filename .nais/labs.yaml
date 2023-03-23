@@ -10,3 +10,4 @@ forebyggingsplanBaseurl: "http://localhost:8081"
 dekoratorEnv: "prod"
 minReplicas: 1
 maxReplicas: 1
+autoLoginEnabled: false
