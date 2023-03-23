@@ -1,6 +1,6 @@
 # Forebyggingsplan-frontend
 
-Flate der arbeidsgivere kan jobbe med å forebygge sykefravær i sin virksomhet
+Flate der arbeidsgivarar kan jobbe med å forebyggje sjukefråvær i si verksemd
 
 # Komme i gang
 
@@ -16,15 +16,15 @@ Lag eit personleg access-token (PAT) slik at vi får tilgang til dependencies fr
 8. Skru på SSO
 
 ## Køyre opp appen
-For å kjøre appen lokalt, kjør følgende kommandoer i terminal:
+For å køyre appen lokalt, køyr følgjande kommandoar i terminal:
 
 -   `docker-compose up`
 -   `npm install`
 -   `npm run dev`
 
-Appen vil da være tilgjengelig på http://localhost:4000/forebyggingsplan.
+Appen vil da vere tilgjengeleg på http://localhost:4000/forebyggingsplan.
 
-NB: hvis du blir redirectet til `http://host.docker.internal:8080/idporten/authorize` og ikke få koblet til, så sjekk at `/etc/hosts` har linjen:
+NB: om du vert sendt vidare til `http://host.docker.internal:8080/idporten/authorize` og ikkje få kobla til, så sjekk at fila `/etc/hosts` har linja:
 ```
 127.0.0.1 host.docker.internal
 ```
@@ -39,18 +39,18 @@ Slik køyrer du opp Sanity studio for utvikling lokalt
 4. 🎉🎉🎉
 
 Sanity i prod:
-https://nav-pia-forebyggingsplan.sanity.studio/desk
+https://nav-pia-forebyggingsplan.sanity.studio/desk  
 Logg på med Nav-SSO. 
 
-For å kunne bruke Nav-SSO til Sanity må du må bestille tilgang gjennom [MyApps](https://myapps.microsoft.com/). 
-Kontakt #team-pia på Slack for redigeringstilgang.
+For å kunne bruke Nav-SSO til Sanity må du må bestille tilgang gjennom [MyApps](https://myapps.microsoft.com/).  
+Kontakt [#teamia på Slack](https://nav-it.slack.com/archives/CMN0M3CDP) for redigeringstilgang.
 
 ---
 
 # Henvendelser
 
-Spørsmål knyttet til koden eller prosjektet kan stilles som issues her på GitHub
+Spørsmål knytta til koden eller prosjektet kan stillast som issues her på GitHub.
 
 ## For NAV-ansatte
 
-Interne henvendelser kan sendes via Slack i kanalen [#team_pia_utvikling](https://nav-it.slack.com/archives/C02T6RG9AE4).
+Interne spørsmål kan sendast via Slack i kanalen [#teamia-utvikling](https://nav-it.slack.com/archives/C016KJA7CFK).
