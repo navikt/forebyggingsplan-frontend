@@ -61,6 +61,10 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
 ) => {
     const kjørerMocket = isMock();
     const token = await hentVerifisertToken(context.req);
+    console.log("Har token? ", token !== undefined);
+    console.log("kjørMocket? ", kjørerMocket);
+    console.log("Trenger innlogging? ", !token && !kjørerMocket);
+
     if (!token && !kjørerMocket) {
         return {
             redirect: {
