@@ -10,3 +10,4 @@ forebyggingsplanBaseurl: "http://forebyggingsplan"
 dekoratorEnv: "dev"
 minReplicas: 2
 maxReplicas: 4
+autoLoginEnabled: true

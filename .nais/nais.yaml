@@ -16,7 +16,7 @@ spec:
     enabled: true
     sidecar:
       enabled: true
-      autoLogin: true
+      autoLogin: {{autoLoginEnabled}}
   port: 3000
   liveness:
     path: "/forebyggingsplan/api/isAlive"
