@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-      - innføre-content-security-policy
+      - enable-dev-ekstern-uten-innlogging
 
 env:
   IMAGE: ghcr.io/${{ github.repository }}:${{ github.sha }}
@@ -95,6 +95,7 @@ jobs:
         cluster: [ labs ]
     name: Deploy app to labs
     needs: build
+    if: github.ref == 'refs/heads/enable-dev-ekstern-uten-innlogging'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
