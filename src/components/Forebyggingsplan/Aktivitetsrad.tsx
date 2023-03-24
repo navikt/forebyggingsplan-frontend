@@ -2,14 +2,12 @@ import { Aktivitet, AktivitetStatus } from "../../types/Aktivitet";
 import { Accordion, Heading } from "@navikt/ds-react";
 import styles from "./Aktivitetsrad.module.css";
 import {
-    endreFrist,
     FetchingError,
     fullførAktivitet,
     velgAktivitet,
 } from "../../lib/forebyggingsplan-klient";
 import { useHentOrgnummer } from "../Layout/Banner/Banner";
 import {
-    loggEndreFrist,
     loggFullførAktivitet,
     loggVelgAktivitet,
     loggÅpneAktivitet,
@@ -84,30 +82,6 @@ export const Aktivitetsrad = ({
             });
     };
 
-    const endreFristHandler = (frist?: Date): Promise<void> | undefined => {
-        setServerfeil("");
-        if (!aktivitet.aktivitetsId) return;
-
-        loggEndreFrist(aktivitet);
-
-        return endreFrist({
-            aktivitetsId: aktivitet.aktivitetsId,
-            aktivitetsmalId: aktivitet.aktivitetsmalId,
-            frist,
-            orgnr: orgnr ?? undefined,
-        })
-            ?.then(() => {
-                oppdaterValgteAktiviteter();
-                lagreIaMetrikkInteraksjonstjeneste(orgnr);
-            })
-            .catch((e: FetchingError) => {
-                if (e.status == 503) {
-                    router.push("/500").then();
-                }
-                setServerfeil(e.message);
-            });
-    };
-
     const fullførAktivitetHandler = () => {
         setServerfeil("");
         loggFullførAktivitet(aktivitet);
@@ -154,7 +128,6 @@ export const Aktivitetsrad = ({
                     velgAktivitet={velgAktivitetHandler}
                     fullførAktivitet={fullførAktivitetHandler}
                     serverFeil={serverFeil}
-                    endreFristHandler={endreFristHandler}
                 />
             </Accordion.Content>
         </Accordion.Item>

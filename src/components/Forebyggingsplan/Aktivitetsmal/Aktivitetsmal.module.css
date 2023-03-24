@@ -20,17 +20,6 @@
     align-self: end;
 }
 
-.endreFristContainer {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 1rem;
-}
-
-.endreFristModal {
-    overflow: visible;
-}
-
 .detteVilViGjøreContainer {
     display: flex;
     flex-wrap: wrap;

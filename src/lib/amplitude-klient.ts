@@ -17,10 +17,6 @@ export const loggVelgAktivitet = (aktivitet: Aktivitet) => {
     sendAktivitetsEvent(aktivitet, "velg");
 };
 
-export const loggEndreFrist = (aktivitet: Aktivitet) => {
-    sendAktivitetsEvent(aktivitet, "endre-frist");
-};
-
 export const loggFullførAktivitet = (aktivitet: Aktivitet) => {
     const hendelse =
         aktivitet.status == "VALGT" ? "fullført" : "detteHarViPåPlass";

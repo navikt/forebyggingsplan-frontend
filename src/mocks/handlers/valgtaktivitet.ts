@@ -1,6 +1,5 @@
 import { rest } from "msw";
 import { ValgtAktivitet } from "../../types/ValgtAktivitet";
-import { EndreFristDTO } from "../../lib/forebyggingsplan-klient";
 
 export const valgtAktivitetHandlers = [
     rest.get(
@@ -45,30 +44,6 @@ export const valgtAktivitetHandlers = [
             return res(ctx.json(valgtAktivitet));
         }
     ),
-    rest.post(
-        `${process.env.FOREBYGGINGSPLAN_API_BASEURL}/valgteaktiviteter/:orgnr/endre-frist`,
-        async (req, res, ctx) => {
-            const { orgnr } = req.params as { orgnr: string };
-            const body = await req.json<EndreFristDTO>();
-            const muligValgtAktivitet = getValgtAktivitet(
-                orgnr,
-                body.aktivitetsmalId
-            );
-
-            if (!muligValgtAktivitet) {
-                return res(ctx.status(400));
-            }
-            const valgtAktivitet = {
-                ...muligValgtAktivitet,
-                frist: body.frist
-                    ? new Date(body.frist).toISOString()
-                    : undefined,
-            };
-            leggTilEllerOppdaterValgteAktivitet(orgnr, valgtAktivitet);
-
-            return res(ctx.json(valgtAktivitet));
-        }
-    ),
 ];
 
 interface Meta {
@@ -80,15 +55,6 @@ type CacheEntry = ValgtAktivitet & Meta;
 
 const valgtaAktiviteterMocks = new Map<string, CacheEntry[]>();
 let idTeller = 1;
-
-const getValgtAktivitet = (
-    orgnr: string,
-    aktivitetsmalId: string
-): ValgtAktivitet | undefined => {
-    const list = valgtaAktiviteterMocks.get(orgnr) || [];
-    const results = list.find((e) => e.aktivitetsmalId === aktivitetsmalId);
-    return results as ValgtAktivitet;
-};
 
 const leggTilEllerOppdaterValgteAktivitet = (
     orgnr: string,

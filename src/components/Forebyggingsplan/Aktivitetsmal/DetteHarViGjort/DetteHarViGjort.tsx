@@ -4,7 +4,6 @@ import { useHentOrgnummer } from "../../../Layout/Banner/Banner";
 import { useHentValgteAktiviteter } from "../../../../lib/forebyggingsplan-klient";
 import { Button, Loader } from "@navikt/ds-react";
 import styles from "./DetteHarViGjort.module.css";
-import { EksporterTilKalender } from "../../EksporterTilKalender";
 
 export interface DetteHarViGjortProps {
     aktivitet: Aktivitet;
@@ -53,7 +52,6 @@ export const DetteHarViGjort = ({
                     {laster && <Loader size="xsmall" />}
                 </Button>
             )}
-            <EksporterTilKalender aktivitet={aktivitet} />
         </>
     );
 };

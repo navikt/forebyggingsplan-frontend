@@ -53,14 +53,6 @@ describe("Kategorier", () => {
             expect(knapp).toHaveClass("navds-button", "navds-button--secondary")
         );
 
-        const vilGjøreKnapper = screen.getAllByRole("button", {
-            name: "Dette vil vi gjøre",
-        });
-        expect(vilGjøreKnapper.length).toBeGreaterThanOrEqual(1);
-        vilGjøreKnapper.forEach((knapp) =>
-            expect(knapp).toHaveClass("navds-button", "navds-button--primary")
-        );
-
         expect(
             screen.getByRole("heading", { level: 4, name: "Mål" })
         ).toBeVisible();
@@ -74,7 +66,5 @@ describe("Kategorier", () => {
                 "Før fravær og ha oversikt over plager som skyldes forhold på arbeidsplassen"
             )
         ).toBeVisible();
-        await userEvent.click(screen.getAllByTitle("Åpne datovelger")[0]);
-        expect(await screen.findByRole("dialog")).toBeVisible();
     });
 });
