@@ -13,6 +13,9 @@ export const isMock = () =>
 export const isDev = () =>
     (process.env.NAIS_CLUSTER_NAME as Miljø) === "dev-gcp";
 
+export const isLabs = () =>
+    (process.env.NAIS_CLUSTER_NAME as Miljø) === "labs-gcp";
+
 export const isLocalhost = () =>
     (process.env.NAIS_CLUSTER_NAME as Miljø) === "localhost";
 
