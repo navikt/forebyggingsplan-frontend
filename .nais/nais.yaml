@@ -32,6 +32,13 @@ spec:
     outbound:
       rules:
         - application: forebyggingsplan
+      external:
+        - host: api.sanity.io
+        - host: 2u7e6oll.api.sanity.io
+        - host: apicdn.sanity.io
+        - host: 2u7e6oll.apicdn.sanity.io
+        - host: cdn.sanity.io
+
   env:
     - name: FOREBYGGINGSPLAN_API_BASEURL
       value: {{ forebyggingsplanBaseurl }}
