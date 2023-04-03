@@ -37,6 +37,7 @@ spec:
         - host: apicdn.sanity.io
         - host: 2u7e6oll.apicdn.sanity.io
         - host: cdn.sanity.io
+        - host: {{ sykefravarstatistikkApiHost }}
       rules:
         - application: forebyggingsplan
           namespace: teamia
