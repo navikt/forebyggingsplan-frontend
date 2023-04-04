@@ -85,7 +85,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
             redirect: {
                 destination:
                     "https://arbeidsgiver.ekstern.dev.nav.no/forebyggingsplan",
-                permanent: false,
+                permanent: true,
             },
         };
     }
