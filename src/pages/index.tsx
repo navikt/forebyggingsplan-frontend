@@ -16,7 +16,7 @@ import { useHentSykefraværsstatistikk } from "../lib/sykefraværsstatistikk-kli
 import { useHentOrgnummer } from "../components/Layout/Banner/Banner";
 import { useHentValgteAktiviteter } from "../lib/forebyggingsplan-klient";
 import { logger } from "../lib/logger";
-import { AltinnKonfig, getAltinnKonfig, isMock } from "../lib/miljø";
+import { AltinnKonfig, getAltinnKonfig, isLabs, isMock } from "../lib/miljø";
 import TestVersjonBanner from "../components/Banner/TestVersjonBanner";
 
 interface Props {
@@ -78,6 +78,14 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
             redirect: {
                 destination: "/oauth2/login",
                 permanent: false,
+            },
+        };
+    } else if (isLabs()) {
+        return {
+            redirect: {
+                destination:
+                    "https://arbeidsgiver.ekstern.dev.nav.no/forebyggingsplan",
+                permanent: true,
             },
         };
     }

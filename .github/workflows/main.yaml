@@ -113,7 +113,7 @@ jobs:
         cluster: [ labs ]
     name: Deploy app to labs
     needs: build
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/enable-dev-ekstern-uten-innlogging'
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
