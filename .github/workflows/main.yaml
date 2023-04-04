@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-      - redirect-fra-labs-til-dev-ekstern
+      - flytte-eierskap-til-team-ia--frontend-endringer
 
 env:
   IMAGE: ghcr.io/${{ github.repository }}:${{ github.sha }}
@@ -75,13 +75,13 @@ jobs:
     strategy:
       matrix:
         cluster: [ dev ]
-    name: Deploy app to dev (feature branch)
+    name: Deploy app (from feature-branch) to ${{ matrix.cluster }}
     needs: build
-    if: github.ref == 'refs/heads/redirect-fra-labs-til-dev-ekstern'
+    if: github.ref == 'refs/heads/flytte-eierskap-til-team-ia--frontend-endringer'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Deploy to dev-ekstern
+      - name: Deploy to ${{ matrix.cluster }}
         uses: nais/deploy/actions/deploy@v1
         env:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
@@ -89,13 +89,13 @@ jobs:
           RESOURCE: .nais/nais.yaml
           VARS: .nais/${{ matrix.cluster }}.yaml
 
-  deploy-main-or-feature-branch-to-dev-ekstern:
+  deploy-main-to-dev-ekstern:
     strategy:
       matrix:
         cluster: [ dev ]
     name: Deploy app to dev-ekstern
     needs: build
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/redirect-fra-labs-til-dev-ekstern'
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -107,13 +107,13 @@ jobs:
           RESOURCE: .nais/nais.yaml
           VARS: .nais/dev-ekstern.yaml
 
-  deploy-main-or-feature-branch-to-labs:
+  deploy-main-to-labs:
     strategy:
       matrix:
         cluster: [ labs ]
     name: Deploy app to labs
     needs: build
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/redirect-fra-labs-til-dev-ekstern'
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

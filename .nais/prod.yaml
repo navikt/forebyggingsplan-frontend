@@ -1,12 +1,14 @@
 navn: "forebyggingsplan-frontend"
 ingresses:
 - "https://arbeidsgiver.nav.no/forebyggingsplan"
-forebyggingsplanClientId: "prod-gcp:pia:forebyggingsplan"
+forebyggingsplanClientId: "prod-gcp:teamia:forebyggingsplan"
 sykefravarstatistikkApiClientId: "prod-fss:arbeidsgiver:sykefravarsstatistikk-api"
+sykefravarstatistikkApiHost: "sykefravarsstatistikk-api.prod-fss-pub.nais.io"
 sykefravarstatistikkApiBaseurl: "https://sykefravarsstatistikk-api.prod-fss-pub.nais.io/sykefravarsstatistikk-api"
 iaMetrikkerApiClientId: "prod-gcp:arbeidsgiver:ia-tjenester-metrikker"
+iaMetrikkerApiHost: "arbeidsgiver.nav.no"
 iaMetrikkerApiBaseurl: "https://arbeidsgiver.nav.no/ia-tjenester-metrikker"
-forebyggingsplanBaseurl: "http://forebyggingsplan"
+forebyggingsplanBaseurl: "http://forebyggingsplan.teamia.svc.cluster.local"
 dekoratorEnv: "prod"
 minReplicas: 2
 maxReplicas: 4
