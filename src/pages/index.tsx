@@ -59,6 +59,17 @@ const aktivitetMapper = ({
 export const getServerSideProps: GetServerSideProps<Props> = async (
     context
 ) => {
+    const erVedlikeholdAktivert = true;
+
+    if (erVedlikeholdAktivert) {
+        return {
+            redirect: {
+                destination: "/vedlikehold",
+                permanent: false,
+            },
+        };
+    }
+
     const kjørerMocket = isMock();
     const token = await hentVerifisertToken(context.req);
 
