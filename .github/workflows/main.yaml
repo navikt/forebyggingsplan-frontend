@@ -89,13 +89,13 @@ jobs:
           RESOURCE: .nais/nais.yaml
           VARS: .nais/${{ matrix.cluster }}.yaml
 
-  deploy-main-to-dev-ekstern:
+  deploy-main-or-feature-branch-to-dev-ekstern:
     strategy:
       matrix:
         cluster: [ dev ]
     name: Deploy app to dev-ekstern
     needs: build
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/flytte-eierskap-til-team-ia--frontend-namespace-ingress'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
