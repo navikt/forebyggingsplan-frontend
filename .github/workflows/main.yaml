@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-      - flytte-eierskap-til-team-ia--frontend-endringer
+      - flytte-eierskap-til-team-ia--frontend-namespace-ingress
 
 env:
   IMAGE: ghcr.io/${{ github.repository }}:${{ github.sha }}
@@ -77,7 +77,7 @@ jobs:
         cluster: [ dev ]
     name: Deploy app (from feature-branch) to ${{ matrix.cluster }}
     needs: build
-    if: github.ref == 'refs/heads/flytte-eierskap-til-team-ia--frontend-endringer'
+    if: github.ref == 'refs/heads/flytte-eierskap-til-team-ia--frontend-namespace-ingress'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

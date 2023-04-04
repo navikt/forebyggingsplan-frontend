@@ -2,9 +2,9 @@ apiVersion: "nais.io/v1alpha1"
 kind: "Application"
 metadata:
   name: {{navn}}
-  namespace: "pia"
+  namespace: teamia
   labels:
-    "team": "pia"
+    "team": teamia
 spec:
   image: {{image}}
   replicas:
