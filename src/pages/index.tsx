@@ -59,7 +59,7 @@ const aktivitetMapper = ({
 export const getServerSideProps: GetServerSideProps<Props> = async (
     context
 ) => {
-    const erVedlikeholdAktivert = true;
+    const erVedlikeholdAktivert = false;
 
     if (erVedlikeholdAktivert) {
         return {
