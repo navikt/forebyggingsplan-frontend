@@ -1,7 +1,7 @@
 navn: "forebyggingsplan-frontend-mock"
 ingresses:
   - "https://arbeidsgiver.labs.nais.io/forebyggingsplan"
-forebyggingsplanClientId: "labs-gcp:pia:forebyggingsplan"
+forebyggingsplanClientId: "labs-gcp:teamia:forebyggingsplan"
 sykefravarstatistikkApiClientId: "labs-fss:arbeidsgiver:sykefravarsstatistikk-api"
 sykefravarstatistikkApiHost: "sykefravarsstatistikk-api.dev-fss-pub.nais.io"
 sykefravarstatistikkApiBaseurl: "http://localhost:9091/sykefravarsstatistikk-api"
