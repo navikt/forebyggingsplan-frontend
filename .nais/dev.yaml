@@ -1,6 +1,6 @@
 navn: "forebyggingsplan-frontend"
 ingresses:
-- "https://forebyggingsplan-frontend.dev.nav.no/forebyggingsplan"
+- "https://forebyggingsplan-frontend.intern.dev.nav.no/forebyggingsplan"
 forebyggingsplanClientId: "dev-gcp:teamia:forebyggingsplan"
 sykefravarstatistikkApiClientId: "dev-fss:arbeidsgiver:sykefravarsstatistikk-api"
 sykefravarstatistikkApiHost: "sykefravarsstatistikk-api.dev-fss-pub.nais.io"
