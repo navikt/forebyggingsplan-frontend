@@ -7,7 +7,7 @@ sykefravarstatistikkApiHost: "sykefravarsstatistikk-api.dev-fss-pub.nais.io"
 sykefravarstatistikkApiBaseurl: "https://sykefravarsstatistikk-api.dev-fss-pub.nais.io/sykefravarsstatistikk-api"
 iaMetrikkerApiClientId: "dev-gcp:arbeidsgiver:ia-tjenester-metrikker"
 iaMetrikkerApiHost: "ia-tjenester-metrikker.dev.nav.no"
-iaMetrikkerApiBaseurl: "http://ia-tjenester-metrikker.arbeidsgiver.svc.cluster.local"
+iaMetrikkerApiBaseurl: "http://ia-tjenester-metrikker.arbeidsgiver.svc.cluster.local/ia-tjenester-metrikker"
 forebyggingsplanBaseurl: "http://forebyggingsplan.teamia.svc.cluster.local"
 dekoratorEnv: "dev"
 minReplicas: 2
