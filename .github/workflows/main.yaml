@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-      - flytte-eierskap-til-team-ia--frontend-namespace-ingress
+      - service-discovery
 
 env:
   IMAGE: ghcr.io/${{ github.repository }}:${{ github.sha }}
@@ -106,22 +106,3 @@ jobs:
           CLUSTER: ${{ matrix.cluster }}-gcp
           RESOURCE: .nais/nais.yaml
           VARS: .nais/dev-ekstern.yaml
-
-  deploy-main-to-labs:
-    strategy:
-      matrix:
-        cluster: [ labs ]
-    name: Deploy app to labs
-    needs: build
-    if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Deploy to labs
-        uses: nais/deploy/actions/deploy@v1
-        env:
-          DEPLOY_SERVER: deploy.nais.io:443
-          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          CLUSTER: ${{ matrix.cluster }}-gcp
-          RESOURCE: .nais/nais.yaml
-          VARS: .nais/${{ matrix.cluster }}.yaml
