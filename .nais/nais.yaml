@@ -38,10 +38,11 @@ spec:
         - host: 2u7e6oll.apicdn.sanity.io
         - host: cdn.sanity.io
         - host: {{ sykefravarstatistikkApiHost }}
-        - host: {{ iaMetrikkerApiHost }}
       rules:
         - application: forebyggingsplan
           namespace: teamia
+        - application: ia-tjenester-metrikker
+          namespace: arbeidsgiver
   env:
     - name: FOREBYGGINGSPLAN_API_BASEURL
       value: {{ forebyggingsplanBaseurl }}
