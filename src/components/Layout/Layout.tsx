@@ -9,10 +9,10 @@ interface Props {
 
 const Layout = ({ children, organisasjoner }: Props) => {
     return (
-        <>
+        <main id="maincontent" role="main" tabIndex={-1}>
             <Banner organisasjoner={organisasjoner} />
             {children}
-        </>
+        </main>
     );
 };
 

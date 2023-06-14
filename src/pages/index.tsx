@@ -133,7 +133,12 @@ function Forside({
 
     return (
         <div className={styles.container}>
-            <main className={styles.main}>
+            <div
+                className={styles.main}
+                id="maincontent"
+                role="main"
+                tabIndex={-1}
+            >
                 {kjørerMocket && <TestVersjonBanner />}
                 {valgteAktiviteterError?.status === 403 && (
                     <Alert variant={"warning"} className={styles.alert}>
@@ -161,7 +166,7 @@ function Forside({
                     </Alert>
                 )}
                 <Kategorier kategorier={kategorier} />
-            </main>
+            </div>
         </div>
     );
 }
