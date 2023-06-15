@@ -32,7 +32,7 @@ async function hentSigneringsnøkler() {
     return signeringsnøkler;
 }
 
-const forventetAcrNivå = "Level4";
+const forventetAcrNivå = ["Level4", "idporten-loa-high"];
 
 export async function verifiserToken(
     token: string
@@ -62,7 +62,7 @@ export async function verifiserToken(
         );
         throw new Error(`Token validering har feilet`);
     }
-    if (payload.acr !== forventetAcrNivå) {
+    if (!forventetAcrNivå.includes(payload.acr as string)) {
         logger.error(
             `ACR nivå ${payload.acr} på tokenet matcher ikke forventet acr nivå ${forventetAcrNivå}`
         );
