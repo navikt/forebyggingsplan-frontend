@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-      - use_tokenx_middelware
+      - use_tokenx_middleware
 
 env:
   IMAGE: ghcr.io/${{ github.repository }}:${{ github.sha }}
