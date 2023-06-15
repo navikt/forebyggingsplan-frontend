@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { erGyldigOrgnr } from "../../lib/orgnr";
-import { exchangeIdportenSubjectToken } from "@navikt/tokenx-middleware/dist";
+import { exchangeIdportenSubjectToken } from "@navikt/tokenx-middleware";
 
 export default async function handler(
     req: NextApiRequest,

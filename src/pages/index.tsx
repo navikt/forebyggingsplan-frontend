@@ -2,7 +2,6 @@ import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Head from "next/head";
 import styles from "./index.module.css";
 import { Aktivitet } from "../types/Aktivitet";
-import { hentVerifisertToken } from "../auth";
 import Layout from "../components/Layout/Layout";
 import { sanity, sanityLabs } from "../lib/sanity";
 import { PortableTextBlock } from "@portabletext/types";
@@ -16,8 +15,9 @@ import { useHentSykefraværsstatistikk } from "../lib/sykefraværsstatistikk-kli
 import { useHentOrgnummer } from "../components/Layout/Banner/Banner";
 import { useHentValgteAktiviteter } from "../lib/forebyggingsplan-klient";
 import { logger } from "../lib/logger";
-import { AltinnKonfig, getAltinnKonfig, isLabs, isMock } from "../lib/miljø";
+import { AltinnKonfig, getAltinnKonfig, isMock } from "../lib/miljø";
 import TestVersjonBanner from "../components/Banner/TestVersjonBanner";
+import { getAuthorizationToken } from "@navikt/tokenx-middleware";
 
 interface Props {
     kategorier: Kategori[];
@@ -71,21 +71,15 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
     }
 
     const kjørerMocket = isMock();
-    const token = await hentVerifisertToken(context.req);
+
+    // TODO: Valider meg
+    const token = getAuthorizationToken(context.req);
 
     if (!token && !kjørerMocket) {
         return {
             redirect: {
                 destination: "/oauth2/login",
                 permanent: false,
-            },
-        };
-    } else if (isLabs()) {
-        return {
-            redirect: {
-                destination:
-                    "https://arbeidsgiver.ekstern.dev.nav.no/forebyggingsplan",
-                permanent: true,
             },
         };
     }
