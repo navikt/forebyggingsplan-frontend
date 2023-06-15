@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-      - service-discovery
+      - use_tokenx_middelware
 
 env:
   IMAGE: ghcr.io/${{ github.repository }}:${{ github.sha }}
@@ -77,7 +77,7 @@ jobs:
         cluster: [ dev ]
     name: Deploy app (from feature-branch) to ${{ matrix.cluster }}
     needs: build
-    if: github.ref == 'refs/heads/service-discovery'
+    if: github.ref == 'refs/heads/use_tokenx_middleware'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -95,7 +95,7 @@ jobs:
         cluster: [ dev ]
     name: Deploy app to dev-ekstern
     needs: build
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/flytte-eierskap-til-team-ia--frontend-namespace-ingress'
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
