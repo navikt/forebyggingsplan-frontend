@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { hentTokenXToken } from "../../auth/hentTokenXToken";
 import { erGyldigOrgnr } from "../../lib/orgnr";
+import { exchangeIdportenSubjectToken } from "@navikt/tokenx-middleware/dist";
 
 export default async function handler(
     req: NextApiRequest,
@@ -9,13 +9,11 @@ export default async function handler(
     if (!req.query.orgnr)
         return res.status(400).json({ error: "Mangler parameter 'orgnr'" });
 
-    let token;
-    try {
-        token = await hentTokenXToken(
-            req,
-            process.env.FOREBYGGINGSPLAN_CLIENT_ID
-        );
-    } catch (e) {
+    const accessToken = await exchangeIdportenSubjectToken(
+        req,
+        process.env.FOREBYGGINGSPLAN_CLIENT_ID as string
+    );
+    if (!accessToken) {
         return res.status(401).end();
     }
 
@@ -27,7 +25,7 @@ export default async function handler(
         `${process.env.FOREBYGGINGSPLAN_API_BASEURL}/valgteaktiviteter/${orgnr}`,
         {
             headers: {
-                authorization: `Bearer ${token}`,
+                authorization: accessToken,
             },
         }
     );

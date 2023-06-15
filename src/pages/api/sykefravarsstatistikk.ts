@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { hentTokenXToken } from "../../auth/hentTokenXToken";
 import { logger } from "../../lib/logger";
 import { erGyldigOrgnr } from "../../lib/orgnr";
+import { exchangeIdportenSubjectToken } from "@navikt/tokenx-middleware/dist";
 
 export default async function handler(
     req: NextApiRequest,
@@ -12,13 +12,11 @@ export default async function handler(
     if (!req.query.orgnr)
         return res.status(400).json({ error: "Mangler parameter 'orgnr'" });
 
-    let token;
-    try {
-        token = await hentTokenXToken(
-            req,
-            process.env.SYKEFRAVARSSTATISTIKK_API_CLIENT_ID
-        );
-    } catch (e) {
+    const accessToken = await exchangeIdportenSubjectToken(
+        req,
+        process.env.SYKEFRAVARSSTATISTIKK_API_CLIENT_ID as string
+    );
+    if (!accessToken) {
         return res.status(401).end();
     }
 
@@ -30,7 +28,7 @@ export default async function handler(
         `${process.env.SYKEFRAVARSSTATISTIKK_API_BASEURL}/${orgnr}/v1/sykefravarshistorikk/aggregert`,
         {
             headers: {
-                authorization: `Bearer ${token}`,
+                authorization: accessToken,
             },
         }
     )

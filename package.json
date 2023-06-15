@@ -20,6 +20,7 @@
         "@navikt/ds-icons": "2.8.2",
         "@navikt/ds-react": "2.8.2",
         "@navikt/nav-dekoratoren-moduler": "1.9.0",
+        "@navikt/tokenx-middleware": "1.0.0",
         "@portabletext/react": "2.0.1",
         "@sanity/client": "5.2.2",
         "@sanity/image-url": "1.0.2",

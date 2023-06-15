@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { hentTokenXToken } from "../../auth/hentTokenXToken";
 import { logger } from "../../lib/logger";
+import { exchangeIdportenSubjectToken } from "@navikt/tokenx-middleware/dist";
 
 export default async function handler(
     req: NextApiRequest,
@@ -22,13 +22,11 @@ export default async function handler(
         })
     );
 
-    let token;
-    try {
-        token = await hentTokenXToken(
-            req,
-            process.env.IA_METRIKKER_API_CLIENT_ID
-        );
-    } catch (e) {
+    const accessToken = await exchangeIdportenSubjectToken(
+        req,
+        process.env.IA_METRIKKER_API_CLIENT_ID as string
+    );
+    if (!accessToken) {
         return res.status(401).end();
     }
 
@@ -39,7 +37,7 @@ export default async function handler(
             body: JSON.stringify(requestBody),
             headers: {
                 "Content-Type": "application/json",
-                authorization: `Bearer ${token}`,
+                authorization: accessToken,
             },
         }
     )

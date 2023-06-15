@@ -2,23 +2,23 @@ import dns from "node:dns";
 import { IncomingMessage } from "http";
 import { logger } from "./logger";
 import { Organisasjon } from "@navikt/bedriftsmeny/lib/organisasjon";
-import { hentTokenXToken } from "../auth/hentTokenXToken";
+import { exchangeIdportenSubjectToken } from "@navikt/tokenx-middleware/dist";
 
 dns.setDefaultResultOrder("ipv4first"); // Dette er for å få lokal kjøring til å virke med Node versjon 17.x med vårt oppsett
 
 export async function hentOrganisasjoner(
     req: IncomingMessage
 ): Promise<Organisasjon[]> {
-    const tokenxToken = await hentTokenXToken(
+    const accessToken = await exchangeIdportenSubjectToken(
         req,
-        process.env.FOREBYGGINGSPLAN_CLIENT_ID
+        process.env.FOREBYGGINGSPLAN_CLIENT_ID as string
     );
 
     const response = await fetch(
         `${process.env.FOREBYGGINGSPLAN_API_BASEURL}/organisasjoner`,
         {
             headers: {
-                authorization: `Bearer ${tokenxToken}`,
+                authorization: accessToken as string,
             },
         }
     );

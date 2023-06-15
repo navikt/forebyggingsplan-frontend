@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { hentTokenXToken } from "../../auth/hentTokenXToken";
 import { erGyldigOrgnr } from "../../lib/orgnr";
+import { exchangeIdportenSubjectToken } from "@navikt/tokenx-middleware/dist";
 
 export default async function handler(
     req: NextApiRequest,
@@ -15,16 +15,15 @@ export default async function handler(
         })
     );
 
-    const baseUrl = process.env.FOREBYGGINGSPLAN_API_BASEURL;
-    let token;
-    try {
-        token = await hentTokenXToken(
-            req,
-            process.env.FOREBYGGINGSPLAN_CLIENT_ID
-        );
-    } catch (e) {
+    const accessToken = await exchangeIdportenSubjectToken(
+        req,
+        process.env.FOREBYGGINGSPLAN_CLIENT_ID as string
+    );
+    if (!accessToken) {
         return res.status(401).end();
     }
+
+    const baseUrl = process.env.FOREBYGGINGSPLAN_API_BASEURL;
 
     const orgnr: string = req.body.orgnr;
     if (!erGyldigOrgnr(orgnr)) {
@@ -36,7 +35,7 @@ export default async function handler(
         body: JSON.stringify(requestBody),
         headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
+            Authorization: accessToken,
         },
     });
     const { status, responseBody } = {
