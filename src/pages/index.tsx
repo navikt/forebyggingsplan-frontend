@@ -133,12 +133,7 @@ function Forside({
 
     return (
         <div className={styles.container}>
-            <div
-                className={styles.main}
-                id="maincontent"
-                role="main"
-                tabIndex={-1}
-            >
+            <div className={styles.main}>
                 {kjørerMocket && <TestVersjonBanner />}
                 {valgteAktiviteterError?.status === 403 && (
                     <Alert variant={"warning"} className={styles.alert}>

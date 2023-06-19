@@ -6,12 +6,7 @@ export default function Custom404() {
     const router = useRouter();
     return (
         <div className={styles.container}>
-            <div
-                className={styles.main}
-                id="maincontent"
-                role="main"
-                tabIndex={-1}
-            >
+            <div className={styles.main}>
                 <h1>Denne siden finner vi ikke likevel</h1>
                 <BodyLong className={styles.body}>
                     Det ser ut som om siden har flyttet til ny adresse uten at
