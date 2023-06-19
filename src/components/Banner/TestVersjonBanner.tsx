@@ -3,7 +3,7 @@ import styles from "./TestVersjonBanner.module.css";
 const TestVersjonBanner = () => {
     return (
         <Alert variant="warning" size="medium" className={styles.alert}>
-            <Heading spacing size="small">
+            <Heading spacing level="2" size="small">
                 Dette er en testversjon
             </Heading>
             <BodyShort>
