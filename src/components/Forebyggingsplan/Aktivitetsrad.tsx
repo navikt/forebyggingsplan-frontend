@@ -105,20 +105,20 @@ export const Aktivitetsrad = ({
 
     return (
         <Accordion.Item open={åpen} className={styles.accordionItem}>
-            <Heading
-                size="medium"
-                level="3"
-                className={`${styles.sticky} ${styles.heading}`}
+            <Accordion.Header
+                onClick={onClick}
+                className={`${AktivitetStatusStyle[aktivitet.status]} ${
+                    styles.accordionHeader
+                }`}
             >
-                <Accordion.Header
-                    onClick={onClick}
-                    className={`${AktivitetStatusStyle[aktivitet.status]} ${
-                        styles.accordionHeader
-                    }`}
+                <Heading
+                    size="medium"
+                    level="3"
+                    className={`${styles.sticky} ${styles.heading}`}
                 >
                     <AktivitetHeader aktivitet={aktivitet} />
-                </Accordion.Header>
-            </Heading>
+                </Heading>
+            </Accordion.Header>
             <Accordion.Content
                 data-aktivitetsmalid={aktivitet.aktivitetsmalId}
                 className={styles.content}

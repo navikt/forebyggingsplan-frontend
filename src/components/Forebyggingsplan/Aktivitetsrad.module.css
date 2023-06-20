@@ -20,10 +20,14 @@
     color: var(--a-text-action);
 }
 
-.accordionHeader > span {
+.heading {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+}
+
+.accordionHeader > span {
+    width: 100%;
 
     /* tilsvarer heading size="medium" */
     font-size: var(--a-font-size-heading-medium);
