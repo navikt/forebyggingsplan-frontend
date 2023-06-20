@@ -31,7 +31,7 @@ export const kategorierMock: Kategori[] = [
                             },
                         ],
                         markDefs: [],
-                        style: "h3",
+                        style: "h4",
                     },
                     {
                         _key: "f6457685e1f5",

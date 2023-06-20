@@ -40,6 +40,12 @@ describe("Kategorier", () => {
 
     it("Skal kunne åpne en aktivitet", async () => {
         render(<Kategorier kategorier={kategorierMock} />);
+        expect(
+            await screen.findByRole("button", {
+                name: "Bruk sykefraværstatistikken til å forebygge fravær",
+                expanded: false,
+            })
+        ).toBeInTheDocument();
         const button = await screen.findByRole("button", {
             name: "Bruk sykefraværstatistikken til å forebygge fravær",
         });
@@ -54,8 +60,11 @@ describe("Kategorier", () => {
         );
 
         expect(
-            screen.getByRole("heading", { level: 4, name: "Mål" })
-        ).toBeVisible();
+            await screen.findByRole("button", {
+                name: "Bruk sykefraværstatistikken til å forebygge fravær",
+                expanded: true,
+            })
+        ).toBeInTheDocument();
         expect(
             screen.getByText(
                 /Du vet hvilke plikter du har til å føre sykefraværsstatstikk/
