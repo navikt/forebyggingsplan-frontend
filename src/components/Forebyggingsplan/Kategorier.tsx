@@ -2,7 +2,6 @@ import { Accordion, Heading } from "@navikt/ds-react";
 import { Aktivitetsrad } from "./Aktivitetsrad";
 import { Kategori, kategoriComponents } from "../../types/kategori";
 import styles from "./Kategorier.module.css";
-import { useRef } from "react";
 import {
     Aktivitet,
     AktivitetStatus,
@@ -74,10 +73,8 @@ const Kategori = ({
     aktiviteter: Aktivitet[];
     oppdaterValgteAktiviteter: () => void;
 }) => {
-    const articleRef = useRef<HTMLElement | null>(null);
-
     return (
-        <article className={styles.kategori} ref={articleRef}>
+        <article className={styles.kategori}>
             <Heading size="large" level="2" spacing>
                 {tittel}
             </Heading>
@@ -87,7 +84,6 @@ const Kategori = ({
                     <Aktivitetsrad
                         key={aktivitet.tittel}
                         aktivitet={aktivitet}
-                        articleRef={articleRef}
                         oppdaterValgteAktiviteter={oppdaterValgteAktiviteter}
                     />
                 ))}

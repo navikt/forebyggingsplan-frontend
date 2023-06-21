@@ -12,7 +12,7 @@ import {
     loggVelgAktivitet,
     loggÅpneAktivitet,
 } from "../../lib/amplitude-klient";
-import { MutableRefObject, useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { AktivitetHeader } from "./AktivitetHeader";
 import { useRouter } from "next/router";
 import {
@@ -24,14 +24,13 @@ import { Aktivitetsmal } from "./Aktivitetsmal/Aktivitetsmal";
 interface Props {
     aktivitet: Aktivitet;
     oppdaterValgteAktiviteter: () => void;
-    articleRef: MutableRefObject<HTMLElement | null>;
 }
 
 export const Aktivitetsrad = ({
     aktivitet,
     oppdaterValgteAktiviteter,
-    articleRef,
 }: Props) => {
+    const radRef = useRef<HTMLDivElement>(null);
     const router = useRouter();
     const [åpen, setÅpen] = useState<boolean>(false);
     const [serverFeil, setServerfeil] = useState<string>("");
@@ -46,9 +45,9 @@ export const Aktivitetsrad = ({
             loggÅpneAktivitet(aktivitet);
             lagreIaMetrikkInformasjonstjeneste(orgnr);
 
-            articleRef?.current?.scrollIntoView({ behavior: "smooth" });
+            radRef?.current?.scrollIntoView({ behavior: "smooth" });
         }
-    }, [åpen, aktivitet, orgnr, articleRef]);
+    }, [åpen, aktivitet, orgnr, radRef]);
 
     const velgAktivitetHandler = (frist?: Date): Promise<void> | undefined => {
         setServerfeil("");
@@ -93,7 +92,11 @@ export const Aktivitetsrad = ({
     };
 
     return (
-        <Accordion.Item open={åpen} className={styles.accordionItem}>
+        <Accordion.Item
+            open={åpen}
+            className={styles.accordionItem}
+            ref={radRef}
+        >
             <Accordion.Header
                 onClick={onClick}
                 className={`${AktivitetStatusStyle[aktivitet.status]} ${
