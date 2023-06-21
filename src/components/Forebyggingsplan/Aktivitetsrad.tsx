@@ -12,7 +12,7 @@ import {
     loggVelgAktivitet,
     loggÅpneAktivitet,
 } from "../../lib/amplitude-klient";
-import { useEffect, useState } from "react";
+import { MutableRefObject, useCallback, useState } from "react";
 import { AktivitetHeader } from "./AktivitetHeader";
 import { useRouter } from "next/router";
 import {
@@ -23,43 +23,32 @@ import { Aktivitetsmal } from "./Aktivitetsmal/Aktivitetsmal";
 
 interface Props {
     aktivitet: Aktivitet;
-    åpen?: boolean;
-    onClick?: () => void;
-    onClose?: () => void;
     oppdaterValgteAktiviteter: () => void;
+    articleRef: MutableRefObject<HTMLElement | null>;
 }
 
 export const Aktivitetsrad = ({
     aktivitet,
-    åpen = false,
-    onClick,
     oppdaterValgteAktiviteter,
-    onClose,
+    articleRef,
 }: Props) => {
     const router = useRouter();
-    const [varForrigeStateÅpen, setVarForrigeStateÅpen] =
-        useState<boolean>(åpen);
+    const [åpen, setÅpen] = useState<boolean>(false);
     const [serverFeil, setServerfeil] = useState<string>("");
     const { orgnr } = useHentOrgnummer();
 
-    useEffect(() => {
-        if (!åpen) {
-            if (varForrigeStateÅpen) {
-                onClose?.();
-            }
-            setVarForrigeStateÅpen(false);
-        }
-    }, [åpen, aktivitet.aktivitetsmalId, onClose, varForrigeStateÅpen]);
-
-    useEffect(() => {
+    const onClick = useCallback(() => {
         if (åpen) {
-            if (!varForrigeStateÅpen) {
-                loggÅpneAktivitet(aktivitet);
-                lagreIaMetrikkInformasjonstjeneste(orgnr);
-            }
-            setVarForrigeStateÅpen(true);
+            setÅpen(false);
+        } else {
+            setÅpen(true);
+
+            loggÅpneAktivitet(aktivitet);
+            lagreIaMetrikkInformasjonstjeneste(orgnr);
+
+            articleRef?.current?.scrollIntoView({ behavior: "smooth" });
         }
-    }, [åpen, varForrigeStateÅpen, aktivitet, orgnr]);
+    }, [åpen, aktivitet, orgnr, articleRef]);
 
     const velgAktivitetHandler = (frist?: Date): Promise<void> | undefined => {
         setServerfeil("");

@@ -2,7 +2,7 @@ import { Accordion, Heading } from "@navikt/ds-react";
 import { Aktivitetsrad } from "./Aktivitetsrad";
 import { Kategori, kategoriComponents } from "../../types/kategori";
 import styles from "./Kategorier.module.css";
-import { useCallback, useRef, useState } from "react";
+import { useRef } from "react";
 import {
     Aktivitet,
     AktivitetStatus,
@@ -24,7 +24,6 @@ export function finnStatus(valgtaktivitet: ValgtAktivitet): AktivitetStatus {
 }
 
 export const Kategorier = ({ kategorier }: Props) => {
-    const [aktivRad, setAktivRad] = useState<Aktivitet>();
     const { orgnr } = useHentOrgnummer();
     const { data: valgteAktiviteter, mutate } = useHentValgteAktiviteter(orgnr);
 
@@ -56,15 +55,6 @@ export const Kategorier = ({ kategorier }: Props) => {
                             }
                             return aktivitet;
                         })}
-                        gjeldendeAktivitet={aktivRad}
-                        onKlikkPåRad={(aktivitet) => {
-                            setAktivRad((prev) => {
-                                if (prev?.tittel === aktivitet.tittel) {
-                                    return;
-                                }
-                                return aktivitet;
-                            });
-                        }}
                         oppdaterValgteAktiviteter={() => mutate()}
                     />
                 );
@@ -76,25 +66,15 @@ export const Kategorier = ({ kategorier }: Props) => {
 const Kategori = ({
     aktiviteter,
     tittel,
-    gjeldendeAktivitet,
     innhold,
-    onKlikkPåRad,
     oppdaterValgteAktiviteter,
 }: {
     tittel: string;
     innhold: PortableTextBlock;
     aktiviteter: Aktivitet[];
-    gjeldendeAktivitet?: Aktivitet;
-    onKlikkPåRad?: (aktivitet: Aktivitet) => void;
     oppdaterValgteAktiviteter: () => void;
 }) => {
     const articleRef = useRef<HTMLElement | null>(null);
-
-    const scrollTilKategori = useCallback(() => {
-        articleRef?.current?.scrollIntoView({
-            behavior: "smooth",
-        });
-    }, []);
 
     return (
         <article className={styles.kategori} ref={articleRef}>
@@ -105,13 +85,9 @@ const Kategori = ({
             <Accordion className={styles.accordion}>
                 {aktiviteter.sort(sorterStatus).map((aktivitet) => (
                     <Aktivitetsrad
-                        åpen={aktivitet.tittel === gjeldendeAktivitet?.tittel}
                         key={aktivitet.tittel}
                         aktivitet={aktivitet}
-                        onClick={() => {
-                            onKlikkPåRad?.(aktivitet);
-                        }}
-                        onClose={scrollTilKategori}
+                        articleRef={articleRef}
                         oppdaterValgteAktiviteter={oppdaterValgteAktiviteter}
                     />
                 ))}
