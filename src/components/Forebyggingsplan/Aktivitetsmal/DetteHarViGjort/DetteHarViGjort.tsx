@@ -48,7 +48,7 @@ export const DetteHarViGjort = ({
                         fullførAktivitet();
                     }}
                 >
-                    Dette har vi gjort
+                    Marker som gjort
                     {laster && <Loader size="xsmall" />}
                 </Button>
             )}
