@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-      - service-discovery
+      - with_authenticated_router
 
 env:
   IMAGE: ghcr.io/${{ github.repository }}:${{ github.sha }}
