@@ -1,4 +1,4 @@
-export const erGyldigOrgnr = (orgnr: string): boolean => {
-    const validerOrgnr = new RegExp("^[0-9]{9}$");
-    return validerOrgnr.test(orgnr);
+export const erGyldigOrgnr = (orgnr?: string): boolean => {
+    const orgnrPattern = new RegExp("^[0-9]{9}$");
+    return orgnrPattern.test(orgnr || "");
 };

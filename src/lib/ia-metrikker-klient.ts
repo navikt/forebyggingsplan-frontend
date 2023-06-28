@@ -19,6 +19,7 @@ const sendIaMetrikkEvent = (orgnr: string | null, type: MetrikkType) => {
         body: JSON.stringify({
             orgnr: orgnr,
             type: type,
+            kilde: "FOREBYGGINGSPLAN",
         }),
         headers: {
             "Content-Type": "application/json",

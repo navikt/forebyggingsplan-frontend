@@ -1,50 +1,40 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { hentTokenXToken } from "../../auth/hentTokenXToken";
-import { logger } from "../../lib/logger";
+import { erGyldigOrgnr } from "../../lib/orgnr";
+import { proxyApiRouteRequest } from "@navikt/next-api-proxy";
+import { withApiAuthentication } from "@navikt/tokenx-middleware";
 
-export default async function handler(
+const audience = process.env.IA_METRIKKER_API_CLIENT_ID || "";
+
+const handler = async function (
     req: NextApiRequest,
-    res: NextApiResponse
+    res: NextApiResponse,
+    accessToken: string
 ) {
-    if (!req.body.orgnr)
-        return res.status(400).json({ error: "Mangler 'orgnr' i body" });
-    if (!req.body.type)
+    const orgnr = req.query.orgnr as string;
+    const typeTjeneste = req.body.type as string;
+
+    if (!erGyldigOrgnr(orgnr)) {
+        return res.status(400).end('Parameter "orgnr" is invalid');
+    }
+    if (!typeTjeneste)
         return res.status(400).json({ error: "Mangler 'type' i body" });
 
-    if (req.method !== "POST")
-        return res.status(405).json({ error: "Method Not Allowed" });
+    await proxyApiRouteRequest({
+        hostname:
+            process.env.IA_METRIKKER_API_BASEURL?.replace("http://", "") || "",
+        path: `/innlogget/mottatt-iatjeneste`,
+        req,
+        res,
+        https: false,
+        bearerToken: accessToken,
+    });
+};
 
-    const requestBody = JSON.parse(
-        JSON.stringify({
-            orgnr: req.body.orgnr,
-            type: req.body.type,
-            kilde: "FOREBYGGINGSPLAN",
-        })
-    );
+export default withApiAuthentication(handler, audience);
 
-    let token;
-    try {
-        token = await hentTokenXToken(
-            req,
-            process.env.IA_METRIKKER_API_CLIENT_ID
-        );
-    } catch (e) {
-        return res.status(401).end();
-    }
-
-    const data = await fetch(
-        `${process.env.IA_METRIKKER_API_BASEURL}/innlogget/mottatt-iatjeneste`,
-        {
-            method: "POST",
-            body: JSON.stringify(requestBody),
-            headers: {
-                "Content-Type": "application/json",
-                authorization: `Bearer ${token}`,
-            },
-        }
-    )
-        .then((res) => res.json())
-        .catch(logger.warn);
-
-    return res.status(200).json(data);
-}
+export const config = {
+    api: {
+        bodyParser: false,
+        externalResolver: true,
+    },
+};
