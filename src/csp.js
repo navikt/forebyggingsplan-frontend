@@ -25,6 +25,7 @@ const csp = {
         "*.hotjar.io",
         "*.vc.hotjar.io",
         "wss://*.hotjar.com",
+        "http://localhost:12347/collect",
     ],
     "font-src": [
         "'self'",

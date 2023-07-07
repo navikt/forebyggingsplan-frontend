@@ -7,6 +7,7 @@ import Layout from "../components/Layout/Layout";
 import { sanity, sanityLabs } from "../lib/sanity";
 import { PortableTextBlock } from "@portabletext/types";
 import { SanityDocument } from "@sanity/client";
+import { initializeFaro, Faro } from "@grafana/faro-web-sdk";
 import { hentOrganisasjoner } from "../lib/organisasjoner";
 import { Organisasjon } from "@navikt/bedriftsmeny/lib/organisasjon";
 import { Kategori } from "../types/kategori";
@@ -18,6 +19,7 @@ import { useHentValgteAktiviteter } from "../lib/forebyggingsplan-klient";
 import { logger } from "../lib/logger";
 import { AltinnKonfig, getAltinnKonfig, isLabs, isMock } from "../lib/miljø";
 import TestVersjonBanner from "../components/Banner/TestVersjonBanner";
+import React from "react";
 
 interface Props {
     kategorier: Kategori[];
@@ -56,9 +58,9 @@ const aktivitetMapper = ({
     status: "IKKE_VALGT",
 });
 
-export const getServerSideProps: GetServerSideProps<Props> = async (
-    context
-) => {
+export const getServerSideProps: GetServerSideProps<
+    Props & { grafanaUrl: string }
+> = async (context) => {
     const erVedlikeholdAktivert = false;
 
     if (erVedlikeholdAktivert) {
@@ -110,6 +112,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
 
     return {
         props: {
+            grafanaUrl: process.env.GRAFANA_AGENT_COLLECTOR_URL || "",
             kategorier: sanityData.map(({ tittel, innhold, aktiviteter }) => ({
                 tittel,
                 innhold,
@@ -165,13 +168,31 @@ function Forside({
         </div>
     );
 }
+let faro: Faro | null = null;
+export function getFaro(grafanaUrl: string): Faro {
+    if (faro != null) return faro;
+    faro = initializeFaro({
+        url: grafanaUrl,
+        app: {
+            name: "forebyggingsplan-frontend",
+            version: "dev",
+        },
+    });
+
+    return faro;
+}
 
 const Home = ({
     kategorier,
     organisasjoner,
     altinnKonfig,
     kjørerMocket,
+    grafanaUrl,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+    React.useEffect(() => {
+        getFaro(grafanaUrl);
+    });
+
     return (
         <>
             <Head>

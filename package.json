@@ -15,6 +15,8 @@
     },
     "dependencies": {
         "@amplitude/analytics-browser": "1.6.7",
+        "@grafana/faro-web-sdk": "1.1.1",
+        "@grafana/faro-web-tracing": "1.1.1",
         "@navikt/bedriftsmeny": "6.4.0",
         "@navikt/ds-css": "4.1.7",
         "@navikt/ds-icons": "3.4.3",

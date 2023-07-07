@@ -58,6 +58,8 @@ spec:
       value: {{ iaMetrikkerApiBaseurl }}
     - name: DECORATOR_ENV
       value: {{ dekoratorEnv }}
+    - name: GRAFANA_AGENT_COLLECTOR_URL
+      value: {{ grafanaAgentCollectorUrl }}
   ingresses:
   {{#each ingresses as |url|}}
      - {{url}}
