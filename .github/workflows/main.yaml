@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-      - service-discovery
+      - core-web-vitals
 
 env:
   IMAGE: ghcr.io/${{ github.repository }}:${{ github.sha }}
