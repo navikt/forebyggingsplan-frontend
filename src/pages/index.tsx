@@ -190,6 +190,7 @@ const Home = ({
     grafanaUrl,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
     React.useEffect(() => {
+        console.log("grafanaUrl :>> ", grafanaUrl);
         getFaro(grafanaUrl);
     });
 
