@@ -169,8 +169,8 @@ function Forside({
     );
 }
 let faro: Faro | null = null;
-export function getFaro(grafanaUrl: string): Faro {
-    if (faro != null) return faro;
+export function getFaro(grafanaUrl: string): Faro | null {
+    if (faro != null || grafanaUrl?.length === 0) return faro;
     faro = initializeFaro({
         url: grafanaUrl,
         app: {
@@ -190,7 +190,6 @@ const Home = ({
     grafanaUrl,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
     React.useEffect(() => {
-        console.log("grafanaUrl :>> ", grafanaUrl);
         getFaro(grafanaUrl);
     });
 
