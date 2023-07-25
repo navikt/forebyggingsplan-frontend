@@ -1,11 +1,9 @@
 import { useCallback } from "react";
-import { Organisasjon } from "@navikt/bedriftsmeny/lib/organisasjon";
-
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { Heading } from "@navikt/ds-react";
-import { OrgnrSearchParamType } from "@navikt/bedriftsmeny/lib/velger/utils";
-import { ForebyggeSykefravaer } from "@navikt/bedriftsmeny";
+import { OrgnrSearchParamType } from "@navikt/bedriftsmeny/lib/types/velger/utils";
+import { ForebyggeSykefravaer, Organisasjon } from "@navikt/bedriftsmeny";
 
 interface Props {
     organisasjoner: Organisasjon[];

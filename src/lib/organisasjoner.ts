@@ -1,17 +1,17 @@
 import dns from "node:dns";
 import { IncomingMessage } from "http";
 import { logger } from "./logger";
-import { Organisasjon } from "@navikt/bedriftsmeny/lib/organisasjon";
+import { Organisasjon } from "@navikt/bedriftsmeny";
 import { hentTokenXToken } from "../auth/hentTokenXToken";
 
 dns.setDefaultResultOrder("ipv4first"); // Dette er for å få lokal kjøring til å virke med Node versjon 17.x med vårt oppsett
 
 export async function hentOrganisasjoner(
-    req: IncomingMessage
+    req: IncomingMessage,
 ): Promise<Organisasjon[]> {
     const tokenxToken = await hentTokenXToken(
         req,
-        process.env.FOREBYGGINGSPLAN_CLIENT_ID
+        process.env.FOREBYGGINGSPLAN_CLIENT_ID,
     );
 
     const response = await fetch(
@@ -20,12 +20,12 @@ export async function hentOrganisasjoner(
             headers: {
                 authorization: `Bearer ${tokenxToken}`,
             },
-        }
+        },
     );
 
     if (!response.ok) {
         logger.error(
-            `Klarte ikke å hente organisasjoner ${await response.text()}`
+            `Klarte ikke å hente organisasjoner ${await response.text()}`,
         );
         throw new Error("Klarte ikke å hente organisasjoner");
     }

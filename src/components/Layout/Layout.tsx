@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import Banner from "./Banner/Banner";
-import { Organisasjon } from "@navikt/bedriftsmeny/lib/organisasjon";
+import { Organisasjon } from "@navikt/bedriftsmeny";
 
 interface Props {
     children: ReactNode;
