@@ -4,6 +4,7 @@ on:
     branches:
       - main
       - service-discovery
+      - bedriftsvelger-upgrade
 
 env:
   IMAGE: ghcr.io/${{ github.repository }}:${{ github.sha }}
