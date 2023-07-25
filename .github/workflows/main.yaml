@@ -4,6 +4,7 @@ on:
     branches:
       - main
       - service-discovery
+      - bedriftsvelger-upgrade
 
 env:
   IMAGE: ghcr.io/${{ github.repository }}:${{ github.sha }}
@@ -77,7 +78,7 @@ jobs:
         cluster: [ dev ]
     name: Deploy app (from feature-branch) to ${{ matrix.cluster }}
     needs: build
-    if: github.ref == 'refs/heads/service-discovery'
+    if: github.ref == 'refs/heads/bedriftsvelger-upgrade'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

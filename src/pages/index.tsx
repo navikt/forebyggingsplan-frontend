@@ -8,7 +8,7 @@ import { sanity, sanityLabs } from "../lib/sanity";
 import { PortableTextBlock } from "@portabletext/types";
 import { SanityDocument } from "@sanity/client";
 import { hentOrganisasjoner } from "../lib/organisasjoner";
-import { Organisasjon } from "@navikt/bedriftsmeny/lib/organisasjon";
+import { Organisasjon } from "@navikt/bedriftsmeny";
 import { Kategori } from "../types/kategori";
 import { Kategorier } from "../components/Forebyggingsplan/Kategorier";
 import { Alert, Link } from "@navikt/ds-react";
@@ -57,7 +57,7 @@ const aktivitetMapper = ({
 });
 
 export const getServerSideProps: GetServerSideProps<Props> = async (
-    context
+    context,
 ) => {
     const erVedlikeholdAktivert = false;
 
@@ -99,7 +99,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
                 innhold,
                 "aktiviteter": *[_type == "Aktivitet" && references(^._id)] | order(orderRank)
             }
-        `
+        `,
             )
             .catch((e) => {
                 logger.error(`Sanity nedlasting feilet ${e}`);
