@@ -20,7 +20,6 @@ function MyApp({ Component, pageProps }: AppProps) {
         init("default", undefined, {
             useBatch: true,
             serverUrl: "https://amplitude.nav.no/collect-auto",
-            attribution: { disabled: true }, // Skrur av Web Attribution Tracking: https://www.docs.developers.amplitude.com/data/sdks/marketing-analytics-browser/#web-attribution
             ingestionMetadata: { sourceName: window.location.toString() }, // This is a hack to provide collect-auto with the correct environment, won't be used within amplitude
         });
     }, []);
