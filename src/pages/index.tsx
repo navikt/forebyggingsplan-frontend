@@ -9,7 +9,7 @@ import { PortableTextBlock } from "@portabletext/types";
 import { SanityDocument } from "@sanity/client";
 import { initializeFaro, Faro } from "@grafana/faro-web-sdk";
 import { hentOrganisasjoner } from "../lib/organisasjoner";
-import { Organisasjon } from "@navikt/bedriftsmeny/lib/organisasjon";
+import { Organisasjon } from "@navikt/bedriftsmeny";
 import { Kategori } from "../types/kategori";
 import { Kategorier } from "../components/Forebyggingsplan/Kategorier";
 import { Alert, Link } from "@navikt/ds-react";
@@ -101,7 +101,7 @@ export const getServerSideProps: GetServerSideProps<
                 innhold,
                 "aktiviteter": *[_type == "Aktivitet" && references(^._id)] | order(orderRank)
             }
-        `
+        `,
             )
             .catch((e) => {
                 logger.error(`Sanity nedlasting feilet ${e}`);
