@@ -12,7 +12,7 @@ const frontendLogger = (): pino.Logger =>
                             headers: { "content-type": "application/json" },
                             body: JSON.stringify(
                                 // Hackily massage messages from exceptions into being { err: {...} } to normalize how logging looks
-                                errorifyMessages(logEvent)
+                                errorifyMessages(logEvent),
                             ),
                         });
                     } catch (e) {

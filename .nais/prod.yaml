@@ -9,6 +9,7 @@ iaMetrikkerApiClientId: "prod-gcp:arbeidsgiver:ia-tjenester-metrikker"
 iaMetrikkerApiHost: "arbeidsgiver.nav.no"
 iaMetrikkerApiBaseurl: "http://ia-tjenester-metrikker.arbeidsgiver.svc.cluster.local/ia-tjenester-metrikker"
 forebyggingsplanBaseurl: "http://forebyggingsplan.teamia.svc.cluster.local"
+grafanaAgentCollectorUrl: "https://telemetry.nav.no/collect"
 dekoratorEnv: "prod"
 minReplicas: 2
 maxReplicas: 4
