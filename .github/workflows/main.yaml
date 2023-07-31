@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-      - core-web-vitals
+      - notification-widget
 
 env:
   IMAGE: ghcr.io/${{ github.repository }}:${{ github.sha }}
