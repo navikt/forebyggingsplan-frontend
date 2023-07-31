@@ -16,14 +16,18 @@ export default async function proxyRequestWithTokenExchange(
 ) {
     if (audience === undefined) {
         logger.error("audience is not set");
-        return res.status(500).json({ error: "authentication failed" });
+        return res
+            .status(500)
+            .json({ error: "authentication failed: audience is not set" });
     }
 
     const newAuthToken = await exchangeIdportenSubjectToken(req, audience);
 
     if (isInvalidToken(newAuthToken)) {
         logger.error("token is invalid");
-        return res.status(401).json({ error: "authentication failed" });
+        return res
+            .status(401)
+            .json({ error: "authentication failed: invalid token" });
     }
 
     await proxyApiRouteRequest({
