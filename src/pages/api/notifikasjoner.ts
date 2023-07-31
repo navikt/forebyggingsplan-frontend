@@ -24,7 +24,7 @@ export default async function handler(
         `notifikasjon-bruker-api.fager.svc.cluster.local/api/graphql`,
         {
             method: "POST",
-            body: JSON.stringify(req.body),
+            body: req.body,
             headers: {
                 "Content-Type": "application/json",
                 authorization: `Bearer ${token}`,
@@ -32,7 +32,10 @@ export default async function handler(
         },
     )
         .then((res) => res.json())
-        .catch(logger.warn);
+        .catch((reason) => {
+            return res.status(500).json({ error: reason });
+            logger.warn(reason);
+        });
 
     return res.status(200).json(data);
 }
