@@ -33,8 +33,10 @@ export default async function handler(
     )
         .then((res) => res.json())
         .catch((reason) => {
-            return res.status(500).json({ error: reason });
             logger.warn(reason);
+            return res.status(500).json({
+                error: "Fikk ikke hentet data fra notifikasjon-bruker-api",
+            });
         });
 
     return res.status(200).json(data);
