@@ -31,7 +31,7 @@ export default async function handler(
             },
         },
     )
-        .then((res) => res.json())
+        .then((res) => res)
         .catch((reason) => {
             logger.warn(reason);
             return res.status(500).json({
