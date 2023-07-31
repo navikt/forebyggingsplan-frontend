@@ -21,7 +21,7 @@ export default async function handler(
     }
 
     const data = await fetch(
-        `notifikasjon-bruker-api.fager.svc.cluster.local/api/graphql`,
+        `http://notifikasjon-bruker-api.fager.svc.cluster.local/api/graphql`,
         {
             method: "POST",
             body: req.body,
@@ -36,6 +36,7 @@ export default async function handler(
             logger.warn(reason);
             return res.status(500).json({
                 error: "Fikk ikke hentet data fra notifikasjon-bruker-api",
+                reason,
             });
         });
 
