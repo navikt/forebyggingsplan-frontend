@@ -55,7 +55,7 @@ export default function Banner({ organisasjoner }: Props) {
         >
             <NotifikasjonWidget
                 miljo={isMock() ? "dev" : "prod"}
-                apiUrl="/forebyggingsplan/api/notifikasjoner"
+                apiUrl="/forebyggingsplan/api/authenticated/notifikasjoner"
             />
         </Bedriftsmeny>
     );
