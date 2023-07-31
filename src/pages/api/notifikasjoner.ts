@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { notifikasjonerMockdata } from "../../mocks/notifikasjonerMockdata";
+import { hentTokenXToken } from "../../auth/hentTokenXToken";
+import { logger } from "../../lib/logger";
 
 export default async function handler(
     req: NextApiRequest,
@@ -9,7 +10,29 @@ export default async function handler(
         return res.status(405).json({ error: "Method Not Allowed" });
     }
 
-    // TODO: Hente data og sånn. Inapirasjon fra src/pages/api/ia-metrikker.ts?
+    let token;
+    try {
+        token = await hentTokenXToken(
+            req,
+            process.env.IA_METRIKKER_API_CLIENT_ID,
+        );
+    } catch (e) {
+        return res.status(401).end();
+    }
 
-    return res.status(200).json(notifikasjonerMockdata);
+    const data = await fetch(
+        `notifikasjon-bruker-api.fager.svc.cluster.local/api/graphql`,
+        {
+            method: "POST",
+            body: JSON.stringify(req.body),
+            headers: {
+                "Content-Type": "application/json",
+                authorization: `Bearer ${token}`,
+            },
+        },
+    )
+        .then((res) => res.json())
+        .catch(logger.warn);
+
+    return res.status(200).json(data);
 }
