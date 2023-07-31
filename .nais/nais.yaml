@@ -60,6 +60,8 @@ spec:
       value: {{ dekoratorEnv }}
     - name: GRAFANA_AGENT_COLLECTOR_URL
       value: {{ grafanaAgentCollectorUrl }}
+    - name: NOTIFIKASJON_API_AUDIENCE
+      value: {{ notifikasjonApiAudience }}
   ingresses:
   {{#each ingresses as |url|}}
      - {{url}}
