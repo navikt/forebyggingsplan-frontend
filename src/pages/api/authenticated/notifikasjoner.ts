@@ -24,7 +24,7 @@ export default async function handler(
         `http://notifikasjon-bruker-api.fager.svc.cluster.local/api/graphql`,
         {
             method: "POST",
-            body: JSON.stringify(req.body),
+            body: req.body,
             headers: {
                 "Content-Type": "application/json",
                 authorization: `Bearer ${token}`,
