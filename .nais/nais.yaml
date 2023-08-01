@@ -43,6 +43,8 @@ spec:
           namespace: teamia
         - application: ia-tjenester-metrikker
           namespace: arbeidsgiver
+        - application: notifikasjon-bruker-api
+          namespace: fager
   env:
     - name: FOREBYGGINGSPLAN_API_BASEURL
       value: {{ forebyggingsplanBaseurl }}
