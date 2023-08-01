@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { hentTokenXToken } from "../../../auth/hentTokenXToken";
-import { logger } from "../../../lib/logger";
+import proxyRequestWithTokenExchange from "../../../lib/api-proxy";
+import { isLocalhost } from "../../../lib/miljø";
+import { notifikasjonerMockdata } from "../../../mocks/notifikasjonerMockdata";
 
 export default async function handler(
     req: NextApiRequest,
@@ -10,32 +11,18 @@ export default async function handler(
         return res.status(405).json({ error: "Method Not Allowed" });
     }
 
-    let token;
-    try {
-        token = await hentTokenXToken(
-            req,
-            process.env.NOTIFIKASJON_API_AUDIENCE,
-        );
-    } catch (e) {
-        return res.status(401).end();
+    if (isLocalhost()) {
+        return res.status(200).json(notifikasjonerMockdata);
     }
 
-    const data = await fetch(
-        `http://notifikasjon-bruker-api.fager.svc.cluster.local/api/graphql`,
-        {
-            ...req,
-            method: "POST",
-            body: req.body,
-            headers: {
-                "Content-Type": "application/json",
-                authorization: `Bearer ${token}`,
-            },
-        },
-    )
-        .then((res) => res.json())
-        .catch(logger.warn);
-
-    return res.status(200).json(data);
+    return await proxyRequestWithTokenExchange(
+        req,
+        res,
+        "notifikasjon-bruker-api.fager.svc.cluster.local",
+        "/api/graphql",
+        process.env.NOTIFIKASJON_API_AUDIENCE,
+        false,
+    );
 }
 
 export const config = {
