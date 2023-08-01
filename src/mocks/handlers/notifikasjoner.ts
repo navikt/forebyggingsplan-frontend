@@ -6,9 +6,7 @@ export const notifikasjonerHandlers = [
     rest.post(
         `/forebyggingsplan/api/authenticated/notifikasjoner`,
         async (req, res, ctx) => {
-            const response = notifikasjonerMockdata;
-
-            return res(ctx.json(response));
+            return res(ctx.json(notifikasjonerMockdata));
         },
     ),
 ];

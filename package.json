@@ -46,8 +46,6 @@
         "@navikt/ds-icons": "3.4.3",
         "@navikt/ds-react": "4.1.7",
         "@navikt/nav-dekoratoren-moduler": "1.9.0",
-        "@navikt/next-api-proxy": "3.2.0",
-        "@navikt/tokenx-middleware": "1.2.4",
         "@portabletext/react": "2.0.1",
         "@sanity/client": "5.2.2",
         "@sanity/image-url": "1.0.2",
