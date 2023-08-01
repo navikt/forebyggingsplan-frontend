@@ -23,6 +23,7 @@ export default async function handler(
     const data = await fetch(
         `http://notifikasjon-bruker-api.fager.svc.cluster.local/api/graphql`,
         {
+            ...req,
             method: "POST",
             body: req.body,
             headers: {
