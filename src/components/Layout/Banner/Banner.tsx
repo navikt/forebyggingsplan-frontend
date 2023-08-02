@@ -4,6 +4,8 @@ import { useRouter } from "next/router";
 import { Heading } from "@navikt/ds-react";
 import { OrgnrSearchParamType } from "@navikt/bedriftsmeny/lib/types/velger/utils";
 import { ForebyggeSykefravaer, Organisasjon } from "@navikt/bedriftsmeny";
+import { NotifikasjonWidget } from "@navikt/arbeidsgiver-notifikasjon-widget";
+import { isMock } from "../../../lib/miljø";
 
 interface Props {
     organisasjoner: Organisasjon[];
@@ -50,6 +52,11 @@ export default function Banner({ organisasjoner }: Props) {
             undertittel="Inkluderende arbeidsliv"
             piktogram={<ForebyggeSykefravaer />}
             organisasjoner={organisasjoner}
-        />
+        >
+            <NotifikasjonWidget
+                miljo={isMock() ? "dev" : "prod"}
+                apiUrl="/forebyggingsplan/api/authenticated/notifikasjoner"
+            />
+        </Bedriftsmeny>
     );
 }

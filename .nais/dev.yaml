@@ -10,6 +10,7 @@ iaMetrikkerApiHost: "ia-tjenester-metrikker.dev.nav.no"
 iaMetrikkerApiBaseurl: "http://ia-tjenester-metrikker.arbeidsgiver.svc.cluster.local/ia-tjenester-metrikker"
 forebyggingsplanBaseurl: "http://forebyggingsplan.teamia.svc.cluster.local"
 grafanaAgentCollectorUrl: "https://telemetry.ekstern.dev.nav.no/collect"
+notifikasjonApiAudience: "dev-gcp:fager:notifikasjon-bruker-api"
 dekoratorEnv: "dev"
 minReplicas: 2
 maxReplicas: 4

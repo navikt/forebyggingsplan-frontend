@@ -26,6 +26,7 @@ const csp = {
         "*.vc.hotjar.io",
         "wss://*.hotjar.com",
         "http://localhost:12347/collect",
+        "notifikasjon-bruker-api.fager.svc.cluster.local",
     ],
     "font-src": [
         "'self'",
