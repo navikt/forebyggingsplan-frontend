@@ -4,7 +4,7 @@ import { erGyldigOrgnr } from "../../lib/orgnr";
 
 export default async function handler(
     req: NextApiRequest,
-    res: NextApiResponse
+    res: NextApiResponse,
 ) {
     if (!req.body.orgnr)
         return res.status(400).json({ error: "Mangler 'orgnr' i body" });
@@ -12,7 +12,7 @@ export default async function handler(
         JSON.stringify({
             aktivitetsId: req.body.aktivitetsId,
             aktivitetsmalId: req.body.aktivitetsmalId,
-        })
+        }),
     );
 
     const baseUrl = process.env.FOREBYGGINGSPLAN_API_BASEURL;
@@ -20,7 +20,7 @@ export default async function handler(
     try {
         token = await hentTokenXToken(
             req,
-            process.env.FOREBYGGINGSPLAN_CLIENT_ID
+            process.env.FOREBYGGINGSPLAN_CLIENT_ID,
         );
     } catch (e) {
         return res.status(401).end();

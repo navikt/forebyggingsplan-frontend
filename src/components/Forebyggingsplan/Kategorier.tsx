@@ -8,7 +8,7 @@ import {
     sorterStatus,
 } from "../../types/Aktivitet";
 import { useHentOrgnummer } from "../Layout/Banner/Banner";
-import { ValgtAktivitet } from "../../types/ValgtAktivitet";
+import { FullførtAktivitet } from "../../types/ValgtAktivitet";
 import { useHentValgteAktiviteter } from "../../lib/forebyggingsplan-klient";
 import { PortableText } from "@portabletext/react";
 import { PortableTextBlock } from "@portabletext/types";
@@ -17,7 +17,7 @@ interface Props {
     kategorier: Kategori[];
 }
 
-export function finnStatus(valgtaktivitet: ValgtAktivitet): AktivitetStatus {
+export function finnStatus(valgtaktivitet: FullførtAktivitet): AktivitetStatus {
     if (valgtaktivitet.fullført) return "FULLFØRT";
     return "VALGT";
 }
@@ -38,17 +38,15 @@ export const Kategorier = ({ kategorier }: Props) => {
                         aktiviteter={aktiviteter.map((aktivitet) => {
                             const valgtAktivitet = valgteAktiviteter?.find(
                                 (valgtaktivitet) =>
-                                    valgtaktivitet.aktivitetsmalId ===
-                                    aktivitet.aktivitetsmalId
+                                    valgtaktivitet.aktivitetsId ===
+                                    aktivitet.aktivitetsmalId,
                             );
                             if (valgtAktivitet) {
                                 return {
                                     ...aktivitet,
                                     status: finnStatus(valgtAktivitet),
-                                    frist: valgtAktivitet.frist,
-                                    fullførtTidspunkt:
-                                        valgtAktivitet.fullførtTidspunkt,
-                                    orgnr: valgtAktivitet.valgtAv.orgnr,
+                                    fullfortTidspunkt:
+                                        valgtAktivitet.fullfortTidspunkt,
                                     aktivitetsId: valgtAktivitet.id,
                                 };
                             }
