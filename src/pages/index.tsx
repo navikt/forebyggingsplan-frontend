@@ -134,7 +134,7 @@ function Forside({
     const { error: statistikkError } = useHentSykefraværsstatistikk(orgnr);
     const { error: valgteAktiviteterError } = useHentValgteAktiviteter(orgnr);
 
-    const DATO = "14. august 2023";
+    const DATO = "7. august 2023";
 
     return (
         <div className={styles.container}>
