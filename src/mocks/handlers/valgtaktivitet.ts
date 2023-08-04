@@ -1,5 +1,5 @@
 import { rest } from "msw";
-import { Aktivitet } from "../../types/ValgtAktivitet";
+import { FullførtAktivitet } from "../../types/ValgtAktivitet";
 
 export const valgtAktivitetHandlers = [
     rest.get(
@@ -15,7 +15,7 @@ export const valgtAktivitetHandlers = [
         async (req, res, ctx) => {
             const { orgnr } = req.params as { orgnr: string };
             const valgtAktivitet = {
-                ...(await req.json<Aktivitet>()),
+                ...(await req.json<FullførtAktivitet>()),
                 orgnr,
                 valgtAv: {
                     orgnr,
@@ -31,7 +31,7 @@ export const valgtAktivitetHandlers = [
         async (req, res, ctx) => {
             const { orgnr } = req.params as { orgnr: string };
             const valgtAktivitet = {
-                ...(await req.json<Aktivitet>()),
+                ...(await req.json<FullførtAktivitet>()),
                 orgnr,
                 valgtAv: {
                     orgnr,
@@ -51,25 +51,23 @@ interface Meta {
     _sistAkkessert: number;
 }
 
-type CacheEntry = Aktivitet & Meta;
+type CacheEntry = FullførtAktivitet & Meta;
 
 const valgtaAktiviteterMocks = new Map<string, CacheEntry[]>();
 let idTeller = 1;
 
 const leggTilEllerOppdaterValgteAktivitet = (
     orgnr: string,
-    valgtAktivitet: Aktivitet,
+    valgtAktivitet: FullførtAktivitet,
 ) => {
     const list = valgtaAktiviteterMocks.get(orgnr) || [];
     const nå = new Date().getTime();
 
-    if (
-        list.some((e) => e.aktivitetsmalId === valgtAktivitet.aktivitetsmalId)
-    ) {
+    if (list.some((e) => e.aktivitetsId === valgtAktivitet.aktivitetsId)) {
         valgtaAktiviteterMocks.set(
             orgnr,
             list.map((e) => {
-                if (e.aktivitetsmalId == valgtAktivitet.aktivitetsmalId)
+                if (e.aktivitetsId == valgtAktivitet.aktivitetsId)
                     return {
                         ...e,
                         ...valgtAktivitet,
@@ -100,7 +98,7 @@ const hentValgteAktiviteter = (orgnr: string) => {
         }),
     );
 
-    return (valgtaAktiviteterMocks.get(orgnr) || []) as Aktivitet[];
+    return (valgtaAktiviteterMocks.get(orgnr) || []) as FullførtAktivitet[];
 };
 
 const MAX_LEVETID_SIDEN_SIST_OPPDATERT_MS = 1000 * 60 * 30;

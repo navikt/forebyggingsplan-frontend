@@ -46,7 +46,7 @@ export const Kategorier = ({ kategorier }: Props) => {
                                     ...aktivitet,
                                     status: finnStatus(valgtAktivitet),
                                     fullfortTidspunkt:
-                                        valgtAktivitet.fullfortTidspunkt,
+                                        valgtAktivitet.fullførtTidspunkt,
                                     aktivitetsId: valgtAktivitet.id,
                                 };
                             }
