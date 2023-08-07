@@ -5,7 +5,7 @@ import { logger } from "./logger";
 
 export const HENT_VALGTE_AKTIVITETER_PATH = `/forebyggingsplan/api/valgteaktiviteterPersonlig`;
 export const VELG_AKTIVITET_PATH = "/forebyggingsplan/api/aktivitet";
-export const FULLFØR_AKTIVITET_PATH = "/forebyggingsplan/api/fullforPersonlig";
+export const FULLFØR_AKTIVITET_PATH = "/forebyggingsplan/api/fullfor";
 
 export class FetchingError extends Error {
     status: number;
