@@ -156,10 +156,11 @@ function Forside({
                         Endring av lagret status
                     </Heading>
                     <BodyShort>
-                        Aktiviteter (for eksempel «Bli gode på å tilrettelegge
-                        for ansatte») som er markert utført før {DATO + " "}
-                        tilbakestilles. Nye registreringer av «marker som gjort»
-                        etter {DATO} blir kun synlig for deg.
+                        Fra og med {DATO} endret vi synligheten på
+                        aktivitetskortene. Nå vil bare du kunne se markeringene
+                        du gjør, og markeringene vil ikke lenger være synlige
+                        for alle i bedriften. Tidligere utførte markeringer er
+                        blitt tilbakestilt.
                     </BodyShort>
                     <ReadMore
                         header="Les mer om årsaken til endringene"
@@ -174,7 +175,7 @@ function Forside({
                         virksomheten kan ikke lenger se status på aktivitetene
                         du jobber med. I forbindelse med endringen er tidligere
                         markeringer tilbakestilt. Årsaken er at vi ikke kan
-                        knytte de tidligere registreringene til en enkelt
+                        knytte de tidligere registreringene til én enkelt
                         person. Vi beklager ulemper dette medfører for deg.
                     </ReadMore>
                 </Alert>
@@ -197,7 +198,9 @@ function Forside({
         </div>
     );
 }
+
 let faro: Faro | null = null;
+
 export function getFaro(grafanaUrl: string): Faro | null {
     if (faro != null || grafanaUrl?.length === 0) return faro;
     faro = initializeFaro({
