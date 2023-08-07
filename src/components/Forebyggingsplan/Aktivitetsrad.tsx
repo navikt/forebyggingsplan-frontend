@@ -76,7 +76,7 @@ export const Aktivitetsrad = ({
 
         fullførAktivitet({
             aktivitetsmalId: aktivitet.aktivitetsmalId,
-            aktivitetsId: aktivitet.aktivitetsId,
+            aktivitetsmalVersjon: aktivitet.aktivitetsmalVersjon,
             orgnr: aktivitet.orgnr ?? orgnr ?? undefined,
         })
             ?.then(() => {

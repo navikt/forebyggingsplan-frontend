@@ -1,11 +1,11 @@
-import { ValgtAktivitet } from "../types/ValgtAktivitet";
+import { FullførtAktivitet } from "../types/ValgtAktivitet";
 import useSWR from "swr";
 import { isoDato } from "./dato";
 import { logger } from "./logger";
 
-export const HENT_VALGTE_AKTIVITETER_PATH = `/forebyggingsplan/api/valgteaktiviteter`;
+export const HENT_VALGTE_AKTIVITETER_PATH = `/forebyggingsplan/api/valgteaktiviteterPersonlig`;
 export const VELG_AKTIVITET_PATH = "/forebyggingsplan/api/aktivitet";
-export const FULLFØR_AKTIVITET_PATH = "/forebyggingsplan/api/fullfor";
+export const FULLFØR_AKTIVITET_PATH = "/forebyggingsplan/api/fullforPersonlig";
 
 export class FetchingError extends Error {
     status: number;
@@ -29,7 +29,7 @@ export function useHentValgteAktiviteter(orgnummer: string | null) {
     const url = orgnummer
         ? `${HENT_VALGTE_AKTIVITETER_PATH}?orgnr=${orgnummer}`
         : null;
-    return useSWR<ValgtAktivitet[]>(url);
+    return useSWR<FullførtAktivitet[]>(url);
 }
 
 interface ValgtAktivitetDTO {
@@ -59,18 +59,19 @@ export function velgAktivitet(valgtAktivitetDto: ValgtAktivitetDTO) {
 }
 
 interface FullførAktivitetDTO {
-    aktivitetsId?: number;
     aktivitetsmalId: string;
+    aktivitetsmalVersjon: string;
     orgnr?: string;
 }
 
 export function fullførAktivitet(fullførAktivitetDto: FullførAktivitetDTO) {
+    console.log("fullførAktivitetDto :>> ", fullførAktivitetDto);
     if (!fullførAktivitetDto.orgnr) return;
     return fetch(FULLFØR_AKTIVITET_PATH, {
         method: "POST",
         body: JSON.stringify({
-            aktivitetsId: fullførAktivitetDto.aktivitetsId,
-            aktivitetsmalId: `${fullførAktivitetDto.aktivitetsmalId}`,
+            aktivitetsmalVersjon: fullførAktivitetDto.aktivitetsmalVersjon,
+            aktivitetsmalId: fullførAktivitetDto.aktivitetsmalId,
             orgnr: fullførAktivitetDto.orgnr,
         }),
         headers: {
@@ -87,11 +88,11 @@ export function fullførAktivitet(fullførAktivitetDto: FullførAktivitetDTO) {
 export async function logAndThrowException(
     res: Response,
     url: string,
-    method: string
+    method: string,
 ) {
     const info = await res.text();
     logger.warn(
-        `${method} ${url} feilet med kode: ${res.status} og response: ${info}`
+        `${method} ${url} feilet med kode: ${res.status} og response: ${info}`,
     );
     if (res.status >= 500) {
         throw new FetchingError("Serverfeil", res.status);

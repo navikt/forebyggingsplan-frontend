@@ -1,11 +1,7 @@
-export interface ValgtAktivitet {
+export interface FullførtAktivitet {
     id: number;
-    aktivitetsmalId: string;
-    valgtAv: {
-        orgnr: string;
-    };
-    frist?: string;
+    aktivitetsId: string;
+    aktivitetsVersjon: string;
     fullført: boolean;
     fullførtTidspunkt: string;
-    opprettelsesTidspunkt: string;
 }
