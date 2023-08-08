@@ -3,9 +3,9 @@ import useSWR from "swr";
 import { isoDato } from "./dato";
 import { logger } from "./logger";
 
-export const HENT_VALGTE_AKTIVITETER_PATH = `/forebyggingsplan/api/valgteaktiviteterPersonlig`;
+export const HENT_VALGTE_AKTIVITETER_PATH = `/forebyggingsplan/api/valgteaktiviteter`;
 export const VELG_AKTIVITET_PATH = "/forebyggingsplan/api/aktivitet";
-export const FULLFØR_AKTIVITET_PATH = "/forebyggingsplan/api/fullforPersonlig";
+export const FULLFØR_AKTIVITET_PATH = "/forebyggingsplan/api/fullfor";
 
 export class FetchingError extends Error {
     status: number;

@@ -6,19 +6,24 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse,
 ) {
-    if (!req.body.orgnr)
+    const { aktivitetsmalId, aktivitetsmalVersjon, orgnr } = req.body;
+
+    if (!orgnr)
         return res.status(400).json({ error: "Mangler 'orgnr' i body" });
-    const requestBody = JSON.parse(
-        JSON.stringify({
-            aktivitetsId: req.body.aktivitetsId,
-            aktivitetsmalId: req.body.aktivitetsmalId,
-        }),
-    );
+    if (!aktivitetsmalId)
+        return res
+            .status(400)
+            .json({ error: "Mangler 'aktivitetsmalId' i body" });
+    if (!aktivitetsmalVersjon)
+        return res
+            .status(400)
+            .json({ error: "Mangler 'aktivitetsmalId' i body" });
 
     const baseUrl = process.env.FOREBYGGINGSPLAN_API_BASEURL;
-    let token;
+
+    let veksletToken;
     try {
-        token = await hentTokenXToken(
+        veksletToken = await hentTokenXToken(
             req,
             process.env.FOREBYGGINGSPLAN_CLIENT_ID,
         );
@@ -26,22 +31,19 @@ export default async function handler(
         return res.status(401).end();
     }
 
-    const orgnr: string = req.body.orgnr;
     if (!erGyldigOrgnr(orgnr)) {
         return res.status(400).end();
     }
 
-    const respons = await fetch(`${baseUrl}/fullfor/${orgnr}`, {
-        method: "POST",
-        body: JSON.stringify(requestBody),
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
+    const respons = await fetch(
+        `${baseUrl}/aktivitet/${aktivitetsmalId}/versjon/${aktivitetsmalVersjon}/orgnr/${orgnr}/fullfor`,
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${veksletToken}`,
+            },
         },
-    });
-    const { status, responseBody } = {
-        status: respons.status,
-        responseBody: respons.ok ? await respons.json() : await respons.text(),
-    };
-    res.status(status).json(responseBody);
+    );
+    res.status(respons.status).json({ status: respons.status });
 }

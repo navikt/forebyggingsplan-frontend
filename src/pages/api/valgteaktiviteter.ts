@@ -4,7 +4,7 @@ import { erGyldigOrgnr } from "../../lib/orgnr";
 
 export default async function handler(
     req: NextApiRequest,
-    res: NextApiResponse
+    res: NextApiResponse,
 ) {
     if (!req.query.orgnr)
         return res.status(400).json({ error: "Mangler parameter 'orgnr'" });
@@ -13,7 +13,7 @@ export default async function handler(
     try {
         token = await hentTokenXToken(
             req,
-            process.env.FOREBYGGINGSPLAN_CLIENT_ID
+            process.env.FOREBYGGINGSPLAN_CLIENT_ID,
         );
     } catch (e) {
         return res.status(401).end();
@@ -24,12 +24,12 @@ export default async function handler(
         return res.status(400).end();
     }
     const response = await fetch(
-        `${process.env.FOREBYGGINGSPLAN_API_BASEURL}/valgteaktiviteter/${orgnr}`,
+        `${process.env.FOREBYGGINGSPLAN_API_BASEURL}/aktiviteter/orgnr/${orgnr}/fullforte`,
         {
             headers: {
                 authorization: `Bearer ${token}`,
             },
-        }
+        },
     );
 
     if (!response.ok) {
