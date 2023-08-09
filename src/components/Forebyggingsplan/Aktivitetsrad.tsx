@@ -41,7 +41,7 @@ export const Aktivitetsrad = ({
             setÅpen(true);
 
             loggÅpneAktivitet(aktivitet);
-            lagreIaMetrikkInformasjonstjeneste(orgnr);
+            lagreIaMetrikkInformasjonstjeneste(orgnr); // testes i src/components/Forebyggingsplan/Kategorier.test.tsx
 
             radRef?.current?.scrollIntoView({ behavior: "smooth" });
         }
@@ -58,7 +58,7 @@ export const Aktivitetsrad = ({
         })
             ?.then(() => {
                 oppdaterValgteAktiviteter();
-                lagreIaMetrikkInteraksjonstjeneste(orgnr);
+                lagreIaMetrikkInteraksjonstjeneste(orgnr); // testes i src/components/Forebyggingsplan/Kategorier.test.tsx
             })
             .catch((e: FetchingError) => {
                 if (e.status == 503) {
