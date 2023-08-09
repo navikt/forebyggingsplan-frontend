@@ -4,6 +4,7 @@ import { iaMetrikkerHandlers } from "./iaMetrikker";
 import { sykefraværsstatistikkHandlers } from "./sykefraværsstatistikk";
 import { handlersForTests } from "./handlersForTests";
 import { notifikasjonerHandlers } from "./notifikasjoner";
+import { personligPlanAktivitetHandlers } from "./personligPlanAktivitet";
 
 export const handlers = [
     ...organisasjonerHandlers,
@@ -12,4 +13,5 @@ export const handlers = [
     ...valgtAktivitetHandlers,
     ...handlersForTests,
     ...notifikasjonerHandlers,
+    ...personligPlanAktivitetHandlers,
 ];

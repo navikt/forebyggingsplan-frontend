@@ -56,7 +56,7 @@ type CacheEntry = FullførtAktivitet & Meta;
 const valgtaAktiviteterMocks = new Map<string, CacheEntry[]>();
 let idTeller = 1;
 
-const leggTilEllerOppdaterValgteAktivitet = (
+export const leggTilEllerOppdaterValgteAktivitet = (
     orgnr: string,
     valgtAktivitet: FullførtAktivitet,
 ) => {
@@ -89,7 +89,7 @@ const leggTilEllerOppdaterValgteAktivitet = (
     }
 };
 
-const hentValgteAktiviteter = (orgnr: string) => {
+export const hentValgteAktiviteter = (orgnr: string) => {
     const nå = new Date().getTime();
     valgtaAktiviteterMocks.set(
         orgnr,
