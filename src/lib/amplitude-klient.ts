@@ -13,10 +13,6 @@ export const loggÅpneAktivitet = (aktivitet: Aktivitet) => {
     sendAktivitetsEvent(aktivitet, "åpne");
 };
 
-export const loggVelgAktivitet = (aktivitet: Aktivitet) => {
-    sendAktivitetsEvent(aktivitet, "velg");
-};
-
 export const loggFullførAktivitet = (aktivitet: Aktivitet) => {
     const hendelse =
         aktivitet.status == "VALGT" ? "fullført" : "detteHarViPåPlass";
