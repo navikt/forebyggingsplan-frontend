@@ -19,7 +19,6 @@ const hovedinnhold: Partial<PortableTextComponents> = {
 
 interface AktivitetsmalProps {
     aktivitet: Aktivitet;
-    velgAktivitet: (frist?: Date) => Promise<void> | undefined;
     fullførAktivitet: () => void;
     serverFeil: string;
 }

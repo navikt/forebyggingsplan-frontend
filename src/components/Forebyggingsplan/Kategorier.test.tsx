@@ -1,8 +1,18 @@
-import { screen, render } from "@testing-library/react";
+import { screen, render, waitFor } from "@testing-library/react";
 import { Kategorier } from "./Kategorier";
 import { axe } from "jest-axe";
 import { kategorierMock } from "../../mocks/kategorierMock";
 import userEvent from "@testing-library/user-event";
+import {
+    lagreIaMetrikkInformasjonstjeneste,
+    lagreIaMetrikkInteraksjonstjeneste,
+} from "../../lib/ia-metrikker-klient";
+
+jest.mock("../../lib/ia-metrikker-klient", () => ({
+    ...jest.requireActual("../../lib/ia-metrikker-klient"),
+    lagreIaMetrikkInformasjonstjeneste: jest.fn(),
+    lagreIaMetrikkInteraksjonstjeneste: jest.fn(),
+}));
 
 jest.mock("next/router", () => ({
     useRouter() {
@@ -18,9 +28,12 @@ jest.mock("next/router", () => ({
 }));
 
 describe("Kategorier", () => {
+    beforeEach(() => {
+        jest.clearAllMocks();
+    });
     it("Har ingen uu-feil fra axe", async () => {
         const { container } = render(
-            <Kategorier kategorier={kategorierMock} />
+            <Kategorier kategorier={kategorierMock} />,
         );
         const results = await axe(container);
         expect(results).toHaveNoViolations();
@@ -44,7 +57,7 @@ describe("Kategorier", () => {
             await screen.findByRole("button", {
                 name: "Bruk sykefraværstatistikken til å forebygge fravær",
                 expanded: false,
-            })
+            }),
         ).toBeInTheDocument();
         const button = await screen.findByRole("button", {
             name: "Bruk sykefraværstatistikken til å forebygge fravær",
@@ -56,24 +69,61 @@ describe("Kategorier", () => {
         });
         expect(påPlassKnapper.length).toBeGreaterThanOrEqual(1);
         påPlassKnapper.forEach((knapp) =>
-            expect(knapp).toHaveClass("navds-button", "navds-button--secondary")
+            expect(knapp).toHaveClass(
+                "navds-button",
+                "navds-button--secondary",
+            ),
         );
 
         expect(
             await screen.findByRole("button", {
                 name: "Bruk sykefraværstatistikken til å forebygge fravær",
                 expanded: true,
-            })
+            }),
         ).toBeInTheDocument();
         expect(
             screen.getByText(
-                /Du vet hvilke plikter du har til å føre sykefraværsstatstikk/
-            )
+                /Du vet hvilke plikter du har til å føre sykefraværsstatstikk/,
+            ),
         ).toBeVisible();
         expect(
             screen.getByText(
-                "Før fravær og ha oversikt over plager som skyldes forhold på arbeidsplassen"
-            )
+                "Før fravær og ha oversikt over plager som skyldes forhold på arbeidsplassen",
+            ),
         ).toBeVisible();
+    });
+
+    it("Skal sende metrikker ved åpning av aktivitet", async () => {
+        render(<Kategorier kategorier={kategorierMock} />);
+        const button = await screen.findByRole("button", {
+            name: "Bruk sykefraværstatistikken til å forebygge fravær",
+        });
+
+        expect(button).toBeInTheDocument();
+
+        expect(lagreIaMetrikkInformasjonstjeneste).not.toHaveBeenCalled();
+        await userEvent.click(button);
+        expect(lagreIaMetrikkInformasjonstjeneste).toHaveBeenCalledTimes(1);
+    });
+
+    it("Skal sende metrikker ved fullføring av aktivitet", async () => {
+        render(<Kategorier kategorier={kategorierMock} />);
+        const expandButton = await screen.findByRole("button", {
+            name: "Bruk sykefraværstatistikken til å forebygge fravær",
+        });
+        expect(expandButton).toBeInTheDocument();
+        await userEvent.click(expandButton);
+
+        const markerButton = await screen
+            .findAllByRole("button", {
+                name: "Marker som gjort",
+            })
+            .then((buttons) => buttons[0]);
+        expect(markerButton).toBeInTheDocument();
+        expect(lagreIaMetrikkInteraksjonstjeneste).not.toHaveBeenCalled();
+        await userEvent.click(markerButton);
+        await waitFor(() => {
+            expect(lagreIaMetrikkInteraksjonstjeneste).toHaveBeenCalledTimes(1);
+        });
     });
 });

@@ -1,6 +1,5 @@
 import { FullførtAktivitet } from "../types/ValgtAktivitet";
 import useSWR from "swr";
-import { isoDato } from "./dato";
 import { logger } from "./logger";
 
 export const HENT_VALGTE_AKTIVITETER_PATH = `/forebyggingsplan/api/valgteaktiviteter`;
@@ -30,32 +29,6 @@ export function useHentValgteAktiviteter(orgnummer: string | null) {
         ? `${HENT_VALGTE_AKTIVITETER_PATH}?orgnr=${orgnummer}`
         : null;
     return useSWR<FullførtAktivitet[]>(url);
-}
-
-interface ValgtAktivitetDTO {
-    aktivitetsmalId: string;
-    frist?: Date;
-    orgnr?: string;
-}
-
-export function velgAktivitet(valgtAktivitetDto: ValgtAktivitetDTO) {
-    if (!valgtAktivitetDto.orgnr) return;
-    return fetch(VELG_AKTIVITET_PATH, {
-        method: "POST",
-        body: JSON.stringify({
-            aktivitetsmalId: valgtAktivitetDto.aktivitetsmalId,
-            frist: isoDato(valgtAktivitetDto.frist),
-            orgnr: valgtAktivitetDto.orgnr,
-        }),
-        headers: {
-            "Content-Type": "application/json",
-        },
-    }).then(async (res) => {
-        if (!res.ok) {
-            await logAndThrowException(res, VELG_AKTIVITET_PATH, "POST");
-        }
-        return res.json();
-    });
 }
 
 interface FullførAktivitetDTO {

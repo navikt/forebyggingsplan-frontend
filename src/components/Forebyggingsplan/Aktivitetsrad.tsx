@@ -4,12 +4,10 @@ import styles from "./Aktivitetsrad.module.css";
 import {
     FetchingError,
     fullførAktivitet,
-    velgAktivitet,
 } from "../../lib/forebyggingsplan-klient";
 import { useHentOrgnummer } from "../Layout/Banner/Banner";
 import {
     loggFullførAktivitet,
-    loggVelgAktivitet,
     loggÅpneAktivitet,
 } from "../../lib/amplitude-klient";
 import { useCallback, useRef, useState } from "react";
@@ -48,27 +46,6 @@ export const Aktivitetsrad = ({
             radRef?.current?.scrollIntoView({ behavior: "smooth" });
         }
     }, [åpen, aktivitet, orgnr, radRef]);
-
-    const velgAktivitetHandler = (frist?: Date): Promise<void> | undefined => {
-        setServerfeil("");
-        loggVelgAktivitet(aktivitet);
-
-        return velgAktivitet({
-            aktivitetsmalId: aktivitet.aktivitetsmalId,
-            frist,
-            orgnr: orgnr ?? undefined,
-        })
-            ?.then(() => {
-                oppdaterValgteAktiviteter();
-                lagreIaMetrikkInteraksjonstjeneste(orgnr);
-            })
-            .catch((e: FetchingError) => {
-                if (e.status == 503) {
-                    router.push("/500").then();
-                }
-                setServerfeil(e.message);
-            });
-    };
 
     const fullførAktivitetHandler = () => {
         setServerfeil("");
@@ -117,7 +94,6 @@ export const Aktivitetsrad = ({
             >
                 <Aktivitetsmal
                     aktivitet={aktivitet}
-                    velgAktivitet={velgAktivitetHandler}
                     fullførAktivitet={fullførAktivitetHandler}
                     serverFeil={serverFeil}
                 />
