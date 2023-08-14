@@ -1,14 +1,14 @@
 import { screen, render, waitFor } from "@testing-library/react";
-import { Kategorier } from "../components/Forebyggingsplan/Kategorier";
-import { kategorierMock } from "../mocks/kategorierMock";
+import { Kategorier } from "./components/Forebyggingsplan/Kategorier";
+import { kategorierMock } from "./mocks/kategorierMock";
 import userEvent from "@testing-library/user-event";
 import {
     lagreIaMetrikkInformasjonstjeneste,
     lagreIaMetrikkInteraksjonstjeneste,
-} from "../lib/ia-metrikker-klient";
+} from "./lib/ia-metrikker-klient";
 
-jest.mock("../lib/ia-metrikker-klient", () => ({
-    ...jest.requireActual("../lib/ia-metrikker-klient"),
+jest.mock("./lib/ia-metrikker-klient", () => ({
+    ...jest.requireActual("./lib/ia-metrikker-klient"),
     lagreIaMetrikkInformasjonstjeneste: jest.fn(),
     lagreIaMetrikkInteraksjonstjeneste: jest.fn(),
 }));
