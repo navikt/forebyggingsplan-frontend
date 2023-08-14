@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-      - personling-plan-cleanup
+      - metrikk-tester
 
 env:
   IMAGE: ghcr.io/${{ github.repository }}:${{ github.sha }}
@@ -77,7 +77,7 @@ jobs:
         cluster: [ dev ]
     name: Deploy app (from feature-branch) to ${{ matrix.cluster }}
     needs: build
-    if: github.ref == 'refs/heads/personling-plan-cleanup'
+    if: github.ref == 'refs/heads/metrikk-tester'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
