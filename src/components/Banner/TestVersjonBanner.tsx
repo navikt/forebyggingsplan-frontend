@@ -1,7 +1,6 @@
 import { Alert, BodyShort, Heading, Link } from "@navikt/ds-react";
 import styles from "./TestVersjonBanner.module.css";
 const TestVersjonBanner = ({ prodUrl }: { prodUrl?: string }) => {
-    console.log("prodUrl :>> ", prodUrl);
     return (
         <Alert variant="warning" size="medium" className={styles.alert}>
             <Heading spacing level="2" size="small">
