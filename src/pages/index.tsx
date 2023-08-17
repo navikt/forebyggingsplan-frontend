@@ -26,6 +26,7 @@ interface Props {
     organisasjoner: Organisasjon[];
     altinnKonfig: AltinnKonfig;
     kjørerMocket: boolean;
+    prodUrl?: string;
 }
 
 export interface KategoriDokument extends SanityDocument {
@@ -113,6 +114,7 @@ export const getServerSideProps: GetServerSideProps<
     return {
         props: {
             grafanaUrl: process.env.GRAFANA_AGENT_COLLECTOR_URL || "",
+            prodUrl: process.env.PROD_URL || "",
             kategorier: sanityData.map(({ tittel, innhold, aktiviteter }) => ({
                 tittel,
                 innhold,
@@ -129,6 +131,7 @@ function Forside({
     kategorier,
     altinnKonfig,
     kjørerMocket,
+    prodUrl,
 }: Omit<Props, "organisasjoner">) {
     const { orgnr } = useHentOrgnummer();
     const { error: statistikkError } = useHentSykefraværsstatistikk(orgnr);
@@ -139,7 +142,7 @@ function Forside({
     return (
         <div className={styles.container}>
             <div className={styles.main}>
-                {kjørerMocket && <TestVersjonBanner />}
+                {kjørerMocket && <TestVersjonBanner prodUrl={prodUrl} />}
                 {valgteAktiviteterError?.status === 403 && (
                     <Alert variant={"warning"} className={styles.alert}>
                         Du har ikke ikke tilgang til å gjøre endringer på denne
@@ -220,6 +223,7 @@ const Home = ({
     altinnKonfig,
     kjørerMocket,
     grafanaUrl,
+    prodUrl,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
     React.useEffect(() => {
         getFaro(grafanaUrl);
@@ -240,6 +244,7 @@ const Home = ({
                     kategorier={kategorier}
                     altinnKonfig={altinnKonfig}
                     kjørerMocket={kjørerMocket}
+                    prodUrl={prodUrl}
                 />
             </Layout>
         </>
