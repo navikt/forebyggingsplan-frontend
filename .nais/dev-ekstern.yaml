@@ -9,6 +9,7 @@ iaMetrikkerApiClientId: "dev-gcp:arbeidsgiver:ia-tjenester-metrikker"
 iaMetrikkerApiHost: "ia-tjenester-metrikker.dev.nav.no"
 iaMetrikkerApiBaseurl: "http://localhost:9091/ia-tjenester-metrikker"
 forebyggingsplanBaseurl: "http://localhost:8081"
+prodUrl: "https://arbeidsgiver.nav.no/forebyggingsplan"
 dekoratorEnv: "dev"
 minReplicas: 1
 maxReplicas: 1

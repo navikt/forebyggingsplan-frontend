@@ -64,6 +64,8 @@ spec:
       value: {{ grafanaAgentCollectorUrl }}
     - name: NOTIFIKASJON_API_AUDIENCE
       value: {{ notifikasjonApiAudience }}
+    - name: PROD_URL
+      value: {{ prodUrl }}
   ingresses:
   {{#each ingresses as |url|}}
      - {{url}}
