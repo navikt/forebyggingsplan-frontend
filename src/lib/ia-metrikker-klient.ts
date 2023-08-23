@@ -5,7 +5,7 @@ import {
 } from "@navikt/ia-metrikker-client";
 import { logAndThrowException } from "./forebyggingsplan-klient";
 
-export const IA_METRIKK_PATH = "/forebyggingsplan/api/ia-metrikkers";
+export const IA_METRIKK_PATH = "/forebyggingsplan/api/ia-metrikker";
 
 export const lagreIaMetrikkInformasjonstjeneste = (orgnr: string | null) => {
     sendIaMetrikkEvent(orgnr, MetrikkType.INFORMASJONSTJENESTE);
