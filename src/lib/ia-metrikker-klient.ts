@@ -1,32 +1,27 @@
+import {
+    sendIaMetrikk,
+    MetrikkType,
+    MetrikkKilde,
+} from "@navikt/ia-metrikker-client";
 import { logAndThrowException } from "./forebyggingsplan-klient";
 
-export const IA_METRIKK_PATH = "/forebyggingsplan/api/ia-metrikker";
-type MetrikkType = "INFORMASJONSTJENESTE" | "INTERAKSJONSTJENESTE";
+export const IA_METRIKK_PATH = "/forebyggingsplan/api/ia-metrikkers";
 
 export const lagreIaMetrikkInformasjonstjeneste = (orgnr: string | null) => {
-    sendIaMetrikkEvent(orgnr, "INFORMASJONSTJENESTE");
+    sendIaMetrikkEvent(orgnr, MetrikkType.INFORMASJONSTJENESTE);
 };
 
 export const lagreIaMetrikkInteraksjonstjeneste = (orgnr: string | null) => {
-    sendIaMetrikkEvent(orgnr, "INTERAKSJONSTJENESTE");
+    sendIaMetrikkEvent(orgnr, MetrikkType.INTERAKSJONSTJENESTE);
 };
 
 const sendIaMetrikkEvent = (orgnr: string | null, type: MetrikkType) => {
     if (!orgnr) return;
 
-    return fetch(IA_METRIKK_PATH, {
-        method: "POST",
-        body: JSON.stringify({
-            orgnr: orgnr,
-            type: type,
-        }),
-        headers: {
-            "Content-Type": "application/json",
-        },
-    }).then(async (res) => {
-        if (!res.ok) {
-            await logAndThrowException(res, IA_METRIKK_PATH, "POST");
-        }
-        return res.json();
-    });
+    return sendIaMetrikk(
+        orgnr,
+        type,
+        MetrikkKilde.FOREBYGGINGSPLAN,
+        IA_METRIKK_PATH,
+    ).catch((res) => logAndThrowException(res, IA_METRIKK_PATH, "POST"));
 };
