@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-      - test-versjon-banner
+      - use-metrikker-client
 
 env:
   IMAGE: ghcr.io/${{ github.repository }}:${{ github.sha }}
@@ -77,7 +77,7 @@ jobs:
         cluster: [ dev ]
     name: Deploy app (from feature-branch) to ${{ matrix.cluster }}
     needs: build
-    if: github.ref == 'refs/heads/test-versjon-banner'
+    if: github.ref == 'refs/heads/use-metrikker-client'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
