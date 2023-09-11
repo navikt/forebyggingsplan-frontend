@@ -4,7 +4,7 @@ import { Aktivitet } from "../types/Aktivitet";
 export const defaultEventProperties = () => {
     return {
         app: "forebyggingsplan",
-        team: "pia",
+        team: "teamia",
         url: window.location.pathname,
     };
 };
@@ -13,9 +13,8 @@ export const loggÅpneAktivitet = (aktivitet: Aktivitet) => {
     sendAktivitetsEvent(aktivitet, "åpne");
 };
 
-export const loggFullførAktivitet = (aktivitet: Aktivitet) => {
-    const hendelse =
-        aktivitet.status == "VALGT" ? "fullført" : "detteHarViPåPlass";
+export const loggMarkerSomGjort = (aktivitet: Aktivitet) => {
+    const hendelse = "markertSomGjort";
     sendAktivitetsEvent(aktivitet, hendelse);
 };
 

@@ -7,7 +7,7 @@ import {
 } from "../../lib/forebyggingsplan-klient";
 import { useHentOrgnummer } from "../Layout/Banner/Banner";
 import {
-    loggFullførAktivitet,
+    loggMarkerSomGjort,
     loggÅpneAktivitet,
 } from "../../lib/amplitude-klient";
 import { useCallback, useRef, useState } from "react";
@@ -47,9 +47,9 @@ export const Aktivitetsrad = ({
         }
     }, [åpen, aktivitet, orgnr, radRef]);
 
-    const fullførAktivitetHandler = () => {
+    const markerAktivitetSomGjortHandler = () => {
         setServerfeil("");
-        loggFullførAktivitet(aktivitet);
+        loggMarkerSomGjort(aktivitet);
 
         fullførAktivitet({
             aktivitetsmalId: aktivitet.aktivitetsmalId,
@@ -94,7 +94,7 @@ export const Aktivitetsrad = ({
             >
                 <Aktivitetsmal
                     aktivitet={aktivitet}
-                    fullførAktivitet={fullførAktivitetHandler}
+                    fullførAktivitet={markerAktivitetSomGjortHandler}
                     serverFeil={serverFeil}
                 />
             </Accordion.Content>
