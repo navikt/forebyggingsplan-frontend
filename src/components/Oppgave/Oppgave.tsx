@@ -1,28 +1,39 @@
+import React from "react";
 import styles from "./Oppgave.module.css";
-import { Heading, Panel, Tag } from "@navikt/ds-react";
+import { Heading, Panel } from "@navikt/ds-react";
 import { PortableText, PortableTextComponentProps } from "@portabletext/react";
 import { PortableTextBlock } from "@portabletext/types";
 import { block } from "../PortableText/block/Block";
 import { marks } from "../PortableText/marks/Marks";
+import { Statusendringsknapper } from "./Statusendringsknapper";
+import { Statusvisning } from "./Statusvisning";
 
 interface Props {
-    oppgavetype: string;
     tittel: string;
     innhold: PortableTextBlock[];
 }
 
+export type statuser = "urørt" | "under_arbeid" | "fullført";
+
 export const Oppgave = ({
-    value: { oppgavetype, tittel, innhold },
+    value: { tittel, innhold },
 }: PortableTextComponentProps<Props>) => {
+    const [status, setStatus] = React.useState<statuser>("urørt");
+
     return (
         <Panel className={styles.oppgaveblokk}>
-            <Tag className={styles.tag} variant="neutral">
-                {oppgavetype}
-            </Tag>
             <div className={styles.oppgaveinnhold}>
-                <Heading size={"medium"} level="4" spacing>
-                    {tittel}
-                </Heading>
+                <div className={styles.tittelContainer}>
+                    <Heading size={"medium"} level="4" spacing>
+                        Oppgave: {tittel}
+                    </Heading>
+                    <Statusvisning status={status} />
+                </div>
+                <Statusendringsknapper
+                    status={status}
+                    setNyStatus={setStatus}
+                />
+                <hr />
                 <PortableText
                     value={innhold}
                     components={{

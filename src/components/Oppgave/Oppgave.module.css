@@ -14,6 +14,20 @@
     margin-bottom: 0;
 }
 
+.oppgaveinnhold .tittelContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.oppgaveinnhold .tittelContainer .status {
+    white-space: nowrap;
+}
+
+.avbryt {
+    margin-left: 0.5rem;
+}
+
 .tag {
     width: max-content;
 }
