@@ -24,8 +24,48 @@
     white-space: nowrap;
 }
 
-.avbryt {
-    margin-left: 0.5rem;
+.oppgaveinnhold .kollapsetOppgavetekst {
+    max-height: 6rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.oppgaveinnhold .oppgavetekstOverlayGradient {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+.oppgaveinnhold .kollapsetOppgavetekst .oppgavetekstOverlayGradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        transparent 10%,
+        var(--a-surface-selected) 90%,
+        var(--a-surface-selected) 100%
+    );
+    pointer-events: none;
+}
+
+.helknapp {
+    width: 250px;
+    pointer-events: all;
+    background-color: var(--a-surface-selected);
+}
+
+.halvknapp {
+    pointer-events: all;
+    width: 120px;
+    background-color: var(--a-surface-selected);
+}
+
+.halvknapp:not(:first-child) {
+    margin-left: 10px;
 }
 
 .tag {

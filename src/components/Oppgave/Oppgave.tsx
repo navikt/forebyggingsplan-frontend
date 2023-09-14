@@ -13,12 +13,39 @@ interface Props {
     innhold: PortableTextBlock[];
 }
 
-export type statuser = "urørt" | "under_arbeid" | "fullført";
+export type statusType = "urørt" | "under_arbeid" | "fullført";
+
+function erKollapsetType(status: statusType): boolean {
+    return status === "urørt" || status === "fullført";
+}
+
+function KollapsbarOppgavetekstContainer({
+    children,
+    knapper,
+    status,
+}: {
+    children: React.ReactNode;
+    knapper: React.ReactNode;
+    status: statusType;
+}) {
+    return (
+        <div
+            className={
+                erKollapsetType(status)
+                    ? styles.kollapsetOppgavetekst
+                    : styles.synligOppgavetekst
+            }
+        >
+            {children}
+            <div className={styles.oppgavetekstOverlayGradient}>{knapper}</div>
+        </div>
+    );
+}
 
 export const Oppgave = ({
     value: { tittel, innhold },
 }: PortableTextComponentProps<Props>) => {
-    const [status, setStatus] = React.useState<statuser>("urørt");
+    const [status, setStatus] = React.useState<statusType>("urørt");
 
     return (
         <Panel className={styles.oppgaveblokk}>
@@ -29,18 +56,23 @@ export const Oppgave = ({
                     </Heading>
                     <Statusvisning status={status} />
                 </div>
-                <Statusendringsknapper
+                <KollapsbarOppgavetekstContainer
                     status={status}
-                    setNyStatus={setStatus}
-                />
-                <hr />
-                <PortableText
-                    value={innhold}
-                    components={{
-                        block,
-                        marks,
-                    }}
-                />
+                    knapper={
+                        <Statusendringsknapper
+                            status={status}
+                            setNyStatus={setStatus}
+                        />
+                    }
+                >
+                    <PortableText
+                        value={innhold}
+                        components={{
+                            block,
+                            marks,
+                        }}
+                    />
+                </KollapsbarOppgavetekstContainer>
             </div>
         </Panel>
     );

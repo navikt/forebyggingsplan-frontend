@@ -1,23 +1,29 @@
 import React from "react";
 import styles from "./Oppgave.module.css";
 import { Button } from "@navikt/ds-react";
-import { ArrowCirclepathIcon } from "@navikt/aksel-icons";
-import { statuser } from "./Oppgave";
+import {
+    ArrowCirclepathIcon,
+    CheckmarkIcon,
+    ChevronDownIcon,
+    XMarkIcon,
+} from "@navikt/aksel-icons";
+import { statusType } from "./Oppgave";
 
 export function Statusendringsknapper({
     status,
     setNyStatus,
 }: {
-    status: statuser;
-    setNyStatus: (nyStatus: statuser) => void;
+    status: statusType;
+    setNyStatus: (nyStatus: statusType) => void;
 }) {
     switch (status) {
         case "urørt":
             return (
                 <Button
-                    size="small"
                     variant="secondary"
+                    className={styles.helknapp}
                     onClick={() => setNyStatus("under_arbeid")}
+                    icon={<ChevronDownIcon title="Start" />}
                 >
                     Start
                 </Button>
@@ -26,17 +32,18 @@ export function Statusendringsknapper({
             return (
                 <div className="flex flex-wrap gap-2">
                     <Button
-                        size="small"
                         variant="secondary"
+                        className={styles.halvknapp}
                         onClick={() => setNyStatus("fullført")}
+                        icon={<CheckmarkIcon title="Fullfør" />}
                     >
                         Fullfør
                     </Button>
                     <Button
-                        size="small"
                         variant="secondary-neutral"
-                        className={styles.avbryt}
+                        className={`${styles.avbryt} ${styles.halvknapp}`}
                         onClick={() => setNyStatus("urørt")}
+                        icon={<XMarkIcon title="Avbryt" />}
                     >
                         Avbryt
                     </Button>
@@ -45,10 +52,10 @@ export function Statusendringsknapper({
         case "fullført":
             return (
                 <Button
-                    size="small"
                     variant="secondary-neutral"
+                    className={styles.helknapp}
                     onClick={() => setNyStatus("urørt")}
-                    icon={<ArrowCirclepathIcon />}
+                    icon={<ArrowCirclepathIcon title="Start på nytt" />}
                 >
                     Start på nytt
                 </Button>
