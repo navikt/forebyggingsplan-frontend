@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-      - use-metrikker-client
+      - ny-oppgave-boks
 
 env:
   IMAGE: ghcr.io/${{ github.repository }}:${{ github.sha }}
