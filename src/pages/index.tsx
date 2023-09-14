@@ -12,7 +12,7 @@ import { hentOrganisasjoner } from "../lib/organisasjoner";
 import { Organisasjon } from "@navikt/bedriftsmeny";
 import { Kategori } from "../types/kategori";
 import { Kategorier } from "../components/Forebyggingsplan/Kategorier";
-import { Alert, BodyShort, Heading, Link, ReadMore } from "@navikt/ds-react";
+import { Alert, Link } from "@navikt/ds-react";
 import { useHentSykefraværsstatistikk } from "../lib/sykefraværsstatistikk-klient";
 import { useHentOrgnummer } from "../components/Layout/Banner/Banner";
 import { useHentValgteAktiviteter } from "../lib/forebyggingsplan-klient";
@@ -137,8 +137,6 @@ function Forside({
     const { error: statistikkError } = useHentSykefraværsstatistikk(orgnr);
     const { error: valgteAktiviteterError } = useHentValgteAktiviteter(orgnr);
 
-    const DATO = "7. august 2023";
-
     return (
         <div className={styles.container}>
             <div className={styles.main}>
@@ -154,34 +152,6 @@ function Forside({
                         </Link>
                     </Alert>
                 )}
-                <Alert variant={"warning"} className={styles.alert}>
-                    <Heading spacing level="2" size="small">
-                        Endring av lagret status
-                    </Heading>
-                    <BodyShort>
-                        Fra og med {DATO} endret vi synligheten på
-                        aktivitetskortene. Nå vil bare du kunne se markeringene
-                        du gjør, og markeringene vil ikke lenger være synlige
-                        for alle i bedriften. Tidligere utførte markeringer er
-                        blitt tilbakestilt.
-                    </BodyShort>
-                    <ReadMore
-                        header="Les mer om årsaken til endringene"
-                        className={styles.alertReadMore}
-                    >
-                        Fram til {DATO} jobbet alle som hadde tilgang i
-                        virksomheten, på de samme aktivitetene på siden. For
-                        eksempel kunne din kollega gå inn og markere en
-                        aktivitet som gjort, og du ville se dato og markering
-                        når du logget inn. Dette er nå endret, slik at alle med
-                        rettighet har sin egen lagrede informasjon. Andre i
-                        virksomheten kan ikke lenger se status på aktivitetene
-                        du jobber med. I forbindelse med endringen er tidligere
-                        markeringer tilbakestilt. Årsaken er at vi ikke kan
-                        knytte de tidligere registreringene til én enkelt
-                        person. Vi beklager ulemper dette medfører for deg.
-                    </ReadMore>
-                </Alert>
                 {valgteAktiviteterError &&
                     valgteAktiviteterError.status !== 403 && (
                         <Alert variant={"error"} className={styles.alert}>
