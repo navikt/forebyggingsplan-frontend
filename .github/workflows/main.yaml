@@ -26,6 +26,8 @@ jobs:
           cache: npm
       - name: Install stuff
         run: npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
       - name: Kjør tester
         run: npm run test:ci
       - name: Bygg prosjekt
@@ -54,7 +56,9 @@ jobs:
           CLUSTER: dev-gcp
           IMAGE: ${{ needs.docker-build-push.outputs.image }}
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          RESOURCE: .nais/dev.yaml
+          RESOURCE: .nais/nais.yaml
+          VARS: .nais/dev.yaml
+
 
   deploy-to-dev-gcp-ekstern:
     name: Deploy to dev-gcp (ekstern)
@@ -69,7 +73,8 @@ jobs:
           CLUSTER: dev-gcp
           IMAGE: ${{ needs.docker-build-push.outputs.image }}
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          RESOURCE: .nais/dev-ekstern.yaml
+          RESOURCE: .nais/nais.yaml
+          VARS: .nais/dev-ekstern.yaml
 
   deploy-to-prod-gcp:
     name: Deploy to prod-gcp
@@ -84,4 +89,5 @@ jobs:
           CLUSTER: prod-gcp
           IMAGE: ${{ needs.docker-build-push.outputs.image }}
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          RESOURCE: .nais/prod-gcp.yaml
+          RESOURCE: .nais/nais.yaml
+          VARS: .nais/prod.yaml
