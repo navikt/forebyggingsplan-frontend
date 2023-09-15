@@ -1,7 +1,8 @@
 import { Rule } from "@sanity/types";
 import { orderRankField } from "@sanity/orderable-document-list";
+import { defineType } from "sanity";
 
-export const kategori = {
+export const kategori = defineType({
     type: "document",
     name: "kategori",
     title: "Kategori til aktiviteter",
@@ -38,4 +39,4 @@ export const kategori = {
         },
         orderRankField({ type: "kategori" }),
     ],
-};
+});

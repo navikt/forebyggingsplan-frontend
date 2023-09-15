@@ -1,7 +1,8 @@
 import { Rule } from "@sanity/types";
 import { orderRankField } from "@sanity/orderable-document-list";
+import { defineType } from "sanity";
 
-export const aktivitet = {
+export const aktivitet = defineType({
     type: "document",
     name: "Aktivitet",
     title: "Aktivitet i forebyggingsplan",
@@ -88,4 +89,4 @@ export const aktivitet = {
         },
         orderRankField({ type: "Aktivitet" }),
     ],
-};
+});

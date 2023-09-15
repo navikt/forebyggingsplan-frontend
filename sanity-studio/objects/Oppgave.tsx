@@ -3,6 +3,7 @@ import styles from "./oppgavePreview.module.css";
 import { PortableText } from "@portabletext/react";
 import { PortableTextBlock } from "@portabletext/types";
 import { defineType } from "sanity";
+import { uuid } from "@sanity/uuid";
 
 interface Props {
     value: {
@@ -38,6 +39,12 @@ const oppgaveSchema = defineType({
             title: "Oppgavetittel",
             name: "tittel",
             type: "string",
+        },
+        {
+            title: "ID",
+            name: "id",
+            type: "string",
+            initialValue: () => uuid(),
         },
         {
             title: "Innhold",

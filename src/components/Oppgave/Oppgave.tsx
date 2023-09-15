@@ -9,10 +9,11 @@ interface Props {
     oppgavetype: string;
     tittel: string;
     innhold: PortableTextBlock[];
+    id: string;
 }
 
 export const Oppgave = ({
-    value: { oppgavetype, tittel, innhold },
+    value: { oppgavetype, tittel, innhold, id },
 }: PortableTextComponentProps<Props>) => {
     return (
         <Panel className={styles.oppgaveblokk}>
@@ -23,6 +24,7 @@ export const Oppgave = ({
                 <Heading size={"medium"} level="4" spacing>
                     {tittel}
                 </Heading>
+                <>{id}</>
                 <PortableText
                     value={innhold}
                     components={{
