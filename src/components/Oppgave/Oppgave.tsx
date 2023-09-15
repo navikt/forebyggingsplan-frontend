@@ -7,6 +7,7 @@ import { block } from "../PortableText/block/Block";
 import { marks } from "../PortableText/marks/Marks";
 import { Statusendringsknapper } from "./Statusendringsknapper";
 import { Statusvisning } from "./Statusvisning";
+import { KollapsbarOppgavetekstContainer } from "./KollapsbarOppgavetekstContainer";
 
 interface Props {
     tittel: string;
@@ -14,33 +15,6 @@ interface Props {
 }
 
 export type statusType = "urørt" | "under_arbeid" | "fullført";
-
-function erKollapsetType(status: statusType): boolean {
-    return status === "urørt" || status === "fullført";
-}
-
-function KollapsbarOppgavetekstContainer({
-    children,
-    knapper,
-    status,
-}: {
-    children: React.ReactNode;
-    knapper: React.ReactNode;
-    status: statusType;
-}) {
-    return (
-        <div
-            className={
-                erKollapsetType(status)
-                    ? styles.kollapsetOppgavetekst
-                    : styles.synligOppgavetekst
-            }
-        >
-            {children}
-            <div className={styles.oppgavetekstOverlayGradient}>{knapper}</div>
-        </div>
-    );
-}
 
 export const Oppgave = ({
     value: { tittel, innhold },

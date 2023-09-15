@@ -21,7 +21,7 @@ export function Statusendringsknapper({
             return (
                 <Button
                     variant="secondary"
-                    className={styles.helknapp}
+                    className={`${styles.statusknapp} ${styles.helknapp}`}
                     onClick={() => setNyStatus("under_arbeid")}
                     icon={<ChevronDownIcon title="Start" />}
                 >
@@ -33,7 +33,7 @@ export function Statusendringsknapper({
                 <div className="flex flex-wrap gap-2">
                     <Button
                         variant="secondary"
-                        className={styles.halvknapp}
+                        className={`${styles.statusknapp} ${styles.halvknapp}`}
                         onClick={() => setNyStatus("fullført")}
                         icon={<CheckmarkIcon title="Fullfør" />}
                     >
@@ -41,7 +41,7 @@ export function Statusendringsknapper({
                     </Button>
                     <Button
                         variant="secondary-neutral"
-                        className={`${styles.avbryt} ${styles.halvknapp}`}
+                        className={`${styles.statusknapp} ${styles.halvknapp}`}
                         onClick={() => setNyStatus("urørt")}
                         icon={<XMarkIcon title="Avbryt" />}
                     >
@@ -53,7 +53,7 @@ export function Statusendringsknapper({
             return (
                 <Button
                     variant="secondary-neutral"
-                    className={styles.helknapp}
+                    className={`${styles.statusknapp} ${styles.helknapp}`}
                     onClick={() => setNyStatus("urørt")}
                     icon={<ArrowCirclepathIcon title="Start på nytt" />}
                 >
