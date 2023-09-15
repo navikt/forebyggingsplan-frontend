@@ -5,8 +5,6 @@ import { statusType } from "./Oppgave";
 
 export function Statusvisning({ status }: { status: statusType }) {
     switch (status) {
-        case "urørt":
-            return null;
         case "under_arbeid":
             return (
                 <Tag className={styles.status} variant="warning">
@@ -19,5 +17,8 @@ export function Statusvisning({ status }: { status: statusType }) {
                     Fullført
                 </Tag>
             );
+        case "urørt":
+        default:
+            return null;
     }
 }

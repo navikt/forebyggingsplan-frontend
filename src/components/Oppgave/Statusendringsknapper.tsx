@@ -60,5 +60,7 @@ export function Statusendringsknapper({
                     Start på nytt
                 </Button>
             );
+        default:
+            return null;
     }
 }
