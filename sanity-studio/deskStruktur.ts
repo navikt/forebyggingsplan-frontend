@@ -8,7 +8,7 @@ import {
 
 export const deskStruktur = (
     S: StructureBuilder,
-    context: StructureResolverContext
+    context: StructureResolverContext,
 ): unknown =>
     S.list()
         .title("Innhold")
