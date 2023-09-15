@@ -7,15 +7,19 @@ export default async function handler(
     res: NextApiResponse,
 ) {
     const { statusId, orgnr } = req.query;
+    const { status } = req.body.status;
 
-    if (!statusId || typeof statusId !== "string")
+    if (typeof statusId !== "string") {
         return res.status(400).json({ error: "Mangler 'statusId' i path" });
+    }
 
-    if (!orgnr || typeof orgnr !== "string" || !erGyldigOrgnr(orgnr)) {
+    if (typeof orgnr !== "string" || !erGyldigOrgnr(orgnr)) {
         return res.status(400).json({ error: "Mangler gyldig 'orgnr' i path" });
     }
 
-    const baseUrl = process.env.FOREBYGGINGSPLAN_API_BASEURL;
+    if (typeof status !== "string") {
+        return res.status(400).json({ error: "Mangler 'status' i body" });
+    }
 
     let veksletToken;
     try {
@@ -28,14 +32,16 @@ export default async function handler(
     }
 
     const respons = await fetch(
-        `${baseUrl}/status/${statusId}/orgnr/${orgnr}/oppdater`,
+        `${process.env.FOREBYGGINGSPLAN_API_BASEURL}/status/${statusId}/orgnr/${orgnr}/oppdater`,
         {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${veksletToken}`,
             },
+            body: JSON.stringify({ status }),
         },
     );
-    res.status(respons.status).json({ status: respons.status });
+
+    return res.status(respons.status).json({ status: respons.status });
 }

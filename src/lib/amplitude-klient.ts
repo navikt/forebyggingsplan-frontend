@@ -14,8 +14,7 @@ export const loggÅpneAktivitet = (aktivitet: Aktivitet) => {
 };
 
 export const loggMarkerSomGjort = (aktivitet: Aktivitet) => {
-    const hendelse = "markertSomGjort";
-    sendAktivitetsEvent(aktivitet, hendelse);
+    sendAktivitetsEvent(aktivitet, "markertSomGjort");
 };
 
 function sendAktivitetsEvent(aktivitet: Aktivitet, hendelse: string) {
