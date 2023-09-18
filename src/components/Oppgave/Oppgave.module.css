@@ -27,7 +27,8 @@
 }
 
 .oppgaveinnhold .kollapsetOppgavetekst {
-    max-height: 6rem;
+    min-height: 5rem;
+    max-height: 7rem;
     overflow: hidden;
     position: relative;
 }
@@ -50,9 +51,8 @@
     right: 0;
     background: linear-gradient(
         180deg,
-        transparent 0%,
-        var(--oppgaveblokk-farge) 90%,
-        var(--oppgaveblokk-farge) 100%
+        transparent -15%,
+        var(--oppgaveblokk-farge) 45%
     );
     pointer-events: none;
 }
