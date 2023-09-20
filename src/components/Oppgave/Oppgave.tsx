@@ -1,37 +1,54 @@
+import React from "react";
 import styles from "./Oppgave.module.css";
-import { Heading, Panel, Tag } from "@navikt/ds-react";
+import { Heading, Panel } from "@navikt/ds-react";
 import { PortableText, PortableTextComponentProps } from "@portabletext/react";
 import { PortableTextBlock } from "@portabletext/types";
 import { block } from "../PortableText/block/Block";
 import { marks } from "../PortableText/marks/Marks";
+import { Statusendringsknapper } from "./Statusendringsknapper";
+import { Statusvisning } from "./Statusvisning";
+import { KollapsbarOppgavetekstContainer } from "./KollapsbarOppgavetekstContainer";
 
 interface Props {
-    oppgavetype: string;
     tittel: string;
     innhold: PortableTextBlock[];
     id: string;
 }
 
+export type statusType = "urørt" | "under_arbeid" | "fullført";
+
 export const Oppgave = ({
-    value: { oppgavetype, tittel, innhold, id },
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    value: { tittel, innhold, id },
 }: PortableTextComponentProps<Props>) => {
+    const [status, setStatus] = React.useState<statusType>("urørt");
+
     return (
         <Panel className={styles.oppgaveblokk}>
-            <Tag className={styles.tag} variant="neutral">
-                {oppgavetype}
-            </Tag>
             <div className={styles.oppgaveinnhold}>
-                <Heading size={"medium"} level="4" spacing>
-                    {tittel}
-                </Heading>
-                <>{id}</>
-                <PortableText
-                    value={innhold}
-                    components={{
-                        block,
-                        marks,
-                    }}
-                />
+                <div className={styles.tittelContainer}>
+                    <Heading size={"medium"} level="4" spacing>
+                        Oppgave: {tittel}
+                    </Heading>
+                    <Statusvisning status={status} />
+                </div>
+                <KollapsbarOppgavetekstContainer
+                    status={status}
+                    knapper={
+                        <Statusendringsknapper
+                            status={status}
+                            setNyStatus={setStatus}
+                        />
+                    }
+                >
+                    <PortableText
+                        value={innhold}
+                        components={{
+                            block,
+                            marks,
+                        }}
+                    />
+                </KollapsbarOppgavetekstContainer>
             </div>
         </Panel>
     );

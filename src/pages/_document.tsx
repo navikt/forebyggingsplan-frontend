@@ -21,7 +21,7 @@ const decoratorEnv = process.env.DECORATOR_ENV as Exclude<Env, "localhost">;
 
 export default class MyDocument extends Document<Props> {
     static async getInitialProps(
-        ctx: DocumentContext
+        ctx: DocumentContext,
     ): Promise<DocumentInitialProps & Props> {
         const initialProps = await Document.getInitialProps(ctx);
 
@@ -30,6 +30,10 @@ export default class MyDocument extends Document<Props> {
             chatbot: false,
             context: "arbeidsgiver",
             breadcrumbs: [
+                {
+                    title: "Min side – arbeidsgiver",
+                    url: "/min-side-arbeidsgiver",
+                },
                 {
                     title: "Forebygge fravær",
                     url: "/forebygge-fravar",

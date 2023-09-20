@@ -1,10 +1,12 @@
 .oppgaveblokk {
+    --oppgaveblokk-farge: var(--a-surface-selected);
+    --oppgaveblokk-padding: 1rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    padding: 1rem;
+    padding: var(--oppgaveblokk-padding);
     margin-bottom: 1rem;
-    background-color: var(--a-surface-selected);
+    background-color: var(--oppgaveblokk-farge);
     border-radius: var(--a-border-radius-medium);
 }
 
@@ -14,6 +16,61 @@
     margin-bottom: 0;
 }
 
-.tag {
-    width: max-content;
+.oppgaveinnhold .tittelContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.oppgaveinnhold .tittelContainer .status {
+    white-space: nowrap;
+}
+
+.oppgaveinnhold .kollapsetOppgavetekst {
+    min-height: 5rem;
+    max-height: 7rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.oppgaveinnhold .oppgavetekstOverlayGradient {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+.oppgaveinnhold .synligOppgavetekst .oppgavetekstOverlayGradient {
+    border-top: thin solid var(--a-gray-400);
+    padding-top: var(--oppgaveblokk-padding);
+}
+.oppgaveinnhold .kollapsetOppgavetekst .oppgavetekstOverlayGradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(
+        180deg,
+        transparent -15%,
+        var(--oppgaveblokk-farge) 45%
+    );
+    pointer-events: none;
+}
+
+.statusknapp {
+    pointer-events: all;
+    background-color: var(--oppgaveblokk-farge);
+    --a-surface-neutral-subtle-hover: var(--a-blue-100);
+}
+
+.helknapp {
+    width: 15.5rem;
+}
+
+.halvknapp {
+    width: 7.5rem;
+}
+
+.halvknapp:not(:first-child) {
+    margin-left: 0.5rem;
 }

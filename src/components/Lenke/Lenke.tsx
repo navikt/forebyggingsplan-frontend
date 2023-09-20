@@ -1,6 +1,6 @@
 import { PortableTextMarkComponentProps } from "@portabletext/react";
 import NextLink from "next/link";
-import { ExternalLink } from "@navikt/ds-icons";
+import { ExternalLinkIcon } from "@navikt/aksel-icons";
 
 interface LenkeProps {
     erEksternLenke?: boolean;
@@ -22,7 +22,7 @@ export const Lenke = ({
         >
             {text}
             {erEksternLenke && (
-                <ExternalLink title="ekstern lenke, åpnes i ny tab" />
+                <ExternalLinkIcon title="ekstern lenke, åpnes i ny tab" />
             )}
         </NextLink>
     );

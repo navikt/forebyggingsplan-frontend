@@ -1,6 +1,6 @@
 import styles from "./StatistikkPanel.module.css";
 import { BodyShort, Panel, Tooltip } from "@navikt/ds-react";
-import { Up } from "@navikt/ds-icons";
+import { ArrowUpIcon } from "@navikt/aksel-icons";
 
 interface StatistikkPanelProps {
     trend?: string;
@@ -27,7 +27,7 @@ export const StatistikkPanel = ({
                 </BodyShort>
             </Tooltip>
             <BodyShort className={styles.tallContainer}>
-                <Up
+                <ArrowUpIcon
                     className={roterEtterTrend(trend)}
                     title={trendBeskrivelse(trend)}
                     fontSize="1rem"
