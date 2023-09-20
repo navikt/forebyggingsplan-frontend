@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-      - fjern-info-banner
+      - breadcrumb-fix
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -45,7 +45,7 @@ jobs:
 
   deploy-to-dev-gcp:
     name: Deploy to dev-gcp
-    if: github.ref == 'refs/heads/fjern-info-banner'
+    if: github.ref == 'refs/heads/breadcrumb-fix'
     needs: docker-build-push
     runs-on: ubuntu-latest
     timeout-minutes: 5
