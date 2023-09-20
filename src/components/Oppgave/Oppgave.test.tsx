@@ -3,6 +3,19 @@ import { axe } from "jest-axe";
 import { Oppgave } from "./Oppgave";
 import { PortableTextBlock } from "@portabletext/types";
 
+jest.mock("next/router", () => ({
+    useRouter() {
+        return {
+            route: "/",
+            pathname: "",
+            query: {
+                bedrift: "123456789",
+            },
+            asPath: "",
+        };
+    },
+}));
+
 describe("Oppgave", () => {
     const innhold: PortableTextBlock[] = [
         {
