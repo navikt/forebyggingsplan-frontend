@@ -1,13 +1,18 @@
+import { StatusType } from "../components/Oppgave/Oppgave";
+
 export const oppdaterStatus = async (
-    statusId: string,
+    aktivitetId: string,
     orgnr: string,
-    status: "startet" | "fullført" | "avbrutt",
+    status: StatusType,
 ) => {
     return await fetch(
-        `forebyggingsplan/api/status/${statusId}/orgnr/${orgnr}`,
+        `forebyggingsplan/api/aktivitet/${aktivitetId}/orgnr/${orgnr}/oppdater`,
         {
             method: "POST",
             body: JSON.stringify({ status }),
+            headers: {
+                "Content-Type": "application/json",
+            },
         },
     );
 };

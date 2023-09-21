@@ -7,7 +7,7 @@ import {
     ChevronDownIcon,
     XMarkIcon,
 } from "@navikt/aksel-icons";
-import { statusType } from "./Oppgave";
+import { StatusType } from "./Oppgave";
 import { useHentOrgnummer } from "../Layout/Banner/Banner";
 import { lagreIaMetrikkInteraksjonstjeneste } from "../../lib/ia-metrikker-klient";
 
@@ -15,19 +15,20 @@ export function Statusendringsknapper({
     status,
     setNyStatus,
 }: {
-    status: statusType;
-    setNyStatus: (nyStatus: statusType) => void;
+    status?: StatusType;
+    setNyStatus: (nyStatus: StatusType) => void;
 }) {
     const { orgnr } = useHentOrgnummer();
 
     switch (status) {
-        case "urørt":
+        case "AVBRUTT":
+        case undefined:
             return (
                 <Button
                     variant="secondary"
                     className={`${styles.statusknapp} ${styles.helknapp}`}
                     onClick={() => {
-                        setNyStatus("under_arbeid");
+                        setNyStatus("STARTET");
                         lagreIaMetrikkInteraksjonstjeneste(orgnr);
                     }}
                     icon={<ChevronDownIcon title="Start" />}
@@ -35,14 +36,14 @@ export function Statusendringsknapper({
                     Start
                 </Button>
             );
-        case "under_arbeid":
+        case "STARTET":
             return (
                 <div className="flex flex-wrap gap-2">
                     <Button
                         variant="secondary"
                         className={`${styles.statusknapp} ${styles.halvknapp}`}
                         onClick={() => {
-                            setNyStatus("fullført");
+                            setNyStatus("FULLFØRT");
                             lagreIaMetrikkInteraksjonstjeneste(orgnr);
                         }}
                         icon={<CheckmarkIcon title="Fullfør" />}
@@ -53,7 +54,7 @@ export function Statusendringsknapper({
                         variant="secondary-neutral"
                         className={`${styles.statusknapp} ${styles.halvknapp}`}
                         onClick={() => {
-                            setNyStatus("urørt");
+                            setNyStatus("AVBRUTT");
                             lagreIaMetrikkInteraksjonstjeneste(orgnr);
                         }}
                         icon={<XMarkIcon title="Avbryt" />}
@@ -62,13 +63,13 @@ export function Statusendringsknapper({
                     </Button>
                 </div>
             );
-        case "fullført":
+        case "FULLFØRT":
             return (
                 <Button
                     variant="secondary-neutral"
                     className={`${styles.statusknapp} ${styles.helknapp}`}
                     onClick={() => {
-                        setNyStatus("urørt");
+                        setNyStatus("AVBRUTT");
                         lagreIaMetrikkInteraksjonstjeneste(orgnr);
                     }}
                     icon={<ArrowCirclepathIcon title="Start på nytt" />}

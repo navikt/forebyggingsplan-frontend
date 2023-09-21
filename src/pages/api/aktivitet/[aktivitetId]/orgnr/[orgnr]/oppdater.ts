@@ -6,11 +6,11 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse,
 ) {
-    const { statusId, orgnr } = req.query;
-    const { status } = req.body.status;
+    const { aktivitetId, orgnr } = req.query;
+    const { status } = req.body;
 
-    if (typeof statusId !== "string") {
-        return res.status(400).json({ error: "Mangler 'statusId' i path" });
+    if (typeof aktivitetId !== "string") {
+        return res.status(400).json({ error: "Mangler 'aktivitetId' i path" });
     }
 
     if (typeof orgnr !== "string" || !erGyldigOrgnr(orgnr)) {
@@ -32,7 +32,7 @@ export default async function handler(
     }
 
     const respons = await fetch(
-        `${process.env.FOREBYGGINGSPLAN_API_BASEURL}/status/${statusId}/orgnr/${orgnr}/oppdater`,
+        `${process.env.FOREBYGGINGSPLAN_API_BASEURL}/aktivitet/${aktivitetId}/orgnr/${orgnr}/oppdater`,
         {
             method: "POST",
             headers: {

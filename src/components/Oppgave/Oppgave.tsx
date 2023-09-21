@@ -8,6 +8,8 @@ import { marks } from "../PortableText/marks/Marks";
 import { Statusendringsknapper } from "./Statusendringsknapper";
 import { Statusvisning } from "./Statusvisning";
 import { KollapsbarOppgavetekstContainer } from "./KollapsbarOppgavetekstContainer";
+import { oppdaterStatus } from "../../lib/status-klient";
+import { useHentOrgnummer } from "../Layout/Banner/Banner";
 
 interface Props {
     tittel: string;
@@ -15,13 +17,27 @@ interface Props {
     id: string;
 }
 
-export type statusType = "urørt" | "under_arbeid" | "fullført";
+export type StatusType = "AVBRUTT" | "STARTET" | "FULLFØRT";
 
 export const Oppgave = ({
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     value: { tittel, innhold, id },
 }: PortableTextComponentProps<Props>) => {
-    const [status, setStatus] = React.useState<statusType>("urørt");
+    const [status, setLokalStatus] = React.useState<StatusType | undefined>(
+        "AVBRUTT",
+    );
+    const { orgnr } = useHentOrgnummer();
+
+    const setStatus = React.useCallback(
+        (nyStatus: StatusType) => {
+            setLokalStatus(nyStatus);
+            if (orgnr) {
+                oppdaterStatus(id, orgnr, nyStatus);
+            } else {
+                console.error("Får ikke oppdatert status. Mangler orgnr.");
+            }
+        },
+        [setLokalStatus, id, orgnr],
+    );
 
     return (
         <Panel className={styles.oppgaveblokk}>

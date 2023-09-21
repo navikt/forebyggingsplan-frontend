@@ -40,6 +40,7 @@ describe("Oppgave", () => {
                 value={{
                     tittel: "Heisann",
                     innhold,
+                    id: "12341234",
                 }}
                 index={1}
                 isInline={false}
@@ -56,6 +57,7 @@ describe("Oppgave", () => {
                 value={{
                     tittel: tittel,
                     innhold,
+                    id: "12341234",
                 }}
                 index={1}
                 isInline={false}
