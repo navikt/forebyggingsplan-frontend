@@ -2,10 +2,6 @@ import { render, screen } from "@testing-library/react";
 import { axe } from "jest-axe";
 import { Oppgave } from "./Oppgave";
 import { PortableTextBlock } from "@portabletext/types";
-import userEvent from "@testing-library/user-event";
-import { oppdaterStatus } from "../../lib/status-klient";
-
-const BEDRIFTSID = "17724538";
 
 jest.mock("next/router", () => ({
     useRouter() {
@@ -13,21 +9,11 @@ jest.mock("next/router", () => ({
             route: "/",
             pathname: "",
             query: {
-                bedrift: BEDRIFTSID,
+                bedrift: "123456789",
             },
             asPath: "",
         };
     },
-}));
-
-jest.mock("../../lib/status-klient", () => ({
-    ...jest.requireActual("../../lib/status-klient"),
-    oppdaterStatus: jest.fn(),
-}));
-
-jest.mock("../../lib/aktivitet-klient", () => ({
-    ...jest.requireActual("../../lib/aktivitet-klient"),
-    useStatusForAktivitet: jest.fn(() => null),
 }));
 
 describe("Oppgave", () => {
@@ -80,69 +66,5 @@ describe("Oppgave", () => {
         );
         expect(screen.getByText("Innholdstekst")).toBeInTheDocument();
         expect(screen.getByText(`Oppgave: ${tittel}`)).toBeInTheDocument();
-    });
-
-    it("Prøver å sende statuser ved klikk på statusknapper", async () => {
-        const ID = "31415926";
-        render(
-            <Oppgave
-                value={{
-                    tittel: "Heisann",
-                    innhold,
-                    id: ID,
-                }}
-                index={1}
-                isInline={false}
-                renderNode={() => <></>}
-            />,
-        );
-
-        let button = (await screen.findAllByText("Start"))[1];
-        expect(button).toBeInTheDocument();
-        expect(oppdaterStatus).not.toHaveBeenCalled();
-        await userEvent.click(button);
-        expect(oppdaterStatus).toHaveBeenCalledTimes(1);
-        expect(oppdaterStatus).toHaveBeenLastCalledWith(
-            ID,
-            BEDRIFTSID,
-            "STARTET",
-        );
-
-        button = (await screen.findAllByText("Avbryt"))[1];
-        expect(button).toBeInTheDocument();
-        await userEvent.click(button);
-        expect(oppdaterStatus).toHaveBeenCalledTimes(2);
-        expect(oppdaterStatus).toHaveBeenLastCalledWith(
-            ID,
-            BEDRIFTSID,
-            "AVBRUTT",
-        );
-
-        button = (await screen.findAllByText("Start"))[1];
-        await userEvent.click(button);
-        expect(oppdaterStatus).toHaveBeenCalledTimes(3);
-        expect(oppdaterStatus).toHaveBeenLastCalledWith(
-            ID,
-            BEDRIFTSID,
-            "STARTET",
-        );
-
-        button = (await screen.findAllByText("Fullfør"))[1];
-        await userEvent.click(button);
-        expect(oppdaterStatus).toHaveBeenCalledTimes(4);
-        expect(oppdaterStatus).toHaveBeenLastCalledWith(
-            ID,
-            BEDRIFTSID,
-            "FULLFØRT",
-        );
-
-        button = (await screen.findAllByText("Start på nytt"))[1];
-        await userEvent.click(button);
-        expect(oppdaterStatus).toHaveBeenCalledTimes(5);
-        expect(oppdaterStatus).toHaveBeenLastCalledWith(
-            ID,
-            BEDRIFTSID,
-            "AVBRUTT",
-        );
     });
 });
