@@ -140,7 +140,11 @@ function Forside({
     const { data: aktivitetStatuser } = useHentAktiviteter(orgnr);
 
     return (
-        <AktivitetProvider aktivitetStatuser={aktivitetStatuser ?? []}>
+        <AktivitetProvider
+            aktivitetStatuser={
+                Array.isArray(aktivitetStatuser) ? aktivitetStatuser : []
+            }
+        >
             <div className={styles.container}>
                 <div className={styles.main}>
                     {kjørerMocket && <TestVersjonBanner prodUrl={prodUrl} />}
