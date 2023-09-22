@@ -5,6 +5,7 @@ Flate der arbeidsgivarar kan jobbe med å forebyggje sjukefråvær i si verksemd
 # Komme i gang
 
 ## Før du køyrer opp ting fyrste gong
+### Få tilgang til @navikt-avhengigheter
 Lag eit personleg access-token (PAT) slik at vi får tilgang til dependencies frå @navikt på gpr (github package registry/repository-ish). 
 1. Logg inn i GitHub
 2. Gå til [Settings / Developer settings / Personal access tokens / Tokens (classic)](https://github.com/settings/tokens)
@@ -14,6 +15,10 @@ Lag eit personleg access-token (PAT) slik at vi får tilgang til dependencies fr
 6. Kopier PAT
 7. Køyr `npm login --registry https://npm.pkg.github.com` i terminal
 8. Skru på SSO
+
+### Logg inn på Google Artifact Repository
+1. Logg inn på GCP med `gcloud auth login`
+2. Sett opp docker credentials helper: `gcloud auth configure-docker europe-north1-docker.pkg.dev` 
 
 ## Køyre opp appen
 For å køyre appen lokalt, køyr følgjande kommandoar i terminal:
