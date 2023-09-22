@@ -30,7 +30,8 @@ services:
         depends_on:
             - wonderwall
             - database
-        image: ghcr.io/navikt/forebyggingsplan:latest
+        image: europe-north1-docker.pkg.dev/nais-management-233d/teamia/forebyggingsplan:2023.09.21-10.52-4bbea8e
+        platform: linux/amd64
         environment:
             SERVER_PORT: "8081"
             TOKEN_X_CLIENT_ID: "forebyggingsplan"
