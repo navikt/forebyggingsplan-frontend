@@ -64,9 +64,9 @@ export function Statusendringsknapper({
                     onClick={() => {
                         setNyStatus("AVBRUTT");
                     }}
-                    icon={<ArrowCirclepathIcon title="Start på nytt" />}
+                    icon={<ArrowCirclepathIcon title="Tilbakestill" />}
                 >
-                    Start på nytt
+                    Tilbakestill
                 </Button>
             );
         default:
