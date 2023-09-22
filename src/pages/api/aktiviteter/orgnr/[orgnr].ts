@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { hentTokenXToken } from "../../../../auth/hentTokenXToken";
 import { erGyldigOrgnr } from "../../../../lib/orgnr";
+import { logger } from "../../../../lib/logger";
 
 export default async function handler(
     req: NextApiRequest,
@@ -30,7 +31,9 @@ export default async function handler(
                 Authorization: `Bearer ${veksletToken}`,
             },
         },
-    );
+    )
+        .then((res) => res.json())
+        .catch(logger.warn);
 
-    return res.status(respons.status).json(respons.json());
+    return res.status(200).json(respons);
 }
