@@ -30,7 +30,7 @@ services:
         depends_on:
             - wonderwall
             - database
-        image: europe-north1-docker.pkg.dev/nais-management-233d/teamia/forebyggingsplan:2023.09.21-10.52-4bbea8e
+        image: europe-north1-docker.pkg.dev/nais-management-233d/teamia/forebyggingsplan:latest
         platform: linux/amd64
         environment:
             SERVER_PORT: "8081"
