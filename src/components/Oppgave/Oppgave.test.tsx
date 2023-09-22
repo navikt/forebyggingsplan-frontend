@@ -25,6 +25,11 @@ jest.mock("../../lib/status-klient", () => ({
     oppdaterStatus: jest.fn(),
 }));
 
+jest.mock("../../lib/aktivitet-klient", () => ({
+    ...jest.requireActual("../../lib/aktivitet-klient"),
+    useStatusForAktivitet: jest.fn(() => null),
+}));
+
 describe("Oppgave", () => {
     const innhold: PortableTextBlock[] = [
         {
