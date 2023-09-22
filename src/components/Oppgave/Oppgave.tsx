@@ -10,6 +10,7 @@ import { Statusvisning } from "./Statusvisning";
 import { KollapsbarOppgavetekstContainer } from "./KollapsbarOppgavetekstContainer";
 import { oppdaterStatus } from "../../lib/status-klient";
 import { useHentOrgnummer } from "../Layout/Banner/Banner";
+import { useStatusForAktivitet } from "../../lib/aktivitet-klient";
 
 interface Props {
     tittel: string;
@@ -26,6 +27,14 @@ export const Oppgave = ({
         "AVBRUTT",
     );
     const { orgnr } = useHentOrgnummer();
+
+    const aktivitetsStatus = useStatusForAktivitet(id);
+
+    React.useEffect(() => {
+        if (aktivitetsStatus) {
+            setLokalStatus(aktivitetsStatus);
+        }
+    }, [aktivitetsStatus]);
 
     const setStatus = React.useCallback(
         (nyStatus: StatusType) => {
