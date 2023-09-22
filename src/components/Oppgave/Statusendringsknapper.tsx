@@ -8,8 +8,6 @@ import {
     XMarkIcon,
 } from "@navikt/aksel-icons";
 import { StatusType } from "./Oppgave";
-import { useHentOrgnummer } from "../Layout/Banner/Banner";
-import { lagreIaMetrikkInteraksjonstjeneste } from "../../lib/ia-metrikker-klient";
 
 export function Statusendringsknapper({
     status,
@@ -18,8 +16,6 @@ export function Statusendringsknapper({
     status?: StatusType;
     setNyStatus: (nyStatus: StatusType) => void;
 }) {
-    const { orgnr } = useHentOrgnummer();
-
     switch (status) {
         case "AVBRUTT":
         case undefined:
@@ -29,7 +25,6 @@ export function Statusendringsknapper({
                     className={`${styles.statusknapp} ${styles.helknapp}`}
                     onClick={() => {
                         setNyStatus("STARTET");
-                        lagreIaMetrikkInteraksjonstjeneste(orgnr);
                     }}
                     icon={<ChevronDownIcon title="Start" />}
                 >
@@ -44,7 +39,6 @@ export function Statusendringsknapper({
                         className={`${styles.statusknapp} ${styles.halvknapp}`}
                         onClick={() => {
                             setNyStatus("FULLFØRT");
-                            lagreIaMetrikkInteraksjonstjeneste(orgnr);
                         }}
                         icon={<CheckmarkIcon title="Fullfør" />}
                     >
@@ -55,7 +49,6 @@ export function Statusendringsknapper({
                         className={`${styles.statusknapp} ${styles.halvknapp}`}
                         onClick={() => {
                             setNyStatus("AVBRUTT");
-                            lagreIaMetrikkInteraksjonstjeneste(orgnr);
                         }}
                         icon={<XMarkIcon title="Avbryt" />}
                     >
@@ -70,7 +63,6 @@ export function Statusendringsknapper({
                     className={`${styles.statusknapp} ${styles.helknapp}`}
                     onClick={() => {
                         setNyStatus("AVBRUTT");
-                        lagreIaMetrikkInteraksjonstjeneste(orgnr);
                     }}
                     icon={<ArrowCirclepathIcon title="Start på nytt" />}
                 >

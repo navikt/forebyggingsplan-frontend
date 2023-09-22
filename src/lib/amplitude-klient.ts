@@ -29,3 +29,17 @@ function sendAktivitetsEvent(aktivitet: Aktivitet, hendelse: string) {
         frist: aktivitet.frist,
     });
 }
+
+export function loggAktivitetStatusMarkert(
+    aktivitetsId: string,
+    tittel: string,
+    status: string,
+) {
+    track("#forebyggingsplan-aktivitet", {
+        ...defaultEventProperties(),
+        hendelse: "aktivitetStatus",
+        aktivitetsId,
+        tittel,
+        status,
+    });
+}

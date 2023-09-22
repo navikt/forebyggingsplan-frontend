@@ -11,6 +11,8 @@ import { KollapsbarOppgavetekstContainer } from "./KollapsbarOppgavetekstContain
 import { oppdaterStatus } from "../../lib/status-klient";
 import { useHentOrgnummer } from "../Layout/Banner/Banner";
 import { useStatusForAktivitet } from "../../lib/aktivitet-klient";
+import { loggAktivitetStatusMarkert } from "../../lib/amplitude-klient";
+import { lagreIaMetrikkInteraksjonstjeneste } from "../../lib/ia-metrikker-klient";
 
 interface Props {
     tittel: string;
@@ -41,11 +43,13 @@ export const Oppgave = ({
             setLokalStatus(nyStatus);
             if (orgnr) {
                 oppdaterStatus(id, orgnr, nyStatus);
+                loggAktivitetStatusMarkert(id, tittel, nyStatus);
+                lagreIaMetrikkInteraksjonstjeneste(orgnr);
             } else {
                 console.error("Får ikke oppdatert status. Mangler orgnr.");
             }
         },
-        [setLokalStatus, id, orgnr],
+        [setLokalStatus, id, orgnr, tittel],
     );
 
     return (
