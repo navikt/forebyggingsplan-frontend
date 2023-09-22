@@ -23,7 +23,7 @@ export default async function handler(
     }
 
     const respons = await fetch(
-        `${process.env.FOREBYGGINGSPLAN_API_BASEURL}/aktivitet/orgnr/${orgnr}`,
+        `${process.env.FOREBYGGINGSPLAN_API_BASEURL}/aktiviteter/orgnr/${orgnr}`,
         {
             method: "GET",
             headers: {
