@@ -36,7 +36,7 @@ export const useAktiviteter = () => {
 export const useStatusForAktivitet = (id: string) => {
     const { aktivitetStatuser } = React.useContext(AktivitetContext);
 
-    return aktivitetStatuser.find((status) => status.aktivitetId === id)
+    return aktivitetStatuser?.find((status) => status.aktivitetId === id)
         ?.status;
 };
 
