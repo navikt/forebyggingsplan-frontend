@@ -44,6 +44,7 @@ const oppgaveSchema = defineType({
             title: "ID",
             name: "id",
             type: "string",
+            readOnly: true,
             initialValue: () => uuid(),
         },
         {

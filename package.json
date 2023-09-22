@@ -46,7 +46,7 @@
         "@navikt/ds-icons": "3.4.3",
         "@navikt/ds-react": "^5.4.1",
         "@navikt/aksel-icons": "^5.4.1",
-        "@navikt/ia-metrikker-client": "1.9.2",
+        "@navikt/ia-metrikker-client": "1.9.3",
         "@navikt/nav-dekoratoren-moduler": "1.9.0",
         "@navikt/next-api-proxy": "3.2.0",
         "@navikt/tokenx-middleware": "1.2.4",
