@@ -20,6 +20,7 @@ import { logger } from "../lib/logger";
 import { AltinnKonfig, getAltinnKonfig, isLabs, isMock } from "../lib/miljø";
 import TestVersjonBanner from "../components/Banner/TestVersjonBanner";
 import React from "react";
+import { AktivitetProvider, useHentAktiviteter } from "../lib/aktivitet-klient";
 
 interface Props {
     kategorier: Kategori[];
@@ -136,39 +137,46 @@ function Forside({
     const { orgnr } = useHentOrgnummer();
     const { error: statistikkError } = useHentSykefraværsstatistikk(orgnr);
     const { error: valgteAktiviteterError } = useHentValgteAktiviteter(orgnr);
+    const { data: aktivitetStatuser } = useHentAktiviteter(orgnr);
 
     return (
-        <div className={styles.container}>
-            <div className={styles.main}>
-                {kjørerMocket && <TestVersjonBanner prodUrl={prodUrl} />}
-                {valgteAktiviteterError?.status === 403 && (
-                    <Alert variant={"warning"} className={styles.alert}>
-                        Du har ikke ikke tilgang til å gjøre endringer på denne
-                        siden.{" "}
-                        <Link
-                            href={`https://${altinnKonfig.host}/ui/DelegationRequest?offeredBy=${orgnr}&resources=${altinnKonfig.serviceCode}_${altinnKonfig.serviceEdition}`}
-                        >
-                            Søk om tilgang i Altinn
-                        </Link>
-                    </Alert>
-                )}
-                {valgteAktiviteterError &&
-                    valgteAktiviteterError.status !== 403 && (
-                        <Alert variant={"error"} className={styles.alert}>
-                            Vi har ikke klart å hente ned planen deres.
-                            <br /> Dere kan forsatt se aktivitetene, men ikke
-                            hvilken status dere har gitt dem.
+        <AktivitetProvider
+            aktivitetStatuser={
+                Array.isArray(aktivitetStatuser) ? aktivitetStatuser : []
+            }
+        >
+            <div className={styles.container}>
+                <div className={styles.main}>
+                    {kjørerMocket && <TestVersjonBanner prodUrl={prodUrl} />}
+                    {valgteAktiviteterError?.status === 403 && (
+                        <Alert variant={"warning"} className={styles.alert}>
+                            Du har ikke ikke tilgang til å gjøre endringer på
+                            denne siden.{" "}
+                            <Link
+                                href={`https://${altinnKonfig.host}/ui/DelegationRequest?offeredBy=${orgnr}&resources=${altinnKonfig.serviceCode}_${altinnKonfig.serviceEdition}`}
+                            >
+                                Søk om tilgang i Altinn
+                            </Link>
                         </Alert>
                     )}
-                {statistikkError && statistikkError.status !== 403 && (
-                    <Alert variant={"error"} className={styles.alert}>
-                        Vi har ikke klart å hente informasjon om
-                        sykefraværsstatistikk.
-                    </Alert>
-                )}
-                <Kategorier kategorier={kategorier} />
+                    {valgteAktiviteterError &&
+                        valgteAktiviteterError.status !== 403 && (
+                            <Alert variant={"error"} className={styles.alert}>
+                                Vi har ikke klart å hente ned planen deres.
+                                <br /> Dere kan forsatt se aktivitetene, men
+                                ikke hvilken status dere har gitt dem.
+                            </Alert>
+                        )}
+                    {statistikkError && statistikkError.status !== 403 && (
+                        <Alert variant={"error"} className={styles.alert}>
+                            Vi har ikke klart å hente informasjon om
+                            sykefraværsstatistikk.
+                        </Alert>
+                    )}
+                    <Kategorier kategorier={kategorier} />
+                </div>
             </div>
-        </div>
+        </AktivitetProvider>
     );
 }
 

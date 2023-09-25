@@ -3,6 +3,19 @@ import { axe } from "jest-axe";
 import { Oppgave } from "./Oppgave";
 import { PortableTextBlock } from "@portabletext/types";
 
+jest.mock("next/router", () => ({
+    useRouter() {
+        return {
+            route: "/",
+            pathname: "",
+            query: {
+                bedrift: "123456789",
+            },
+            asPath: "",
+        };
+    },
+}));
+
 describe("Oppgave", () => {
     const innhold: PortableTextBlock[] = [
         {
@@ -25,14 +38,14 @@ describe("Oppgave", () => {
         const { container } = render(
             <Oppgave
                 value={{
-                    oppgavetype: "Oppgave",
                     tittel: "Heisann",
                     innhold,
+                    id: "12341234",
                 }}
                 index={1}
                 isInline={false}
                 renderNode={() => <></>}
-            />
+            />,
         );
         const results = await axe(container);
         expect(results).toHaveNoViolations();
@@ -42,21 +55,16 @@ describe("Oppgave", () => {
         render(
             <Oppgave
                 value={{
-                    oppgavetype: "Oppgave",
                     tittel: tittel,
                     innhold,
+                    id: "12341234",
                 }}
                 index={1}
                 isInline={false}
                 renderNode={() => <></>}
-            />
-        );
-        expect(screen.getByText("Oppgave")).toBeInTheDocument();
-        expect(screen.getByText("Oppgave")).toHaveClass(
-            "navds-tag",
-            "navds-tag--neutral"
+            />,
         );
         expect(screen.getByText("Innholdstekst")).toBeInTheDocument();
-        expect(screen.getByText(tittel)).toBeInTheDocument();
+        expect(screen.getByText(`Oppgave: ${tittel}`)).toBeInTheDocument();
     });
 });
