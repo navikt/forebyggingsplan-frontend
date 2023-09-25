@@ -1,5 +1,5 @@
 import { PortableText, PortableTextComponents } from "@portabletext/react";
-import { Alert, BodyShort, Heading, Ingress } from "@navikt/ds-react";
+import { Heading, Ingress } from "@navikt/ds-react";
 import styles from "./Aktivitetsmal.module.css";
 import { Seksjon } from "../../Seksjon/Seksjon";
 import { Oppgave } from "../../Oppgave/Oppgave";
@@ -18,20 +18,11 @@ const hovedinnhold: Partial<PortableTextComponents> = {
 
 interface AktivitetsmalProps {
     aktivitet: Aktivitet;
-    serverFeil: string;
 }
 
-export function Aktivitetsmal({ aktivitet, serverFeil }: AktivitetsmalProps) {
+export function Aktivitetsmal({ aktivitet }: AktivitetsmalProps) {
     return (
         <div className={styles.container}>
-            {serverFeil.length > 0 && (
-                <Alert variant={"error"} className={styles.alert}>
-                    <BodyShort>
-                        Noe gikk galt med handlingen din. {serverFeil}
-                    </BodyShort>
-                    <BodyShort>Prøv igjen senere...</BodyShort>
-                </Alert>
-            )}
             <Ingress>{aktivitet.beskrivelse}</Ingress>
             <div className={styles.mål}>
                 <Heading size="medium" level="4">
