@@ -31,33 +31,6 @@ export function useHentValgteAktiviteter(orgnummer: string | null) {
     return useSWR<FullførtAktivitet[]>(url);
 }
 
-interface FullførAktivitetDTO {
-    aktivitetsmalId: string;
-    aktivitetsmalVersjon: string;
-    orgnr?: string;
-}
-
-export function fullførAktivitet(fullførAktivitetDto: FullførAktivitetDTO) {
-    console.log("fullførAktivitetDto :>> ", fullførAktivitetDto);
-    if (!fullførAktivitetDto.orgnr) return;
-    return fetch(FULLFØR_AKTIVITET_PATH, {
-        method: "POST",
-        body: JSON.stringify({
-            aktivitetsmalVersjon: fullførAktivitetDto.aktivitetsmalVersjon,
-            aktivitetsmalId: fullførAktivitetDto.aktivitetsmalId,
-            orgnr: fullførAktivitetDto.orgnr,
-        }),
-        headers: {
-            "Content-Type": "application/json",
-        },
-    }).then(async (res) => {
-        if (!res.ok) {
-            await logAndThrowException(res, FULLFØR_AKTIVITET_PATH, "POST");
-        }
-        return res.json();
-    });
-}
-
 export async function logAndThrowException(
     res: Response,
     url: string,

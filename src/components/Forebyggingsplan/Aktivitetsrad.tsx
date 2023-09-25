@@ -1,22 +1,11 @@
 import { Aktivitet, AktivitetStatus } from "../../types/Aktivitet";
 import { Accordion, Heading } from "@navikt/ds-react";
 import styles from "./Aktivitetsrad.module.css";
-import {
-    FetchingError,
-    fullførAktivitet,
-} from "../../lib/forebyggingsplan-klient";
 import { useHentOrgnummer } from "../Layout/Banner/Banner";
-import {
-    loggMarkerSomGjort,
-    loggÅpneAktivitet,
-} from "../../lib/amplitude-klient";
+import { loggÅpneAktivitet } from "../../lib/amplitude-klient";
 import { useCallback, useRef, useState } from "react";
 import { AktivitetHeader } from "./AktivitetHeader";
-import { useRouter } from "next/router";
-import {
-    lagreIaMetrikkInformasjonstjeneste,
-    lagreIaMetrikkInteraksjonstjeneste,
-} from "../../lib/ia-metrikker-klient";
+import { lagreIaMetrikkInformasjonstjeneste } from "../../lib/ia-metrikker-klient";
 import { Aktivitetsmal } from "./Aktivitetsmal/Aktivitetsmal";
 
 interface Props {
@@ -24,14 +13,9 @@ interface Props {
     oppdaterValgteAktiviteter: () => void;
 }
 
-export const Aktivitetsrad = ({
-    aktivitet,
-    oppdaterValgteAktiviteter,
-}: Props) => {
+export const Aktivitetsrad = ({ aktivitet }: Props) => {
     const radRef = useRef<HTMLDivElement>(null);
-    const router = useRouter();
     const [åpen, setÅpen] = useState<boolean>(false);
-    const [serverFeil, setServerfeil] = useState<string>("");
     const { orgnr } = useHentOrgnummer();
 
     const onClick = useCallback(() => {
@@ -46,27 +30,6 @@ export const Aktivitetsrad = ({
             radRef?.current?.scrollIntoView({ behavior: "smooth" });
         }
     }, [åpen, aktivitet, orgnr, radRef]);
-
-    const markerAktivitetSomGjortHandler = () => {
-        setServerfeil("");
-        loggMarkerSomGjort(aktivitet);
-
-        fullførAktivitet({
-            aktivitetsmalId: aktivitet.aktivitetsmalId,
-            aktivitetsmalVersjon: aktivitet.aktivitetsmalVersjon,
-            orgnr: aktivitet.orgnr ?? orgnr ?? undefined,
-        })
-            ?.then(() => {
-                oppdaterValgteAktiviteter();
-                lagreIaMetrikkInteraksjonstjeneste(orgnr);
-            })
-            .catch((e: FetchingError) => {
-                if (e.status == 503) {
-                    router.push("/500").then();
-                }
-                setServerfeil(e.message);
-            });
-    };
 
     return (
         <Accordion.Item
@@ -92,11 +55,7 @@ export const Aktivitetsrad = ({
                 data-aktivitetsmalid={aktivitet.aktivitetsmalId}
                 className={styles.content}
             >
-                <Aktivitetsmal
-                    aktivitet={aktivitet}
-                    fullførAktivitet={markerAktivitetSomGjortHandler}
-                    serverFeil={serverFeil}
-                />
+                <Aktivitetsmal aktivitet={aktivitet} />
             </Accordion.Content>
         </Accordion.Item>
     );

@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-      - id-på-oppgave
+      - fjerner-dette-har-vi-gjort
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -45,7 +45,6 @@ jobs:
 
   deploy-to-dev-gcp:
     name: Deploy to dev-gcp
-    if: github.ref == 'refs/heads/id-på-oppgave'
     needs: docker-build-push
     runs-on: ubuntu-latest
     timeout-minutes: 5
