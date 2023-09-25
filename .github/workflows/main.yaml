@@ -45,7 +45,6 @@ jobs:
 
   deploy-to-dev-gcp:
     name: Deploy to dev-gcp
-    if: github.ref == 'refs/heads/fjerner-dette-har-vi-gjort'
     needs: docker-build-push
     runs-on: ubuntu-latest
     timeout-minutes: 5
