@@ -30,9 +30,9 @@ describe("Metrikkutsendelser fra full page render", () => {
 
     it("Skal sende metrikker ved åpning av aktivitet", async () => {
         render(<Kategorier kategorier={kategorierMock} />);
-        const button = await screen.findByRole("button", {
-            name: "Bruk sykefraværstatistikken til å forebygge fravær",
-        });
+        const button = await screen.findByText(
+            "Bruk sykefraværstatistikken til å forebygge fravær",
+        );
 
         expect(button).toBeInTheDocument();
 

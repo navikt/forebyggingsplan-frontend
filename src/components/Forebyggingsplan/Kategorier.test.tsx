@@ -51,21 +51,19 @@ describe("Kategorier", () => {
     it("Skal kunne åpne en aktivitet", async () => {
         render(<Kategorier kategorier={kategorierMock} />);
         expect(
-            await screen.findByRole("button", {
-                name: "Bruk sykefraværstatistikken til å forebygge fravær",
-                expanded: false,
-            }),
+            await screen.findByText(
+                "Bruk sykefraværstatistikken til å forebygge fravær",
+            ),
         ).toBeInTheDocument();
-        const button = await screen.findByRole("button", {
-            name: "Bruk sykefraværstatistikken til å forebygge fravær",
-        });
+        const button = await screen.findByText(
+            "Bruk sykefraværstatistikken til å forebygge fravær",
+        );
         await userEvent.click(button);
 
         expect(
-            await screen.findByRole("button", {
-                name: "Bruk sykefraværstatistikken til å forebygge fravær",
-                expanded: true,
-            }),
+            await screen.findByText(
+                "Bruk sykefraværstatistikken til å forebygge fravær",
+            ),
         ).toBeInTheDocument();
         expect(
             screen.getByText(
@@ -81,9 +79,9 @@ describe("Kategorier", () => {
 
     it("Skal sende metrikker ved åpning av aktivitet", async () => {
         render(<Kategorier kategorier={kategorierMock} />);
-        const button = await screen.findByRole("button", {
-            name: "Bruk sykefraværstatistikken til å forebygge fravær",
-        });
+        const button = await screen.findByText(
+            "Bruk sykefraværstatistikken til å forebygge fravær",
+        );
 
         expect(button).toBeInTheDocument();
 

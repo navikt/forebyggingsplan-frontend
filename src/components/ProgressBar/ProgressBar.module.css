@@ -1,0 +1,32 @@
+.progress-bar-container {
+    height: 1.2rem;
+    border-radius: 0.6rem;
+    border: 1px solid var(--a-gray-900);
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    background-color: var(--a-green-400);
+    height: 100%;
+    border-radius: 0.6rem;
+}
+
+.progress-bar-fill.progress-bar-fill-level-4 {
+    background-color: var(--a-green-400);
+}
+
+.progress-bar-fill.progress-bar-fill-level-3 {
+    background-color: var(--a-green-300);
+}
+
+.progress-bar-fill.progress-bar-fill-level-2 {
+    background-color: var(--a-limegreen-300);
+}
+
+.progress-bar-fill.progress-bar-fill-level-1 {
+    background-color: var(--a-orange-300);
+}
+
+.progress-bar-fill.progress-bar-fill-level-0 {
+    background-color: var(--a-red-300);
+}
