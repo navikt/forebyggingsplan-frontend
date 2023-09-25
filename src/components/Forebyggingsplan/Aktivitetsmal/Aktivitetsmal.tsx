@@ -6,7 +6,6 @@ import { Oppgave } from "../../Oppgave/Oppgave";
 import { block } from "../../PortableText/block/Block";
 import { marks } from "../../PortableText/marks/Marks";
 import { Aktivitet } from "../../../types/Aktivitet";
-import { DetteHarViGjort } from "./DetteHarViGjort/DetteHarViGjort";
 
 const hovedinnhold: Partial<PortableTextComponents> = {
     types: {
@@ -19,15 +18,10 @@ const hovedinnhold: Partial<PortableTextComponents> = {
 
 interface AktivitetsmalProps {
     aktivitet: Aktivitet;
-    fullførAktivitet: () => void;
     serverFeil: string;
 }
 
-export function Aktivitetsmal({
-    aktivitet,
-    fullførAktivitet,
-    serverFeil,
-}: AktivitetsmalProps) {
+export function Aktivitetsmal({ aktivitet, serverFeil }: AktivitetsmalProps) {
     return (
         <div className={styles.container}>
             {serverFeil.length > 0 && (
@@ -44,13 +38,6 @@ export function Aktivitetsmal({
                     Mål
                 </Heading>
                 <Ingress>{aktivitet.mål}</Ingress>
-            </div>
-            <div className={styles.knappeContainer}>
-                <DetteHarViGjort
-                    aktivitet={aktivitet}
-                    fullførAktivitet={fullførAktivitet}
-                    serverFeil={serverFeil}
-                />
             </div>
             <PortableText value={aktivitet.innhold} components={hovedinnhold} />
         </div>
