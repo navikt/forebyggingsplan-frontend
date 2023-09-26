@@ -27,20 +27,36 @@ export const AktivitetProvider = ({
     const [lokaleEndringer, setLokaleEndringer] = React.useState<
         { aktivitetId: string; status: StatusType }[]
     >([]);
-    const kombinerteAktivitetStatuser = React.useMemo(
-        () =>
-            aktivitetStatuser.map((aktivitetStatus) => {
-                const lokalEndring = lokaleEndringer.find(
+    const kombinerteAktivitetStatuser = React.useMemo(() => {
+        const mineLokaleEndringer = [...lokaleEndringer];
+        const nyeAktivitetStatuser = aktivitetStatuser.map(
+            (aktivitetStatus) => {
+                const lokalEndringIndex = mineLokaleEndringer.findIndex(
                     (endring) =>
                         endring.aktivitetId === aktivitetStatus.aktivitetId,
                 );
-                if (lokalEndring) {
+                if (lokalEndringIndex > -1) {
+                    const lokalEndring = mineLokaleEndringer[lokalEndringIndex];
+                    mineLokaleEndringer.splice(lokalEndringIndex, 1);
+
                     return { ...aktivitetStatus, status: lokalEndring.status };
                 }
                 return aktivitetStatus;
-            }),
-        [aktivitetStatuser, lokaleEndringer],
-    );
+            },
+        );
+
+        for (let index = 0; index < mineLokaleEndringer.length; index++) {
+            const element = mineLokaleEndringer[index];
+
+            nyeAktivitetStatuser.push({
+                aktivitetId: element.aktivitetId,
+                aktivitetType: "OPPGAVE",
+                status: element.status,
+            });
+        }
+
+        return nyeAktivitetStatuser;
+    }, [aktivitetStatuser, lokaleEndringer]);
     return (
         <AktivitetContext.Provider
             value={{
