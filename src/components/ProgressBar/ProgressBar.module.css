@@ -11,6 +11,10 @@
     border-radius: 0.6rem;
 }
 
+.progress-bar-wrapper {
+    margin-top: 0.5rem;
+}
+
 .progress-bar-fill.progress-bar-fill-level-4 {
     background-color: var(--a-green-400);
 }

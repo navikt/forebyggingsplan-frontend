@@ -1,24 +1,19 @@
 import { Aktivitet } from "../../types/Aktivitet";
 import { ProgressBar } from "../ProgressBar/ProgressBar";
+import { AktivitetStatistikkType } from "./useAktivitetStatistikk";
 
 export const AktivitetHeader = ({
     aktivitet,
-    max,
-    value,
-    inProgress,
+    aktivitetStatistikk,
 }: {
     aktivitet: Aktivitet;
-    max: number;
-    value: number;
-    inProgress: number;
+    aktivitetStatistikk: AktivitetStatistikkType;
 }) => {
     return (
         <>
             {aktivitet.tittel}
             <ProgressBar
-                max={max}
-                value={value}
-                inProgress={inProgress}
+                aktivitetStatistikk={aktivitetStatistikk}
                 label={aktivitet.tittel}
             />
         </>

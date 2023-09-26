@@ -4,13 +4,13 @@ import { StatusType } from "../components/Oppgave/Oppgave";
 
 // context for å hente statuser
 type AktivitetType = "OPPGAVE" | "AKTIVITETSKORT";
-type AktivitetStatus = {
+export type AktivitetBrukerStatus = {
     aktivitetId: string;
     aktivitetType: AktivitetType;
     status?: StatusType;
 };
 export const AktivitetContext = React.createContext<{
-    aktivitetStatuser: AktivitetStatus[];
+    aktivitetStatuser: AktivitetBrukerStatus[];
 }>({ aktivitetStatuser: [] });
 
 export const AktivitetProvider = ({
@@ -18,7 +18,7 @@ export const AktivitetProvider = ({
     aktivitetStatuser,
 }: {
     children: React.ReactNode;
-    aktivitetStatuser: AktivitetStatus[];
+    aktivitetStatuser: AktivitetBrukerStatus[];
 }) => {
     return (
         <AktivitetContext.Provider value={{ aktivitetStatuser }}>
@@ -27,7 +27,7 @@ export const AktivitetProvider = ({
     );
 };
 
-export const useAktiviteter = () => {
+export const useAktivitetStatuser = () => {
     const { aktivitetStatuser } = React.useContext(AktivitetContext);
 
     return { aktivitetStatuser };
@@ -41,7 +41,7 @@ export const useStatusForAktivitet = (id: string) => {
 };
 
 export const useHentAktiviteter = (orgnr: string | null) => {
-    return useSWR<AktivitetStatus[]>(
+    return useSWR<AktivitetBrukerStatus[]>(
         `/forebyggingsplan/api/aktiviteter/orgnr/${orgnr}`,
     );
 };

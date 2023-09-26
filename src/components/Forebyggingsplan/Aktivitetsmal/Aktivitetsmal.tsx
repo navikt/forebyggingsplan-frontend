@@ -7,6 +7,7 @@ import { block } from "../../PortableText/block/Block";
 import { marks } from "../../PortableText/marks/Marks";
 import { Aktivitet } from "../../../types/Aktivitet";
 import { ProgressBarWithLabel } from "../../ProgressBar/ProgressBar";
+import { AktivitetStatistikkType } from "../useAktivitetStatistikk";
 
 const hovedinnhold: Partial<PortableTextComponents> = {
     types: {
@@ -19,22 +20,16 @@ const hovedinnhold: Partial<PortableTextComponents> = {
 
 interface AktivitetsmalProps {
     aktivitet: Aktivitet;
-    max: number;
-    value: number;
-    inProgress: number;
+    aktivitetStatistikk: AktivitetStatistikkType;
 }
 export function Aktivitetsmal({
     aktivitet,
-    max,
-    value,
-    inProgress,
+    aktivitetStatistikk,
 }: AktivitetsmalProps) {
     return (
         <div className={styles.container}>
             <ProgressBarWithLabel
-                max={max}
-                value={value}
-                inProgress={inProgress}
+                aktivitetStatistikk={aktivitetStatistikk}
                 label={"Aktivitet"}
                 width="100%"
             />

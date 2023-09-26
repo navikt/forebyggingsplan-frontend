@@ -1,36 +1,38 @@
 import React from "react";
 
 import styles from "./ProgressBar.module.css";
+import { AktivitetStatistikkType } from "../Forebyggingsplan/useAktivitetStatistikk";
 
 type ProgressBarProps = {
-    max: number;
-    value: number;
-    inProgress: number;
+    aktivitetStatistikk: AktivitetStatistikkType;
     label: string;
     className?: string;
     width?: React.CSSProperties["width"];
 };
 
 export function ProgressBar({
-    max,
-    value,
     label,
     className = "",
     width = "12rem",
+    aktivitetStatistikk: { ferdige, totalt },
 }: ProgressBarProps) {
-    const progress = value / max;
+    if (totalt === 0) {
+        return null;
+    }
+
+    const progress = ferdige / totalt;
 
     return (
         <div
             className={`${className} ${styles["progress-bar-container"]}`}
             role="progressbar"
-            aria-valuenow={value}
-            aria-valuemax={max}
+            aria-valuenow={ferdige}
+            aria-valuemax={totalt}
             aria-label={`Fremgang på ${label}`}
             style={{ width }}
-            title={`Fremgang på ${label}: ${Math.round(value)} av ${Math.round(
-                max,
-            )}`}
+            title={`Fremgang på ${label}: ${Math.round(
+                ferdige,
+            )} av ${Math.round(totalt)}`}
         >
             <div
                 className={`${styles["progress-bar-fill"]} ${getColorClass(
@@ -47,15 +49,23 @@ export function ProgressBar({
 export function ProgressBarWithLabel({
     ...progressBarProps
 }: ProgressBarProps) {
+    if (progressBarProps.aktivitetStatistikk.totalt === 0) {
+        return null;
+    }
+
     return (
         <div className={styles["progress-bar-wrapper"]}>
             <ProgressBar {...progressBarProps} />
             <div className={styles["progress-bar-label"]}>
-                {`${Math.round(progressBarProps.value)} av ${Math.round(
-                    progressBarProps.max,
+                {`${Math.round(
+                    progressBarProps.aktivitetStatistikk.ferdige,
+                )} av ${Math.round(
+                    progressBarProps.aktivitetStatistikk.totalt,
                 )} oppgaver gjort.`}
-                {`${Math.round(progressBarProps.inProgress)} av ${Math.round(
-                    progressBarProps.max,
+                {`${Math.round(
+                    progressBarProps.aktivitetStatistikk.påbegynte,
+                )} av ${Math.round(
+                    progressBarProps.aktivitetStatistikk.totalt,
                 )} oppgaver påbegynt.`}
             </div>
         </div>

@@ -7,6 +7,7 @@ import { useCallback, useRef, useState } from "react";
 import { AktivitetHeader } from "./AktivitetHeader";
 import { lagreIaMetrikkInformasjonstjeneste } from "../../lib/ia-metrikker-klient";
 import { Aktivitetsmal } from "./Aktivitetsmal/Aktivitetsmal";
+import { useAktivitetStatistikk } from "./useAktivitetStatistikk";
 
 interface Props {
     aktivitet: Aktivitet;
@@ -31,13 +32,7 @@ export const Aktivitetsrad = ({ aktivitet }: Props) => {
         }
     }, [åpen, aktivitet, orgnr, radRef]);
 
-    if (åpen) {
-        console.log("aktivitet :>> ", aktivitet);
-    }
-
-    const max = Math.round(Math.random() * 10);
-    const value = Math.round(Math.random() * max);
-    const inProgress = Math.round(Math.random() * (max - value));
+    const aktivitetStatistikk = useAktivitetStatistikk(aktivitet);
 
     return (
         <Accordion.Item
@@ -58,9 +53,7 @@ export const Aktivitetsrad = ({ aktivitet }: Props) => {
                 >
                     <AktivitetHeader
                         aktivitet={aktivitet}
-                        max={max}
-                        value={value}
-                        inProgress={inProgress}
+                        aktivitetStatistikk={aktivitetStatistikk}
                     />
                 </Heading>
             </Accordion.Header>
@@ -69,9 +62,7 @@ export const Aktivitetsrad = ({ aktivitet }: Props) => {
                 className={styles.content}
             >
                 <Aktivitetsmal
-                    max={max}
-                    value={value}
-                    inProgress={inProgress}
+                    aktivitetStatistikk={aktivitetStatistikk}
                     aktivitet={aktivitet}
                 />
             </Accordion.Content>
