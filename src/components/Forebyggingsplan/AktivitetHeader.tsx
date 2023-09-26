@@ -13,7 +13,9 @@ export const AktivitetHeader = ({
         <>
             {aktivitet.tittel}
             <ProgressBar
-                aktivitetStatistikk={aktivitetStatistikk}
+                max={aktivitetStatistikk.totalt}
+                value={aktivitetStatistikk.ferdige}
+                partial={aktivitetStatistikk.påbegynte}
                 label={aktivitet.tittel}
             />
         </>

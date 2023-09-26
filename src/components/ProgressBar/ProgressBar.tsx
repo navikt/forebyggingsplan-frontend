@@ -1,94 +1,56 @@
 import React from "react";
 
 import styles from "./ProgressBar.module.css";
-import { AktivitetStatistikkType } from "../Forebyggingsplan/useAktivitetStatistikk";
 
 type ProgressBarProps = {
-    aktivitetStatistikk: AktivitetStatistikkType;
+    max: number;
+    value: number;
+    partial: number;
     label: string;
     className?: string;
     width?: React.CSSProperties["width"];
+    partialCountsAs?: number;
 };
 
 export function ProgressBar({
     label,
     className = "",
     width = "12rem",
-    aktivitetStatistikk: { ferdige, totalt },
+    max,
+    value,
+    partial,
+    partialCountsAs = 0.5,
 }: ProgressBarProps) {
-    if (totalt === 0) {
+    if (max === 0) {
         return null;
     }
 
-    const progress = ferdige / totalt;
+    const partialProgress = (value + partial * partialCountsAs) / max;
 
     return (
         <div
-            className={`${className} ${styles["progress-bar-container"]}`}
+            className={`${styles["progress-bar-container"]} ${
+                partialProgress === 1
+                    ? styles["progress-bar-complete"]
+                    : styles["progress-bar-incomplete"]
+            } ${className}`}
             role="progressbar"
-            aria-valuenow={ferdige}
-            aria-valuemax={totalt}
+            aria-valuenow={value}
+            aria-valuemax={max}
             aria-label={`Fremgang på ${label}`}
             style={{ width }}
-            title={`Fremgang på ${label}: ${Math.round(
-                ferdige,
-            )} av ${Math.round(totalt)}`}
+            title={`Fremgang på ${label}: ${Math.round(value)} av ${Math.round(
+                max,
+            )}`}
         >
-            <div
-                className={`${styles["progress-bar-fill"]} ${getColorClass(
-                    progress,
-                )}`}
-                style={{
-                    width: `calc(${progress} * calc(100% - 1.2rem) + 1.2rem)`,
-                }}
-            />
+            {
+                <div
+                    className={styles["progress-bar-fill"]}
+                    style={{
+                        width: `calc(${partialProgress} * calc(100% - 1.2rem + calc(2 * var(--progress-bar-border-width))) + 1.2rem)`,
+                    }}
+                />
+            }
         </div>
     );
-}
-
-export function ProgressBarWithLabel({
-    ...progressBarProps
-}: ProgressBarProps) {
-    if (progressBarProps.aktivitetStatistikk.totalt === 0) {
-        return null;
-    }
-
-    return (
-        <div className={styles["progress-bar-wrapper"]}>
-            <ProgressBar {...progressBarProps} />
-            <div className={styles["progress-bar-label"]}>
-                {`${Math.round(
-                    progressBarProps.aktivitetStatistikk.ferdige,
-                )} av ${Math.round(
-                    progressBarProps.aktivitetStatistikk.totalt,
-                )} oppgaver gjort.`}
-                {`${Math.round(
-                    progressBarProps.aktivitetStatistikk.påbegynte,
-                )} av ${Math.round(
-                    progressBarProps.aktivitetStatistikk.totalt,
-                )} oppgaver påbegynt.`}
-            </div>
-        </div>
-    );
-}
-
-function getColorClass(progress: number) {
-    if (progress === 1) {
-        // dark green
-        return styles["progress-bar-fill-level-4"];
-    }
-    if (progress >= 0.75) {
-        // light green
-        return styles["progress-bar-fill-level-3"];
-    }
-    if (progress >= 0.5) {
-        // lime green
-        return styles["progress-bar-fill-level-2"];
-    }
-    if (progress > 0.25) {
-        // orange
-        return styles["progress-bar-fill-level-1"];
-    }
-    // red
-    return styles["progress-bar-fill-level-0"];
 }

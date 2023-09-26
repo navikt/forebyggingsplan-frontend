@@ -33,3 +33,7 @@
     align-items: center;
     gap: 0.5rem;
 }
+
+.aktivitetsstatusBeskrivelse {
+    margin-top: 0.5rem;
+}

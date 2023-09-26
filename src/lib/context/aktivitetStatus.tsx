@@ -94,7 +94,10 @@ export const useOppdaterStatus = (
                         };
                         return nyeEndringer;
                     }
-                    return [...tidligereEndringer, { aktivitetId, status }];
+                    return [
+                        ...tidligereEndringer,
+                        { aktivitetId, status, aktivitetType: "OPPGAVE" },
+                    ];
                 });
             } else {
                 console.error("Får ikke oppdatert status. Mangler orgnr.");
