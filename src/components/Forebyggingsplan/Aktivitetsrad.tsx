@@ -31,6 +31,14 @@ export const Aktivitetsrad = ({ aktivitet }: Props) => {
         }
     }, [åpen, aktivitet, orgnr, radRef]);
 
+    if (åpen) {
+        console.log("aktivitet :>> ", aktivitet);
+    }
+
+    const max = Math.round(Math.random() * 10);
+    const value = Math.round(Math.random() * max);
+    const inProgress = Math.round(Math.random() * (max - value));
+
     return (
         <Accordion.Item
             open={åpen}
@@ -48,14 +56,24 @@ export const Aktivitetsrad = ({ aktivitet }: Props) => {
                     level="3"
                     className={`${styles.sticky} ${styles.heading}`}
                 >
-                    <AktivitetHeader aktivitet={aktivitet} />
+                    <AktivitetHeader
+                        aktivitet={aktivitet}
+                        max={max}
+                        value={value}
+                        inProgress={inProgress}
+                    />
                 </Heading>
             </Accordion.Header>
             <Accordion.Content
                 data-aktivitetsmalid={aktivitet.aktivitetsmalId}
                 className={styles.content}
             >
-                <Aktivitetsmal aktivitet={aktivitet} />
+                <Aktivitetsmal
+                    max={max}
+                    value={value}
+                    inProgress={inProgress}
+                    aktivitet={aktivitet}
+                />
             </Accordion.Content>
         </Accordion.Item>
     );

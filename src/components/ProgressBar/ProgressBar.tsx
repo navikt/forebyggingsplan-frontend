@@ -2,19 +2,22 @@ import React from "react";
 
 import styles from "./ProgressBar.module.css";
 
+type ProgressBarProps = {
+    max: number;
+    value: number;
+    inProgress: number;
+    label: string;
+    className?: string;
+    width?: React.CSSProperties["width"];
+};
+
 export function ProgressBar({
     max,
     value,
     label,
     className = "",
     width = "12rem",
-}: {
-    max: number;
-    value: number;
-    label: string;
-    className?: string;
-    width?: React.CSSProperties["width"];
-}) {
+}: ProgressBarProps) {
     const progress = value / max;
 
     return (
@@ -37,6 +40,24 @@ export function ProgressBar({
                     width: `calc(${progress} * calc(100% - 1.2rem) + 1.2rem)`,
                 }}
             />
+        </div>
+    );
+}
+
+export function ProgressBarWithLabel({
+    ...progressBarProps
+}: ProgressBarProps) {
+    return (
+        <div className={styles["progress-bar-wrapper"]}>
+            <ProgressBar {...progressBarProps} />
+            <div className={styles["progress-bar-label"]}>
+                {`${Math.round(progressBarProps.value)} av ${Math.round(
+                    progressBarProps.max,
+                )} oppgaver gjort.`}
+                {`${Math.round(progressBarProps.inProgress)} av ${Math.round(
+                    progressBarProps.max,
+                )} oppgaver påbegynt.`}
+            </div>
         </div>
     );
 }
