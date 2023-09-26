@@ -1,8 +1,8 @@
 import React from "react";
-import { StatusType } from "../components/Oppgave/Oppgave";
-import { lagreIaMetrikkInteraksjonstjeneste } from "./ia-metrikker-klient";
-import { loggAktivitetStatusMarkert } from "./amplitude-klient";
-import { oppdaterStatus } from "./status-klient";
+import { StatusType } from "../../components/Oppgave/Oppgave";
+import { lagreIaMetrikkInteraksjonstjeneste } from "../klient/ia-metrikker-klient";
+import { loggAktivitetStatusMarkert } from "../klient/amplitude-klient";
+import { oppdaterStatus } from "../klient/status-klient";
 
 type AktivitetType = "OPPGAVE" | "AKTIVITETSKORT";
 export type AktivitetBrukerStatus = {

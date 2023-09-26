@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import { AktivitetBrukerStatus } from "./aktivitetStatus";
+import { AktivitetBrukerStatus } from "../context/aktivitetStatus";
 
 export const useHentAktiviteter = (orgnr: string | null) => {
     return useSWR<AktivitetBrukerStatus[]>(

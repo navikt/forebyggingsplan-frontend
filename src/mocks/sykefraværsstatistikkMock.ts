@@ -1,4 +1,4 @@
-import { AggregertSykefraværsstatistikk } from "../lib/sykefraværsstatistikk-klient";
+import { AggregertSykefraværsstatistikk } from "../lib/klient/sykefraværsstatistikk-klient";
 
 export const sykefraværsstatistikkMock: AggregertSykefraværsstatistikk = {
     prosentSiste4KvartalerTotalt: [

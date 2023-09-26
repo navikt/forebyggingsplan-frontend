@@ -1,5 +1,5 @@
 import { track } from "@amplitude/analytics-browser";
-import { Aktivitet } from "../types/Aktivitet";
+import { Aktivitet } from "../../types/Aktivitet";
 
 export const defaultEventProperties = () => {
     return {

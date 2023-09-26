@@ -2,10 +2,10 @@ import { Aktivitet, AktivitetStatus } from "../../types/Aktivitet";
 import { Accordion, Heading } from "@navikt/ds-react";
 import styles from "./Aktivitetsrad.module.css";
 import { useHentOrgnummer } from "../Layout/Banner/Banner";
-import { loggÅpneAktivitet } from "../../lib/amplitude-klient";
+import { loggÅpneAktivitet } from "../../lib/klient/amplitude-klient";
 import { useCallback, useRef, useState } from "react";
 import { AktivitetHeader } from "./AktivitetHeader";
-import { lagreIaMetrikkInformasjonstjeneste } from "../../lib/ia-metrikker-klient";
+import { lagreIaMetrikkInformasjonstjeneste } from "../../lib/klient/ia-metrikker-klient";
 import { Aktivitetsmal } from "./Aktivitetsmal/Aktivitetsmal";
 import { useAktivitetStatistikk } from "./useAktivitetStatistikk";
 

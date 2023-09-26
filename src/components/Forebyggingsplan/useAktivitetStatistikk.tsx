@@ -3,7 +3,7 @@ import { Aktivitet } from "../../types/Aktivitet";
 import {
     useAktivitetStatuser,
     AktivitetBrukerStatus,
-} from "../../lib/aktivitetStatus";
+} from "../../lib/context/aktivitetStatus";
 
 export type AktivitetStatistikkType = {
     ferdige: number;

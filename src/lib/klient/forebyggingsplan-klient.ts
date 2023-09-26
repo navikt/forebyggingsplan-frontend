@@ -1,6 +1,6 @@
-import { FullførtAktivitet } from "../types/ValgtAktivitet";
+import { FullførtAktivitet } from "../../types/ValgtAktivitet";
 import useSWR from "swr";
-import { logger } from "./logger";
+import { logger } from "./logger-klient";
 
 export const HENT_VALGTE_AKTIVITETER_PATH = `/forebyggingsplan/api/valgteaktiviteter`;
 export const VELG_AKTIVITET_PATH = "/forebyggingsplan/api/aktivitet";

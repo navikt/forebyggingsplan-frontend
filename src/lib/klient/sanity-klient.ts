@@ -1,5 +1,5 @@
 import { createClient } from "@sanity/client";
-import { KategoriDokument } from "../pages";
+import { KategoriDokument } from "../../pages";
 import { SanityModernClientLike } from "@sanity/image-url/lib/types/types";
 
 interface SanityCli {
@@ -21,7 +21,7 @@ export const sanityLabs: SanityCli = {
         fetch(
             `https://${sanityConfig.projectId}.api.sanity.io/v${
                 sanityConfig.apiVersion
-            }/data/query/production?query=${encodeURIComponent(query)}`
+            }/data/query/production?query=${encodeURIComponent(query)}`,
         )
             .then((res) => res.json())
             .then((res) => res.result),

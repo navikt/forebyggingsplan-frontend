@@ -1,10 +1,10 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { hentTokenXToken } from "../../auth/hentTokenXToken";
-import { erGyldigOrgnr } from "../../lib/orgnr";
+import { erGyldigOrgnr } from "../../lib/utils/orgnr";
 
 export default async function handler(
     req: NextApiRequest,
-    res: NextApiResponse
+    res: NextApiResponse,
 ) {
     if (!req.body.orgnr)
         return res.status(400).json({ error: "Mangler 'orgnr' i body" });
@@ -12,7 +12,7 @@ export default async function handler(
         JSON.stringify({
             aktivitetsmalId: req.body.aktivitetsmalId,
             frist: req.body.frist,
-        })
+        }),
     );
 
     const baseUrl = process.env.FOREBYGGINGSPLAN_API_BASEURL;
@@ -20,7 +20,7 @@ export default async function handler(
     try {
         token = await hentTokenXToken(
             req,
-            process.env.FOREBYGGINGSPLAN_CLIENT_ID
+            process.env.FOREBYGGINGSPLAN_CLIENT_ID,
         );
     } catch (e) {
         return res.status(401).end();

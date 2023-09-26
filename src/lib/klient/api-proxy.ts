@@ -4,7 +4,7 @@ import {
 } from "@navikt/tokenx-middleware";
 import { NextApiRequest, NextApiResponse } from "next";
 import { proxyApiRouteRequest } from "@navikt/next-api-proxy";
-import { logger } from "./logger";
+import { logger } from "./logger-klient";
 
 export default async function proxyRequestWithTokenExchange(
     req: NextApiRequest,

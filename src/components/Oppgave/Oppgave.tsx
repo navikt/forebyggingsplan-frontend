@@ -8,9 +8,9 @@ import { marks } from "../PortableText/marks/Marks";
 import { Statusendringsknapper } from "./Statusendringsknapper";
 import { Statusvisning } from "./Statusvisning";
 import { KollapsbarOppgavetekstContainer } from "./KollapsbarOppgavetekstContainer";
-import { useOppdaterStatus } from "../../lib/aktivitetStatus";
+import { useOppdaterStatus } from "../../lib/context/aktivitetStatus";
 import { useHentOrgnummer } from "../Layout/Banner/Banner";
-import { useStatusForAktivitet } from "../../lib/aktivitetStatus";
+import { useStatusForAktivitet } from "../../lib/context/aktivitetStatus";
 
 interface Props {
     tittel: string;

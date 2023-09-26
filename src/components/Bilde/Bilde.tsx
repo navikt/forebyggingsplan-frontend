@@ -1,7 +1,8 @@
 import { PortableTextComponentProps } from "@portabletext/react/src/types";
-import { urlFor } from "../../lib/sanity-image";
+import { sanity } from "../../lib/klient/sanity-klient";
 import Image from "next/image";
 import styles from "./Bilde.module.css";
+import imageUrlBuilder from "@sanity/image-url";
 
 interface Props {
     beskrivelse: string;
@@ -23,3 +24,8 @@ export const Bilde = (props: PortableTextComponentProps<Props>) => {
         />
     );
 };
+
+const sanityBuilder = imageUrlBuilder(sanity);
+function urlFor(source: string) {
+    return sanityBuilder.image(source);
+}

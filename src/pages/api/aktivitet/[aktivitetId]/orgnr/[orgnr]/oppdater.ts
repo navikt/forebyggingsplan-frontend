@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { hentTokenXToken } from "../../../../../../auth/hentTokenXToken";
-import { erGyldigOrgnr } from "../../../../../../lib/orgnr";
+import { erGyldigOrgnr } from "../../../../../../lib/utils/orgnr";
 
 export default async function handler(
     req: NextApiRequest,

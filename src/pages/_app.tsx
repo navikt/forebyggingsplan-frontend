@@ -1,11 +1,11 @@
 import "../styles/globals.css";
 import "@navikt/bedriftsmeny/lib/bedriftsmeny.css";
 import type { AppProps } from "next/app";
-import { fetcher } from "../lib/forebyggingsplan-klient";
+import { fetcher } from "../lib/klient/forebyggingsplan-klient";
 import { SWRConfig } from "swr";
 import { useEffect } from "react";
 import { init } from "@amplitude/analytics-browser";
-import { isMock } from "../lib/miljø";
+import { isMock } from "../lib/utils/miljø";
 import { server } from "../mocks/msw";
 
 if (isMock() && typeof window === "undefined") {

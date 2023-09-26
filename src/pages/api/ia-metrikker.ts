@@ -1,10 +1,10 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { hentTokenXToken } from "../../auth/hentTokenXToken";
-import { logger } from "../../lib/logger";
+import { logger } from "../../lib/klient/logger-klient";
 
 export default async function handler(
     req: NextApiRequest,
-    res: NextApiResponse
+    res: NextApiResponse,
 ) {
     if (!req.body.orgnr)
         return res.status(400).json({ error: "Mangler 'orgnr' i body" });
@@ -19,14 +19,14 @@ export default async function handler(
             orgnr: req.body.orgnr,
             type: req.body.type,
             kilde: "FOREBYGGINGSPLAN",
-        })
+        }),
     );
 
     let token;
     try {
         token = await hentTokenXToken(
             req,
-            process.env.IA_METRIKKER_API_CLIENT_ID
+            process.env.IA_METRIKKER_API_CLIENT_ID,
         );
     } catch (e) {
         return res.status(401).end();
@@ -41,7 +41,7 @@ export default async function handler(
                 "Content-Type": "application/json",
                 authorization: `Bearer ${token}`,
             },
-        }
+        },
     )
         .then((res) => res.json())
         .catch(logger.warn);

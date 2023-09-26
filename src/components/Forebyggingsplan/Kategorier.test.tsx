@@ -3,10 +3,10 @@ import { Kategorier } from "./Kategorier";
 import { axe } from "jest-axe";
 import { kategorierMock } from "../../mocks/kategorierMock";
 import userEvent from "@testing-library/user-event";
-import { lagreIaMetrikkInformasjonstjeneste } from "../../lib/ia-metrikker-klient";
+import { lagreIaMetrikkInformasjonstjeneste } from "../../lib/klient/ia-metrikker-klient";
 
-jest.mock("../../lib/ia-metrikker-klient", () => ({
-    ...jest.requireActual("../../lib/ia-metrikker-klient"),
+jest.mock("../../lib/klient/ia-metrikker-klient", () => ({
+    ...jest.requireActual("../../lib/klient/ia-metrikker-klient"),
     lagreIaMetrikkInformasjonstjeneste: jest.fn(),
     lagreIaMetrikkInteraksjonstjeneste: jest.fn(),
 }));

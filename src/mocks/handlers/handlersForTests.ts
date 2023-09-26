@@ -3,9 +3,9 @@ import {
     FULLFØR_AKTIVITET_PATH,
     HENT_VALGTE_AKTIVITETER_PATH,
     VELG_AKTIVITET_PATH,
-} from "../../lib/forebyggingsplan-klient";
-import { HENT_SYKEFRAVERSSTATISTIKK_PATH } from "../../lib/sykefraværsstatistikk-klient";
-import { IA_METRIKK_PATH } from "../../lib/ia-metrikker-klient";
+} from "../../lib/klient/forebyggingsplan-klient";
+import { HENT_SYKEFRAVERSSTATISTIKK_PATH } from "../../lib/klient/sykefraværsstatistikk-klient";
+import { IA_METRIKK_PATH } from "../../lib/klient/ia-metrikker-klient";
 import { sykefraværsstatistikkMock } from "../sykefraværsstatistikkMock";
 
 export const handlersForTests = [

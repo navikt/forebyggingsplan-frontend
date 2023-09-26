@@ -5,7 +5,7 @@ import { Heading } from "@navikt/ds-react";
 import { OrgnrSearchParamType } from "@navikt/bedriftsmeny/lib/types/velger/utils";
 import { ForebyggeSykefravaer, Organisasjon } from "@navikt/bedriftsmeny";
 import { NotifikasjonWidget } from "@navikt/arbeidsgiver-notifikasjon-widget";
-import { isMock } from "../../../lib/miljø";
+import { isMock } from "../../../lib/utils/miljø";
 
 interface Props {
     organisasjoner: Organisasjon[];
