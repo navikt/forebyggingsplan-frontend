@@ -1,13 +1,16 @@
-import { Aktivitet, AktivitetStatus } from "../../types/Aktivitet";
 import { Accordion, Heading } from "@navikt/ds-react";
-import styles from "./Aktivitetsrad.module.css";
 import { useHentOrgnummer } from "../Layout/Banner/Banner";
 import { loggÅpneAktivitet } from "../../lib/klient/amplitude-klient";
+import { lagreIaMetrikkInformasjonstjeneste } from "../../lib/klient/ia-metrikker-klient";
+import { Aktivitet } from "../../types/Aktivitet";
 import { useCallback, useRef, useState } from "react";
 import { AktivitetHeader } from "./AktivitetHeader";
-import { lagreIaMetrikkInformasjonstjeneste } from "../../lib/klient/ia-metrikker-klient";
 import { Aktivitetsmal } from "./Aktivitetsmal/Aktivitetsmal";
-import { useAktivitetStatistikk } from "./useAktivitetStatistikk";
+import {
+    AktivitetStatistikkType,
+    useAktivitetStatistikk,
+} from "./useAktivitetStatistikk";
+import styles from "./Aktivitetsrad.module.css";
 
 interface Props {
     aktivitet: Aktivitet;
@@ -42,7 +45,7 @@ export const Aktivitetsrad = ({ aktivitet }: Props) => {
         >
             <Accordion.Header
                 onClick={onClick}
-                className={`${AktivitetStatusStyle[aktivitet.status]} ${
+                className={`${getAktivitetHeaderFarge(aktivitetStatistikk)} ${
                     styles.accordionHeader
                 }`}
             >
@@ -70,8 +73,16 @@ export const Aktivitetsrad = ({ aktivitet }: Props) => {
     );
 };
 
-const AktivitetStatusStyle: { [key in AktivitetStatus]: string } = {
-    IKKE_VALGT: styles.aktivitetIkkeValgt,
-    VALGT: styles.aktivitetValgt,
-    FULLFØRT: styles.aktivitetFullført,
-};
+function getAktivitetHeaderFarge(aktivitetStatistikk: AktivitetStatistikkType) {
+    if (aktivitetStatistikk.totalt === 0) {
+        return styles.aktivitetIkkeValgt;
+    }
+    if (aktivitetStatistikk.ferdige === aktivitetStatistikk.totalt) {
+        return styles.aktivitetFullført;
+    }
+    if (aktivitetStatistikk.påbegynte > 0) {
+        return styles.aktivitetValgt;
+    }
+
+    return styles.aktivitetIkkeValgt;
+}
