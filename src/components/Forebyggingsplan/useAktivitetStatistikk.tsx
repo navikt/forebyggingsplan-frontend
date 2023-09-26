@@ -3,7 +3,7 @@ import { Aktivitet } from "../../types/Aktivitet";
 import {
     useAktivitetStatuser,
     AktivitetBrukerStatus,
-} from "../../lib/aktivitet-klient";
+} from "../../lib/aktivitetStatus";
 
 export type AktivitetStatistikkType = {
     ferdige: number;
@@ -63,7 +63,6 @@ type aktivitetIteratorType = {
 function finnAktivitetIderFraSanityObjekt(
     aktivitet: aktivitetIteratorType,
 ): string[] {
-    console.log("aktivitet :>> ", aktivitet);
     const lokaleIDer: string[] = [];
     if (aktivitet?.oppgavetype?.startsWith("Oppgave") && aktivitet?.id) {
         lokaleIDer.push(aktivitet.id);

@@ -20,7 +20,8 @@ import { logger } from "../lib/logger";
 import { AltinnKonfig, getAltinnKonfig, isLabs, isMock } from "../lib/miljø";
 import TestVersjonBanner from "../components/Banner/TestVersjonBanner";
 import React from "react";
-import { AktivitetProvider, useHentAktiviteter } from "../lib/aktivitet-klient";
+import { useHentAktiviteter } from "../lib/aktivitet-klient";
+import { AktivitetProvider } from "../lib/aktivitetStatus";
 
 interface Props {
     kategorier: Kategori[];
