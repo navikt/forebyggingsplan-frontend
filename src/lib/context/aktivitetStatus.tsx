@@ -7,7 +7,7 @@ import { oppdaterStatus } from "../klient/status-klient";
 type AktivitetType = "OPPGAVE" | "AKTIVITETSKORT";
 export type AktivitetBrukerStatus = {
     aktivitetId: string;
-    aktivitetType: AktivitetType;
+    aktivitetType?: AktivitetType;
     status?: StatusType;
 };
 const AktivitetContext = React.createContext<{
