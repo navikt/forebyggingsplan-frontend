@@ -6,19 +6,21 @@ type ProgressBarProps = {
     max: number;
     value: number;
     partial: number;
-    label: string;
+    title: string;
+    navn: string;
     className?: string;
     width?: React.CSSProperties["width"];
     partialCountsAs?: number;
 };
 
 export function ProgressBar({
-    label,
+    title,
     className = "",
     width = "12rem",
     max,
     value,
     partial,
+    navn,
     partialCountsAs = 0.5,
 }: ProgressBarProps) {
     if (max === 0) {
@@ -37,11 +39,9 @@ export function ProgressBar({
             role="progressbar"
             aria-valuenow={value}
             aria-valuemax={max}
-            aria-label={`Fremgang på ${label}`}
+            aria-label={`Fremgang på ${navn}`}
             style={{ width }}
-            title={`Fremgang på ${label}: ${Math.round(value)} av ${Math.round(
-                max,
-            )}`}
+            title={title}
         >
             {
                 <div

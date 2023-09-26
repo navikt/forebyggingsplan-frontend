@@ -1,5 +1,6 @@
 import { Aktivitet } from "../../types/Aktivitet";
 import { ProgressBar } from "../ProgressBar/ProgressBar";
+import { getAktivitetStatusBeskrivelseTekst } from "./Aktivitetsmal/AktivitetsstatusBeskrivelse";
 import { AktivitetStatistikkType } from "./useAktivitetStatistikk";
 
 export const AktivitetHeader = ({
@@ -16,7 +17,8 @@ export const AktivitetHeader = ({
                 max={aktivitetStatistikk.totalt}
                 value={aktivitetStatistikk.ferdige}
                 partial={aktivitetStatistikk.påbegynte}
-                label={aktivitet.tittel}
+                title={getAktivitetStatusBeskrivelseTekst(aktivitetStatistikk)}
+                navn={aktivitet.tittel}
             />
         </>
     );
