@@ -80,9 +80,6 @@ function getAktivitetHeaderFarge(aktivitetStatistikk: AktivitetStatistikkType) {
     if (aktivitetStatistikk.ferdige === aktivitetStatistikk.totalt) {
         return styles.aktivitetFullført;
     }
-    if (aktivitetStatistikk.påbegynte + aktivitetStatistikk.ferdige > 0) {
-        return styles.aktivitetValgt;
-    }
 
     return styles.aktivitetIkkeValgt;
 }
