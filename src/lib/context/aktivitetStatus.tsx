@@ -1,7 +1,6 @@
 import React from "react";
 import { StatusType } from "../../components/Oppgave/Oppgave";
 import { lagreIaMetrikkInteraksjonstjeneste } from "../klient/ia-metrikker-klient";
-import { loggAktivitetStatusMarkert } from "../klient/amplitude-klient";
 import { oppdaterStatus } from "../klient/status-klient";
 
 type AktivitetType = "OPPGAVE" | "AKTIVITETSKORT";
@@ -93,7 +92,6 @@ export const useOppdaterStatus = (
         (status: StatusType) => {
             if (orgnr) {
                 oppdaterStatus(aktivitetId, orgnr, status);
-                loggAktivitetStatusMarkert(aktivitetId, tittel, status);
                 lagreIaMetrikkInteraksjonstjeneste(orgnr);
 
                 setLokaleEndringer((tidligereEndringer) => {

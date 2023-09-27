@@ -13,9 +13,13 @@ export const loggÅpneAktivitet = (aktivitet: Aktivitet) => {
     sendAktivitetsEvent(aktivitet, "åpne");
 };
 
-export const loggMarkerSomGjort = (aktivitet: Aktivitet) => {
-    sendAktivitetsEvent(aktivitet, "markertSomGjort");
-};
+export function loggKnappetrykk(label: string, additional: object) {
+    track("knapp", {
+        ...additional,
+        ...defaultEventProperties(),
+        label,
+    });
+}
 
 function sendAktivitetsEvent(aktivitet: Aktivitet, hendelse: string) {
     track("#forebyggingsplan-aktivitet", {
@@ -27,19 +31,5 @@ function sendAktivitetsEvent(aktivitet: Aktivitet, hendelse: string) {
         aktivitetsmalVersjon: aktivitet.aktivitetsmalVersjon,
         status: aktivitet.status,
         frist: aktivitet.frist,
-    });
-}
-
-export function loggAktivitetStatusMarkert(
-    aktivitetsId: string,
-    tittel: string,
-    status: string,
-) {
-    track("#forebyggingsplan-aktivitet", {
-        ...defaultEventProperties(),
-        hendelse: "aktivitetStatus",
-        aktivitetsId,
-        tittel,
-        status,
     });
 }

@@ -42,6 +42,7 @@ export const Oppgave = ({
                         <Statusendringsknapper
                             status={status}
                             setNyStatus={setStatus}
+                            oppgavetittel={tittel}
                         />
                     }
                 >

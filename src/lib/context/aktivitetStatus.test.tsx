@@ -1,7 +1,6 @@
 import React from "react";
 import { render, screen, waitFor } from "@testing-library/react";
 import { lagreIaMetrikkInteraksjonstjeneste } from "../klient/ia-metrikker-klient";
-import { loggAktivitetStatusMarkert } from "../klient/amplitude-klient";
 import {
     AktivitetProvider,
     useAktivitetStatuser,
@@ -14,11 +13,6 @@ jest.mock("../klient/ia-metrikker-klient", () => ({
     ...jest.requireActual("../klient/ia-metrikker-klient"),
     lagreIaMetrikkInformasjonstjeneste: jest.fn(),
     lagreIaMetrikkInteraksjonstjeneste: jest.fn(),
-}));
-
-jest.mock("../klient/amplitude-klient", () => ({
-    ...jest.requireActual("../klient/amplitude-klient"),
-    loggAktivitetStatusMarkert: jest.fn(),
 }));
 
 const renderMedAktivitetProvider = (
@@ -156,22 +150,13 @@ describe("AktivitetStatus", () => {
         const settTilStartetKnapp = screen.getByText("Sett 1 til STARTET");
         expect(settTilStartetKnapp).toBeInTheDocument();
         expect(lagreIaMetrikkInteraksjonstjeneste).not.toHaveBeenCalled();
-        expect(loggAktivitetStatusMarkert).not.toHaveBeenCalled();
         settTilStartetKnapp.click();
         await waitFor(() => {
             expect(lagreIaMetrikkInteraksjonstjeneste).toHaveBeenCalledTimes(1);
         });
-        await waitFor(() => {
-            expect(loggAktivitetStatusMarkert).toHaveBeenCalledTimes(1);
-        });
 
         expect(lagreIaMetrikkInteraksjonstjeneste).toHaveBeenCalledWith(
             "12341234",
-        );
-        expect(loggAktivitetStatusMarkert).toHaveBeenCalledWith(
-            "1",
-            "Aktivitet 1",
-            "STARTET",
         );
     });
 });
