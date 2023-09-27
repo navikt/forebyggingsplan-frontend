@@ -16,7 +16,12 @@ export const lagreIaMetrikkInteraksjonstjeneste = (orgnr: string | null) => {
 };
 
 const sendIaMetrikkEvent = (orgnr: string | null, type: MetrikkType) => {
-    if (!orgnr) return;
+    if (!orgnr) {
+        logger.warn(
+            `Orgnr er null, kan ikke sende IA-metrikker av type: ${type}`,
+        );
+        return;
+    }
 
     return sendIaMetrikk(
         orgnr,
