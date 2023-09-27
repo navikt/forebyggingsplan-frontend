@@ -1,12 +1,16 @@
-import { Aktivitet, AktivitetStatus } from "../../types/Aktivitet";
 import { Accordion, Heading } from "@navikt/ds-react";
-import styles from "./Aktivitetsrad.module.css";
 import { useHentOrgnummer } from "../Layout/Banner/Banner";
-import { loggÅpneAktivitet } from "../../lib/amplitude-klient";
+import { loggÅpneAktivitet } from "../../lib/klient/amplitude-klient";
+import { lagreIaMetrikkInformasjonstjeneste } from "../../lib/klient/ia-metrikker-klient";
+import { Aktivitet } from "../../types/Aktivitet";
 import { useCallback, useRef, useState } from "react";
 import { AktivitetHeader } from "./AktivitetHeader";
-import { lagreIaMetrikkInformasjonstjeneste } from "../../lib/ia-metrikker-klient";
 import { Aktivitetsmal } from "./Aktivitetsmal/Aktivitetsmal";
+import {
+    AktivitetStatistikkType,
+    useAktivitetStatistikk,
+} from "./useAktivitetStatistikk";
+import styles from "./Aktivitetsrad.module.css";
 
 interface Props {
     aktivitet: Aktivitet;
@@ -31,6 +35,8 @@ export const Aktivitetsrad = ({ aktivitet }: Props) => {
         }
     }, [åpen, aktivitet, orgnr, radRef]);
 
+    const aktivitetStatistikk = useAktivitetStatistikk(aktivitet);
+
     return (
         <Accordion.Item
             open={åpen}
@@ -39,7 +45,7 @@ export const Aktivitetsrad = ({ aktivitet }: Props) => {
         >
             <Accordion.Header
                 onClick={onClick}
-                className={`${AktivitetStatusStyle[aktivitet.status]} ${
+                className={`${getAktivitetHeaderFarge(aktivitetStatistikk)} ${
                     styles.accordionHeader
                 }`}
             >
@@ -48,21 +54,32 @@ export const Aktivitetsrad = ({ aktivitet }: Props) => {
                     level="3"
                     className={`${styles.sticky} ${styles.heading}`}
                 >
-                    <AktivitetHeader aktivitet={aktivitet} />
+                    <AktivitetHeader
+                        aktivitet={aktivitet}
+                        aktivitetStatistikk={aktivitetStatistikk}
+                    />
                 </Heading>
             </Accordion.Header>
             <Accordion.Content
                 data-aktivitetsmalid={aktivitet.aktivitetsmalId}
                 className={styles.content}
             >
-                <Aktivitetsmal aktivitet={aktivitet} />
+                <Aktivitetsmal
+                    aktivitetStatistikk={aktivitetStatistikk}
+                    aktivitet={aktivitet}
+                />
             </Accordion.Content>
         </Accordion.Item>
     );
 };
 
-const AktivitetStatusStyle: { [key in AktivitetStatus]: string } = {
-    IKKE_VALGT: styles.aktivitetIkkeValgt,
-    VALGT: styles.aktivitetValgt,
-    FULLFØRT: styles.aktivitetFullført,
-};
+function getAktivitetHeaderFarge(aktivitetStatistikk: AktivitetStatistikkType) {
+    if (aktivitetStatistikk.totalt === 0) {
+        return styles.aktivitetIkkeValgt;
+    }
+    if (aktivitetStatistikk.ferdige === aktivitetStatistikk.totalt) {
+        return styles.aktivitetFullført;
+    }
+
+    return styles.aktivitetIkkeValgt;
+}

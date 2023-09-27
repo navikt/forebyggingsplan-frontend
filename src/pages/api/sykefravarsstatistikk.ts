@@ -1,11 +1,11 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { hentTokenXToken } from "../../auth/hentTokenXToken";
-import { logger } from "../../lib/logger";
-import { erGyldigOrgnr } from "../../lib/orgnr";
+import { logger } from "../../lib/klient/logger-klient";
+import { erGyldigOrgnr } from "../../lib/utils/orgnr";
 
 export default async function handler(
     req: NextApiRequest,
-    res: NextApiResponse
+    res: NextApiResponse,
 ) {
     if (req.method !== "GET")
         return res.status(405).json({ error: "Method Not Allowed" });
@@ -16,7 +16,7 @@ export default async function handler(
     try {
         token = await hentTokenXToken(
             req,
-            process.env.SYKEFRAVARSSTATISTIKK_API_CLIENT_ID
+            process.env.SYKEFRAVARSSTATISTIKK_API_CLIENT_ID,
         );
     } catch (e) {
         return res.status(401).end();
@@ -32,7 +32,7 @@ export default async function handler(
             headers: {
                 authorization: `Bearer ${token}`,
             },
-        }
+        },
     )
         .then((res) => res.json())
         .catch((reason) => {

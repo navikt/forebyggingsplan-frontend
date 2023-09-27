@@ -1,8 +1,8 @@
 import dns from "node:dns";
 import { IncomingMessage } from "http";
-import { logger } from "./logger";
+import { logger } from "./logger-klient";
 import { Organisasjon } from "@navikt/bedriftsmeny";
-import { hentTokenXToken } from "../auth/hentTokenXToken";
+import { hentTokenXToken } from "../../auth/hentTokenXToken";
 
 dns.setDefaultResultOrder("ipv4first"); // Dette er for å få lokal kjøring til å virke med Node versjon 17.x med vårt oppsett
 

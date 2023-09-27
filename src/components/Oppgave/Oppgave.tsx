@@ -8,11 +8,9 @@ import { marks } from "../PortableText/marks/Marks";
 import { Statusendringsknapper } from "./Statusendringsknapper";
 import { Statusvisning } from "./Statusvisning";
 import { KollapsbarOppgavetekstContainer } from "./KollapsbarOppgavetekstContainer";
-import { oppdaterStatus } from "../../lib/status-klient";
+import { useOppdaterStatus } from "../../lib/context/aktivitetStatus";
 import { useHentOrgnummer } from "../Layout/Banner/Banner";
-import { useStatusForAktivitet } from "../../lib/aktivitet-klient";
-import { loggAktivitetStatusMarkert } from "../../lib/amplitude-klient";
-import { lagreIaMetrikkInteraksjonstjeneste } from "../../lib/ia-metrikker-klient";
+import { useStatusForAktivitet } from "../../lib/context/aktivitetStatus";
 
 interface Props {
     tittel: string;
@@ -25,32 +23,9 @@ export type StatusType = "AVBRUTT" | "STARTET" | "FULLFØRT";
 export const Oppgave = ({
     value: { tittel, innhold, id },
 }: PortableTextComponentProps<Props>) => {
-    const [status, setLokalStatus] = React.useState<StatusType | undefined>(
-        "AVBRUTT",
-    );
+    const status = useStatusForAktivitet(id);
     const { orgnr } = useHentOrgnummer();
-
-    const aktivitetsStatus = useStatusForAktivitet(id);
-
-    React.useEffect(() => {
-        if (aktivitetsStatus) {
-            setLokalStatus(aktivitetsStatus);
-        }
-    }, [aktivitetsStatus]);
-
-    const setStatus = React.useCallback(
-        (nyStatus: StatusType) => {
-            setLokalStatus(nyStatus);
-            if (orgnr) {
-                oppdaterStatus(id, orgnr, nyStatus);
-                loggAktivitetStatusMarkert(id, tittel, nyStatus);
-                lagreIaMetrikkInteraksjonstjeneste(orgnr);
-            } else {
-                console.error("Får ikke oppdatert status. Mangler orgnr.");
-            }
-        },
-        [setLokalStatus, id, orgnr, tittel],
-    );
+    const setStatus = useOppdaterStatus(orgnr, tittel, id);
 
     return (
         <Panel className={styles.oppgaveblokk}>
@@ -67,6 +42,7 @@ export const Oppgave = ({
                         <Statusendringsknapper
                             status={status}
                             setNyStatus={setStatus}
+                            oppgavetittel={tittel}
                         />
                     }
                 >

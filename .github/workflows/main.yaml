@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-      - fjerner-dette-har-vi-gjort
+      - progress-bar
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

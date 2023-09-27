@@ -4,23 +4,29 @@ import styles from "./index.module.css";
 import { Aktivitet } from "../types/Aktivitet";
 import { hentVerifisertToken } from "../auth";
 import Layout from "../components/Layout/Layout";
-import { sanity, sanityLabs } from "../lib/sanity";
+import { sanity, sanityLabs } from "../lib/klient/sanity-klient";
 import { PortableTextBlock } from "@portabletext/types";
 import { SanityDocument } from "@sanity/client";
 import { initializeFaro, Faro } from "@grafana/faro-web-sdk";
-import { hentOrganisasjoner } from "../lib/organisasjoner";
+import { hentOrganisasjoner } from "../lib/klient/organisasjoner-klient";
 import { Organisasjon } from "@navikt/bedriftsmeny";
 import { Kategori } from "../types/kategori";
 import { Kategorier } from "../components/Forebyggingsplan/Kategorier";
 import { Alert, Link } from "@navikt/ds-react";
-import { useHentSykefraværsstatistikk } from "../lib/sykefraværsstatistikk-klient";
+import { useHentSykefraværsstatistikk } from "../lib/klient/sykefraværsstatistikk-klient";
 import { useHentOrgnummer } from "../components/Layout/Banner/Banner";
-import { useHentValgteAktiviteter } from "../lib/forebyggingsplan-klient";
-import { logger } from "../lib/logger";
-import { AltinnKonfig, getAltinnKonfig, isLabs, isMock } from "../lib/miljø";
+import { useHentValgteAktiviteter } from "../lib/klient/forebyggingsplan-klient";
+import { logger } from "../lib/klient/logger-klient";
+import {
+    AltinnKonfig,
+    getAltinnKonfig,
+    isLabs,
+    isMock,
+} from "../lib/utils/miljø";
 import TestVersjonBanner from "../components/Banner/TestVersjonBanner";
 import React from "react";
-import { AktivitetProvider, useHentAktiviteter } from "../lib/aktivitet-klient";
+import { useHentAktiviteter } from "../lib/klient/aktivitet-klient";
+import { AktivitetProvider } from "../lib/context/aktivitetStatus";
 
 interface Props {
     kategorier: Kategori[];

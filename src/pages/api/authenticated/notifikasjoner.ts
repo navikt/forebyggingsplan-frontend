@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import proxyRequestWithTokenExchange from "../../../lib/api-proxy";
-import { isLocalhost } from "../../../lib/miljø";
+import proxyRequestWithTokenExchange from "../../../lib/klient/api-proxy";
+import { isLocalhost } from "../../../lib/utils/miljø";
 import { notifikasjonerMockdata } from "../../../mocks/notifikasjonerMockdata";
 
 export default async function handler(

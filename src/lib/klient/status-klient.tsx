@@ -1,4 +1,4 @@
-import { StatusType } from "../components/Oppgave/Oppgave";
+import { StatusType } from "../../components/Oppgave/Oppgave";
 
 export const oppdaterStatus = async (
     aktivitetId: string,

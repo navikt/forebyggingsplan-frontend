@@ -1,6 +1,6 @@
 import pino, { BaseLogger } from "pino";
 import { NextApiRequest, NextApiResponse } from "next";
-import { logger } from "../../lib/logger";
+import { logger } from "../../lib/klient/logger-klient";
 
 type LogLevels = Exclude<keyof BaseLogger, "string" | "level">;
 const levels: LogLevels[] = [

@@ -9,7 +9,7 @@ import {
 } from "../../types/Aktivitet";
 import { useHentOrgnummer } from "../Layout/Banner/Banner";
 import { FullførtAktivitet } from "../../types/ValgtAktivitet";
-import { useHentValgteAktiviteter } from "../../lib/forebyggingsplan-klient";
+import { useHentValgteAktiviteter } from "../../lib/klient/forebyggingsplan-klient";
 import { PortableText } from "@portabletext/react";
 import { PortableTextBlock } from "@portabletext/types";
 

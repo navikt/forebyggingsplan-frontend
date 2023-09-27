@@ -2,7 +2,7 @@ import {
     AggregertStatistikkSiste4Kvartaler,
     Statistikkategori,
     useHentSykefraværsstatistikk,
-} from "../../lib/sykefraværsstatistikk-klient";
+} from "../../lib/klient/sykefraværsstatistikk-klient";
 import { Loader } from "@navikt/ds-react";
 import styles from "./Sykefraværsstatistikk.module.css";
 import { useHentOrgnummer } from "../Layout/Banner/Banner";
@@ -25,19 +25,19 @@ export const Sykefraværsstatistikk = ({
 
     const sykefraværIVirksomhet = finnStatistikkVerdi(
         "VIRKSOMHET",
-        sykefraværsstatistikk?.prosentSiste4KvartalerTotalt
+        sykefraværsstatistikk?.prosentSiste4KvartalerTotalt,
     );
     const sykefraværIBransje = finnStatistikkVerdi(
         "BRANSJE",
-        sykefraværsstatistikk?.prosentSiste4KvartalerTotalt
+        sykefraværsstatistikk?.prosentSiste4KvartalerTotalt,
     );
     const trendIVirksomhet = finnStatistikkVerdi(
         "VIRKSOMHET",
-        sykefraværsstatistikk?.trendTotalt
+        sykefraværsstatistikk?.trendTotalt,
     );
     const trendIBransje = finnStatistikkVerdi(
         "BRANSJE",
-        sykefraværsstatistikk?.trendTotalt
+        sykefraværsstatistikk?.trendTotalt,
     );
 
     return sykefraværsstatistikk ? (
@@ -58,7 +58,7 @@ export const Sykefraværsstatistikk = ({
                     sykefravær={sykefraværIBransje}
                     tooltip={
                         sykefraværsstatistikk.prosentSiste4KvartalerTotalt?.find(
-                            (s) => s.statistikkategori === "BRANSJE"
+                            (s) => s.statistikkategori === "BRANSJE",
                         )?.label ?? "Din bransje"
                     }
                     bakgrunnsfarge={bakgrunnsfarge as Bakgrunnsfarger}
@@ -72,7 +72,7 @@ export const Sykefraværsstatistikk = ({
 
 const finnStatistikkVerdi = (
     kategori: Statistikkategori,
-    liste?: AggregertStatistikkSiste4Kvartaler[]
+    liste?: AggregertStatistikkSiste4Kvartaler[],
 ): string | undefined => {
     return liste?.find((e) => e.statistikkategori === kategori)?.verdi;
 };

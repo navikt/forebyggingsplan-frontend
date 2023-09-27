@@ -16,15 +16,16 @@ export function KollapsbarOppgavetekstContainer({
     knapper: React.ReactNode;
     status?: StatusType;
 }) {
+    const kollapset = erKollapsetType(status);
     return (
         <div
             className={
-                erKollapsetType(status)
+                kollapset
                     ? styles.kollapsetOppgavetekst
                     : styles.synligOppgavetekst
             }
         >
-            {children}
+            <span aria-hidden={kollapset ? "true" : "false"}>{children}</span>
             <div className={styles.oppgavetekstOverlayGradient}>{knapper}</div>
         </div>
     );

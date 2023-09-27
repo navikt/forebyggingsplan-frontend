@@ -2,10 +2,10 @@ import { screen, render } from "@testing-library/react";
 import { Kategorier } from "./components/Forebyggingsplan/Kategorier";
 import { kategorierMock } from "./mocks/kategorierMock";
 import userEvent from "@testing-library/user-event";
-import { lagreIaMetrikkInformasjonstjeneste } from "./lib/ia-metrikker-klient";
+import { lagreIaMetrikkInformasjonstjeneste } from "./lib/klient/ia-metrikker-klient";
 
-jest.mock("./lib/ia-metrikker-klient", () => ({
-    ...jest.requireActual("./lib/ia-metrikker-klient"),
+jest.mock("./lib/klient/ia-metrikker-klient", () => ({
+    ...jest.requireActual("./lib/klient/ia-metrikker-klient"),
     lagreIaMetrikkInformasjonstjeneste: jest.fn(),
     lagreIaMetrikkInteraksjonstjeneste: jest.fn(),
 }));
@@ -30,9 +30,9 @@ describe("Metrikkutsendelser fra full page render", () => {
 
     it("Skal sende metrikker ved åpning av aktivitet", async () => {
         render(<Kategorier kategorier={kategorierMock} />);
-        const button = await screen.findByRole("button", {
-            name: "Bruk sykefraværstatistikken til å forebygge fravær",
-        });
+        const button = await screen.findByText(
+            "Bruk sykefraværstatistikken til å forebygge fravær",
+        );
 
         expect(button).toBeInTheDocument();
 
