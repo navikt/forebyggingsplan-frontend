@@ -4,6 +4,7 @@ import {
     MetrikkKilde,
 } from "@navikt/ia-metrikker-client";
 import { logAndThrowException } from "./forebyggingsplan-klient";
+import { logger } from "./logger-klient";
 
 export const IA_METRIKK_PATH = "/forebyggingsplan/api/ia-metrikker";
 
