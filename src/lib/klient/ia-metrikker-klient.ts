@@ -21,10 +21,8 @@ const sendIaMetrikkEvent = (orgnr: string | null, type: MetrikkType) => {
         logger.warn(
             `Orgnr er null, kan ikke sende IA-metrikker av type: ${type}`,
         );
-        console.log("Orgnr er null, kan ikke sende IA-metrikker");
         return;
     }
-    console.log("Orgnr er ikke null. Prøver å sende IA-metrikker");
 
     return sendIaMetrikk(
         orgnr,
@@ -32,7 +30,6 @@ const sendIaMetrikkEvent = (orgnr: string | null, type: MetrikkType) => {
         MetrikkKilde.FOREBYGGINGSPLAN,
         IA_METRIKK_PATH,
     ).catch((res) => {
-        console.warn("Kunne ikke sende IA-metrikker", res);
         logAndThrowException(res, IA_METRIKK_PATH, "POST");
     });
 };
