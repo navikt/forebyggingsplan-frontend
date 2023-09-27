@@ -25,7 +25,7 @@ export function KollapsbarOppgavetekstContainer({
                     : styles.synligOppgavetekst
             }
         >
-            <span aria-hidden="true">{children}</span>
+            <span aria-hidden={kollapset ? "true" : "false"}>{children}</span>
             <div className={styles.oppgavetekstOverlayGradient}>{knapper}</div>
         </div>
     );
