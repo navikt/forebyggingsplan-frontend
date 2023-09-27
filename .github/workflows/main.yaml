@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-      - progress-bar
+      - metrikker-orgnr-fix
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
