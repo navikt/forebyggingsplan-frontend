@@ -33,7 +33,7 @@ export function getAktivitetStatusBeskrivelseTekst(
 
     return `${aktivitetStatistikk.ferdige} oppgave${
         aktivitetStatistikk.ferdige === 1 ? "" : "r"
-    } ferdig${` og ${aktivitetStatistikk.påbegynte} påbegynt`} av ${
+    } ferdig og ${aktivitetStatistikk.påbegynte} påbegynt av ${
         aktivitetStatistikk.totalt
     } tilgjengelige oppgaver.`;
 }

@@ -1,10 +1,4 @@
-import { FullførtAktivitet } from "../../types/ValgtAktivitet";
-import useSWR from "swr";
 import { logger } from "./logger-klient";
-
-export const HENT_VALGTE_AKTIVITETER_PATH = `/forebyggingsplan/api/valgteaktiviteter`;
-export const VELG_AKTIVITET_PATH = "/forebyggingsplan/api/aktivitet";
-export const FULLFØR_AKTIVITET_PATH = "/forebyggingsplan/api/fullfor";
 
 export class FetchingError extends Error {
     status: number;
@@ -23,13 +17,6 @@ export const fetcher = async (url: string) => {
 
     return res.json();
 };
-
-export function useHentValgteAktiviteter(orgnummer: string | null) {
-    const url = orgnummer
-        ? `${HENT_VALGTE_AKTIVITETER_PATH}?orgnr=${orgnummer}`
-        : null;
-    return useSWR<FullførtAktivitet[]>(url);
-}
 
 export async function logAndThrowException(
     res: Response,

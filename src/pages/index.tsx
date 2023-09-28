@@ -13,9 +13,7 @@ import { Organisasjon } from "@navikt/bedriftsmeny";
 import { Kategori } from "../types/kategori";
 import { Kategorier } from "../components/Forebyggingsplan/Kategorier";
 import { Alert, Link } from "@navikt/ds-react";
-import { useHentSykefraværsstatistikk } from "../lib/klient/sykefraværsstatistikk-klient";
 import { useHentOrgnummer } from "../components/Layout/Banner/Banner";
-import { useHentValgteAktiviteter } from "../lib/klient/forebyggingsplan-klient";
 import { logger } from "../lib/klient/logger-klient";
 import {
     AltinnKonfig,
@@ -141,9 +139,7 @@ function Forside({
     prodUrl,
 }: Omit<Props, "organisasjoner">) {
     const { orgnr } = useHentOrgnummer();
-    const { error: statistikkError } = useHentSykefraværsstatistikk(orgnr);
-    const { error: valgteAktiviteterError } = useHentValgteAktiviteter(orgnr);
-    const { data: aktivitetStatuser } = useHentAktiviteter(orgnr);
+    const { data: aktivitetStatuser, error } = useHentAktiviteter(orgnr);
 
     return (
         <AktivitetProvider
@@ -154,7 +150,7 @@ function Forside({
             <div className={styles.container}>
                 <div className={styles.main}>
                     {kjørerMocket && <TestVersjonBanner prodUrl={prodUrl} />}
-                    {valgteAktiviteterError?.status === 403 && (
+                    {error?.status === 403 && (
                         <Alert variant={"warning"} className={styles.alert}>
                             Du har ikke ikke tilgang til å gjøre endringer på
                             denne siden.{" "}
@@ -165,15 +161,14 @@ function Forside({
                             </Link>
                         </Alert>
                     )}
-                    {valgteAktiviteterError &&
-                        valgteAktiviteterError.status !== 403 && (
-                            <Alert variant={"error"} className={styles.alert}>
-                                Vi har ikke klart å hente ned planen deres.
-                                <br /> Dere kan forsatt se aktivitetene, men
-                                ikke hvilken status dere har gitt dem.
-                            </Alert>
-                        )}
-                    {statistikkError && statistikkError.status !== 403 && (
+                    {error && error.status !== 403 && (
+                        <Alert variant={"error"} className={styles.alert}>
+                            Vi har ikke klart å hente ned planen deres.
+                            <br /> Dere kan forsatt se aktivitetene, men ikke
+                            hvilken status dere har gitt dem.
+                        </Alert>
+                    )}
+                    {error && error.status !== 403 && (
                         <Alert variant={"error"} className={styles.alert}>
                             Vi har ikke klart å hente informasjon om
                             sykefraværsstatistikk.
