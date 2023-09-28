@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-      - metrikker-orgnr-fix
+      - fjern-gamle-endepunkter
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

@@ -14,7 +14,6 @@ import styles from "./Aktivitetsrad.module.css";
 
 interface Props {
     aktivitet: Aktivitet;
-    oppdaterValgteAktiviteter: () => void;
 }
 
 export const Aktivitetsrad = ({ aktivitet }: Props) => {
