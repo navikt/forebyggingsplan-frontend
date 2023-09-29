@@ -37,7 +37,7 @@ export function Statusendringsknapper({
             );
         case "STARTET":
             return (
-                <div className="flex flex-wrap gap-2">
+                <div className={styles.multiknappholder}>
                     <Button
                         variant="secondary"
                         className={`${styles.statusknapp} ${styles.halvknapp}`}
