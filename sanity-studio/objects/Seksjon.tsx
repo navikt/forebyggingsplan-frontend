@@ -6,12 +6,20 @@ import { Rule } from "@sanity/types";
 import { PortableTextBlock } from "@portabletext/types";
 import { StatistikkPreview } from "./Statistikk";
 import { defineType } from "sanity";
+import { uuid } from "@sanity/uuid";
 
 export const seksjon = defineType({
     type: "object",
     name: "seksjon",
     title: "Seksjon for innhold",
     fields: [
+        {
+            title: "ID",
+            name: "id",
+            type: "string",
+            readOnly: false, // TODO: Sett til true når alle har ID
+            initialValue: () => uuid(),
+        },
         {
             title: "Innhold",
             name: "seksjonInnhold",
