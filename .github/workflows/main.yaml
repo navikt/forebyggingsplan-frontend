@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-      - progress-mobil-layout
+      - id-på-seksjon
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
