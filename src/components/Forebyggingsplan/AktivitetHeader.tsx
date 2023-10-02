@@ -2,6 +2,7 @@ import { Aktivitet } from "../../types/Aktivitet";
 import { ProgressBar } from "../ProgressBar/ProgressBar";
 import { getAktivitetStatusBeskrivelseTekst } from "./Aktivitetsmal/AktivitetsstatusBeskrivelse";
 import { AktivitetStatistikkType } from "./useAktivitetStatistikk";
+import styles from "./AktivitetHeader.module.css";
 
 export const AktivitetHeader = ({
     aktivitet,
@@ -19,6 +20,7 @@ export const AktivitetHeader = ({
                 partial={aktivitetStatistikk.påbegynte}
                 title={getAktivitetStatusBeskrivelseTekst(aktivitetStatistikk)}
                 navn={aktivitet.tittel}
+                className={styles["aktivitet-header-progress-bar"]}
             />
         </>
     );
