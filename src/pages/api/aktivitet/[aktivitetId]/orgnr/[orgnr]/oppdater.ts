@@ -39,7 +39,7 @@ export default async function handler(
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${veksletToken}`,
             },
-            body: JSON.stringify({ status }),
+            body: JSON.stringify({ status, aktivitetstype: "OPPGAVE" }),
         },
     );
 
