@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-      - Oppgave-mobil-fiks
+      - id-på-seksjon
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
