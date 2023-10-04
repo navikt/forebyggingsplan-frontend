@@ -61,7 +61,7 @@ export const Aktivitetsrad = ({ aktivitet }: Props) => {
             </Accordion.Header>
             <Accordion.Content
                 data-aktivitetsmalid={aktivitet.aktivitetsmalId}
-                className={styles.accordionContent}
+                className={styles.content}
             >
                 <Aktivitetsmal
                     aktivitetStatistikk={aktivitetStatistikk}
