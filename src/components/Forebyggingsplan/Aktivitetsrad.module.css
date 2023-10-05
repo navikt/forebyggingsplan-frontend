@@ -10,16 +10,6 @@
     background-color: var(--a-green-100) !important;
 }
 
-.sticky {
-    position: sticky;
-    top: 0;
-    z-index: 2; /* Plasser sticky header framfor datepicker-input som har "z-index: 1"*/
-}
-
-.accordionHeader {
-    color: var(--a-text-action);
-}
-
 .heading {
     width: 100%;
     display: flex;
@@ -36,11 +26,37 @@
     line-height: var(--a-font-line-height-heading-medium);
 }
 
-/* Fordi vi har ein heading mellom Accordion.Item og Accordion.Header må vi jukse litt
-/*   for å få chevron til å snu seg når vi opnar kort.
-/* Selectoren som snur chevron i ds per 2023-02-24: ".navds-accordion__item--open > .navds-accordion__header > .navds-accordion__expand-icon" */
-:global(.navds-accordion__item--open)
-    .accordionHeader
-    > :global(.navds-accordion__expand-icon) {
-    transform: rotate(180deg);
+.accordionItem {
+    --__ac-accordion-header-shadow-color: rgba(7, 26, 54, 0.21);
+    --ac-accordion-header-bg-hover: var(--a-gray-200);
+    --accordion-header-base-shadow: inset -2px 0 0 0 var(--a-transparent),
+        inset 2px 0 0 0 var(--a-transparent);
+    --accordion-header-top-shadow: inset 0 2px 0 0
+        var(--__ac-accordion-header-shadow-color);
+    --accordion-header-bottom-shadow: inset 0 -2px 0 0 var(--__ac-accordion-header-shadow-color);
+}
+
+.accordionHeader {
+    color: var(--a-text-action);
+    position: sticky;
+    top: var(--decorator-sticky-offset);
+
+    --__ac-accordion-header-shadow: var(--accordion-header-base-shadow),
+        var(--accordion-header-bottom-shadow);
+}
+
+.accordionItem:last-child > :where(.accordionHeader) {
+    --__ac-accordion-header-shadow: var(--accordion-header-base-shadow),
+        var(--accordion-header-bottom-shadow);
+    box-shadow: var(--__ac-accordion-header-shadow);
+}
+
+.accordionHeader[aria-expanded="true"] + .accordionContent {
+    --__ac-accordion-header-shadow: var(--accordion-header-base-shadow),
+        var(--accordion-header-bottom-shadow);
+    box-shadow: var(--__ac-accordion-header-shadow);
+}
+
+.accordionItem:last-child {
+    box-shadow: none;
 }
