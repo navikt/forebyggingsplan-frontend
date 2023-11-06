@@ -1,0 +1,4518 @@
+{
+  "query": "*[_type == \"kategori\"] | order(orderRank) {\n                tittel,\n                innhold,\n                \"aktiviteter\": *[_type == \"Aktivitet\" \u0026\u0026 references(^._id)] | order(orderRank)\n            }",
+  "result": [
+    {
+      "tittel": "Få det grunnleggende på plass",
+      "innhold": [
+        {
+          "children": [
+            {
+              "_type": "span",
+              "marks": [],
+              "text": "Dette er en god start på veien til lavere sykefravær, mer trivsel og økt lønnsomhet. ",
+              "_key": "bf9e415304e80"
+            }
+          ],
+          "_type": "block",
+          "style": "normal",
+          "_key": "2974d2c63b1e",
+          "markDefs": []
+        }
+      ],
+      "aktiviteter": [
+        {
+          "_createdAt": "2022-12-02T14:04:32Z",
+          "_rev": "TVkGSMt2uiwpJLVShY8v9n",
+          "embeddedInnhold": [
+            {
+              "children": [
+                {
+                  "text": "Slik blir du bedre på tilrettelegging",
+                  "_key": "abed08f02b6c0",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "_type": "block",
+              "style": "h4",
+              "_key": "b16f4f42f4eb",
+              "markDefs": []
+            },
+            {
+              "markDefs": [],
+              "children": [
+                {
+                  "text": "Tilrettelegging for ansatte kan hindre sykefravær. For å lykkes med tilrettelegging bør du ha:",
+                  "_key": "b612fe035d110",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "_type": "block",
+              "style": "normal",
+              "_key": "8269dfaefbde"
+            },
+            {
+              "style": "normal",
+              "_key": "f2d7fe78bd4c",
+              "listItem": "bullet",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Kunnskap om tilrettelegging",
+                  "_key": "8af358aff3f3"
+                }
+              ],
+              "level": 1,
+              "_type": "block"
+            },
+            {
+              "level": 1,
+              "_type": "block",
+              "style": "normal",
+              "_key": "a90417c3c09e",
+              "listItem": "bullet",
+              "markDefs": [],
+              "children": [
+                {
+                  "marks": [],
+                  "text": "Kjennskap til tilretteleggingsmulighetene i arbeidsplassen din",
+                  "_key": "a136ef6c0ac20",
+                  "_type": "span"
+                }
+              ]
+            },
+            {
+              "listItem": "bullet",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Et godt samarbeid med de ansatte og ansattrepresentantene",
+                  "_key": "80d6349094b7"
+                }
+              ],
+              "level": 1,
+              "_type": "block",
+              "style": "normal",
+              "_key": "63ca785b87e1"
+            },
+            {
+              "_key": "6cf8a5d53a6f",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Vi har laget fire oppgaver som hjelper deg med å øke kunnskap og samarbeide med andre på arbeidsplassen. ",
+                  "_key": "d2f09d8f1dbf0"
+                }
+              ],
+              "_type": "block",
+              "style": "normal"
+            },
+            {
+              "oppgavetype": "Oppgave 1",
+              "_type": "oppgave",
+              "innhold": [
+                {
+                  "style": "normal",
+                  "_key": "97504a659f52",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "I denne oppgaven får du kompetanse om:",
+                      "_key": "24df33e4f5ff0"
+                    }
+                  ],
+                  "_type": "block"
+                },
+                {
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_key": "ee6e6889af660",
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Hva tilrettelegging er"
+                    }
+                  ],
+                  "level": 1,
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "d3a3af311f61",
+                  "listItem": "bullet"
+                },
+                {
+                  "children": [
+                    {
+                      "text": "De lovpålagte pliktene dine",
+                      "_key": "1b7f9543570f0",
+                      "_type": "span",
+                      "marks": []
+                    }
+                  ],
+                  "level": 1,
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "7ba9c03affff",
+                  "listItem": "bullet",
+                  "markDefs": []
+                },
+                {
+                  "_key": "39e8acbcb758",
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Hvordan dine ansatte kan medvirke i egen tilrettelegging",
+                      "_key": "c8b9b0e7cdaa0"
+                    }
+                  ],
+                  "level": 1,
+                  "_type": "block",
+                  "style": "normal"
+                },
+                {
+                  "_key": "1ad6bbfdd355",
+                  "markDefs": [
+                    {
+                      "erEksternLenke": true,
+                      "_type": "href",
+                      "_key": "e1f3e30e0e49",
+                      "url": "https://vimeo.com/showcase/8652399/video/573965951"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "text": "Start med å se på denne videoen.",
+                      "_key": "5c2733c9abb60",
+                      "_type": "span",
+                      "marks": [
+                        "e1f3e30e0e49"
+                      ]
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal"
+                },
+                {
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Hvis du vil vite mer om hvilke lover og plikter som gjelder anbefaler vi at du leser videre her: ",
+                      "_key": "acf8175dc36d0"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "8f0a5855f9f7",
+                  "markDefs": [
+                    {
+                      "erEksternLenke": true,
+                      "_type": "href",
+                      "_key": "1d9783eada09",
+                      "url": "https://www.arbeidstilsynet.no/arbeidsforhold/tilrettelegging/"
+                    }
+                  ]
+                },
+                {
+                  "_key": "e955b8956121",
+                  "listItem": "bullet",
+                  "markDefs": [
+                    {
+                      "url": "https://www.nav.no/arbeidsgiver/oppfolging-sykmeldte#tilrettelegging",
+                      "erEksternLenke": true,
+                      "_type": "href",
+                      "_key": "5ff52854af00"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [
+                        "5ff52854af00"
+                      ],
+                      "text": "Slik følger du opp sykmeldte, fra NAV",
+                      "_key": "602866837add0"
+                    }
+                  ],
+                  "level": 1,
+                  "_type": "block",
+                  "style": "normal"
+                },
+                {
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [
+                        "4abae8bb98a1"
+                      ],
+                      "text": "Tilrettelegging av arbeidet, fra Arbeidstilsynet",
+                      "_key": "5b243d74f5b8"
+                    }
+                  ],
+                  "level": 1,
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "864fc3c8d525",
+                  "listItem": "bullet",
+                  "markDefs": [
+                    {
+                      "erEksternLenke": true,
+                      "_type": "href",
+                      "_key": "4abae8bb98a1",
+                      "url": "https://www.arbeidstilsynet.no/arbeidsforhold/tilrettelegging/"
+                    }
+                  ]
+                }
+              ],
+              "id": "9D9E8ACC-CB8E-4763-8B04-B345B9F3DE68",
+              "_key": "df20f9f923eb",
+              "tittel": "Kunnskap om tilrettelegging"
+            },
+            {
+              "_key": "bfd0339def39",
+              "tittel": "Slik forbedrer du dine ferdigheter om tilrettelegging ",
+              "oppgavetype": "Oppgave 2",
+              "_type": "oppgave",
+              "innhold": [
+                {
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "I denne oppgaven bruker du egne erfaringer med tilrettelegging for å identifisere forbedringspunkter. Du kan også bruke notatene dine fra denne oppgaven, inn i oppgave 3.",
+                      "_key": "335f74e874630"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "335f74e87463"
+                },
+                {
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Har du tilrettelagt for en ansatt uten at personen var sykmeldt de siste seks månedene?",
+                      "_key": "d715fa70dbd40"
+                    }
+                  ],
+                  "level": 1,
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "d715fa70dbd4",
+                  "listItem": "bullet"
+                },
+                {
+                  "style": "normal",
+                  "_key": "0c3103751ab1",
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Hvis ja: Var det du eller den ansatte som tok initiativet?",
+                      "_key": "0c3103751ab10"
+                    }
+                  ],
+                  "level": 2,
+                  "_type": "block"
+                },
+                {
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "marks": [],
+                      "text": "Hvis nei: Kunne det ha vært aktuelt? Ble den ansatte sykmeldt? Kunne det vært unngått?",
+                      "_key": "0f7e1dad01130",
+                      "_type": "span"
+                    }
+                  ],
+                  "level": 2,
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "0f7e1dad0113"
+                },
+                {
+                  "_key": "e5a97d47783a",
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Tenk på de siste gangene du fulgte opp en sykmeldt. Hvordan fungerte tilretteleggingen?",
+                      "_key": "e5a97d47783a0"
+                    }
+                  ],
+                  "level": 1,
+                  "_type": "block",
+                  "style": "normal"
+                },
+                {
+                  "level": 2,
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "a89f0db92a6e",
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Kjente du til mulighetene på arbeidsplassen?",
+                      "_key": "a89f0db92a6e0"
+                    }
+                  ]
+                },
+                {
+                  "_key": "3f4aeb8e3dcb",
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Kom den ansatte med egne forslag?",
+                      "_key": "3f4aeb8e3dcb0"
+                    }
+                  ],
+                  "level": 2,
+                  "_type": "block",
+                  "style": "normal"
+                },
+                {
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "6aef383e7fa8",
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Hvis ja: Bra! Hva var de?",
+                      "_key": "6aef383e7fa80"
+                    }
+                  ],
+                  "level": 3
+                },
+                {
+                  "style": "normal",
+                  "_key": "6562f7627063",
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Hvis nei: Hva kan årsakene være?",
+                      "_key": "6562f76270630"
+                    }
+                  ],
+                  "level": 3,
+                  "_type": "block"
+                },
+                {
+                  "_key": "a3691f53553c",
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Evaluerte du og den ansatte tiltakene?",
+                      "_key": "a3691f53553c0"
+                    }
+                  ],
+                  "level": 2,
+                  "_type": "block",
+                  "style": "normal"
+                },
+                {
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "6f5e1c855bec",
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "text": "Justerte dere tiltakene underveis?",
+                      "_key": "6f5e1c855bec0",
+                      "_type": "span",
+                      "marks": []
+                    }
+                  ],
+                  "level": 3
+                },
+                {
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "f90e11cefab8",
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Noter erfaringene dine.\nDet kan lønne seg å notere ned hvilke erfaringer du har med å tilrettelegge. Dette kan gjøre det lettere å vurdere hva du bør gjøre annerledes i fremtiden, når du skal tilrettelegge på nytt. ",
+                      "_key": "f90e11cefab80"
+                    }
+                  ],
+                  "level": 1
+                },
+                {
+                  "level": 2,
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "f930ab06683a",
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Noter ned erfaringene dine med tilrettelegging.",
+                      "_key": "f930ab06683a0"
+                    }
+                  ]
+                },
+                {
+                  "_key": "64cb26b2b346",
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Velg et punkt du ønsker å forbedre.",
+                      "_key": "64cb26b2b3460"
+                    }
+                  ],
+                  "level": 2,
+                  "_type": "block",
+                  "style": "normal"
+                },
+                {
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Velg en dato der du evaluerer om du har nådd forbedringsmålet ditt.",
+                      "_key": "f70147f40e410"
+                    }
+                  ],
+                  "level": 2,
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "f70147f40e41"
+                }
+              ],
+              "id": "B7881929-4104-44F7-B409-2FB0AB3F16BF"
+            },
+            {
+              "id": "81282F61-8A8B-4027-9AA6-3E04A5D30B4B",
+              "_key": "4d5d8d755a95",
+              "tittel": "Slik involverer du dine ansatte for å forbedre tilretteleggingen",
+              "oppgavetype": "Oppgave 3",
+              "_type": "oppgave",
+              "innhold": [
+                {
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Ta med notatene fra oppgave 2 i møte med ansatte eller de ansattes representanter. Notatene kan være et godt utgangspunkt for å diskutere  muligheter og utfordringer med tilrettelegging generelt på arbeidsplassen. ",
+                      "_key": "14f729b20c880"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "4d1543011c4e",
+                  "markDefs": []
+                },
+                {
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Spør hvilke erfaringer de ansatte har med tilrettelegging, og hvilke forbedringspunkter de ønsker å jobbe med. For eksempel:",
+                      "_key": "59206f9e483a0"
+                    }
+                  ],
+                  "level": 1,
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "31868582cd74"
+                },
+                {
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Vet ansatte at de kan be om tilrettelegging for å forhindre sykefravær?",
+                      "_key": "3dd21e4ffeae"
+                    }
+                  ],
+                  "level": 2,
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "2c6a8e3e1e25",
+                  "listItem": "bullet",
+                  "markDefs": []
+                },
+                {
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Kjenner de ansatte til hvilken tilrettelegging som er mulig på arbeidsplassen?",
+                      "_key": "04f773654811"
+                    }
+                  ],
+                  "level": 2,
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "f7dba6fc9c01"
+                },
+                {
+                  "_key": "00040175b934",
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "marks": [],
+                      "text": "Hvordan sikrer dere at tilrettelegging for en eller flere ansatte, ikke fører til uønsket ekstra belastning for de øvrige ansatte?",
+                      "_key": "c21e58e4521a",
+                      "_type": "span"
+                    }
+                  ],
+                  "level": 2,
+                  "_type": "block",
+                  "style": "normal"
+                },
+                {
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "fd273bdcf7bb",
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Spør om det er ansattrepresentanter som har behov for kompetanse om tilrettelegging.",
+                      "_key": "531567152e060"
+                    }
+                  ],
+                  "level": 1
+                },
+                {
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Møtet bør resultere i en liste med aksjonspunkter og ansvarsfordeling.",
+                      "_key": "20a35159b04d"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "cb1a9f668c3b",
+                  "markDefs": []
+                }
+              ]
+            },
+            {
+              "tittel": "Lag oversikt over tilretteleggingsmulighetene på arbeidsplassen din",
+              "oppgavetype": "Oppgave 4",
+              "_type": "oppgave",
+              "innhold": [
+                {
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Slik gjør du: gå inn på siden ",
+                      "_key": "bb382fc8ba65"
+                    },
+                    {
+                      "marks": [
+                        "08490252838e"
+                      ],
+                      "text": "\"Slik kan din arbeidsplass lykkes med tilrettelegging\"",
+                      "_key": "2428075946c6",
+                      "_type": "span"
+                    },
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": " på Idébanken. ",
+                      "_key": "bd48f0debb46"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "560d5475018e",
+                  "markDefs": [
+                    {
+                      "erEksternLenke": true,
+                      "_type": "href",
+                      "_key": "08490252838e",
+                      "url": "https://www.idebanken.org/kloke-grep/artikler/slik-lykkes-dere-med-tilrettelegging-pa-arbeidsplassen"
+                    }
+                  ]
+                },
+                {
+                  "_key": "7ad0cdb03642",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "text": "Oppgaven heter “Idemyldring med de ansatte” og tar ca. 1 time og inkluderer alle medarbeidere. Oppgaven er ment å føre til eierskap hos ansatte.",
+                      "_key": "519092f80bbf",
+                      "_type": "span",
+                      "marks": []
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal"
+                }
+              ],
+              "id": "57F04A11-2D32-4F6F-90DE-A0043D64F242",
+              "_key": "8f0e00850f73"
+            }
+          ],
+          "_updatedAt": "2023-09-21T11:25:09Z",
+          "orderRank": "0|100008:",
+          "beskrivelse": "Tilrettelegging er aktuelt for å unngå sykmelding, ved gradert sykmelding og når den ansatte kommer tilbake fra en sykmelding. Dere må tilrettelegge for alle arbeidstakere, ikke bare for de med redusert arbeidsevne. ",
+          "_type": "Aktivitet",
+          "kategori": {
+            "_ref": "13b1445b-512b-4d03-b165-ae1431a5bbc7",
+            "_type": "reference"
+          },
+          "_id": "1ef7291f-b498-4fc9-98b5-63464432fab4",
+          "maal": "Bli bedre på å tilrettelegge for arbeidstakere.",
+          "tittel": "Bli gode på å tilrettelegge for ansatte"
+        },
+        {
+          "maal": "Dere lærer de ulike typer sykefravær og plager som skyldes forhold på arbeidsplassen. Dere bruker egen sykefraværstatistikk og vurderer mulige tiltak. ",
+          "tittel": "Bruk egen sykefraværstatistikk forebyggende",
+          "_updatedAt": "2023-10-02T08:55:30Z",
+          "orderRank": "0|10000o:",
+          "beskrivelse": "Dere skal føre statistikk over fraværet hos dere. Tilrettelegging og forebygging av sykefravær blir enklere hvis dere også sammenligner dere med andre og vet når fraværet er arbeidsrelatert. NAV anbefaler at dere gjør dette fire ganger i året. ",
+          "_createdAt": "2022-10-18T08:58:40Z",
+          "_rev": "TVkGSMt2uiwpJLVSheG9wX",
+          "kategori": {
+            "_ref": "13b1445b-512b-4d03-b165-ae1431a5bbc7",
+            "_type": "reference"
+          },
+          "_id": "3a0f3c60-ac1e-4d4e-9693-e850b5bef984",
+          "_type": "Aktivitet",
+          "embeddedInnhold": [
+            {
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "marks": [],
+                  "text": "",
+                  "_key": "fd93aecc13c6"
+                }
+              ],
+              "_type": "block",
+              "style": "normal",
+              "_key": "f6457685e1f5"
+            },
+            {
+              "_key": "f4743a198296",
+              "_type": "seksjon",
+              "seksjonInnhold": [
+                {
+                  "_key": "d45bb7a6df8d",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Deres sykefraværstatistikk sammenlignet med bransjen",
+                      "_key": "61cfcca1e7550"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "h4"
+                },
+                {
+                  "bakgrunnsfarge": "HVIT",
+                  "_type": "statistikk",
+                  "_key": "a9754e525e65"
+                },
+                {
+                  "_key": "d0693fe32128",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Tolkning av egne tall øker i verdi når du vet hvordan det ser ut hos andre.",
+                      "_key": "4f322e776e210"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal"
+                },
+                {
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [
+                        "e89858af0e6b"
+                      ],
+                      "text": "Se sykefravær over tid",
+                      "_key": "bfbda8f2246d"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "13f98c3bb327",
+                  "markDefs": [
+                    {
+                      "erEksternLenke": true,
+                      "_type": "href",
+                      "_key": "e89858af0e6b",
+                      "url": "https://arbeidsgiver.nav.no/sykefravarsstatistikk/historikk"
+                    }
+                  ]
+                }
+              ],
+              "id": "2DC05067-D271-4F94-8E15-A321C7BC1199"
+            },
+            {
+              "seksjonInnhold": [
+                {
+                  "_type": "block",
+                  "style": "h4",
+                  "_key": "6a67c7281f90",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Fra individuell oppfølging til forebyggende arbeid",
+                      "_key": "773410a64bff0"
+                    }
+                  ]
+                },
+                {
+                  "_key": "b0bf9da4cd5e",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "",
+                      "_key": "4895026f550a"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal"
+                },
+                {
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "b2340d79f86a",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "text": "Når du følger opp en ansatt som har helseplager, er det viktig å se dette i sammenheng med forebyggende arbeid generelt på arbeidsplassen:\n",
+                      "_key": "3b7511d7e2880",
+                      "_type": "span",
+                      "marks": []
+                    }
+                  ]
+                },
+                {
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Når sykefravær oppstår:",
+                      "_key": "3b776966a76f"
+                    }
+                  ],
+                  "level": 1,
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "0fba8b78d2aa",
+                  "listItem": "number",
+                  "markDefs": []
+                },
+                {
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_key": "b70b9f92a848",
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Individuell oppfølging: Følg opp medarbeideren"
+                    }
+                  ],
+                  "level": 2,
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "ff779be61c27",
+                  "listItem": "number"
+                },
+                {
+                  "level": 2,
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "c6830b3a54b0",
+                  "listItem": "number",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_key": "4f7efd547ff6",
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Forebyggende arbeid: Registrer fravær med/uten arbeidsrelatert årsak\n"
+                    }
+                  ]
+                },
+                {
+                  "listItem": "number",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Der det er mulig å tilrettelegge:",
+                      "_key": "6186db9bf0f9"
+                    }
+                  ],
+                  "level": 1,
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "dfa6164c49f6"
+                },
+                {
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "8bda084749ce",
+                  "listItem": "number",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "marks": [],
+                      "text": "Individuell oppfølging: Tilrettelegg for den sykmeldte",
+                      "_key": "74ed35a5bd5f",
+                      "_type": "span"
+                    }
+                  ],
+                  "level": 2
+                },
+                {
+                  "level": 2,
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "6028e9440620",
+                  "listItem": "number",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "marks": [],
+                      "text": "Forebyggende arbeid: Vurder om flere ansatte har samme behov for tilrettelegging og om det bør løses som en del av HMS-/forebyggende arbeidet.",
+                      "_key": "81c2dffe6b74",
+                      "_type": "span"
+                    }
+                  ]
+                },
+                {
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "4ea0b9c8ee82",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Har dere rutiner og kompetanse som sikrer at innsikt fra oppfølgingsarbeidet blir brukt i forebyggende arbeidet?",
+                      "_key": "bd2f95eb1da7"
+                    }
+                  ]
+                }
+              ],
+              "id": "506EA6FF-4C86-4D39-BBE7-C4443C85F275",
+              "_key": "7ba0b9f4756e",
+              "_type": "seksjon"
+            },
+            {
+              "seksjonInnhold": [
+                {
+                  "_type": "block",
+                  "style": "h4",
+                  "_key": "01219d05b02b",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "marks": [],
+                      "text": "Kortidsfravær",
+                      "_key": "d59950c410d60",
+                      "_type": "span"
+                    }
+                  ]
+                },
+                {
+                  "markDefs": [
+                    {
+                      "erEksternLenke": true,
+                      "_type": "href",
+                      "_key": "516bb75cba04",
+                      "url": "https://arbeidsgiver.nav.no/sykefravarsstatistikk/"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Kortidsfravær er fravær under 16 dager. ",
+                      "_key": "f688d6daec610"
+                    },
+                    {
+                      "_type": "span",
+                      "marks": [
+                        "516bb75cba04"
+                      ],
+                      "text": "NAV har oversikt over ditt og bransjens legemeldte korttidsfravær.",
+                      "_key": "9d461bf1be66"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "7cafca3884eb"
+                },
+                {
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "277d09eb8112",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "marks": [],
+                      "text": "",
+                      "_key": "8b5778246924",
+                      "_type": "span"
+                    }
+                  ]
+                },
+                {
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "eecbf220a742",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_key": "0ef0f226baf60",
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Tall fra Statistisk sentralbyrå (SSB) viser at egenmeldt fravær ofte ligger mellom:"
+                    }
+                  ]
+                },
+                {
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "text": "2 og 3 kvartal (sommer): 0,6 – 0,9 % \n1 og 4 kvartal (vinter): 0,9 – 1,3 %",
+                      "_key": "87e6b7140c2f",
+                      "_type": "span",
+                      "marks": []
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "889203798ba7"
+                }
+              ],
+              "id": "F6216AD7-74EE-4966-A52B-B2316FB3CADA",
+              "_key": "8f4601610a6b",
+              "_type": "seksjon"
+            },
+            {
+              "id": "381F97FE-F7CF-469E-B207-CEDC0C99F4D9",
+              "_key": "0e359ceacab2",
+              "_type": "seksjon",
+              "seksjonInnhold": [
+                {
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Langtidsfravær",
+                      "_key": "3a5268847f970"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "h4",
+                  "_key": "4786f322de9c",
+                  "markDefs": []
+                },
+                {
+                  "style": "normal",
+                  "_key": "10879ed4a355",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "",
+                      "_key": "b265a55a3903"
+                    }
+                  ],
+                  "_type": "block"
+                },
+                {
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "ff973b98516b",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Langtidsfravær er fravær over 16 dager. Omtrent 25-35% av langtidsfravær har sammenheng med forhold på arbeidsplassen. ",
+                      "_key": "df2363cc134d0"
+                    }
+                  ]
+                },
+                {
+                  "markDefs": [
+                    {
+                      "erEksternLenke": true,
+                      "_type": "href",
+                      "_key": "ddc27fca5a96",
+                      "url": "https://arbeidsgiver.nav.no/sykefravarsstatistikk/"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [
+                        "ddc27fca5a96"
+                      ],
+                      "text": "Se ditt og bransjens langtidsfravær",
+                      "_key": "0d60f4f5dc2a"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "337cebbc540c"
+                }
+              ]
+            },
+            {
+              "_type": "seksjon",
+              "seksjonInnhold": [
+                {
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Bruk gradert sykemelding der det er mulig",
+                      "_key": "7b8b81e310d6"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "h4",
+                  "_key": "669c18e9229b",
+                  "markDefs": []
+                },
+                {
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Vi vet at sykmeldte som jobber gradert kommer oftere og tidligere tilbake i arbeid enn de som er helt borte fra jobb. Økt bruk av gradert arbeid kan bidra til å redusere sykefraværet totalt.",
+                      "_key": "cdb43b66fa470"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "0bfa06158a82"
+                },
+                {
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "",
+                      "_key": "74a412efac8c"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "d2510dfaba9d"
+                }
+              ],
+              "id": "B14A9AFA-0C99-46CE-B116-966F382F36B7",
+              "_key": "b2cd7bff8cc3"
+            },
+            {
+              "id": "D7067365-8971-4D08-A6DE-915AE1CDCE5E",
+              "_key": "39269f51ddde",
+              "tittel": "Vurder sykefraværstatistikken deres og diskuter årsaker og tiltak",
+              "oppgavetype": "Oppgave",
+              "_type": "oppgave",
+              "innhold": [
+                {
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_key": "e10df0367ab1",
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Statistikk gir mer verdi når dere tolker betydningen i fellesskap på egen arbeidsplass."
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "1b0e203978c6"
+                },
+                {
+                  "_key": "f1799bc88360",
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Hvordan er sykefraværet over tid hos dere sammenlignet med andre?",
+                      "_key": "3caa76eb7252"
+                    }
+                  ],
+                  "level": 1,
+                  "_type": "block",
+                  "style": "normal"
+                },
+                {
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "9247122a1b4e",
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Er noe av sykefraværet relatert til forhold på arbeidsplassen?",
+                      "_key": "833b3951634b"
+                    }
+                  ],
+                  "level": 1
+                },
+                {
+                  "level": 2,
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "207f44a89dd6",
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_key": "709dea85ff50",
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Hvis ja: Vurder tiltak som treffer kjente risikoer"
+                    }
+                  ]
+                },
+                {
+                  "_key": "de4a9cc5a0c0",
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_key": "f54d85cb1229",
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Hvis nei: Er det likevel noe dere kan gjøre? (eks. enkeltansatte som trenger ekstra oppfølging)"
+                    }
+                  ],
+                  "level": 2,
+                  "_type": "block",
+                  "style": "normal"
+                },
+                {
+                  "level": 1,
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "74130cfbabec",
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Hvilke årsaker påvirker deres korttidsfravær? (eks. smitte, arbeidsmiljø, manglende tilrettelegging)",
+                      "_key": "3ed9a8eb9ad0"
+                    }
+                  ]
+                },
+                {
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_key": "fab272c41ebd",
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Hvilke årsaker påvirker deres langtidsfravær? (eks. arbeidsmiljø, manglende tilrettelegging)"
+                    }
+                  ],
+                  "level": 1,
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "eec15727ac50",
+                  "listItem": "bullet"
+                },
+                {
+                  "level": 2,
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "56597533dcdb",
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Fører langtidsfraværet til belastning på øvrige medarbeidere?",
+                      "_key": "55092750a9bf"
+                    }
+                  ]
+                },
+                {
+                  "level": 1,
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "12cc1d1921ab",
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Hvordan bruker dere gradert sykmelding?",
+                      "_key": "cd63faac2af3"
+                    }
+                  ]
+                },
+                {
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Hvorfor er vi på dette nivået for gradert sykmelding? (eks. god/manglende kultur og kompetanse)",
+                      "_key": "dd442e0a5c19"
+                    }
+                  ],
+                  "level": 2,
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "9fa3b973e5bf",
+                  "listItem": "bullet"
+                },
+                {
+                  "children": [
+                    {
+                      "_key": "d504fb1665c0",
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Kan bruken av gradert sykmelding økes?"
+                    }
+                  ],
+                  "level": 2,
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "24e96b55049c",
+                  "listItem": "bullet",
+                  "markDefs": []
+                }
+              ]
+            },
+            {
+              "tittel": "Hvordan få ned kortidsfraværet?",
+              "oppgavetype": "Oppgave på idebanken",
+              "_type": "oppgave",
+              "innhold": [
+                {
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Når noen er borte fra jobb påvirker det arbeidsmiljøet. Grunnene til at ansatte er borte kan være mange, og korttidsfravær kan være vanskelig å snakke om. Dette verktøyet hjelper dere på vei.",
+                      "_key": "ca1c301de163"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "6b785ad4429c"
+                },
+                {
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [
+                        "4be520cb2d4b"
+                      ],
+                      "text": "Gå til oppgave om korttidsfravær på Idebanken",
+                      "_key": "6d71628d4b45"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "e6a82ce1694d",
+                  "markDefs": [
+                    {
+                      "erEksternLenke": true,
+                      "_type": "href",
+                      "_key": "4be520cb2d4b",
+                      "url": "https://www.idebanken.org/kloke-grep/artikler/hvordan-fa-ned-korttidsfravaeret"
+                    }
+                  ]
+                }
+              ],
+              "id": "43384261-71DF-4AC5-ACAE-C9FC062A337A",
+              "_key": "65c5a2faf99d"
+            }
+          ]
+        },
+        {
+          "orderRank": "0|10001k:",
+          "beskrivelse": "Gode samtaler bidrar til motiverte medarbeidere, godt arbeidsmiljø og lavt sykefravær. ",
+          "_createdAt": "2022-11-01T09:31:40Z",
+          "_rev": "TVkGSMt2uiwpJLVSheGBdD",
+          "_type": "Aktivitet",
+          "embeddedInnhold": [
+            {
+              "id": "B565BC73-895A-4584-A5BB-BB365F9082AD",
+              "_key": "e6b1913692a1",
+              "_type": "seksjon",
+              "seksjonInnhold": [
+                {
+                  "_type": "block",
+                  "style": "h4",
+                  "_key": "2c41ceee5ddb",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_key": "5909dfbf1a360",
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Ta initiativ til en samtale"
+                    }
+                  ]
+                },
+                {
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "En samtale for å forebygge eller følge opp sykefravær handler om arbeidssituasjonen.",
+                      "_key": "e67f8e6015130"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "9bf0294441df"
+                },
+                {
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "",
+                      "_key": "37d7eff0d21e"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "bf2698186cf9"
+                },
+                {
+                  "_key": "8b3e47ca03bc",
+                  "tittel": "Når bør en samtale gjennomføres?",
+                  "_type": "lesmer",
+                  "innhold": [
+                    {
+                      "_type": "block",
+                      "style": "normal",
+                      "_key": "f758ff1d60e7",
+                      "listItem": "bullet",
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "_key": "24b3ebee58800",
+                          "_type": "span",
+                          "marks": [],
+                          "text": "For å sikre regelmessig involvering av ansatte"
+                        }
+                      ],
+                      "level": 1
+                    },
+                    {
+                      "_key": "ccbd261abaee",
+                      "listItem": "bullet",
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "_key": "53ec82479728",
+                          "_type": "span",
+                          "marks": [],
+                          "text": "Du eller din medarbeider opplever utfordringer med arbeidet og det skyldes sykdom eller andre forhold"
+                        }
+                      ],
+                      "level": 1,
+                      "_type": "block",
+                      "style": "normal"
+                    },
+                    {
+                      "children": [
+                        {
+                          "marks": [],
+                          "text": "Den ansatte står i fare for, er eller har vært sykmeldt",
+                          "_key": "b4533a1c6a90",
+                          "_type": "span"
+                        }
+                      ],
+                      "level": 1,
+                      "_type": "block",
+                      "style": "normal",
+                      "_key": "36f9e694dc3c",
+                      "listItem": "bullet",
+                      "markDefs": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "_type": "seksjon",
+              "seksjonInnhold": [
+                {
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Lag et mål med samtalen",
+                      "_key": "d0d4179c1da40"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "h4",
+                  "_key": "4925d22ee490",
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "b32853c43a03",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Noter ned hva du ønsker å oppnå med samtalen, og ha det framme når du er i samtalen. ",
+                      "_key": "45b5ddae2c070"
+                    }
+                  ]
+                },
+                {
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "",
+                      "_key": "7c0f27ecb184"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "ed567ba728ec"
+                },
+                {
+                  "_type": "lesmer",
+                  "innhold": [
+                    {
+                      "children": [
+                        {
+                          "_type": "span",
+                          "marks": [],
+                          "text": "Skape trygghet og tillit",
+                          "_key": "f725dfe892630"
+                        }
+                      ],
+                      "level": 1,
+                      "_type": "block",
+                      "style": "normal",
+                      "_key": "8054df0c1106",
+                      "listItem": "bullet",
+                      "markDefs": []
+                    },
+                    {
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "_type": "span",
+                          "marks": [],
+                          "text": "Beholde kontakt",
+                          "_key": "c8eab47a38f0"
+                        }
+                      ],
+                      "level": 1,
+                      "_type": "block",
+                      "style": "normal",
+                      "_key": "36f5285ac2ef",
+                      "listItem": "bullet"
+                    },
+                    {
+                      "_type": "block",
+                      "style": "normal",
+                      "_key": "c430fca41c82",
+                      "listItem": "bullet",
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "_type": "span",
+                          "marks": [],
+                          "text": "Planlegge drift",
+                          "_key": "a6316ec24958"
+                        }
+                      ],
+                      "level": 1
+                    },
+                    {
+                      "style": "normal",
+                      "_key": "742e4811060d",
+                      "listItem": "bullet",
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "_type": "span",
+                          "marks": [],
+                          "text": "Avklare om målet er å komme tilbake helt eller delvis til egen stilling",
+                          "_key": "f62d08610cd4"
+                        }
+                      ],
+                      "level": 1,
+                      "_type": "block"
+                    },
+                    {
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "_type": "span",
+                          "marks": [],
+                          "text": "Avklare om det er behov for ny, endret eller mer kompetanse hos den ansatte",
+                          "_key": "c542e7f76355"
+                        }
+                      ],
+                      "level": 1,
+                      "_type": "block",
+                      "style": "normal",
+                      "_key": "ffcc38fc5735",
+                      "listItem": "bullet"
+                    }
+                  ],
+                  "_key": "0dfbbefc218f",
+                  "tittel": "Eksempler på mål"
+                }
+              ],
+              "id": "FFE95978-96E4-40B4-B72F-0209FEDD5863",
+              "_key": "4b61d7fbfef6"
+            },
+            {
+              "id": "595DEB55-934E-49DB-81E0-5EF50B9D4333",
+              "_key": "e771e63c9651",
+              "_type": "seksjon",
+              "seksjonInnhold": [
+                {
+                  "style": "h4",
+                  "_key": "ebccee1de9fa",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_key": "9481c1d210190",
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Forbered innholdet i samtalen"
+                    }
+                  ],
+                  "_type": "block"
+                },
+                {
+                  "style": "normal",
+                  "_key": "34e10725e424",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Tenk gjennom hvilke tema som er relevant for samtalen. Fordel tiden dere har til rådighet på de ulike fasene av samtalen",
+                      "_key": "e7b4d795a98b0"
+                    }
+                  ],
+                  "_type": "block"
+                },
+                {
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "d01a0ceefd38",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "text": "",
+                      "_key": "18be870e551e",
+                      "_type": "span",
+                      "marks": []
+                    }
+                  ]
+                },
+                {
+                  "_type": "lesmer",
+                  "innhold": [
+                    {
+                      "_type": "block",
+                      "style": "normal",
+                      "_key": "40f39c0e218f",
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "_type": "span",
+                          "marks": [
+                            "strong"
+                          ],
+                          "text": "Arbeidsoppgaver",
+                          "_key": "4a497aed77ab0"
+                        }
+                      ]
+                    },
+                    {
+                      "children": [
+                        {
+                          "_type": "span",
+                          "marks": [],
+                          "text": "Hvordan vil du beskrive arbeidsdagen din?",
+                          "_key": "d36ad86ba0f9"
+                        }
+                      ],
+                      "level": 1,
+                      "_type": "block",
+                      "style": "normal",
+                      "_key": "52873f39bcef",
+                      "listItem": "bullet",
+                      "markDefs": []
+                    },
+                    {
+                      "listItem": "bullet",
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "marks": [],
+                          "text": "Hvilke av arbeidsoppgavene dine er du frisk nok til å utføre?",
+                          "_key": "9cdaaa7a56bf",
+                          "_type": "span"
+                        }
+                      ],
+                      "level": 1,
+                      "_type": "block",
+                      "style": "normal",
+                      "_key": "82f4e3468d46"
+                    },
+                    {
+                      "listItem": "bullet",
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "_type": "span",
+                          "marks": [],
+                          "text": "Hvilke oppgaver trives du best med?",
+                          "_key": "19407d02174f"
+                        }
+                      ],
+                      "level": 1,
+                      "_type": "block",
+                      "style": "normal",
+                      "_key": "e26717ff99f9"
+                    },
+                    {
+                      "_key": "c9a82d965d9f",
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "_key": "24e77fe39ea7",
+                          "_type": "span",
+                          "marks": [
+                            "strong"
+                          ],
+                          "text": "Arbeidsmiljø"
+                        }
+                      ],
+                      "_type": "block",
+                      "style": "normal"
+                    },
+                    {
+                      "style": "normal",
+                      "_key": "89dbfcb967b3",
+                      "listItem": "bullet",
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "_type": "span",
+                          "marks": [],
+                          "text": "Hva synes du er positivt, og hva tenker du kan forbedres?",
+                          "_key": "3dfef7d976c4"
+                        }
+                      ],
+                      "level": 1,
+                      "_type": "block"
+                    },
+                    {
+                      "_key": "94b56f403fd5",
+                      "listItem": "bullet",
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "text": "Hvordan vil du beskrive stressnivået?",
+                          "_key": "fc67bb92f862",
+                          "_type": "span",
+                          "marks": []
+                        }
+                      ],
+                      "level": 1,
+                      "_type": "block",
+                      "style": "normal"
+                    },
+                    {
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "_type": "span",
+                          "marks": [],
+                          "text": "Hvordan påvirker arbeidsmiljøet sykefraværet ditt?",
+                          "_key": "11e3587a84c4"
+                        }
+                      ],
+                      "level": 1,
+                      "_type": "block",
+                      "style": "normal",
+                      "_key": "4a835d85d591",
+                      "listItem": "bullet"
+                    },
+                    {
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "_type": "span",
+                          "marks": [
+                            "strong"
+                          ],
+                          "text": "Samarbeid og motivasjon",
+                          "_key": "8ae34ba1efb1"
+                        }
+                      ],
+                      "_type": "block",
+                      "style": "normal",
+                      "_key": "36159b22c35a"
+                    },
+                    {
+                      "children": [
+                        {
+                          "text": "Hvordan opplever du samarbeidet med kolleger/ledere?",
+                          "_key": "0b210fdf0169",
+                          "_type": "span",
+                          "marks": []
+                        }
+                      ],
+                      "level": 1,
+                      "_type": "block",
+                      "style": "normal",
+                      "_key": "b38167f888a3",
+                      "listItem": "bullet",
+                      "markDefs": []
+                    },
+                    {
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "_type": "span",
+                          "marks": [],
+                          "text": "Hva motiverer deg mest akkurat nå?",
+                          "_key": "8326a29b4bd2"
+                        }
+                      ],
+                      "level": 1,
+                      "_type": "block",
+                      "style": "normal",
+                      "_key": "c1f9bc28997a",
+                      "listItem": "bullet"
+                    },
+                    {
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "_key": "dbdbbd015b3a",
+                          "_type": "span",
+                          "marks": [],
+                          "text": "Hva oppfatter du som dine styrker nå?"
+                        }
+                      ],
+                      "level": 1,
+                      "_type": "block",
+                      "style": "normal",
+                      "_key": "c761fa4374dd",
+                      "listItem": "bullet"
+                    }
+                  ],
+                  "_key": "7f4ee12adbed",
+                  "tittel": "Eksempler på tema og spørsmål"
+                }
+              ]
+            },
+            {
+              "_type": "seksjon",
+              "seksjonInnhold": [
+                {
+                  "style": "h4",
+                  "_key": "ffa3b64e5c3a",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Forbered den ansatte",
+                      "_key": "b144328de1130"
+                    }
+                  ],
+                  "_type": "block"
+                },
+                {
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "2cf3561581e2",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Avtal tid og sted som passer deg og den ansatte. Samtalen kan være digital eller utenfor arbeidsplassen hvis det passer best. Send tema og spørsmål til den ansatte på forhånd. Når begge er forberedt, blir det enklere å finne løsninger sammen.",
+                      "_key": "09462b0cd2f50"
+                    }
+                  ]
+                }
+              ],
+              "id": "93449E39-7B39-433F-931B-4DB0CB203EF9",
+              "_key": "a7064d4b1cd1"
+            },
+            {
+              "_type": "seksjon",
+              "seksjonInnhold": [
+                {
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_key": "5178ac96ebb8",
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Gjennomfør samtalen"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "h4",
+                  "_key": "f1fa20a5f5cb"
+                },
+                {
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Finn løsninger i fellesskap. Egne løsningsforslag gir ofte økt motivasjon.",
+                      "_key": "067367336a110"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "47b3cdf80a2a"
+                },
+                {
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "",
+                      "_key": "e3912b4d75a8"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "e87cd2226f8a"
+                },
+                {
+                  "_type": "lesmer",
+                  "innhold": [
+                    {
+                      "_type": "block",
+                      "style": "normal",
+                      "_key": "f4c2e2190316",
+                      "listItem": "bullet",
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "_type": "span",
+                          "marks": [],
+                          "text": "Legg til rette for at den ansatte kan beskrive hvordan arbeidsoppgavene og arbeidsdagen oppleves",
+                          "_key": "9700aaa807970"
+                        }
+                      ],
+                      "level": 1
+                    },
+                    {
+                      "_type": "block",
+                      "style": "normal",
+                      "_key": "c37dce071dd8",
+                      "listItem": "bullet",
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "text": "Bruk åpne spørsmål med spørreord som hva, hvor, hvordan, hvem eller når",
+                          "_key": "908b40df7d91",
+                          "_type": "span",
+                          "marks": []
+                        }
+                      ],
+                      "level": 1
+                    },
+                    {
+                      "_type": "block",
+                      "style": "normal",
+                      "_key": "24edd6be456d",
+                      "listItem": "bullet",
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "_type": "span",
+                          "marks": [],
+                          "text": "Unngå ordet “hvorfor”. Hvorfor kan ofte oppleves som en anklage eller for å fordele skyld",
+                          "_key": "28e4febb59b2"
+                        }
+                      ],
+                      "level": 1
+                    },
+                    {
+                      "style": "normal",
+                      "_key": "881ab13cefb2",
+                      "listItem": "bullet",
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "_type": "span",
+                          "marks": [],
+                          "text": "Tål stillhet slik at den ansatte får tid til å tenke før svarene kommer",
+                          "_key": "3f4bd053b407"
+                        }
+                      ],
+                      "level": 1,
+                      "_type": "block"
+                    },
+                    {
+                      "_key": "ae7590105cfe",
+                      "listItem": "bullet",
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "_key": "dac4af731984",
+                          "_type": "span",
+                          "marks": [],
+                          "text": "Oppsummer i fellesskap og lag en plan"
+                        }
+                      ],
+                      "level": 1,
+                      "_type": "block",
+                      "style": "normal"
+                    }
+                  ],
+                  "_key": "d9ce75953c2e",
+                  "tittel": "Tips til gjennomføring"
+                }
+              ],
+              "id": "DCCF8DAA-818B-4FDF-94B6-86CEB5DA2B1B",
+              "_key": "078f61ac26c3"
+            },
+            {
+              "oppgavetype": "Oppgave",
+              "_type": "oppgave",
+              "innhold": [
+                {
+                  "_key": "6c41dd1bae1e",
+                  "markDefs": [
+                    {
+                      "erEksternLenke": true,
+                      "_type": "href",
+                      "_key": "d58e07553c46",
+                      "url": "https://arbeidsgiver.nav.no/samtalestotte"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Hvis du ønsker mer utfyllende beskrivelse for hvert steg, gå til ",
+                      "_key": "b54fd031725c"
+                    },
+                    {
+                      "_type": "span",
+                      "marks": [
+                        "d58e07553c46"
+                      ],
+                      "text": "samtalestøtten",
+                      "_key": "d094b75941e2"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal"
+                }
+              ],
+              "id": "A6907370-1C82-47DD-B726-63E750E28E78",
+              "_key": "6d5e2ac652f1",
+              "tittel": "Forbered deg og gjennomfør en samtale med en ansatt"
+            }
+          ],
+          "maal": "Bedre samtaler med ansatte, med verdi for dere begge. ",
+          "tittel": "Hvordan gjennomføre gode samtaler",
+          "kategori": {
+            "_ref": "13b1445b-512b-4d03-b165-ae1431a5bbc7",
+            "_type": "reference"
+          },
+          "_id": "61170ac8-0a8c-424f-bfc3-e05140d0171a",
+          "_updatedAt": "2023-10-02T08:56:12Z"
+        },
+        {
+          "_rev": "NeHfsZQke64VUPYrbjDRuo",
+          "_type": "Aktivitet",
+          "kategori": {
+            "_ref": "13b1445b-512b-4d03-b165-ae1431a5bbc7",
+            "_type": "reference"
+          },
+          "_id": "67fe672b-8def-4e71-8fe8-1fd6d5226dc9",
+          "maal": "Du er trygg på hvordan du følger opp sykefravær på en god måte og vet hvem som skal gjøre hva underveis. ",
+          "_updatedAt": "2023-10-02T08:57:18Z",
+          "beskrivelse": "Sykefraværsoppfølgingen skal sørge for at den sykemeldte kommer raskere tilbake i arbeid. Sykefraværsløpet er tydelig på hvem som er ansvarlig for hva. Gjennom dialog og samarbeid kommer dere frem til gode løsninger. Følger dere opp sykefravær på en god måte er dette med å forebygge ytterligere fravær. ",
+          "_createdAt": "2022-10-31T13:51:07Z",
+          "embeddedInnhold": [
+            {
+              "_type": "block",
+              "style": "h4",
+              "_key": "9e5f55473aaf",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Sykefravær steg for steg",
+                  "_key": "0f7a8219309a0"
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "style": "normal",
+              "_key": "178b2b16ca21",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Arbeidstaker kan når som helst friskmelde seg selv og komme tilbake på jobb.",
+                  "_key": "4cc34bf9f11b0"
+                }
+              ]
+            },
+            {
+              "id": "F76920F0-0224-47D6-B008-9E5E5CC5D689",
+              "_key": "24ba3bb7740a",
+              "_type": "seksjon",
+              "seksjonInnhold": [
+                {
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "1-3 dager - Egenmelding",
+                      "_key": "25a0dab9047c0"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "h5",
+                  "_key": "553939ac0d44"
+                },
+                {
+                  "style": "normal",
+                  "_key": "2a4c5d89ab45",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Alle kan benytte egenmelding inntil tre dager, inntil fire ganger i løpet av 12 måneder. Dere kan lage egen avtale om utvidet rett til egenmelding. Dere utformer rutiner og skjema for deres ansatte.",
+                      "_key": "a4fc967bc14d0"
+                    }
+                  ],
+                  "_type": "block"
+                },
+                {
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "eb720a4be1dd",
+                  "markDefs": [
+                    {
+                      "erEksternLenke": true,
+                      "_type": "href",
+                      "_key": "4af3f330e4c2",
+                      "url": "https://www.nav.no/egenmelding"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [
+                        "4af3f330e4c2"
+                      ],
+                      "text": "Les mer om egenmelding",
+                      "_key": "16ac7b1a51e00"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "_key": "38353bb05f9d",
+              "_type": "seksjon",
+              "seksjonInnhold": [
+                {
+                  "_key": "99cd86dd63f5",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Opptil 16 dager - Sykmelding i arbeidsgiverperioden",
+                      "_key": "faefe25ac742"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "h5"
+                },
+                {
+                  "_key": "2d2be5212fc9",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Dere betaler den ansatte for de 16 første dagene av en sykmelding. Dette er arbeidsgiverperioden. Alle kalenderdager teller med. Dere betaler ut sykepenger i de dagene det skulle vært betalt ut lønn.",
+                      "_key": "989b12bc99ec0"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal"
+                },
+                {
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "b8438a59685d",
+                  "markDefs": [
+                    {
+                      "erEksternLenke": true,
+                      "_type": "href",
+                      "_key": "3c0fd2d38a6b",
+                      "url": "https://www.nav.no/no/bedrift/oppfolging/sykmeldt-arbeidstaker/sykepenger/sykepenger-i-arbeidsgiverperioden_kap1"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [
+                        "3c0fd2d38a6b"
+                      ],
+                      "text": "Les mer om arbeidsgiverperioden",
+                      "_key": "0280ba1f616f0"
+                    }
+                  ]
+                }
+              ],
+              "id": "8AE2F1EA-DAEC-401E-B70F-C00EF9370E3C"
+            },
+            {
+              "_type": "seksjon",
+              "seksjonInnhold": [
+                {
+                  "style": "h5",
+                  "_key": "e1b4cdc2636b",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Over 16 dager - Sykmelding ut over arbeidsgiverperioden",
+                      "_key": "6bfac23b8da8"
+                    }
+                  ],
+                  "_type": "block"
+                },
+                {
+                  "style": "normal",
+                  "_key": "80079ab5e445",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Dere kan betale den ansatte ut over arbeidsgiverperioden for så å be om refusjon fra NAV. Alternativt utbetaler NAV lønn.",
+                      "_key": "15c11d94a2940"
+                    }
+                  ],
+                  "_type": "block"
+                },
+                {
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_key": "15d999521dc4",
+                      "_type": "span",
+                      "marks": [],
+                      "text": ""
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "05876c7919f3"
+                },
+                {
+                  "_type": "lesmer",
+                  "innhold": [
+                    {
+                      "children": [
+                        {
+                          "marks": [],
+                          "text": "Nav dekker sykepenger opp til 6G.\n",
+                          "_key": "9d3381b450fe0",
+                          "_type": "span"
+                        }
+                      ],
+                      "_type": "block",
+                      "style": "normal",
+                      "_key": "234537fb6c63",
+                      "markDefs": []
+                    },
+                    {
+                      "_key": "22bb4cec2825",
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "_type": "span",
+                          "marks": [],
+                          "text": "Dere ber om refusjon ved å sende inn søknaden fra arbeidstakeren og inntektsopplysningene (fra altinn eller lønnssystemet). Arbeidstakeren får en melding fra NAV når den digitale søknaden kan fylles ut og sendes fra nav.no. Dere trenger ikke sende den digitale søknaden videre til NAV.\n",
+                          "_key": "0e7d8faa767e"
+                        }
+                      ],
+                      "_type": "block",
+                      "style": "normal"
+                    },
+                    {
+                      "children": [
+                        {
+                          "marks": [],
+                          "text": "For at NAV skal betale ut sykepengene, må inntektsopplysninger sendes. Dette gjøres med en gang dere vet at arbeidstaker er sykmeldt utover arbeidsgiverperioden.",
+                          "_key": "6d235c827d35",
+                          "_type": "span"
+                        }
+                      ],
+                      "_type": "block",
+                      "style": "normal",
+                      "_key": "357a904e473a",
+                      "markDefs": []
+                    },
+                    {
+                      "style": "normal",
+                      "_key": "62f32848f0f4",
+                      "markDefs": [
+                        {
+                          "_type": "href",
+                          "_key": "232cbaea4bff",
+                          "url": "https://www.nav.no/no/bedrift/oppfolging/sykmeldt-arbeidstaker/sykepenger/na%CC%8Ar-du-forskutterer-sykepenger-etter-arbeidsgiverperioden_kap1"
+                        }
+                      ],
+                      "children": [
+                        {
+                          "_type": "span",
+                          "marks": [
+                            "232cbaea4bff"
+                          ],
+                          "text": "Les mer om sykmeldinger over 16 dager",
+                          "_key": "6052d9cecf020"
+                        }
+                      ],
+                      "_type": "block"
+                    }
+                  ],
+                  "_key": "383da8c6e1ab",
+                  "tittel": "Be om refusjon eller be NAV betale sykepenger"
+                }
+              ],
+              "id": "2E087578-B1D1-4687-9480-B00F247116BD",
+              "_key": "d0e7f229693b"
+            },
+            {
+              "_type": "seksjon",
+              "seksjonInnhold": [
+                {
+                  "style": "h5",
+                  "_key": "7efe0cf5682c",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Innen 4 uker - Oppfølgingsplan",
+                      "_key": "91b0228f34a6"
+                    }
+                  ],
+                  "_type": "block"
+                },
+                {
+                  "_key": "d6b9dbd55b3f",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Dere tar intiativ til å lage en oppfølgingsplan, som innebærer en vurdering om noe kan gjøres på arbeidsplassen slik at den ansatte kan komme raskere tilbake, helt eller delvis. Vurder både fysisk tilrettelegging og/eller endring av arbeidsoppgaver.",
+                      "_key": "6529ac47c5680"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal"
+                },
+                {
+                  "children": [
+                    {
+                      "text": "",
+                      "_key": "0ecf3c73917b",
+                      "_type": "span",
+                      "marks": []
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "30ec43780a89",
+                  "markDefs": []
+                },
+                {
+                  "_type": "lesmer",
+                  "innhold": [
+                    {
+                      "style": "normal",
+                      "_key": "9a6399a507e6",
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "_type": "span",
+                          "marks": [
+                            "strong"
+                          ],
+                          "text": "Arbeidsgiver",
+                          "_key": "2291e4319dad0"
+                        }
+                      ],
+                      "_type": "block"
+                    },
+                    {
+                      "children": [
+                        {
+                          "_key": "083c8ac46a81",
+                          "_type": "span",
+                          "marks": [],
+                          "text": "\u2028Legge til rette for arbeidstakere med redusert arbeidsevene sånn at den ansatte likevel kan jobbe"
+                        }
+                      ],
+                      "_type": "block",
+                      "style": "normal",
+                      "_key": "1323f74f3435",
+                      "markDefs": []
+                    },
+                    {
+                      "_key": "edd0d9b455b5",
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "marks": [],
+                          "text": "\n",
+                          "_key": "826c6f304a5a",
+                          "_type": "span"
+                        },
+                        {
+                          "_type": "span",
+                          "marks": [
+                            "strong"
+                          ],
+                          "text": "Arbeidstaker",
+                          "_key": "558b095b3968"
+                        },
+                        {
+                          "_type": "span",
+                          "marks": [],
+                          "text": "\u2028",
+                          "_key": "e5ed8003f847"
+                        }
+                      ],
+                      "_type": "block",
+                      "style": "normal"
+                    },
+                    {
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "marks": [],
+                          "text": "Fortelle arbeidsgiver om muligheter og begrensninger i arbeidet. Arbeidstaker skal bidra når oppfølgingsplanen blir laget. Arbeidstakeren skal kunne gjøre arbeidsoppgaver innen 8 uker, med mindre det er klare medisinske hindringer eller det ikke er mulig å gjøre noen avtalte alternative oppgaver.\n",
+                          "_key": "6ed7b67a32e6",
+                          "_type": "span"
+                        }
+                      ],
+                      "_type": "block",
+                      "style": "normal",
+                      "_key": "e234f3d56ade"
+                    },
+                    {
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "_type": "span",
+                          "marks": [
+                            "strong"
+                          ],
+                          "text": "Sykmelder",
+                          "_key": "48d38a412297"
+                        }
+                      ],
+                      "_type": "block",
+                      "style": "normal",
+                      "_key": "d26b1178333e"
+                    },
+                    {
+                      "_key": "b3b46e964fa0",
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "_type": "span",
+                          "marks": [],
+                          "text": "\u2028Sykmelder mottar oppfølgingsplanen slik at de kan gi råd om tilrettelegging. Sykmelder vurderer løpende om om arbeidstaker kan friskmeldes.\n",
+                          "_key": "8b59a33c56f4"
+                        }
+                      ],
+                      "_type": "block",
+                      "style": "normal"
+                    },
+                    {
+                      "_key": "c56ea514d231",
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "_type": "span",
+                          "marks": [
+                            "strong"
+                          ],
+                          "text": "Bedrifthelsetjenesten",
+                          "_key": "b9f4f4fe9ebb"
+                        },
+                        {
+                          "_type": "span",
+                          "marks": [],
+                          "text": "\u2028",
+                          "_key": "7ac479682b58"
+                        }
+                      ],
+                      "_type": "block",
+                      "style": "normal"
+                    },
+                    {
+                      "style": "normal",
+                      "_key": "7c5223e68b0f",
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "_key": "951705c67c84",
+                          "_type": "span",
+                          "marks": [],
+                          "text": "Kan bistå med tilretteleggingen av arbeidet.\n"
+                        }
+                      ],
+                      "_type": "block"
+                    },
+                    {
+                      "_key": "3f4d93ffca63",
+                      "markDefs": [
+                        {
+                          "_type": "href",
+                          "_key": "c5a5fad51908",
+                          "url": "https://www.nav.no/no/bedrift/oppfolging/sykmeldt-arbeidstaker/relatert-informasjon/slik-folger-du-opp-sykmeldte/oppfolgingsplan_kap"
+                        }
+                      ],
+                      "children": [
+                        {
+                          "text": "Les mer om oppfølgingsplan",
+                          "_key": "47e97e1465e7",
+                          "_type": "span",
+                          "marks": [
+                            "c5a5fad51908"
+                          ]
+                        }
+                      ],
+                      "_type": "block",
+                      "style": "normal"
+                    }
+                  ],
+                  "_key": "5a30ecaef513",
+                  "tittel": "Hvem er ansvarlig for hva"
+                }
+              ],
+              "id": "CE8D1D02-8BBA-4BBC-BF92-7A4B8A9ED34B",
+              "_key": "71020c301555"
+            },
+            {
+              "seksjonInnhold": [
+                {
+                  "_key": "55eeadb3e748",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Innen 7 uker - Dialogmøte 1",
+                      "_key": "0082af716477"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "h5"
+                },
+                {
+                  "_key": "f953a6bef208",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Dette er en samtale mellom arbeidstaker, arbeidsgiver og eventuelt sykmelder og/eller bedriftshelsetjeneste. Sammen skal man se på muligheter og begrensninger.",
+                      "_key": "a92c33010fe90"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal"
+                },
+                {
+                  "children": [
+                    {
+                      "_key": "fe03ff39a761",
+                      "_type": "span",
+                      "marks": [],
+                      "text": ""
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "410749732a11",
+                  "markDefs": []
+                },
+                {
+                  "tittel": "Hvem er ansvarlig for hva",
+                  "_type": "lesmer",
+                  "innhold": [
+                    {
+                      "style": "normal",
+                      "_key": "48c90916ca5d",
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "_type": "span",
+                          "marks": [],
+                          "text": "Arbeidsgiver\u2028",
+                          "_key": "5b27cadee04c0"
+                        }
+                      ],
+                      "_type": "block"
+                    },
+                    {
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "_type": "span",
+                          "marks": [],
+                          "text": "Sørge for at dialogmøte blir gjennomført.",
+                          "_key": "027aabd1b00a"
+                        }
+                      ],
+                      "_type": "block",
+                      "style": "normal",
+                      "_key": "d31f0cc45d76"
+                    },
+                    {
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "_type": "span",
+                          "marks": [],
+                          "text": "\nArbeidstaker\u2028",
+                          "_key": "6cb414fffdea"
+                        }
+                      ],
+                      "_type": "block",
+                      "style": "normal",
+                      "_key": "a0c45e8a2574"
+                    },
+                    {
+                      "children": [
+                        {
+                          "text": "Arbeidstaker gir tilbakemelding på om de ønsker å ha med sykemelder, tillitsvalgt og/eller bedriftshelsetjenesten. I møtet gir de informasjon om muligheter og begrensninger for egne arbeidsoppgaver.\n",
+                          "_key": "512cb8de83d8",
+                          "_type": "span",
+                          "marks": []
+                        }
+                      ],
+                      "_type": "block",
+                      "style": "normal",
+                      "_key": "f335e036e4f9",
+                      "markDefs": []
+                    },
+                    {
+                      "style": "normal",
+                      "_key": "a11cdcaec64f",
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "_type": "span",
+                          "marks": [],
+                          "text": "Sykmelder",
+                          "_key": "10c351c02193"
+                        }
+                      ],
+                      "_type": "block"
+                    },
+                    {
+                      "_key": "6ff3d24e0f03",
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "marks": [],
+                          "text": "\u2028Deltar på møtet om arbeidstaker og arbeidsgiver ønsker og mener det er behov for det.",
+                          "_key": "1924eb4d21d7",
+                          "_type": "span"
+                        }
+                      ],
+                      "_type": "block",
+                      "style": "normal"
+                    },
+                    {
+                      "_key": "0c651da17435",
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "_key": "e8ad0abd67a2",
+                          "_type": "span",
+                          "marks": [],
+                          "text": "\nBedrifthelsetjenesten\u2028"
+                        }
+                      ],
+                      "_type": "block",
+                      "style": "normal"
+                    },
+                    {
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "_type": "span",
+                          "marks": [],
+                          "text": "Kan være med på møtet for å bistå.\n",
+                          "_key": "2e7d1a8ab46a"
+                        }
+                      ],
+                      "_type": "block",
+                      "style": "normal",
+                      "_key": "ab3c58fe3f67"
+                    },
+                    {
+                      "_key": "0a9543ece030",
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "_type": "span",
+                          "marks": [],
+                          "text": "Tillitsvalgtes ansvar\u2028",
+                          "_key": "d2e56e26e040"
+                        }
+                      ],
+                      "_type": "block",
+                      "style": "normal"
+                    },
+                    {
+                      "_key": "2ffa5e5bf8bb",
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "_type": "span",
+                          "marks": [],
+                          "text": "Kan være med på møtet for å bistå, om arbeidstaker ønsker det.\n",
+                          "_key": "f2d6004cb86d"
+                        }
+                      ],
+                      "_type": "block",
+                      "style": "normal"
+                    },
+                    {
+                      "_key": "f5ec1faa456f",
+                      "markDefs": [
+                        {
+                          "erEksternLenke": true,
+                          "_type": "href",
+                          "_key": "938ff202b4fa",
+                          "url": "https://www.nav.no/arbeidsgiver/oppfolging-sykmeldte"
+                        }
+                      ],
+                      "children": [
+                        {
+                          "_key": "f0388f72a904",
+                          "_type": "span",
+                          "marks": [
+                            "938ff202b4fa"
+                          ],
+                          "text": "Les mer om dialogmøte"
+                        }
+                      ],
+                      "_type": "block",
+                      "style": "normal"
+                    }
+                  ],
+                  "_key": "50cb25d12894"
+                }
+              ],
+              "id": "35129B75-B3B9-4207-9E32-BFC6F0C8C3C5",
+              "_key": "6ecd403cf331",
+              "_type": "seksjon"
+            },
+            {
+              "_type": "seksjon",
+              "seksjonInnhold": [
+                {
+                  "style": "h5",
+                  "_key": "49df5a1be481",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_key": "d6ab11af873a",
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Innen 8 uker - NAV vurderer arbeidstakers aktivitetsplikt"
+                    }
+                  ],
+                  "_type": "block"
+                },
+                {
+                  "_key": "1fb857ef999d",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "For å få sykepenger må arbeidstaker være i aktivitet som har med arbeid å gjøre. Dette gjelder ikke hvis den sykemeldte dokumenterer at det er medisinske årsaker til at det ikke er mulig, eller om det ikke er mulig å tilrettelegge arbeidet.",
+                      "_key": "f6e6f339931f0"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal"
+                },
+                {
+                  "markDefs": [
+                    {
+                      "erEksternLenke": true,
+                      "_type": "href",
+                      "_key": "07656966c03d",
+                      "url": "https://www.nav.no/no/person/arbeid/sykmeldt-arbeidsavklaringspenger-og-yrkesskade/sykepenger/hva-er-aktivitetsplikten"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [
+                        "07656966c03d"
+                      ],
+                      "text": "Les mer om aktivitetsplikten",
+                      "_key": "70e85790b34e0"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "8e524210d99b"
+                }
+              ],
+              "id": "9FB6BC9F-BC09-44C4-97D9-233F7824A316",
+              "_key": "c0def252bdc2"
+            },
+            {
+              "_type": "seksjon",
+              "seksjonInnhold": [
+                {
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "6 måneder - Dialogmøte 2 og 3",
+                      "_key": "5bc78c25605e"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "h5",
+                  "_key": "8094576812b0",
+                  "markDefs": []
+                },
+                {
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_key": "2f641c96586c0",
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Hvis ikke tiltak på arbeidsplassen fungerer, kan dere be NAV om å kalle inn til dialogmøte 2. Målet er å se på andre aktiviter som kan føre den sykemeldte tilbake i arbeid."
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "c629490860ad"
+                },
+                {
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "",
+                      "_key": "f40d8b348210"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "24e6630c5405"
+                },
+                {
+                  "tittel": "Hvem er ansvarlig for hva",
+                  "_type": "lesmer",
+                  "innhold": [
+                    {
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "_type": "span",
+                          "marks": [
+                            "strong"
+                          ],
+                          "text": "Arbeidsgiver",
+                          "_key": "4407787dd9470"
+                        },
+                        {
+                          "_type": "span",
+                          "marks": [],
+                          "text": "\u2028",
+                          "_key": "697e272dab3f"
+                        }
+                      ],
+                      "_type": "block",
+                      "style": "normal",
+                      "_key": "dd0dbb563955"
+                    },
+                    {
+                      "_key": "e5972fdace68",
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "_type": "span",
+                          "marks": [],
+                          "text": "Sørge for at dialogmøte blir gjennomført.",
+                          "_key": "d63d13521010"
+                        }
+                      ],
+                      "_type": "block",
+                      "style": "normal"
+                    },
+                    {
+                      "_key": "fadd34570504",
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "_type": "span",
+                          "marks": [],
+                          "text": "\n",
+                          "_key": "68336115d252"
+                        },
+                        {
+                          "_type": "span",
+                          "marks": [
+                            "strong"
+                          ],
+                          "text": "Arbeidstaker",
+                          "_key": "3adba4688c55"
+                        },
+                        {
+                          "marks": [],
+                          "text": "\u2028",
+                          "_key": "66ebdbe29541",
+                          "_type": "span"
+                        }
+                      ],
+                      "_type": "block",
+                      "style": "normal"
+                    },
+                    {
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "_type": "span",
+                          "marks": [],
+                          "text": "Arbeidstaker gir tilbakemelding på om de ønsker å ha med sykemelder, tillitsvalgt og/eller bedriftshelsetjenesten. I møtet gir de informasjon om muligheter og begrensninger for egne arbeidsoppgaver.\n",
+                          "_key": "5439c7fa3d55"
+                        }
+                      ],
+                      "_type": "block",
+                      "style": "normal",
+                      "_key": "76d49a59ac66"
+                    },
+                    {
+                      "style": "normal",
+                      "_key": "1f4f640bedc8",
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "_key": "567ece3a9272",
+                          "_type": "span",
+                          "marks": [
+                            "strong"
+                          ],
+                          "text": "NAV"
+                        },
+                        {
+                          "_type": "span",
+                          "marks": [],
+                          "text": "\u2028",
+                          "_key": "a280b2b14d70"
+                        }
+                      ],
+                      "_type": "block"
+                    },
+                    {
+                      "style": "normal",
+                      "_key": "c6df5a75b669",
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "_type": "span",
+                          "marks": [],
+                          "text": "NAV kan også be om et dialogmøte. Før NAV gjør dette får dere og den ansatte melding fra NAV med spørsmål om behov. Basert på svarene og totalbildet vuderer NAV-veilederen behovet. NAV deltar på dialogmøte 2 og 3.\n",
+                          "_key": "c075987601f9"
+                        }
+                      ],
+                      "_type": "block"
+                    },
+                    {
+                      "style": "normal",
+                      "_key": "56610522905e",
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "_type": "span",
+                          "marks": [
+                            "strong"
+                          ],
+                          "text": "Sykmelder",
+                          "_key": "eff977fafd36"
+                        },
+                        {
+                          "_key": "1029a0ce1cbd",
+                          "_type": "span",
+                          "marks": [],
+                          "text": "\u2028"
+                        }
+                      ],
+                      "_type": "block"
+                    },
+                    {
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "text": "Deltar på møtet om arbeidstaker og arbeidsgiver ønsker og mener det er behov for det.",
+                          "_key": "28c20c8d5685",
+                          "_type": "span",
+                          "marks": []
+                        }
+                      ],
+                      "_type": "block",
+                      "style": "normal",
+                      "_key": "c37e75edee28"
+                    },
+                    {
+                      "_type": "block",
+                      "style": "normal",
+                      "_key": "2512ebcb0c0a",
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "text": "\n",
+                          "_key": "63732097058c",
+                          "_type": "span",
+                          "marks": []
+                        },
+                        {
+                          "marks": [
+                            "strong"
+                          ],
+                          "text": "Bedrifthelsetjenesten",
+                          "_key": "32bd24594f84",
+                          "_type": "span"
+                        },
+                        {
+                          "marks": [],
+                          "text": "\u2028",
+                          "_key": "f8adc1e9c167",
+                          "_type": "span"
+                        }
+                      ]
+                    },
+                    {
+                      "children": [
+                        {
+                          "marks": [],
+                          "text": "Kan være med på møtet for å bistå.\n",
+                          "_key": "acee220b7bd6",
+                          "_type": "span"
+                        }
+                      ],
+                      "_type": "block",
+                      "style": "normal",
+                      "_key": "7fbf132e4bd8",
+                      "markDefs": []
+                    },
+                    {
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "_key": "65f6227980e3",
+                          "_type": "span",
+                          "marks": [
+                            "strong"
+                          ],
+                          "text": "Tillitsvalgtes ansvar\u2028"
+                        }
+                      ],
+                      "_type": "block",
+                      "style": "normal",
+                      "_key": "d420fd7f56d8"
+                    },
+                    {
+                      "_key": "ed8c2c7b29e3",
+                      "markDefs": [],
+                      "children": [
+                        {
+                          "_type": "span",
+                          "marks": [],
+                          "text": "Kan være med på møtet for å bistå, om arbeidstaker ønsker det.\n",
+                          "_key": "6b0c9b3be423"
+                        }
+                      ],
+                      "_type": "block",
+                      "style": "normal"
+                    },
+                    {
+                      "markDefs": [
+                        {
+                          "_type": "href",
+                          "_key": "8138a439d558",
+                          "url": "https://www.nav.no/no/bedrift/oppfolging/sykmeldt-arbeidstaker/relatert-informasjon/slik-folger-du-opp-sykmeldte/dialogmote-2-og-3-nav_kap"
+                        }
+                      ],
+                      "children": [
+                        {
+                          "_type": "span",
+                          "marks": [
+                            "8138a439d558"
+                          ],
+                          "text": "Les mer om dialogmøte",
+                          "_key": "58143f477ef2"
+                        }
+                      ],
+                      "_type": "block",
+                      "style": "normal",
+                      "_key": "fea8006fc27e"
+                    }
+                  ],
+                  "_key": "b7ae95b5a6cc"
+                }
+              ],
+              "id": "29C7A3DB-8E8D-4830-9593-B4F570F67583",
+              "_key": "f8f29890ec71"
+            },
+            {
+              "_type": "seksjon",
+              "seksjonInnhold": [
+                {
+                  "style": "h5",
+                  "_key": "ae5fd77e9a2b",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "text": "52 uker - Rettigheter til sykemelding er brukt opp",
+                      "_key": "cecaf3354e68",
+                      "_type": "span",
+                      "marks": []
+                    }
+                  ],
+                  "_type": "block"
+                },
+                {
+                  "children": [
+                    {
+                      "_key": "b5942ab19f200",
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Arbeidsgiveren følger fortsatt opp og legger til rette for den ansatte, også etter at AAP er innvilget."
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "d30e5d68fa7c",
+                  "markDefs": []
+                },
+                {
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "text": "",
+                      "_key": "20ff40d80e19",
+                      "_type": "span",
+                      "marks": []
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "9e928db17afd"
+                }
+              ],
+              "id": "F9376174-963E-48D5-91EE-A86A7D64EF5E",
+              "_key": "102dbf74b8d7"
+            },
+            {
+              "id": "1649577A-6BFB-49A7-80F1-392EFC9F02E9",
+              "_key": "4453c2946d1f",
+              "tittel": "Vurder sykefraværsrutinene deres",
+              "oppgavetype": "Oppgave",
+              "_type": "oppgave",
+              "innhold": [
+                {
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "marks": [],
+                      "text": "Bruk skala fra 1 til 5 der 1 er lavest og 5 er best.\n",
+                      "_key": "6a190e054465",
+                      "_type": "span"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "260997be2866"
+                },
+                {
+                  "children": [
+                    {
+                      "marks": [],
+                      "text": "Vi har sykefraværsrutiner",
+                      "_key": "2ceb4effef36",
+                      "_type": "span"
+                    }
+                  ],
+                  "level": 1,
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "73a98e3842e5",
+                  "listItem": "bullet",
+                  "markDefs": []
+                },
+                {
+                  "style": "normal",
+                  "_key": "ce2ad0f2bc92",
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "text": "Vi følger fristene i oppfølgingsløpet",
+                      "_key": "d23e9b803c26",
+                      "_type": "span",
+                      "marks": []
+                    }
+                  ],
+                  "level": 1,
+                  "_type": "block"
+                },
+                {
+                  "_key": "0ac15b27f98a",
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "text": "Vi har rutiner for egenmeldt korttidsfravær",
+                      "_key": "c57bbf0e59f1",
+                      "_type": "span",
+                      "marks": []
+                    }
+                  ],
+                  "level": 1,
+                  "_type": "block",
+                  "style": "normal"
+                },
+                {
+                  "_key": "01bc529162e4",
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "text": "Det er tydelig hvem som er ansvarlig for hva",
+                      "_key": "0d43b15079c9",
+                      "_type": "span",
+                      "marks": []
+                    }
+                  ],
+                  "level": 1,
+                  "_type": "block",
+                  "style": "normal"
+                },
+                {
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "a1af9867f272",
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Det er lagt opp til at oppfølgingsplan brukes aktivt",
+                      "_key": "dbbcffc26c39"
+                    }
+                  ],
+                  "level": 1
+                },
+                {
+                  "level": 1,
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "a53aa0bd8a85",
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Vi avklarer om fraværet er arbeidsrelatert",
+                      "_key": "5415b0741237"
+                    }
+                  ]
+                },
+                {
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "25b3963be3fd",
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "marks": [],
+                      "text": "Det er en god oversikt over mulighetene for å tilrettelegge",
+                      "_key": "94c7204f001f",
+                      "_type": "span"
+                    }
+                  ],
+                  "level": 1
+                },
+                {
+                  "_key": "2839724a2d94",
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Rutinene er kjent blant ledere og ansatte",
+                      "_key": "18cfdf4b7ad9"
+                    }
+                  ],
+                  "level": 1,
+                  "_type": "block",
+                  "style": "normal"
+                },
+                {
+                  "_key": "2f0c544f5e08",
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Rutinene brukes og følges",
+                      "_key": "80e94b65a024"
+                    }
+                  ],
+                  "level": 1,
+                  "_type": "block",
+                  "style": "normal"
+                },
+                {
+                  "markDefs": [
+                    {
+                      "erEksternLenke": true,
+                      "_type": "href",
+                      "_key": "56801f417326",
+                      "url": "https://mag.idebanken.org/manual/"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Ut i fra svarene, er det noe dere bør forbedre? Hvis dere vil forbedre sykefraværsrutinene, kan ",
+                      "_key": "4c58e6b631d7"
+                    },
+                    {
+                      "_key": "6022974e4419",
+                      "_type": "span",
+                      "marks": [
+                        "56801f417326"
+                      ],
+                      "text": "manual for sykefraværsarbeid"
+                    },
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": " være en god hjelp. Her finner du blant annet flere vurderingskriterier og sjekklister på hva som bør være med i en rutine.",
+                      "_key": "dc8439527acd"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "262dfe39418f"
+                }
+              ]
+            },
+            {
+              "innhold": [
+                {
+                  "style": "normal",
+                  "_key": "c6f21ce8914c",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Når alle ansatte er med på å utvikle oppfølgingsrutinene, blir det enklere å følge opp når noen blir syke.",
+                      "_key": "bb0fc84c121d"
+                    }
+                  ],
+                  "_type": "block"
+                },
+                {
+                  "markDefs": [
+                    {
+                      "erEksternLenke": true,
+                      "_type": "href",
+                      "_key": "3bdf4f1555c3",
+                      "url": "https://www.idebanken.org/kloke-grep/artikler/rutiner-og-retningslinjer-for-sykefravaersoppfolging"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [
+                        "3bdf4f1555c3"
+                      ],
+                      "text": "Gå til oppgaveteksten på idebanken.no",
+                      "_key": "3b2f434b8922"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "c4ee1b99e55f"
+                }
+              ],
+              "id": "98504561-25F3-46D5-9F92-927ECC1C8CD5",
+              "_key": "a10c8a5c2c44",
+              "tittel": "Lag sykefraværsrutiner i fellesskap",
+              "oppgavetype": "Oppgave på Idebanken",
+              "_type": "oppgave"
+            }
+          ],
+          "tittel": "Hvordan forbedre sykefraværsoppfølgingen?",
+          "orderRank": "0|10002g:"
+        }
+      ]
+    },
+    {
+      "tittel": "Velg tiltak for bedre arbeidsmiljø",
+      "innhold": [
+        {
+          "_key": "3297d47e7ecc",
+          "markDefs": [],
+          "children": [
+            {
+              "_type": "span",
+              "marks": [],
+              "text": "Når dere har det grunnleggende på plass og har vurdert styrker og svakheter i arbeidsmiljøet, er det lettere å vite hva dere bør gjøre videre. Her er noen tiltak vi vet har god effekt. Hva trenger dere på deres arbeidsplass?",
+              "_key": "1f2564efa3e50"
+            }
+          ],
+          "_type": "block",
+          "style": "normal"
+        }
+      ],
+      "aktiviteter": [
+        {
+          "_rev": "TVkGSMt2uiwpJLVSheGFNd",
+          "kategori": {
+            "_ref": "a091a782-606f-42e4-bbce-d0c677c1248d",
+            "_type": "reference"
+          },
+          "_id": "ba2cd821-21ac-4142-97d6-1f75a8ca9764",
+          "maal": "Dere legger til rette for involvering av ansatte og et godt samarbeid mellom ledere, tillitsvalgte og ansatte. ",
+          "tittel": "Legg til rette for involvering og et godt partssamarbeid",
+          "_updatedAt": "2023-10-02T08:57:48Z",
+          "beskrivelse": "I Norge har vi en lang tradisjon for at arbeidstakere og arbeidsgivere finner løsninger sammen. Dette kaller vi gjerne den norske arbeidslivsmodellen. Det er når dere samarbeider at dere finner de beste løsningene. Når ansatte får være med å bestemme, skaper dette et godt arbeidsmiljø.",
+          "_createdAt": "2022-12-02T13:54:11Z",
+          "_type": "Aktivitet",
+          "embeddedInnhold": [
+            {
+              "_type": "block",
+              "style": "h4",
+              "_key": "d710ebf97b44",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Slik får dere til involvering og medvirkning",
+                  "_key": "e0406d2d1c3d0"
+                }
+              ]
+            },
+            {
+              "_key": "8d41718f3be0",
+              "markDefs": [
+                {
+                  "_key": "28601ce19537",
+                  "url": "https://www.nav.no/samarbeidspartner/tillitsvalgt-verneombud",
+                  "erEksternLenke": true,
+                  "_type": "href"
+                }
+              ],
+              "children": [
+                {
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Involvering og medvirkning fra de ansatte er en del av HMS-arbeidet som gjøres på flere arenaer. Som arbeidsgiver må du legge til rette for et godt samarbeid med ansatte og ansattes representanter, det vil si tillitsvalgte og verneombud. ",
+                  "_key": "befa8b484c620"
+                },
+                {
+                  "_type": "span",
+                  "marks": [
+                    "28601ce19537"
+                  ],
+                  "text": "Her",
+                  "_key": "6b0a4cf08ded"
+                },
+                {
+                  "text": " kan du kan lese mer om rollen som tillitsvalgt eller verneombud har i sykefraværsoppfølging og inkluderende arbeidsliv.",
+                  "_key": "4e76c8d3d2d1",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "_type": "block",
+              "style": "normal"
+            },
+            {
+              "style": "normal",
+              "_key": "ceb1202c88dc",
+              "markDefs": [],
+              "children": [
+                {
+                  "text": "Forskningen viser at de som har et velfungerende partssamarbeid har høyere trivsel og produktivitet, og lavere sykefravær.\n",
+                  "_key": "271cb6517dad",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "_type": "block"
+            },
+            {
+              "children": [
+                {
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Det er laget opplæring for tillitsvalgte, ledere og HR-personell. Opplæringen beskriver hva arbeidsmiljø er og hvordan dere kan jobbe med arbeidsmiljø.",
+                  "_key": "bdc8db9160c6"
+                }
+              ],
+              "_type": "block",
+              "style": "normal",
+              "_key": "c972294e5ec5",
+              "markDefs": []
+            },
+            {
+              "markDefs": [
+                {
+                  "erEksternLenke": true,
+                  "_type": "href",
+                  "_key": "01830ec5a64f",
+                  "url": "https://www.arbeidsmiljoportalen.no/kunnskapsmodulen"
+                }
+              ],
+              "children": [
+                {
+                  "text": "Gå til opplæringen på Arbeidsmiljøportalen",
+                  "_key": "50b0be6ee3fc",
+                  "_type": "span",
+                  "marks": [
+                    "01830ec5a64f"
+                  ]
+                }
+              ],
+              "_type": "block",
+              "style": "normal",
+              "_key": "23ca2189b15e"
+            },
+            {
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "marks": [],
+                  "text": "",
+                  "_key": "d8e5dc33908e"
+                }
+              ],
+              "_type": "block",
+              "style": "normal",
+              "_key": "a5cb8ce556cc"
+            },
+            {
+              "_type": "seksjon",
+              "seksjonInnhold": [
+                {
+                  "children": [
+                    {
+                      "marks": [],
+                      "text": "Sett opp jevnlige møter mellom leder og ansatt",
+                      "_key": "2e28db5cd26c0",
+                      "_type": "span"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "h4",
+                  "_key": "849f70fad5a6",
+                  "markDefs": []
+                },
+                {
+                  "_key": "982a236d0ba5",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Sett opp faste medarbeidersamtaler i tilleg til at dere har samtaler ved behov. Det er en fordel om veien til ledelsen føles kort. Ansattes innspill er nødvendig for å forbedre arbeidsmiljøet og tjenestene dere leverer. Husk at ansatte har rett til å bli hørt under nedbemanning og omstilling.",
+                      "_key": "b78966f37b0c0"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal"
+                }
+              ],
+              "id": "C4F054B4-4AC4-4F5C-BE4E-96298F882929",
+              "_key": "05b519c27bc5"
+            },
+            {
+              "_type": "seksjon",
+              "seksjonInnhold": [
+                {
+                  "_type": "block",
+                  "style": "h4",
+                  "_key": "f8b36204a9d2",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Sett opp jevnlige team og avdelingsmøter",
+                      "_key": "64a3c92c4eb40"
+                    }
+                  ]
+                },
+                {
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Diskuter daglige gjøremål og mer langsiktige mål. Dette sørger for felles virkelighetsoppfatning. La alle bli hørt. Da kommer det ofte konstruktive forslag som forbedrer både arbeidsmiljøet og produksjonen.",
+                      "_key": "5525098c6f080"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "6547c20bc41c"
+                }
+              ],
+              "id": "45266141-6346-42F2-842B-119A5C82B9E5",
+              "_key": "7ebbe3dbd78b"
+            },
+            {
+              "_key": "84158eb2f528",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "marks": [],
+                  "text": "",
+                  "_key": "26e37d9b7cae"
+                }
+              ],
+              "_type": "block",
+              "style": "normal"
+            },
+            {
+              "_type": "oppgave",
+              "innhold": [
+                {
+                  "style": "normal",
+                  "_key": "1b0d5ce8b221",
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Har dere jevnlige team og avdelingsmøter?",
+                      "_key": "c0a540ca58e00"
+                    }
+                  ],
+                  "level": 1,
+                  "_type": "block"
+                },
+                {
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Har dere jevnlige personalsamtaler?",
+                      "_key": "93cd6292d391"
+                    }
+                  ],
+                  "level": 1,
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "7e20930775b1",
+                  "listItem": "bullet",
+                  "markDefs": []
+                },
+                {
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Er det “takhøyde” for diskusjon og innspill på de riktige tingene på arenaene der dere møtes?",
+                      "_key": "cc348a87e8aa"
+                    }
+                  ],
+                  "level": 1,
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "9f1c95a1d707"
+                },
+                {
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Har dere tillitsvalgt og verneombud?",
+                      "_key": "a58b4e5d2f70"
+                    }
+                  ],
+                  "level": 1,
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "426086f690f9",
+                  "listItem": "bullet",
+                  "markDefs": []
+                },
+                {
+                  "level": 1,
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "b69d97aba789",
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "marks": [],
+                      "text": "Har dere regelmessige møter med tillitsvalgt og verneombud?",
+                      "_key": "95b1df09f6be",
+                      "_type": "span"
+                    }
+                  ]
+                },
+                {
+                  "style": "normal",
+                  "_key": "d4b8f2b814e2",
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "marks": [],
+                      "text": "Har dere avklart roller og ansvar?",
+                      "_key": "569d2c8a61b1",
+                      "_type": "span"
+                    }
+                  ],
+                  "level": 1,
+                  "_type": "block"
+                },
+                {
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "7c6b676ab9ea",
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Har tillitsvalgt og verneombud nødvendig kompetanse?",
+                      "_key": "0a821684c6ee"
+                    }
+                  ],
+                  "level": 1
+                },
+                {
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "2d298083a964",
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "text": "Har dere arenaer der ansatte får gitt uttrykk for hvordan de opplever arbeidsplassen og kan være med å påvirke?",
+                      "_key": "47344da81ad8",
+                      "_type": "span",
+                      "marks": []
+                    }
+                  ],
+                  "level": 1
+                }
+              ],
+              "id": "C283BCCC-E6E0-49B3-8169-DF1E4F6D2F36",
+              "_key": "79deec66e103",
+              "tittel": "Vurder hvordan partssamarbeidet er hos dere",
+              "oppgavetype": "Oppgave"
+            },
+            {
+              "_key": "54e222ab05c4",
+              "_type": "seksjon",
+              "seksjonInnhold": [
+                {
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Sett opp jevnlige møter med partene",
+                      "_key": "0707686ae4a8"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "h4",
+                  "_key": "eb73eca2f573"
+                },
+                {
+                  "style": "normal",
+                  "_key": "74b1738c9534",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Det er når dere samarbeider at dere finner de beste løsningene. Det skaper også et godt arbeidsmiljø.",
+                      "_key": "2d69c9f7f45e"
+                    }
+                  ],
+                  "_type": "block"
+                },
+                {
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "3ab711ec8c83",
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Ha regelmessige møter der dere diskuterer arbeidsmiljøet. Skriv referat fra møtene sånn at alle vet hva dere har blitt enige om",
+                      "_key": "830196d80b1d"
+                    }
+                  ],
+                  "level": 1
+                },
+                {
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Avklar hvilke forventninger dere har til hverandre",
+                      "_key": "63f14e92d0b9"
+                    }
+                  ],
+                  "level": 1,
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "8c71847db7e3",
+                  "listItem": "bullet",
+                  "markDefs": []
+                },
+                {
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Sørg for at tillitsvalgt og verneombud har nødvendig kompetanse",
+                      "_key": "35c8f9f98ca5"
+                    }
+                  ],
+                  "level": 1,
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "c86edc84ff43",
+                  "listItem": "bullet",
+                  "markDefs": []
+                },
+                {
+                  "_key": "84796507d567",
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Få oversikt over styrker og utfordringer om eget arbeidsmiljø",
+                      "_key": "afefad0e6921"
+                    }
+                  ],
+                  "level": 1,
+                  "_type": "block",
+                  "style": "normal"
+                },
+                {
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "762f15c125b9",
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Lag dere mål for hva dere vil oppnå med arbeidsmiljøet",
+                      "_key": "e5e46956cd09"
+                    }
+                  ],
+                  "level": 1
+                },
+                {
+                  "style": "normal",
+                  "_key": "121e8e863df5",
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "text": "Hva kan dere forbedre i arbeidsmiljøet? Bli enige om tiltak",
+                      "_key": "ed2e31bbcfd3",
+                      "_type": "span",
+                      "marks": []
+                    }
+                  ],
+                  "level": 1,
+                  "_type": "block"
+                },
+                {
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_key": "4a8bdb9e0df9",
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Legg til rette for at alle ansatte kan bidra i prosessen"
+                    }
+                  ],
+                  "level": 1,
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "94f271db844e"
+                }
+              ],
+              "id": "7CC39BC1-0CA6-4EFC-917A-C2D18E35193C"
+            },
+            {
+              "_key": "a0725d8f82b2",
+              "tittel": "Hvordan utvikle arbeidsplassen og få et lavt sykefravær?",
+              "oppgavetype": "Oppgave på Idebanken",
+              "_type": "oppgave",
+              "innhold": [
+                {
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Se en video i fellesskap for å bli kjent med hvordan Madshus jobber med å utvikle arbeidsplassen, produktene og arbeidsmiljøet. Diskuter hvordan det er hos dere.",
+                      "_key": "d0ef331a68960"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "f0c3696cd0a1"
+                },
+                {
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "a657489c340b",
+                  "markDefs": [
+                    {
+                      "erEksternLenke": true,
+                      "_type": "href",
+                      "_key": "136a9d062e2d",
+                      "url": "https://www.idebanken.org/kloke-grep/artikler/hvordan-fa-de-ansatte-med-i-utviklingen-av-arbeidsplassen"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "text": "Gå til oppgaven på Idebanken ",
+                      "_key": "2b560c082249",
+                      "_type": "span",
+                      "marks": [
+                        "136a9d062e2d"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "id": "5BA3101B-1D6D-4EBB-BE81-21AB862C8AD5"
+            }
+          ],
+          "orderRank": "0|10003s:"
+        },
+        {
+          "maal": "Du vet hva som påvirker arbeidsmiljøet og hvor skoen trykker hos dere. ",
+          "orderRank": "0|100040:",
+          "_createdAt": "2022-12-02T13:44:22Z",
+          "_rev": "NeHfsZQke64VUPYrbjDTa2",
+          "_id": "cc3402f3-9765-4f31-a1fc-d3b1a67f1052",
+          "tittel": "Kartlegg arbeidsmiljøet og behov for forebyggende arbeid",
+          "_updatedAt": "2023-10-02T08:58:03Z",
+          "beskrivelse": "Arbeidsmiljøet handler om hvordan vi organiserer, planlegger og gjennomfører arbeidet. Arbeidsmiljøet påvirker både sykefraværet og kvaliteten på det dere skaper. ",
+          "_type": "Aktivitet",
+          "embeddedInnhold": [
+            {
+              "style": "normal",
+              "_key": "d4a9ff470a39",
+              "markDefs": [],
+              "children": [
+                {
+                  "text": "",
+                  "_key": "db7cd73dc9df",
+                  "_type": "span",
+                  "marks": []
+                }
+              ],
+              "_type": "block"
+            },
+            {
+              "_type": "seksjon",
+              "seksjonInnhold": [
+                {
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_key": "e7705bcb87c1",
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Dette skaper et godt arbeidsmiljø"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "h4",
+                  "_key": "f1dca78e0c8b"
+                },
+                {
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "marks": [],
+                      "text": "6 faktorer er viktige for et godt arbeidsmiljø",
+                      "_key": "c04bdc90ba28",
+                      "_type": "span"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "ca587dbe8dd7"
+                },
+                {
+                  "style": "normal",
+                  "_key": "a69cbce77088",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "",
+                      "_key": "5ad3cacd383a"
+                    }
+                  ],
+                  "_type": "block"
+                },
+                {
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_key": "6842eeb40b9c0",
+                      "_type": "span",
+                      "marks": [
+                        "strong"
+                      ],
+                      "text": "Åpen og ærlig kommunikasjon"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "9f6bc13ba620"
+                },
+                {
+                  "style": "normal",
+                  "_key": "9ced525f9042",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Når vi kan snakke åpent sammen, bygger vi en gjensidig trygghet i hverandre. Å føle seg trygg på kollegaer og ledelse gir flyt i arbeidet og gjør at terskelen blir lavere for å ta opp det som er vanskelig.",
+                      "_key": "4d571f235dc8"
+                    }
+                  ],
+                  "_type": "block"
+                },
+                {
+                  "_type": "block",
+                  "style": "h5",
+                  "_key": "f749c850fd58",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Tydelige forventninger",
+                      "_key": "1ce52cc056c2"
+                    }
+                  ]
+                },
+                {
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "text": "Vi har det best når vi vet hva som er forventet av oss på arbeidsplassen. Vi må blant annet vite hva som er våre arbeidsoppgaver og hvordan vi skal utføre dem.",
+                      "_key": "12a1ffbd1383",
+                      "_type": "span",
+                      "marks": []
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "35ed15225117"
+                },
+                {
+                  "style": "h5",
+                  "_key": "0b8690767901",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "text": "Anerkjennelse",
+                      "_key": "c80bd7d0a3cb",
+                      "_type": "span",
+                      "marks": [
+                        "strong"
+                      ]
+                    }
+                  ],
+                  "_type": "block"
+                },
+                {
+                  "_key": "6be681217004",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Positive tilbakemeldinger gjør oss tryggere i arbeidssituasjonen, øker trivsel og motiverer til utvikling.",
+                      "_key": "6b8becc3a992"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal"
+                },
+                {
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [
+                        "strong"
+                      ],
+                      "text": "Balanse mellom krav og innflytelse",
+                      "_key": "86fa7a2b0104"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "h5",
+                  "_key": "554702cff400",
+                  "markDefs": []
+                },
+                {
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "text": "Vi trenger å oppleve at vi blir sett, hørt og tatt på alvor på arbeidsplassen. Når vi blir involvert og vist tillit, øker følelsen av lojalitet, og vi blir mer bevisst på vårt ansvar i jobben. Samtidig er det også godt å få bekreftet at vi oppfyller de kravene og forventningene en arbeidsgiver har til oss som arbeidstakere.",
+                      "_key": "5ad54f36a42f",
+                      "_type": "span",
+                      "marks": []
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "e2213dec30da"
+                },
+                {
+                  "style": "h5",
+                  "_key": "3efb111b5729",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [
+                        "strong"
+                      ],
+                      "text": "Forutsigbarhet",
+                      "_key": "4070cc5853bc"
+                    }
+                  ],
+                  "_type": "block"
+                },
+                {
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Det er viktig å ha god oversikt over rammer og faktorer som påvirker oss i hverdagen. Forutsigbarhet skaper en følelse av kontroll og trygghet i arbeidssituasjonen. Ved omstillinger og endringer er det ekstra viktig å holde de ansatte orientert om hvilke endringer som kommer.",
+                      "_key": "e7347fe36169"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "013db3095b6f"
+                },
+                {
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [
+                        "strong"
+                      ],
+                      "text": "Rettferdig og støttende ledelse",
+                      "_key": "6f2a44182337"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "h5",
+                  "_key": "e92fc0093771"
+                },
+                {
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "8c0f4c78f47f",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "marks": [],
+                      "text": "Når ledere er synlige, gir tilbakemeldinger og er støttende, bygger det tillit og trygghet. Det er ofte ikke nok at du som leder sier at “døra er åpen”, men tar et aktivt initiativ ovenfor de ansatte. Dette gjør det lettere for den ansatte å ta opp saker som påvirker arbeidssituasjonen, slik at dere kan finne gode løsninger sammen.",
+                      "_key": "9ffa347476ad",
+                      "_type": "span"
+                    }
+                  ]
+                }
+              ],
+              "id": "CDA936D9-2FC9-44CC-976D-E57B71C46085",
+              "_key": "bd2cf95888d9"
+            },
+            {
+              "id": "EFA22A63-D8E0-4A40-928D-C62933A80475",
+              "_key": "5dca24d20c03",
+              "tittel": "Vurder arbeidsmiljøet deres",
+              "oppgavetype": "Oppgave",
+              "_type": "oppgave",
+              "innhold": [
+                {
+                  "_key": "53c88af7c3f8",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Arbeidsmiljøet er forskjellig fra arbeidsplass til arbeidsplass, og krever derfor ulike tilnærminger. Hvor trykker skoen hos dere? Bruk en skala fra 1 til 5 der 1 er lavest og 5 er best.",
+                      "_key": "557b68917d7d"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal"
+                },
+                {
+                  "style": "normal",
+                  "_key": "77379f0c1572",
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "text": "Vi har åpen og ærlig kommunikasjon – Det er stor takhøyde og lav terskel for å ta opp ting",
+                      "_key": "93e7c070fb8d",
+                      "_type": "span",
+                      "marks": []
+                    }
+                  ],
+                  "level": 1,
+                  "_type": "block"
+                },
+                {
+                  "level": 1,
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "d3a189f0d462",
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "marks": [],
+                      "text": "Hos oss er det tydelig for den enkelte hva de skal gjøre og hvordan de skal gjøre det",
+                      "_key": "9eab99c18c8e",
+                      "_type": "span"
+                    }
+                  ]
+                },
+                {
+                  "style": "normal",
+                  "_key": "df78aba5536b",
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "text": "Vi gir hverandre anerkjennelse og respekt",
+                      "_key": "ebd74cdbfecd",
+                      "_type": "span",
+                      "marks": []
+                    }
+                  ],
+                  "level": 1,
+                  "_type": "block"
+                },
+                {
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Hos oss opplever de ansatte at de har innflytelse på sin arbeidssituasjon",
+                      "_key": "20aadcd2d597"
+                    }
+                  ],
+                  "level": 1,
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "ab2569c990c6"
+                },
+                {
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Hos oss er arbeidssituasjonen forutsigbar, både til vanlig og ved omstillinger",
+                      "_key": "f889b30b3c19"
+                    }
+                  ],
+                  "level": 1,
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "a0f2bf57985a",
+                  "listItem": "bullet",
+                  "markDefs": []
+                },
+                {
+                  "listItem": "bullet",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "marks": [],
+                      "text": "De ansatte opplever at de har en rettferdig og støttende ledelse\n",
+                      "_key": "e34c32779d98",
+                      "_type": "span"
+                    }
+                  ],
+                  "level": 1,
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "bce02ff56b33"
+                },
+                {
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Ut i fra svarene, er det noe dere bør forbedre?\n",
+                      "_key": "0ac0ad3b766f"
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "018cdd877566",
+                  "markDefs": []
+                },
+                {
+                  "style": "normal",
+                  "_key": "2c98a70e050a",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Vurder om noe av sykefraværet hos dere kan skyldes forhold på arbeidsplassen? Hvis ja, hva kan være grunnen og hva kan dere gjøre for å endre på det?",
+                      "_key": "07d24c132dde"
+                    }
+                  ],
+                  "_type": "block"
+                }
+              ]
+            },
+            {
+              "_key": "efc72febb6f6",
+              "tittel": "Kartlegg arbeidsmiljøet i fellesskap",
+              "oppgavetype": "Oppgave på Arbeidsmiljøhjelpen",
+              "_type": "oppgave",
+              "innhold": [
+                {
+                  "children": [
+                    {
+                      "text": "Arbeidsmiljøhjelpen er et godt og grundig verktøy dere bruker i fellesskap å kartlegge det som er bra og det som bør bli bedre i arbeidsmiljøet deres. ",
+                      "_key": "e13d00cc4672",
+                      "_type": "span",
+                      "marks": []
+                    }
+                  ],
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "b5ae4abb4385",
+                  "markDefs": []
+                },
+                {
+                  "_type": "block",
+                  "style": "normal",
+                  "_key": "4cd5a9bd14ef",
+                  "markDefs": [
+                    {
+                      "_key": "c91e3f32fa32",
+                      "url": "https://arbeidsmiljohjelpen.arbeidstilsynet.no/?bransje=landbruk",
+                      "erEksternLenke": true,
+                      "_type": "href"
+                    }
+                  ],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "marks": [
+                        "c91e3f32fa32"
+                      ],
+                      "text": "Gå til oppgaven på arbeidsmiljøhjelpen",
+                      "_key": "92ca310e8960"
+                    }
+                  ]
+                }
+              ],
+              "id": "51363EDD-5102-4473-8367-E5304935B273"
+            }
+          ],
+          "kategori": {
+            "_ref": "a091a782-606f-42e4-bbce-d0c677c1248d",
+            "_type": "reference"
+          }
+        }
+      ]
+    }
+  ],
+  "ms": 953
+}

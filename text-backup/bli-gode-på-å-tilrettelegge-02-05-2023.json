@@ -1,0 +1,542 @@
+{
+  "_createdAt": "2022-12-02T14:04:32Z",
+  "_id": "drafts.1ef7291f-b498-4fc9-98b5-63464432fab4",
+  "_type": "Aktivitet",
+  "_updatedAt": "2023-05-02T08:11:40Z",
+  "beskrivelse": "Tilrettelegging er aktuelt for å unngå sykmelding, ved gradert sykmelding og når den ansatte kommer tilbake fra en sykmelding. Dere må tilrettelegge for alle arbeidstakere, ikke bare for de med redusert arbeidsevne. ",
+  "embeddedInnhold": [
+    {
+      "_key": "b16f4f42f4eb",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "abed08f02b6c0",
+          "_type": "span",
+          "marks": [],
+          "text": "Hva er tilrettelegging?"
+        }
+      ],
+      "markDefs": [],
+      "style": "h4"
+    },
+    {
+      "_key": "c94092aea239",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "04f57610f6210",
+          "_type": "span",
+          "marks": [],
+          "text": "Tilrettelegging handler om mer enn bare oppgavene. Ofte er mulighetene flere enn vi tror. "
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "f0d72e524a9a",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "b3cbfaf619b8",
+          "_type": "span",
+          "marks": [],
+          "text": "Husk å avtale både perioden for tilretteleggingen og hva den innebærer av endringer. Informer gjerne kollegaer om tilrettelegginger slik at dette er kjent for alle i arbeidsmiljøet."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "a3821922d448",
+      "_type": "seksjon",
+      "seksjonInnhold": [
+        {
+          "_key": "e28e2b0dd486",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "707185b0c2460",
+              "_type": "span",
+              "marks": [],
+              "text": "Organisatoriske tiltak"
+            }
+          ],
+          "markDefs": [],
+          "style": "h5"
+        },
+        {
+          "_key": "93de0f0b82a4",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "87688d03d37e",
+              "_type": "span",
+              "marks": [],
+              "text": "Endre arbeidsfordelingen"
+            }
+          ],
+          "level": 1,
+          "listItem": "bullet",
+          "markDefs": [],
+          "style": "normal"
+        },
+        {
+          "_key": "bc1f03596e5f",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "ec88cd82247a",
+              "_type": "span",
+              "marks": [],
+              "text": "Tilby alternative arbeidsoppgaver"
+            }
+          ],
+          "level": 1,
+          "listItem": "bullet",
+          "markDefs": [],
+          "style": "normal"
+        },
+        {
+          "_key": "34b866e9e84f",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "cfbf950036d4",
+              "_type": "span",
+              "marks": [],
+              "text": "Justere tempo og tilpasse arbeidstid"
+            }
+          ],
+          "level": 1,
+          "listItem": "bullet",
+          "markDefs": [],
+          "style": "normal"
+        },
+        {
+          "_key": "068d8cc88dd3",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "bfce11ec0bce",
+              "_type": "span",
+              "marks": [],
+              "text": "Tilby opplæring"
+            }
+          ],
+          "level": 1,
+          "listItem": "bullet",
+          "markDefs": [],
+          "style": "normal"
+        },
+        {
+          "_key": "60b7d6fa16b4",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "1e92d750c47b",
+              "_type": "span",
+              "marks": [],
+              "text": ""
+            }
+          ],
+          "markDefs": [],
+          "style": "normal"
+        },
+        {
+          "_key": "22c0d0411674",
+          "_type": "lesmer",
+          "innhold": [
+            {
+              "_key": "00cfb496856d",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "dc6d7cc1f1720",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Du som arbeidsgiver bør ha kartlagt virksomhetenes muligheter til alternative arbeidsoppgaver dersom sykefravær oppstår eller er i ferd med å oppstå. Aktuelle arbeidsoppgaver kan være lignende oppgaver med mindre belastning, men også andre nødvendige eller forefallende arbeid kan være aktuelt å vurdere i tilretteleggingsfasen.\n"
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "cf781fad916f",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "0fbc86ccf2af",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Husk å avtale både perioden for tilretteleggingen og hva den innebærer av endringer.\n"
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "73fc0cbb1e04",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "6270ad741968",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Informer gjerne kollegaer om tilrettelegginger slik at dette er kjent for alle i arbeidsmiljøet."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            }
+          ],
+          "tittel": "Kartlegg muligheter til alternative oppgaver"
+        }
+      ]
+    },
+    {
+      "_key": "7d9f76960032",
+      "_type": "seksjon",
+      "seksjonInnhold": [
+        {
+          "_key": "e3cd601bac54",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "0062ab5ef5e80",
+              "_type": "span",
+              "marks": [],
+              "text": "Psykososiale tiltak"
+            }
+          ],
+          "markDefs": [],
+          "style": "h5"
+        },
+        {
+          "_key": "58d0e212bc81",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "c7f3839680aa",
+              "_type": "span",
+              "marks": [],
+              "text": "Gi støtte og oppfølging – både fra ledere og medarbeidere"
+            }
+          ],
+          "markDefs": [],
+          "style": "normal"
+        }
+      ]
+    },
+    {
+      "_key": "755170de5516",
+      "_type": "seksjon",
+      "seksjonInnhold": [
+        {
+          "_key": "8296ed70a16c",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "e6f145f828b90",
+              "_type": "span",
+              "marks": [],
+              "text": "Fysiske tiltak"
+            }
+          ],
+          "markDefs": [],
+          "style": "h5"
+        },
+        {
+          "_key": "608de7f5b1d9",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "a7d5c0a0ef7e",
+              "_type": "span",
+              "marks": [],
+              "text": "Tilby tekniske hjelpemidler"
+            }
+          ],
+          "level": 1,
+          "listItem": "bullet",
+          "markDefs": [],
+          "style": "normal"
+        },
+        {
+          "_key": "d61c143aed02",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "e51ce9790151",
+              "_type": "span",
+              "marks": [],
+              "text": "Tilpasse arbeidsplassen – arbeidsstillinger, møbler og maskiner"
+            }
+          ],
+          "level": 1,
+          "listItem": "bullet",
+          "markDefs": [],
+          "style": "normal"
+        }
+      ]
+    },
+    {
+      "_key": "5cd8bbb18696",
+      "_type": "seksjon",
+      "seksjonInnhold": [
+        {
+          "_key": "2a697d7cee5f",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "d11915c355f9",
+              "_type": "span",
+              "marks": [],
+              "text": "Forventninger til arbeidstaker og arbeidsgiver"
+            }
+          ],
+          "markDefs": [],
+          "style": "h5"
+        },
+        {
+          "_key": "e3e9ad79dd26",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "2d5fa7e84e10",
+              "_type": "span",
+              "marks": [],
+              "text": ""
+            }
+          ],
+          "markDefs": [],
+          "style": "normal"
+        },
+        {
+          "_key": "3cf1a3ff1f45",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "42925b6d5473",
+              "_type": "span",
+              "marks": [],
+              "text": "Arbeidstakeren skal involveres og gi innspill når arbeidet tilrettelegges. Da kan dere sammen finne gode løsninger. Dette gjelder både ved sykefravær og når noen står i fare for å bli syke."
+            }
+          ],
+          "markDefs": [],
+          "style": "normal"
+        },
+        {
+          "_key": "13ab6f8b8ff0",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "68b231b8aac90",
+              "_type": "span",
+              "marks": [],
+              "text": ""
+            }
+          ],
+          "markDefs": [],
+          "style": "normal"
+        },
+        {
+          "_key": "8b89237d2a7d",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "37ef7349dcc9",
+              "_type": "span",
+              "marks": [],
+              "text": "Du som arbeidsgiver skal tilrettelegge for arbeidstakeren så langt det er mulig. Det betyr at behovet for tilrettelegging må vurderes opp mot hva virksomheten driver med, antall ansatte og kostnaden av tiltakene. Tilretteleggingen skal ikke gå ut over de andre arbeidstakernes arbeidsforhold eller oppgaver."
+            }
+          ],
+          "markDefs": [],
+          "style": "normal"
+        }
+      ]
+    },
+    {
+      "_key": "48ea43c4734c",
+      "_type": "seksjon",
+      "seksjonInnhold": [
+        {
+          "_key": "f4a481167143",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "8a0e06cbc9e4",
+              "_type": "span",
+              "marks": [
+                "ef4a63ae2ceb"
+              ],
+              "text": "Hvordan kan NAV hjelpe dere med tilrettelegging? "
+            }
+          ],
+          "markDefs": [
+            {
+              "_key": "ef4a63ae2ceb",
+              "_type": "href",
+              "url": "https://www.nav.no/arbeidsgiver/redusere-sykefravar#enkeltansatt"
+            }
+          ],
+          "style": "normal"
+        }
+      ]
+    },
+    {
+      "_key": "df20f9f923eb",
+      "_type": "oppgave",
+      "innhold": [
+        {
+          "_key": "c5b648854d6f",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "878135a4852a",
+              "_type": "span",
+              "marks": [],
+              "text": "Målet er at den ansatte ikke blir sykmeldt eller kommer raskest mulig tilbake i full jobb igjen. Vurder hvordan det er hos dere:\n"
+            }
+          ],
+          "markDefs": [],
+          "style": "normal"
+        },
+        {
+          "_key": "9310779e89c9",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "512463782924",
+              "_type": "span",
+              "marks": [],
+              "text": "Vi identifiserer behov for tilrettelegging før den ansatte blir sykemeldt"
+            }
+          ],
+          "level": 1,
+          "listItem": "bullet",
+          "markDefs": [],
+          "style": "normal"
+        },
+        {
+          "_key": "f23eae8661b2",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "e08b7d2d98eb",
+              "_type": "span",
+              "marks": [],
+              "text": "Vi gjør raskt en vurdering om behov for tilrettelegging sammen med den som er sykemeldt"
+            }
+          ],
+          "level": 1,
+          "listItem": "bullet",
+          "markDefs": [],
+          "style": "normal"
+        },
+        {
+          "_key": "6867dae77501",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "7ba7b2bd0948",
+              "_type": "span",
+              "marks": [],
+              "text": "Vi dokumenterer tiltakene og hvilken periode de gjelder for"
+            }
+          ],
+          "level": 1,
+          "listItem": "bullet",
+          "markDefs": [],
+          "style": "normal"
+        },
+        {
+          "_key": "b014d5f22997",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "e95bf7cdcdfd",
+              "_type": "span",
+              "marks": [],
+              "text": "Vi holder kontakt underveis"
+            }
+          ],
+          "level": 1,
+          "listItem": "bullet",
+          "markDefs": [],
+          "style": "normal"
+        },
+        {
+          "_key": "c86b4a14495e",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "aaca33bc2b91",
+              "_type": "span",
+              "marks": [],
+              "text": "Vi justerer på tiltak og arbeidsoppgaver ved behov"
+            }
+          ],
+          "level": 1,
+          "listItem": "bullet",
+          "markDefs": [],
+          "style": "normal"
+        }
+      ],
+      "oppgavetype": "Oppgave",
+      "tittel": "Hvor gode er dere på å tilrettelegge for ansatte?"
+    },
+    {
+      "_key": "bfd0339def39",
+      "_type": "oppgave",
+      "innhold": [
+        {
+          "_key": "bce9569d5727",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "b7c21a796016",
+              "_type": "span",
+              "marks": [],
+              "text": "Små justeringer og tilpassinger kan gjøre at vi fungerer godt i jobben til tross for de utfordringene vi måtte ha. Hva er mulig på din arbeidsplass?"
+            }
+          ],
+          "markDefs": [],
+          "style": "normal"
+        },
+        {
+          "_key": "2d9495ba500e",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "d07de7b10b72",
+              "_type": "span",
+              "marks": [
+                "0437f206ad66"
+              ],
+              "text": "Gå til oppgaven på Idebanken"
+            }
+          ],
+          "markDefs": [
+            {
+              "_key": "0437f206ad66",
+              "_type": "href",
+              "erEksternLenke": true,
+              "url": "https://www.idebanken.org/kloke-grep/artikler/slik-lykkes-dere-med-tilrettelegging-pa-arbeidsplassen"
+            }
+          ],
+          "style": "normal"
+        }
+      ],
+      "oppgavetype": "Oppgave på Idebanken",
+      "tittel": "Slik kan din arbeidsplass lykkes med tilrettelegging"
+    }
+  ],
+  "kategori": {
+    "_ref": "13b1445b-512b-4d03-b165-ae1431a5bbc7",
+    "_type": "reference"
+  },
+  "maal": "Bli bedre på å tilrettelegge for arbeidstakere.",
+  "orderRank": "0|100008:",
+  "tittel": "Bli gode på å tilrettelegge for ansatte"
+}
