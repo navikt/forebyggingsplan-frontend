@@ -1,4 +1,6 @@
 # Forebyggingsplan-frontend
+> [!IMPORTANT]
+> Dette verktøyet ble 16.11.2023 integrert i applikasjonen _Forebygge fravær_ (aka _min-ia_)
 
 Flate der arbeidsgivarar kan jobbe med å forebyggje sjukefråvær i si verksemd
 
